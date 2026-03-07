@@ -16,6 +16,24 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Threshold:
 - Notes:
 
+### Icypeas
+- Status: active / inactive
+- Mode: bidirectional / read-only
+- Push to Icypeas: email finder jobs, bulk enrichment
+- Pull from Icypeas: verified emails, domain search results
+- Credit behaviour (writes): confirm-above-threshold
+- Threshold:
+- Notes: Credit-based — 1 credit per email find or verify
+
+### Prospeo
+- Status: active / inactive
+- Mode: bidirectional / read-only
+- Push to Prospeo: LinkedIn URLs, domains for email finding
+- Pull from Prospeo: verified emails, domain search results
+- Credit behaviour (writes): confirm-above-threshold
+- Threshold:
+- Notes: Credit-based — 1 credit per email find or verify
+
 ### Apify
 - Status: active / inactive
 - Mode: bidirectional / read-only
@@ -38,6 +56,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Mode: bidirectional / read-only / write-only
 - Push to Lemlist: sequences, contacts, campaigns
 - Pull from Lemlist: open rates, reply rates, bounce rates, unsubscribes, reply text
+- Lead database: built-in (450M+ contacts) — can source leads directly
 - Credit behaviour (writes): confirm-before-every-use
 - Notes:
 
@@ -46,6 +65,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Mode: bidirectional / read-only / write-only
 - Push to Instantly: sequences, contacts, sending schedules
 - Pull from Instantly: open rates, reply rates, bounce rates, deliverability data
+- Lead database: built-in (160M+ contacts) — separate add-on pricing
 - Credit behaviour (writes): confirm-before-every-use
 - Notes:
 
@@ -93,30 +113,28 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 
 ### Email verification
 - ZeroBounce: $0.004-0.008/email — bulk verification
-- NeverBounce: $0.004-0.008/email — bulk verification
 - MillionVerifier: $0.001-0.004/email — budget option
 - Scrubby: $0.02-0.03/email — catch-all verification
 
-### Prospecting
-- RocketReach: $0.50-0.70/lookup — contact finding
-- Lusha: $0.04-0.10/credit — phone + email reveals
-- LeadIQ: $0.05-0.15/contact — prospecting from LinkedIn
-- Clearbit: $0.10-0.30/record — company enrichment (now HubSpot Breeze)
+### Lead databases
+- StoreLeads: e-commerce store database (Shopify, WooCommerce, etc.)
+- Opemart: small business and SMB data
 
 ### LinkedIn automation
 - PhantomBuster: $0.01-0.05/lead — execution-time based scraping and automation
+
+### CRM enrichment
+- Freckle: CRM data enrichment — auto-fills missing company and contact data
 
 ### CRM alternatives
 - Salesforce: per-seat, API free within limits
 - Pipedrive: per-seat, API free within limits
 
-### Signal intelligence
-- 6sense: enterprise — intent data and predictive scoring
-- Bombora: enterprise — topic-level intent data
-
 ### Automation
+- N8N: self-hosted workflow automation — free (self-hosted) or $20/mo (cloud)
+- Supabase Edge Functions: serverless functions — $0.00002/invocation, first 500K free/mo
 - Zapier: $0.01-0.03/task — connects tools
-- Make: $0.001-0.01/operation — connects tools (cheaper than Zapier)
+- Make: $0.001-0.01/operation — connects tools
 
 ---
 
@@ -126,6 +144,8 @@ confirm-before-every-use
 ## API key reference
 All keys stored in .env at repo root:
 - APOLLO_API_KEY
+- ICYPEAS_API_KEY
+- PROSPEO_API_KEY
 - APIFY_API_KEY
 - HUBSPOT_API_KEY
 - LEMLIST_API_KEY

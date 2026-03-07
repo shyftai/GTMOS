@@ -139,18 +139,22 @@ Swarm agents draft only — nothing is sent without human approval.
 
 | Tool | Direction | What it does |
 |------|-----------|-------------|
-| Apollo | Bidirectional | Prospecting and enrichment |
+| Apollo | Bidirectional | Prospecting, enrichment, lead database |
+| Icypeas | Bidirectional | Email finding and verification |
+| Prospeo | Bidirectional | Email finding from LinkedIn URLs |
 | Apify | Bidirectional | Web scraping and data extraction |
+| StoreLeads | Read-only | E-commerce store database |
+| Opemart | Read-only | Small business / SMB data |
 | HubSpot | Bidirectional | CRM, marketing, sequences |
-| Lemlist | Bidirectional | Email sequencing |
-| Instantly | Bidirectional | Email sequencing |
+| Lemlist | Bidirectional | Email sequencing + lead database |
+| Instantly | Bidirectional | Email sequencing + lead database |
 | Smartlead | Bidirectional | Email sequencing |
 | Crispy | Bidirectional | LinkedIn outreach |
 | Attio | Bidirectional | CRM |
 | Signalbase | Read-only | Funding and hiring signals |
 | Commonroom | Read-only | Community and intent signals |
 
-Additional tools (email verification, LinkedIn automation, intent data, automation) can be activated per workspace. See `_template/TOOLS.md` for the full list and `.claude/gtmos/references/tool-pricing.md` for pricing.
+Additional tools (email verification, CRM enrichment, LinkedIn automation, automation) can be activated per workspace. See `_template/TOOLS.md` for the full list and `.claude/gtmos/references/tool-pricing.md` for pricing.
 
 Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md.
 

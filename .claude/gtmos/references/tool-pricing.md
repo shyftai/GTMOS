@@ -18,9 +18,60 @@ Last updated: 2026-03
   - Phone number reveal: 5 credits
   - Export contact: 1 credit
   - Enrichment: 1 credit per field
+- **Lead database:** Yes — 275M+ contacts, searchable by title, industry, company size, tech stack
 - **API access:** Professional plan and above
 - **GTMOS unit:** contact enriched
 - **Typical cost:** $0.01-0.05 per contact depending on plan and volume
+
+### Icypeas
+- **Model:** Credit-based (email finding + verification)
+- **Free tier:** 50 credits
+- **Paid plans:** Lite $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
+- **Credit costs:**
+  - Email finder: 1 credit
+  - Email verifier: 1 credit
+  - Domain search: 1 credit per result
+  - Bulk enrichment: 1 credit per contact
+- **API access:** All paid plans
+- **GTMOS unit:** credit used
+- **Typical cost:** $0.01-0.04 per contact
+
+### Prospeo
+- **Model:** Credit-based (email finder + verifier)
+- **Paid plans:** Basic $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
+- **Credit costs:**
+  - Email finder (from LinkedIn URL): 1 credit
+  - Email verifier: 1 credit
+  - Domain search: 1 credit per result
+  - LinkedIn email finder: 1 credit
+- **API access:** All plans
+- **GTMOS unit:** credit used
+- **Typical cost:** $0.01-0.04 per contact
+
+### Icypeas
+- **Model:** Credit-based (email finding + verification)
+- **Free tier:** 50 credits
+- **Paid plans:** Lite $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
+- **Credit costs:**
+  - Email finder: 1 credit
+  - Email verifier: 1 credit
+  - Domain search: 1 credit per result
+  - Bulk enrichment: 1 credit per contact
+- **API access:** All paid plans
+- **GTMOS unit:** credit used
+- **Typical cost:** $0.01-0.04 per contact
+
+### Prospeo
+- **Model:** Credit-based (email finder + verifier)
+- **Paid plans:** Basic $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
+- **Credit costs:**
+  - Email finder (from LinkedIn URL): 1 credit
+  - Email verifier: 1 credit
+  - Domain search: 1 credit per result
+  - LinkedIn email finder: 1 credit
+- **API access:** All plans
+- **GTMOS unit:** credit used
+- **Typical cost:** $0.01-0.04 per contact
 
 ### Apify
 - **Model:** Usage-based (compute units + platform fee)
@@ -37,51 +88,25 @@ Last updated: 2026-03
 - **GTMOS unit:** compute unit (CU)
 - **Typical cost:** $0.01-0.10 per lead depending on actor and data depth
 
-### RocketReach
-- **Model:** Credit-based per lookup
-- **Paid plans:** Essentials $53/mo (80 lookups), Pro $107/mo (200 lookups), Ultimate $269/mo (500 lookups)
-- **Credit costs:**
-  - Contact lookup: 1 credit
-  - Company lookup: 1 credit
-  - Bulk lookup: 1 credit per contact
-- **API access:** Pro plan and above
-- **GTMOS unit:** lookup
-- **Typical cost:** $0.50-0.70 per lookup
+---
 
-### Lusha
-- **Model:** Credit-based
-- **Free tier:** 5 credits/month
-- **Paid plans:** Pro $29/mo/user (480 credits/yr), Premium $51/mo/user (960 credits/yr)
-- **Credit costs:**
-  - Email: 1 credit
-  - Phone: 1 credit
-  - Both: 2 credits
-- **API access:** Premium plan and above
-- **GTMOS unit:** contact revealed
-- **Typical cost:** $0.04-0.10 per credit
+## Lead Databases
 
-### LeadIQ
-- **Model:** Credit-based per user
-- **Free tier:** 20 verified emails/week
-- **Paid plans:** Essential $39/mo/user, Pro $79/mo/user, Enterprise custom
-- **Credit costs:**
-  - Verified email: 1 credit
-  - Mobile number: varies
-  - Tracked profile: free
-- **API access:** Pro plan and above
-- **GTMOS unit:** contact captured
-- **Typical cost:** $0.05-0.15 per contact
+### StoreLeads
+- **Model:** Subscription-based
+- **What it does:** E-commerce store database — Shopify, WooCommerce, BigCommerce, Magento stores with tech stack, traffic, app usage, and contact data
+- **Use case:** Prospecting e-commerce companies, identifying stores by platform, app usage, or revenue signals
+- **API access:** Paid plans
+- **GTMOS unit:** record exported
+- **Typical cost:** Varies by plan — check current pricing
 
-### Clearbit (now Breeze Intelligence by HubSpot)
-- **Model:** Record-based pricing
-- **Paid plans:** Starts at $30k/year
-- **How it charges:**
-  - Enrichment: per record enriched per month
-  - Reveal: per anonymous visitor identified
-  - Typical: $0.10-0.30 per enrichment
-- **API access:** All paid plans
-- **GTMOS unit:** record enriched
-- **Typical cost:** $0.10-0.30 per record
+### Opemart
+- **Model:** Subscription-based
+- **What it does:** Small business data — local businesses, SMBs, with contact info, industry, and location data
+- **Use case:** Prospecting small businesses, local outreach campaigns, SMB targeting
+- **API access:** Paid plans
+- **GTMOS unit:** record exported
+- **Typical cost:** Varies by plan — check current pricing
 
 ---
 
@@ -90,22 +115,11 @@ Last updated: 2026-03
 ### ZeroBounce
 - **Model:** Credit-based (bulk or per-email)
 - **Free tier:** 100 free verifications/month
-- **Paid plans:** Pay-as-you-go from $0.008/email at 2,000+ volume
 - **Bulk pricing:**
   - 2,000 emails: $16 ($0.008/each)
   - 5,000 emails: $35 ($0.007/each)
   - 10,000 emails: $64 ($0.0064/each)
   - 100,000 emails: $390 ($0.0039/each)
-- **API access:** All plans
-- **GTMOS unit:** email verified
-- **Typical cost:** $0.004-0.008 per email
-
-### NeverBounce
-- **Model:** Pay-as-you-go or subscription
-- **Pricing:**
-  - Up to 10,000: $0.008/email
-  - 10,001-100,000: $0.005/email
-  - 100,001-250,000: $0.004/email
 - **API access:** All plans
 - **GTMOS unit:** email verified
 - **Typical cost:** $0.004-0.008 per email
@@ -130,7 +144,7 @@ Last updated: 2026-03
 
 ---
 
-## Email Sequencing
+## Email Sequencing & Sending
 
 ### Lemlist
 - **Model:** Per-seat subscription
@@ -139,6 +153,7 @@ Last updated: 2026-03
   - Email Starter: 1 sending email, unlimited campaigns
   - Email Pro: 3 sending emails, inbox rotation, CRM integration
   - Multichannel: 5 sending emails, LinkedIn steps, API access
+- **Lead database:** Yes — built-in B2B lead database (450M+ contacts), included in paid plans
 - **Sending limits:** Depends on email provider (Google: 500/day, Microsoft: 10,000/day)
 - **API access:** Email Pro and above
 - **GTMOS unit:** email sent (for cost tracking, use monthly seat cost / expected sends)
@@ -152,6 +167,7 @@ Last updated: 2026-03
   - Unlimited warmup
   - Built-in email verification
   - A/B testing
+- **Lead database:** Yes — built-in B2B lead finder (160M+ contacts), separate add-on pricing
 - **API access:** All plans
 - **GTMOS unit:** active contact (monthly subscription based)
 - **Typical cost:** $0.003-0.03 per contact depending on plan and volume
@@ -166,17 +182,6 @@ Last updated: 2026-03
 - **API access:** All plans
 - **GTMOS unit:** active contact
 - **Typical cost:** $0.003-0.02 per contact
-
-### Woodpecker
-- **Model:** Per-contact slot pricing
-- **Paid plans:** From $20/mo for 500 contacted prospects
-- **What's included:**
-  - Unlimited email accounts
-  - Unlimited team members
-  - A/B testing, conditions
-- **API access:** All plans
-- **GTMOS unit:** prospect contacted
-- **Typical cost:** $0.02-0.04 per prospect
 
 ---
 
@@ -272,19 +277,17 @@ Last updated: 2026-03
 - **GTMOS unit:** signal query
 - **Typical cost:** $0.01-0.05 per query
 
-### 6sense
-- **Model:** Enterprise subscription
-- **Paid plans:** Starts at $25k+/year
-- **Signal types:** Intent data, account identification, predictive scoring
-- **GTMOS unit:** account identified
-- **Typical cost:** Enterprise — contact for pricing
+---
 
-### Bombora
-- **Model:** Enterprise subscription
-- **Paid plans:** Starts at $25k+/year
-- **Signal types:** Topic-level B2B intent data, surge scoring
-- **GTMOS unit:** intent signal
-- **Typical cost:** Enterprise — contact for pricing
+## CRM Enrichment
+
+### Freckle
+- **Model:** Subscription-based
+- **How it charges:** Per-seat or per-record depending on plan
+- **What it does:** Auto-enriches CRM contacts and companies with missing data (firmographics, tech stack, funding, headcount)
+- **Integrates with:** HubSpot, Salesforce, Attio, Pipedrive
+- **GTMOS unit:** record enriched
+- **Typical cost:** Varies by plan — check current pricing
 
 ---
 
@@ -315,6 +318,27 @@ Last updated: 2026-03
 - **How it charges:** 1 task = 1 action step executed
 - **GTMOS unit:** task
 - **Typical cost:** $0.01-0.03 per task
+
+### N8N
+- **Model:** Self-hosted (free) or cloud subscription
+- **Free tier:** Self-hosted — unlimited workflows, unlimited executions
+- **Paid plans:** Cloud Starter $20/mo (2,500 executions), Pro $50/mo (10,000 executions)
+- **How it charges:** Cloud plans charge per execution. Self-hosted is free forever.
+- **API access:** All plans (self-hosted has full API)
+- **GTMOS unit:** execution
+- **Typical cost:** $0 (self-hosted) or $0.005-0.008 per execution (cloud)
+
+### Supabase Edge Functions
+- **Model:** Usage-based (serverless)
+- **Free tier:** 500,000 invocations/month, 2M edge function invocations
+- **Paid plans:** Pro $25/mo (includes generous free tier)
+- **How it charges:**
+  - $0.00002 per invocation beyond free tier
+  - Execution time: included in invocation cost
+  - Use for: webhook handlers, data transformations, scheduled jobs
+- **API access:** All plans
+- **GTMOS unit:** invocation
+- **Typical cost:** $0 for most use cases (within free tier)
 
 ### Make (Integromat)
 - **Model:** Operation-based

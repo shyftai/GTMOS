@@ -7,7 +7,11 @@ See .claude/gtmos/references/tool-pricing.md for current pricing guidance.
 | Tool | Unit | Cost per unit | Currency | Notes |
 |------|------|---------------|----------|-------|
 | Apollo | contact enriched | | USD | |
+| Icypeas | credit used | | USD | 1 credit per find or verify |
+| Prospeo | credit used | | USD | 1 credit per find or verify |
 | Apify | compute unit | | USD | Varies by actor |
+| StoreLeads | record exported | | USD | E-commerce data |
+| Opemart | record exported | | USD | SMB data |
 | HubSpot | marketing contact | 0 | USD | Free for CRM-only use |
 | Lemlist | email sent | | USD | Monthly seat / expected sends |
 | Instantly | active contact | | USD | Monthly plan / contact volume |
@@ -17,7 +21,8 @@ See .claude/gtmos/references/tool-pricing.md for current pricing guidance.
 | Signalbase | signal query | | USD | |
 | Commonroom | signal query | | USD | |
 | ZeroBounce | email verified | | USD | |
-| NeverBounce | email verified | | USD | |
+| MillionVerifier | email verified | | USD | |
+| Freckle | record enriched | | USD | CRM enrichment |
 
 ## Budget
 - Monthly budget:
