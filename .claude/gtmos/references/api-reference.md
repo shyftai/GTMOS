@@ -306,6 +306,62 @@ curl -X POST "https://api.apify.com/v2/acts/anchor~linkedin-profile-scraper/runs
 
 ---
 
+## Fireflies.ai (meeting transcripts)
+
+**Auth:** Bearer token in header `Authorization: Bearer {key}`
+**Base URL:** `https://api.fireflies.ai/graphql`
+**API type:** GraphQL
+
+| Action | Query/Mutation | Description |
+|--------|---------------|-------------|
+| List transcripts | `transcripts` | All transcripts with filters |
+| Get transcript | `transcript(id)` | Full transcript with sentences, speakers, timestamps |
+| Get user | `user` | Account info and remaining credits |
+
+**List transcripts example:**
+```bash
+curl -X POST "https://api.fireflies.ai/graphql" \
+  -H "Authorization: Bearer $FIREFLIES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "{ transcripts { id title date duration organizer_email participants sentences { text speaker_name start_time end_time } summary { overview shorthand_bullet } } }"
+  }'
+```
+
+**Get single transcript with full detail:**
+```bash
+curl -X POST "https://api.fireflies.ai/graphql" \
+  -H "Authorization: Bearer $FIREFLIES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "query Transcript($id: String!) { transcript(id: $id) { id title date duration organizer_email participants sentences { text speaker_name start_time end_time } summary { overview shorthand_bullet action_items } } }",
+    "variables": { "id": "transcript-id-here" }
+  }'
+```
+
+**Key fields per transcript:**
+- `title` — meeting title
+- `date` — meeting date
+- `duration` — length in minutes
+- `participants` — list of attendees (names/emails)
+- `organizer_email` — who scheduled the meeting
+- `sentences` — full transcript broken into speaker-attributed segments
+- `summary.overview` — AI-generated summary
+- `summary.shorthand_bullet` — bullet point summary
+- `summary.action_items` — extracted action items
+
+**Filtering transcripts (by date range):**
+```bash
+curl -X POST "https://api.fireflies.ai/graphql" \
+  -H "Authorization: Bearer $FIREFLIES_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "{ transcripts(date_from: \"2025-01-01\", date_to: \"2026-03-07\", limit: 50) { id title date participants sentences { text speaker_name } summary { overview } } }"
+  }'
+```
+
+---
+
 ## Notes
 
 - Always check remaining credits/balance before batch operations

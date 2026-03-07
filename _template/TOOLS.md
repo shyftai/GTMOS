@@ -128,6 +128,13 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Used for: social selling signals — detect when prospects engage with competitor content, industry topics, or relevant posts
 - Notes:
 
+### Fireflies.ai
+- Status: active / inactive
+- Mode: read-only
+- Pull from Fireflies: meeting transcripts, speaker-attributed text, AI summaries, action items
+- Used for: data deep-dive — extract pain points, buying triggers, objections, and prospect language from sales calls
+- Notes: GraphQL API. Business plan required for API access. Pull transcripts via `/gtm:deep-dive`.
+
 ---
 
 ## Additional tools (activate as needed)
@@ -178,3 +185,4 @@ All keys stored in .env at repo root:
 - COMMONROOM_API_KEY
 - JUNGLER_API_KEY
 - TRIGIFY_API_KEY
+- FIREFLIES_API_KEY

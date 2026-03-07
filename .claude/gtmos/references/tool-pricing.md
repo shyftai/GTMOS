@@ -317,6 +317,23 @@ Last updated: 2026-03
 
 ---
 
+## Meeting Transcripts
+
+### Fireflies.ai
+- **Model:** Per-seat subscription
+- **Free tier:** Limited transcription credits, 800 minutes storage
+- **Paid plans:** Pro $10/mo/seat (unlimited transcription), Business $19/mo/seat (unlimited + API), Enterprise $39/mo/seat
+- **What's included:**
+  - Automatic meeting recording and transcription (Zoom, Google Meet, Teams, etc.)
+  - Speaker attribution, AI summaries, action items
+  - GraphQL API for pulling transcripts programmatically
+- **API access:** Business plan and above
+- **GTMOS unit:** transcript pulled (no per-pull cost — flat subscription)
+- **Typical cost:** $0 per API call (within plan)
+- **GTMOS use case:** Pull sales call transcripts during data deep-dive to extract pain points, buying triggers, objections, and prospect language
+
+---
+
 ## CRM Enrichment
 
 ### Freckle

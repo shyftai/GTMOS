@@ -113,6 +113,9 @@ Attio · HubSpot · Salesforce · Pipedrive
 ### Signals
 Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jobs
 
+### Meeting transcripts
+Fireflies.ai (pull sales call transcripts via API for data deep-dives)
+
 ### Verification
 ZeroBounce · MillionVerifier · Scrubby
 

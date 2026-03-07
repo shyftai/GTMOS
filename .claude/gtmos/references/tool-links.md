@@ -47,6 +47,9 @@ UTM format: `?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference`
 - Jungler.ai: https://jungler.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
 - Trigify: https://trigify.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
 
+## Meeting Transcripts
+- Fireflies.ai: https://fireflies.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+
 ## Booking
 - Calendly: https://calendly.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
 - Cal.com: https://cal.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference

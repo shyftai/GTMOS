@@ -34,7 +34,8 @@ Workspace: $ARGUMENTS
   [ ] Lemlist — campaign stats, activities
   [ ] Smartlead — campaign statistics
 
-  Manual data:
+  Transcripts:
+  [ ] Fireflies.ai — pull transcripts directly via API
   [ ] Call transcripts / meeting notes (paste or file path)
   [ ] Sales call recordings (transcribed)
   [ ] Customer interview notes
@@ -147,8 +148,15 @@ Workspace: $ARGUMENTS
 
 ## Phase 3 — Transcript analysis
 
-7. For each transcript/meeting note provided:
-   - Extract: who was on the call, their title, company, industry
+7a. If Fireflies.ai is selected:
+   - Pull transcripts via GraphQL API (see api-reference.md)
+   - Filter by date range (default: last 6 months) — ask user if they want a different range
+   - Pull all transcripts with: title, date, participants, sentences (speaker-attributed), summary
+   - Display list of found transcripts and let user select which are relevant (sales calls, discovery calls, demos — not internal meetings)
+   - For each selected transcript, extract the full speaker-attributed text
+
+7b. For each transcript (from Fireflies or manually provided):
+   - Extract: who was on the call, their title, company, industry (Fireflies provides participants and speaker names automatically)
    - Extract: pain points mentioned (in their words)
    - Extract: buying triggers — what made them take the call?
    - Extract: objections raised
