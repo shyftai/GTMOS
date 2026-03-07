@@ -15,6 +15,7 @@ Workspace and file: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/csv-format.md
 @./.claude/gtmos/references/lead-scoring.md
+@./.claude/gtmos/references/enrichment-waterfall.md
 </execution_context>
 
 <process>
@@ -38,6 +39,12 @@ Workspace and file: $ARGUMENTS
 5b. Map input columns to GTMOS standard format (csv-format.md)
     - If imported from Apollo, Sales Navigator, Instantly, or Lemlist: auto-map using import mappings
     - If unknown format: display column mapping for user confirmation
+
+## Step 1.7 — Enrichment gaps check
+5c. After cleaning, check for missing data (email, phone, title, company info)
+    - If gaps exist, suggest: `/gtm:enrich {workspace} {type}` before scoring
+    - If email column has >20% missing, flag: "Run email enrichment before validation"
+    - Do not auto-enrich — let the user decide
 
 ## Step 2 — Validate and score
 6. Score every cleaned record using the rubric in RULES.md (0-3 ICP score)

@@ -166,6 +166,20 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 
 ---
 
+## Enrichment hit rates
+
+Track hit rates per source to optimize the waterfall over time. Updated automatically after each enrichment run.
+
+| Source | Email | Phone | People | Company | Last updated |
+|--------|-------|-------|--------|---------|-------------|
+| Apollo | — | — | — | — | — |
+| Icypeas | — | — | — | — | — |
+| Prospeo | — | — | — | — | — |
+| Crispy | — | — | — | — | — |
+| Apify | — | — | — | — | — |
+
+---
+
 ## Default credit behaviour
 confirm-before-every-use
 

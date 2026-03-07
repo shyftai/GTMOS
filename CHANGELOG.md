@@ -6,6 +6,21 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-03-07
+
+### Added
+- Waterfall enrichment system (`/gtm:enrich`) — cascading enrichment for email, phone, people, company, people search, company search
+- Six waterfall types with tool priority order, cost tracking, and hit rate logging
+- Enrichment plan display with estimated costs and budget check before execution
+- Hit rate tracker in TOOLS.md — tracks source accuracy over time to optimize waterfall order
+- Enrichment defaults in defaults.md — all waterfall orders overridable per workspace
+- Validate-list now checks for enrichment gaps and suggests `/gtm:enrich` before scoring
+- Fireflies.ai API integration for pulling meeting transcripts during deep-dive
+
+### Changed
+- Tool links cleaned up: `?ref=gtmos` referral tracking, displayed in branded boxes instead of bare URLs
+- GTMOS.md updated with enrichment section
+
 ## [0.4.0] — 2026-03-07
 
 ### Added

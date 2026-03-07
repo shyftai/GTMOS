@@ -15,6 +15,7 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 - `.claude/gtmos/references/api-reference.md` — API endpoints for all tools (load before API calls)
 - `.claude/gtmos/references/csv-format.md` — standard list format (load before list operations)
 - `.claude/gtmos/references/lead-scoring.md` — weighted scoring model (load before validation)
+- `.claude/gtmos/references/enrichment-waterfall.md` — cascading enrichment logic (load before enrichment)
 - `.claude/gtmos/references/campaign-types.md` — campaign templates (load before new-campaign)
 - `.claude/gtmos/references/sending-calendar.md` — holiday blackouts (load before shipping)
 - `.claude/gtmos/references/report-template.md` — report formats (load before reporting)

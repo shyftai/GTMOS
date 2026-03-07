@@ -46,6 +46,7 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
 
   Build
     /gtm:list-brief    Create a list building brief
+    /gtm:enrich        Waterfall enrichment (email, phone, people, company)
     /gtm:clean-list    Clean and normalize a raw list
     /gtm:validate-list Clean + score + validate a raw list
     /gtm:write         Draft an outbound sequence

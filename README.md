@@ -68,7 +68,7 @@ If it drifts from the brief, it doesn't ship.
 
 **2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals
 
-**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:validate-list` cleans, scores (0-100), and validates
+**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:enrich` fills gaps via waterfall enrichment, `/gtm:validate-list` cleans, scores (0-100), and validates
 
 **4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch
 
@@ -153,6 +153,7 @@ GTMOS ships with sensible defaults for everything:
 | Command | What it does |
 |---------|-------------|
 | `/gtm:list-brief <ws> <campaign>` | Create a list building brief |
+| `/gtm:enrich <ws> <type> [file]` | Waterfall enrichment (email, phone, people, company) |
 | `/gtm:clean-list <ws> [file]` | Clean and normalize a raw list |
 | `/gtm:validate-list <ws> [file]` | Clean + score (0-100) + validate |
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |

@@ -170,6 +170,16 @@ If any check fails, revise before presenting. Never show a draft that fails its 
 
 ---
 
+## Enrichment
+
+When enriching contacts or companies, always use the waterfall from `.claude/gtmos/references/enrichment-waterfall.md`. Try the cheapest source first, cascade on misses, stop when data is found. Never send all contacts to every source — only send misses from the previous step.
+
+Six enrichment types: people search, company search, people enrichment, company enrichment, email enrichment, phone number enrichment. Each has its own waterfall order. Users can override the order in workspace RULES.md under `## Enrichment waterfall overrides`.
+
+After every enrichment run, update hit rate tracking in TOOLS.md so the waterfall can be optimized over time.
+
+---
+
 ## List tasks
 
 - Apply ICP filters strictly. When in doubt, reject.

@@ -81,6 +81,22 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Hot tier threshold | 80+ | RULES.md |
 | Reject tier threshold | 0-19 | RULES.md |
 
+## Enrichment defaults
+
+| Setting | Default | Override in |
+|---------|---------|-------------|
+| Email waterfall | Apollo → Icypeas → Prospeo → Lemlist DB | RULES.md `## Enrichment waterfall overrides` |
+| Email verification | ZeroBounce → MillionVerifier | RULES.md |
+| Catch-all verification | Scrubby | RULES.md |
+| Phone enrichment threshold | lead_score >= 80 (A-tier only) | RULES.md |
+| Phone waterfall | Apollo (5 credits) → Crispy → Apify | RULES.md |
+| People enrichment waterfall | Apollo → Crispy → Apify → Prospeo | RULES.md |
+| Company enrichment waterfall | Apollo (free) → Freckle → StoreLeads → Apify | RULES.md |
+| People search waterfall | Apollo (free) → Crispy/SalesNav → Lemlist → Instantly → Apify | RULES.md |
+| Company search waterfall | Apollo (free) → StoreLeads → Opemart → Apify | RULES.md |
+| Batch size | 50 contacts per API call | RULES.md |
+| Ship unverified emails | Never | Non-overridable |
+
 ## Compliance defaults
 
 | Setting | Default | Override in |
