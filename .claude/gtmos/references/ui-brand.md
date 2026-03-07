@@ -63,6 +63,9 @@ Use for workflow transitions. GTMOS uses angle brackets, not GSD's arrows.
 - `LINKEDIN WARMING`
 - `DOMAIN RECOVERY`
 - `FEEDBACK`
+- `DASHBOARD`
+- `AUTO-REFINE`
+- `MIGRATION`
 
 ---
 

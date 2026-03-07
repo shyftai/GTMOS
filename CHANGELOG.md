@@ -14,6 +14,14 @@ All notable changes to this project are documented here.
 - Client-facing report templates: weekly pulse, monthly review, campaign final
 - Quick start onboarding (5 blocks instead of 14) with `/gtm:onboard --quick`
 - Slack notification system for critical events (positive replies, budget alerts, domain issues)
+- Smart dashboard (`/gtm:dashboard`) — scans workspace state and surfaces what needs attention
+- ICP auto-refinement (`/gtm:auto-refine`) — suggests ICP, persona, and copy changes based on campaign data
+- Tool migration playbooks — step-by-step guides for switching between tools
+- Tool setup guides — how to configure each tool to work with GTMOS
+- Performance trending — weekly metrics tracking with pattern detection per campaign
+- Copy swipe file — full anonymized sequence examples demonstrating GTMOS principles
+- Centralized defaults reference — all overridable per workspace
+- Smarter CLAUDE.md with pre-loaded reference index
 - Changelog
 
 ## [0.3.0] — 2026-03-07

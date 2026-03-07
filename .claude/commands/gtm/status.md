@@ -36,11 +36,12 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
   GTMOS Commands
 
   Setup
-    /gtm:onboard       Onboard a new workspace
+    /gtm:onboard       Onboard a new workspace (full or --quick)
     /gtm:research      Research ICP and market
-    /gtm:new-campaign  Create a new campaign from template
+    /gtm:new-campaign  Create a campaign with type selection
     /gtm:switch        Switch active workspace
     /gtm:status        Show this command list
+    /gtm:dashboard     Smart dashboard — what needs attention now
 
   Build
     /gtm:list-brief    Create a list building brief
@@ -86,6 +87,10 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
     /gtm:collab status   Check collaboration connection
     /gtm:collab invite   Invite a team member
     /gtm:collab sync     Sync local files to Supabase
+
+  Intelligence
+    /gtm:auto-refine   Suggest ICP/persona/copy refinements from data
+    /gtm:migrate       Tool migration playbook
 
   Feedback
     /gtm:feedback      Submit feedback, report a bug, or request a feature

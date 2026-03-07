@@ -1,248 +1,292 @@
 # GTMOS — The GTM Operating System
 
-GTMOS is a Claude Code plugin that turns Claude into a live GTM campaign intelligence layer. It connects directly to your outbound stack via API, pulls live campaign data on demand, and closes the loop between what you brief, what you ship, and what actually performs.
+> Turn Claude Code into a full outbound campaign engine. Brief it. Build it. Ship it. Measure it.
 
-## Quick start
+GTMOS is a Claude Code plugin that runs your entire go-to-market workflow — from ICP definition to list building, copy writing, shipping sequences, handling replies, and reporting on results. It connects to your outbound stack via API, enforces quality at every step, and never ships anything that drifts from the brief.
 
-1. Clone this repo
-2. Copy `.env.example` to `.env` and add your API keys
-3. Open the repo in Claude Code
-4. Run `/gtm:status` to see the system, or `/gtm:onboard <name>` to create your first workspace
+**Built for:** agencies, growth teams, founders, and solo operators running B2B outbound.
 
-## How it works
+---
 
-Every GTM task Claude touches gets checked against five sources of truth:
-
-| File | Purpose |
-|------|---------|
-| **ICP.md** | Who we target at the company level |
-| **PERSONA.md** | Who we target at the human level |
-| **BRIEFING.md** | What this campaign is about |
-| **TOV.md** | How we sound — full brand voice |
-| **RULES.md** | List and copy quality standards |
-
-Plus operational files per workspace:
-
-| File | Purpose |
-|------|---------|
-| **TOOLS.md** | Connected tools and credit rules |
-| **COSTS.md** | Spend tracking by tool, campaign, and budget alerts |
-| **INFRASTRUCTURE.md** | Domains, DNS auth, mailboxes, warmup status |
-| **SUPPRESSION.md** | Do-not-contact list, compliance, bounce management |
-| **PIPELINE.md** | CRM pipeline stages, conversion tracking, attribution |
-| **MULTICHANNEL.md** | Cross-channel orchestration and timing rules |
-| **BOOKING.md** | Calendar links, landing pages, UTM parameters |
-| **COMPETITORS.md** | Competitor positioning, win angles, mention log |
-
-And per campaign:
-
-| File | Purpose |
-|------|---------|
-| **AB-TESTS.md** | A/B test plans, results, and history |
-| **PERSONALIZATION.md** | Merge field definitions and fallbacks |
-
-Nothing ships if it drifts from the sources of truth. Every tool write is logged with cost.
-
-## Repo structure
+## 60-second quick start
 
 ```
-GTMOS/
-├── CLAUDE.md             <- Points Claude to GTMOS.md on startup
-├── GTMOS.md              <- Plugin entrypoint — all rules and behaviour
-├── .env.example          <- API key template
-├── _template/            <- Copy to onboard a new workspace
-├── workspaces/           <- One folder per workspace (created by /gtm:onboard)
-├── commands/             <- Workflow reference templates
-├── .claude/commands/gtm/ <- Slash commands (/gtm:*)
-├── .claude/gtmos/        <- UI brand reference and swarm architecture
-└── global/               <- Cross-workspace standards
+git clone https://github.com/shyftai/GTMOS.git
+cd GTMOS
+cp .env.example .env          # add your API keys
+# open in Claude Code, then:
+/gtm:onboard my-company       # full onboarding (14 blocks)
+/gtm:onboard my-company --quick  # fast start (5 blocks)
 ```
 
-## Workspaces
+That's it. Claude walks you through setup, creates your workspace, and you're ready to build campaigns.
 
-Each workspace is fully isolated — its own ICP, persona, briefing, tone of voice, tools, costs, and approval chain. A workspace can represent:
+---
 
-- An agency client
-- A market segment
-- A product line
-- A geography
-- Any unit of GTM work that deserves its own context
+## What it does
 
-## Commands
+```
+  ┌─────────────────────────────────────────────┐
+  │  ICP ─── PERSONA ─── BRIEFING ─── TOV      │
+  │                  │                          │
+  │              RULES.md                       │
+  │                  │                          │
+  │     ┌────────────┼────────────┐             │
+  │     ▼            ▼            ▼             │
+  │   LISTS        COPY       SIGNALS          │
+  │     │            │            │             │
+  │     ▼            ▼            ▼             │
+  │  VALIDATE ── APPROVE ──── SHIP             │
+  │                  │            │             │
+  │              SYNC DATA    ◈ SWARM          │
+  │                  │        (optional)        │
+  │          HEALTH CHECK                      │
+  │                  │                          │
+  │          REPORT + IMPROVE                  │
+  │                  │                          │
+  │              PIPELINE ──── CRM             │
+  └─────────────────────────────────────────────┘
+```
 
-All commands use the `/gtm:` prefix.
+Every task is checked against five sources of truth before anything ships:
+
+| File | What it controls |
+|------|-----------------|
+| **ICP.md** | Who you target (company level) |
+| **PERSONA.md** | Who you target (human level) |
+| **BRIEFING.md** | Campaign angle, offer, CTA |
+| **TOV.md** | Brand voice, channel rules, banned phrases |
+| **RULES.md** | List quality standards, copy quality standards, lead scoring |
+
+If it drifts from the brief, it doesn't ship.
+
+---
+
+## How a campaign works
+
+**1. Onboard** → `/gtm:onboard` walks through your offer, ICP, persona, voice, tools, and infrastructure
+
+**2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals
+
+**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:validate-list` cleans, scores (0-100), and validates
+
+**4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch
+
+**5. Ship** → `/gtm:ship` runs a pre-flight checklist (suppression, DNS, warmup, budget, holiday calendar) and pushes to your sending tool
+
+**6. Manage** → `/gtm:replies` classifies and drafts responses, `/gtm:signals` triggers timely outreach, `/gtm:health` monitors performance
+
+**7. Report** → `/gtm:report` generates client-facing reports, `/gtm:debrief` feeds learnings back into the system
+
+---
+
+## Campaign types
+
+Pick a type when creating a campaign — defaults pre-fill automatically:
+
+| Type | Touches | Best for |
+|------|---------|----------|
+| Cold outbound | 4 | First outreach to new ICP contacts |
+| Signal-triggered | 2-3 | Timely outreach on funding, hiring, or news |
+| Competitor displacement | 3-4 | Targeting users of a specific competitor |
+| Event follow-up | 3 | Post-conference or webinar outreach |
+| Product launch | 3 | Timed to a new feature or update |
+| ABM | 3-4 per contact | Multi-threaded into high-value accounts |
+| Re-engagement | 2 | Reviving contacts who went cold 60+ days ago |
+
+---
+
+## Supported tools
+
+### Prospecting & enrichment
+Apollo · Icypeas · Prospeo · Apify · StoreLeads · Opemart
+
+### Email sequencing
+Instantly · Lemlist · Smartlead
+
+### LinkedIn
+Crispy (MCP server — Claude Code controls LinkedIn directly, including Sales Navigator)
+
+### CRM
+Attio · HubSpot · Salesforce · Pipedrive
+
+### Signals
+Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jobs
+
+### Verification
+ZeroBounce · MillionVerifier · Scrubby
+
+Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md with date, units, cost, and approver.
+
+---
+
+## Smart defaults, full control
+
+GTMOS ships with sensible defaults for everything:
+
+- **Copy:** 2-4 word lowercase subjects, 75-word first touch, interest-based CTAs, banned spam words
+- **Sending:** 40 emails/inbox/day, 14-day warmup minimum, holiday blackouts for 20+ countries
+- **Scoring:** weighted 0-100 lead scoring (company fit, persona, signals, data quality, engagement)
+- **Compliance:** suppression checks before every send, unsubscribe on every email, hard bounce auto-removal
+
+**Every default is overridable per workspace.** Add a `## Lead scoring overrides` section to RULES.md, change copy rules in TOV.md, adjust sending limits in INFRASTRUCTURE.md. If you don't override, the defaults just work.
+
+---
+
+## All commands
 
 ### Setup
 | Command | What it does |
 |---------|-------------|
-| `/gtm:onboard <name>` | Onboard a new workspace with structured intake |
-| `/gtm:research <name>` | Research ICP companies and market landscape |
-| `/gtm:new-campaign <ws> <name>` | Create a new campaign from template |
-| `/gtm:switch <name>` | Switch active workspace and reload context |
-| `/gtm:status` | Show workspace status and all commands |
+| `/gtm:onboard <name>` | Onboard a new workspace (full or `--quick`) |
+| `/gtm:research <name>` | Research ICP companies and market |
+| `/gtm:new-campaign <ws> <name>` | Create a campaign with type selection |
+| `/gtm:switch <name>` | Switch active workspace |
+| `/gtm:status` | Show workspace status and commands |
+| `/gtm:dashboard <ws>` | Smart dashboard — what needs attention now |
 
 ### Build
 | Command | What it does |
 |---------|-------------|
-| `/gtm:list-brief <ws> <campaign>` | Create a structured brief for list building |
-| `/gtm:clean-list <ws> [file]` | Clean and normalize names, companies, emails, dedupe |
-| `/gtm:validate-list <ws> [file]` | Clean + score + validate a raw prospect list |
+| `/gtm:list-brief <ws> <campaign>` | Create a list building brief |
+| `/gtm:clean-list <ws> [file]` | Clean and normalize a raw list |
+| `/gtm:validate-list <ws> [file]` | Clean + score (0-100) + validate |
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
-| `/gtm:ship <ws> <campaign>` | Push approved list + sequence to sending tool |
+| `/gtm:ship <ws> <campaign>` | Push to sending tool with pre-flight checks |
 
-### Live Campaign
+### Live campaign
 | Command | What it does |
 |---------|-------------|
-| `/gtm:replies <ws> [campaign]` | Classify and draft responses to replies |
-| `/gtm:signals <ws> [campaign]` | Scan for signal-triggered outreach |
-| `/gtm:sync <ws> [campaign]` | Pull latest data from connected tools |
+| `/gtm:replies <ws>` | Classify and draft responses to replies |
+| `/gtm:signals <ws>` | Scan for signal-triggered outreach |
+| `/gtm:sync <ws>` | Pull latest data from connected tools |
 | `/gtm:health <ws> <campaign>` | Full health check with pattern detection |
-
-### LinkedIn
-| Command | What it does |
-|---------|-------------|
-| `/gtm:linkedin-warm <ws>` | Pre-outreach LinkedIn engagement warming |
-| `/gtm:account-based <ws>` | Multi-thread a high-value target account |
+| `/gtm:linkedin-warm <ws>` | Pre-outreach LinkedIn warming |
+| `/gtm:account-based <ws>` | Multi-thread a target account |
 
 ### Infrastructure
 | Command | What it does |
 |---------|-------------|
-| `/gtm:infra <ws>` | Check sending infrastructure health and DNS |
-| `/gtm:warmup <ws>` | Check inbox warmup status and readiness |
-| `/gtm:pipeline <ws> [campaign]` | View CRM pipeline funnel and conversions |
+| `/gtm:infra <ws>` | Check sending infrastructure and DNS |
+| `/gtm:warmup <ws>` | Check inbox warmup status |
+| `/gtm:pipeline <ws>` | View CRM pipeline and conversions |
 | `/gtm:domain-recovery <ws>` | Recover a damaged sending domain |
 
 ### Review
 | Command | What it does |
 |---------|-------------|
-| `/gtm:brief-audit <ws>` | Check briefing for gaps before campaign start |
-| `/gtm:stress-test <ws>` | Challenge ICP assumptions with edge cases |
-| `/gtm:debrief <ws> <campaign>` | End-of-campaign debrief with forward-feed |
-| `/gtm:report <ws> <campaign>` | Generate client-facing campaign report |
+| `/gtm:brief-audit <ws>` | Check briefing for gaps |
+| `/gtm:stress-test <ws>` | Challenge ICP assumptions |
+| `/gtm:debrief <ws> <campaign>` | End-of-campaign review with forward-feed |
+| `/gtm:report <ws> <campaign>` | Client-facing report (weekly/monthly/final) |
 | `/gtm:post-meeting <ws>` | Post-meeting follow-up workflow |
 | `/gtm:re-engage <ws>` | Re-engagement campaign for cold leads |
-| `/gtm:archive <ws> [campaign]` | Archive completed campaign or workspace |
+| `/gtm:archive <ws>` | Archive completed campaign or workspace |
 | `/gtm:costs <ws> [--all]` | View spend by tool, campaign, or agency-wide |
+| `/gtm:auto-refine <ws>` | Suggest ICP/persona/copy refinements from data |
+| `/gtm:migrate <ws>` | Tool migration playbook |
+| `/gtm:feedback` | Report a bug or request a feature |
 
-### Feedback
+### Parallel processing (optional)
 | Command | What it does |
 |---------|-------------|
-| `/gtm:feedback` | Submit feedback, report a bug, or request a feature |
+| `/gtm:swarm personalize <ws>` | Personalize outreach at scale |
+| `/gtm:swarm research <ws>` | Research companies in parallel |
+| `/gtm:swarm replies <ws>` | Process reply batches in parallel |
+| `/gtm:swarm validate <ws>` | Validate large lists in parallel |
+| `/gtm:swarm signals <ws>` | Scan signals across full list |
 
-### Swarm (optional — parallel agents)
+### Team mode (optional)
 | Command | What it does |
 |---------|-------------|
-| `/gtm:swarm personalize <ws>` | Personalize outreach for all leads in parallel |
-| `/gtm:swarm research <ws>` | Research multiple companies in parallel |
-| `/gtm:swarm replies <ws>` | Process reply batch in parallel |
-| `/gtm:swarm validate <ws>` | Validate large lists in parallel batches |
-| `/gtm:swarm signals <ws>` | Scan signals across full shipped list |
+| `/gtm:collab setup` | Connect Supabase for multi-user |
+| `/gtm:collab status` | Check connection and active users |
+| `/gtm:collab invite` | Invite a team member |
+| `/gtm:collab sync` | Sync local files to Supabase |
 
-Swarm agents draft only — nothing is sent without human approval.
+---
 
-### Collaboration (optional — multi-user via Supabase)
-| Command | What it does |
-|---------|-------------|
-| `/gtm:collab setup` | Connect Supabase and enable team mode |
-| `/gtm:collab status` | Check collaboration connection and active users |
-| `/gtm:collab invite` | Invite a team member to a workspace |
-| `/gtm:collab sync` | Sync local markdown files to Supabase |
+## Workspaces
 
-## Supported tools
+Each workspace is fully isolated — its own ICP, persona, briefing, voice, tools, costs, and pipeline. A workspace can be:
 
-| Tool | Direction | What it does |
-|------|-----------|-------------|
-| Apollo | Bidirectional | Prospecting, enrichment, lead database |
-| Icypeas | Bidirectional | Email finding and verification |
-| Prospeo | Bidirectional | Email finding from LinkedIn URLs |
-| Apify | Bidirectional | Web scraping and data extraction |
-| StoreLeads | Read-only | E-commerce store database |
-| Opemart | Read-only | Small business / SMB data |
-| HubSpot | Bidirectional | CRM, marketing, sequences |
-| Lemlist | Bidirectional | Email sequencing + lead database |
-| Instantly | Bidirectional | Email sequencing + lead database |
-| Smartlead | Bidirectional | Email sequencing |
-| Crispy | Bidirectional | LinkedIn outreach + Sales Navigator |
-| Attio | Bidirectional | CRM |
-| Signalbase | Read-only | Funding and hiring signals |
-| Commonroom | Read-only | Community and intent signals |
-| Jungler.ai | Read-only | Social signals and LinkedIn engagement tracking |
-| Trigify | Read-only | Social selling signals and content interaction |
+- An agency client
+- A market segment
+- A product line
+- A geography
+- Any unit of GTM that deserves its own context
 
-Additional tools (email verification, CRM enrichment, LinkedIn automation, automation) can be activated per workspace. See `_template/TOOLS.md` for the full list and `.claude/gtmos/references/tool-pricing.md` for pricing.
+---
 
-Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md.
+## Notifications (optional)
 
-## Defaults and customization
+Connect Slack to get real-time alerts:
+- Positive reply received
+- Meeting booked
+- Budget threshold crossed
+- Domain health red flag
 
-GTMOS ships with sensible defaults for everything — copy rules, sending limits, lead scoring weights, sequence timing, compliance thresholds, campaign type templates. Every default can be overridden per workspace. See `.claude/gtmos/references/defaults.md` for the full list.
+Configure in COLLABORATION.md. Works via Slack MCP.
 
-## Quick start
+---
 
-Don't want to go through all 14 onboarding blocks? Run `/gtm:onboard <name> --quick` for a 5-block fast start. Fill in the rest later when you need it.
+## Team mode (optional)
 
-## Campaign types
-
-When creating a campaign, choose a type to get pre-filled defaults:
-- **Cold outbound** — standard 4-touch sequence to new contacts
-- **Signal-triggered** — 2-3 touches driven by buying signals
-- **Competitor displacement** — targeting users of a specific competitor
-- **Event follow-up** — post-conference or webinar outreach
-- **Product launch** — outreach timed to a new feature or product
-- **ABM** — multi-threaded outreach to high-value accounts
-- **Re-engagement** — reviving cold leads with a new angle
-
-## Lead scoring
-
-Contacts are scored 0-100 using a weighted model: company fit (30%), persona fit (25%), signal strength (20%), data quality (15%), engagement (10%). Customize weights per workspace in RULES.md.
-
-## Notifications
-
-Connect Slack to get real-time alerts for positive replies, meetings booked, budget thresholds, and domain issues. Optional — configure in COLLABORATION.md.
-
-## Cost tracking
-
-Every workspace has a COSTS.md file that tracks:
-- Per-tool pricing (cost per unit)
-- Monthly and per-campaign budgets
-- Alert thresholds (default 80%)
-- Running totals by tool
-- Full transaction log with dates, units, costs, and approver
-
-Run `/gtm:costs --all` for an agency-level view across all workspaces.
-
-## Collaboration (optional)
-
-By default GTMOS runs in **solo mode** — all state lives in markdown files, no database needed.
+By default GTMOS runs in **solo mode** — all state lives in markdown, no database needed.
 
 For teams, enable **team mode** with Supabase:
 
 1. Create a Supabase project
-2. Run `supabase/migrations/001_initial_schema.sql` in the SQL editor
-3. Add `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_KEY` to `.env`
+2. Run `supabase/migrations/001_initial_schema.sql`
+3. Add keys to `.env`
 4. Run `/gtm:collab setup`
 
-Team mode adds:
-- Real-time suppression lists across operators (no accidental re-contact)
-- Claim-based reply handling (no double-responses)
-- Live cost tracking with budget enforcement
-- Pipeline sync and conversion tracking
-- Approval audit trail
-- Activity feed
+Adds: shared suppression lists, claim-based reply handling, live cost tracking, pipeline sync, approval audit trail, activity feed. Falls back to files automatically if Supabase is unreachable.
 
-All context files (ICP, persona, briefing, copy) stay in Git. Only operational state syncs to Supabase. If Supabase is unreachable, GTMOS falls back to file-based mode automatically.
+---
 
-## Setup
+## Repo structure
 
-1. Clone this repo
-2. Copy `.env.example` to `.env` and add your API keys
-3. Open in Claude Code
-4. Run `/gtm:onboard <workspace-name>` — Claude runs the intake interview
-5. Run `/gtm:research <workspace-name>` — Claude researches ICP and market
-6. Run `/gtm:new-campaign <workspace> <campaign>` — create your first campaign
-7. Run `/gtm:write <workspace>` — draft your first sequence
+```
+GTMOS/
+├── CLAUDE.md                  <- Entrypoint for Claude Code
+├── GTMOS.md                   <- All rules and behaviour
+├── CHANGELOG.md               <- Version history
+├── .env.example               <- API key template
+├── _template/                 <- Workspace template (copied on onboard)
+├── workspaces/                <- One folder per workspace
+├── commands/                  <- Workflow reference docs
+├── global/                    <- Cross-workspace standards
+│   ├── RULES-GLOBAL.md        <- Global quality rules
+│   ├── snippet-library.md     <- Reusable copy fragments
+│   └── feedback-log.md        <- Feedback tracking
+├── .claude/
+│   ├── commands/gtm/          <- Slash commands (/gtm:*)
+│   └── gtmos/references/      <- System references
+│       ├── api-reference.md   <- API endpoints for all tools
+│       ├── benchmarks.md      <- Industry performance benchmarks
+│       ├── campaign-types.md  <- Campaign type templates
+│       ├── cold-email-skill.md <- Copy writing principles
+│       ├── csv-format.md      <- Standard list format
+│       ├── defaults.md        <- All overridable defaults
+│       ├── lead-scoring.md    <- Weighted scoring model
+│       ├── notifications.md   <- Slack alert configuration
+│       ├── report-template.md <- Client report formats
+│       ├── sending-calendar.md <- Holiday blackouts (20+ countries)
+│       ├── tool-links.md      <- Tool website links
+│       └── tool-pricing.md    <- Per-unit pricing for all tools
+└── supabase/                  <- Team mode schema (optional)
+```
 
-## What onboarding creates
+---
 
-Running `/gtm:onboard <name>` walks you through a structured intake (14 blocks) and generates a fully populated workspace with all source-of-truth files filled in. No example workspace needed — the onboarding process is the example.
+## Feedback
+
+Found a bug? Want a feature? Run `/gtm:feedback` inside Claude Code, or open an issue on this repo.
+
+---
+
+## License
+
+MIT
