@@ -6,22 +6,25 @@ Quick reference for making API calls from Claude Code. Auth, base URLs, key endp
 
 ## Apollo
 
-**Auth:** API key in header `X-Api-Key` or query param `api_key`
-**Base URL:** `https://api.apollo.io/v1`
+**Auth:** API key in header `X-Api-Key`
+**Base URL:** `https://api.apollo.io/api/v1`
+
+Apollo uses **three separate credit pools**: email credits, mobile credits, export credits.
 
 | Action | Method | Endpoint | Credits |
 |--------|--------|----------|---------|
-| Search contacts | POST | `/mixed_people/search` | 0 (search is free) |
-| Enrich contact | POST | `/people/match` | 1 per match |
-| Get contact | GET | `/people/{id}` | 0 |
-| Search organizations | POST | `/mixed_organizations/search` | 0 |
-| Enrich org | GET | `/organizations/enrich?domain={domain}` | 0 |
-| Get lists | GET | `/labels` | 0 |
-| Add to list | POST | `/labels/{id}/add` | 0 |
+| Search people | POST | `/mixed_people/api_search` | FREE (no email/phone in results) |
+| Enrich person | POST | `/people/match` | 1 email + 1 export credit |
+| Bulk enrich people | POST | `/people/bulk_match` (max 10) | Same per person |
+| Search orgs | POST | `/mixed_companies/search` | Costs credits |
+| Enrich org | POST | `/organizations/enrich` | 1 export credit |
+| Bulk enrich orgs | POST | `/organizations/bulk_enrich` (max 10) | Same per org |
 
-**Search contacts example:**
+**Enrich options:** Add `reveal_phone_number: true` for phone (5 mobile credits). Add `reveal_personal_emails: true` for personal emails.
+
+**Search contacts example (FREE):**
 ```bash
-curl -X POST "https://api.apollo.io/v1/mixed_people/search" \
+curl -X POST "https://api.apollo.io/api/v1/mixed_people/api_search" \
   -H "X-Api-Key: $APOLLO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -33,16 +36,26 @@ curl -X POST "https://api.apollo.io/v1/mixed_people/search" \
   }'
 ```
 
-**Enrich contact example:**
+**Enrich person example (1 email + 1 export credit):**
 ```bash
-curl -X POST "https://api.apollo.io/v1/people/match" \
+curl -X POST "https://api.apollo.io/api/v1/people/match" \
   -H "X-Api-Key: $APOLLO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "first_name": "John",
     "last_name": "Doe",
     "organization_name": "Acme Inc",
-    "linkedin_url": "https://linkedin.com/in/johndoe"
+    "reveal_phone_number": false
+  }'
+```
+
+**Enrich org example (1 export credit):**
+```bash
+curl -X POST "https://api.apollo.io/api/v1/organizations/enrich" \
+  -H "X-Api-Key: $APOLLO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "acme.com"
   }'
 ```
 
@@ -158,13 +171,18 @@ curl -X POST "https://server.smartlead.ai/api/v1/campaigns/{id}/leads?api_key=$S
 
 **Auth:** API key + secret in headers `Authorization: {api_key}:{secret}`
 **Base URL:** `https://app.icypeas.com/api`
+**Rate limit:** 30 requests/minute
 
 | Action | Method | Endpoint | Credits |
 |--------|--------|----------|---------|
-| Email finder | POST | `/email-search` | 1 |
-| Email verifier | POST | `/email-verification` | 1 |
-| Domain search | POST | `/domain-search` | 1 per result |
-| Bulk enrichment | POST | `/bulk-search` | 1 per contact |
+| Email finder | POST | `/email-search` | 1 (only on success) |
+| Email verifier | POST | `/email-verification` | ~0.01 |
+| Domain scan | POST | `/domain-scan` | 0.1 |
+| Company scraper | GET | `/scrape/company?url=URL` | 0.5 |
+| Profile scraper | POST | `/scrape` (max 50) | 1.5 |
+| Find people (DB) | POST | `/leads-db/find-people/` | Low |
+| Find companies (DB) | POST | `/leads-db/find-companies/` | 0.02/result |
+| Bulk search | POST | `/bulk-search` (max 5,000) | Same as single |
 
 **Email finder example:**
 ```bash
@@ -178,6 +196,12 @@ curl -X POST "https://app.icypeas.com/api/email-search" \
   }'
 ```
 
+**Company scraper example:**
+```bash
+curl "https://app.icypeas.com/api/scrape/company?url=https://linkedin.com/company/acme" \
+  -H "Authorization: $ICYPEAS_API_KEY:$ICYPEAS_SECRET"
+```
+
 ---
 
 ## Prospeo
@@ -185,22 +209,102 @@ curl -X POST "https://app.icypeas.com/api/email-search" \
 **Auth:** API key in header `X-KEY`
 **Base URL:** `https://api.prospeo.io`
 
+**Note:** Old endpoints (`/email-finder`, `/linkedin-email-finder`, `/email-verifier`, `/domain-search`) were deprecated March 2025. Use the new endpoints below.
+
 | Action | Method | Endpoint | Credits |
 |--------|--------|----------|---------|
-| Email finder | POST | `/email-finder` | 1 |
-| LinkedIn email finder | POST | `/linkedin-email-finder` | 1 |
-| Email verifier | POST | `/email-verifier` | 1 |
-| Domain search | POST | `/domain-search` | 1 per result |
+| Enrich person | POST | `/enrich-person` | 1 (10 with mobile) |
+| Bulk enrich person | POST | `/bulk-enrich-person` (max 50) | Same |
+| Enrich company | POST | `/enrich-company` | 1 |
+| Bulk enrich company | POST | `/bulk-enrich-company` (max 50) | Same |
+| Search person | POST | `/search-person` | 1 per 25 results |
+| Search company | POST | `/search-company` | 1 per 25 results |
 
-**LinkedIn email finder example:**
+Credits: 0 if no results found. 0 for re-enriching same record (lifetime dedup). Verification is built into enrichment responses (`email_status` field).
+
+**Enrich person example:**
 ```bash
-curl -X POST "https://api.prospeo.io/linkedin-email-finder" \
+curl -X POST "https://api.prospeo.io/enrich-person" \
   -H "X-KEY: $PROSPEO_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "url": "https://linkedin.com/in/johndoe"
+    "linkedin_url": "https://linkedin.com/in/johndoe",
+    "only_verified_email": true
   }'
 ```
+
+**Enrich company example:**
+```bash
+curl -X POST "https://api.prospeo.io/enrich-company" \
+  -H "X-KEY: $PROSPEO_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "acme.com"
+  }'
+```
+
+---
+
+## Hunter.io
+
+**Auth:** API key as query param `api_key`
+**Base URL:** `https://api.hunter.io/v2`
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Email finder | GET | `/email-finder?domain=X&first_name=X&last_name=X` | 1 |
+| Email verifier | GET | `/email-verifier?email=X` | 1 |
+| Domain search | GET | `/domain-search?domain=X` | 1 |
+
+**Rate limits:** 15 req/s (finder), 10 req/s (verifier)
+
+**Email finder example:**
+```bash
+curl "https://api.hunter.io/v2/email-finder?domain=acme.com&first_name=John&last_name=Doe&api_key=$HUNTER_API_KEY"
+```
+
+---
+
+## Dropcontact
+
+**Auth:** Token in header `X-Access-Token`
+**Base URL:** `https://api.dropcontact.com`
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Batch enrich | POST | `/batch` | 1 per success |
+| Get results | GET | `/v1/enrich/all/{request-id}` | 0 |
+
+No database — 100% algorithmic. GDPR compliant. Verification built-in.
+
+**Batch enrich example:**
+```bash
+curl -X POST "https://api.dropcontact.com/batch" \
+  -H "X-Access-Token: $DROPCONTACT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "data": [
+      { "first_name": "John", "last_name": "Doe", "company": "Acme Inc" }
+    ]
+  }'
+```
+
+---
+
+## FindyMail
+
+**Auth:** API key
+**Base URL:** `https://app.findymail.com`
+**Docs:** `https://app.findymail.com/docs/`
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Email finder | — | See docs | 1 |
+| Phone finder | — | See docs | 10 |
+| Email verifier | — | See docs | Included |
+| Company info | — | See docs | — |
+
+Guarantees <5% bounce rate. Credits never expire. Pay only on success.
 
 ---
 

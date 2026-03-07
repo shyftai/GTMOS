@@ -1,167 +1,335 @@
 # Enrichment Waterfall — GTMOS
 
-Cascading enrichment logic. Try the cheapest or most reliable source first. If it misses, fall to the next. Stop as soon as data is found. Track hit rates per source per workspace to optimize the order over time.
+Cascading enrichment logic based on actual API research. Try the cheapest source first, cascade on misses, stop when data is found. Track hit rates per source per workspace to optimize order over time.
 
 **Override:** Users can change the waterfall order in workspace RULES.md under `## Enrichment waterfall overrides`. If no overrides exist, use the defaults below.
 
 ---
 
-## People Search
+## Provider Cost Cheat Sheet
 
-Find people matching ICP criteria (title, industry, company size, location).
+Before the waterfalls — what each action actually costs across providers:
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | Free (search) | POST `/mixed_people/search` — no credits for search, only for reveal |
-| 2 | Crispy / Sales Navigator | Included in sub | MCP tool: search by title, industry, company, keywords, geo |
-| 3 | Lemlist (built-in DB) | Included in sub | 450M+ contacts, search by filters |
-| 4 | Instantly (built-in DB) | Included in sub | 160M+ contacts, search by filters |
-| 5 | Apify (LinkedIn scraper) | ~$0.01/profile | Actor: LinkedIn search scrape → returns profiles matching query |
+### Email Finding
 
-**Logic:**
-1. Start with Apollo — free search, largest database (275M+)
-2. If results are thin, run Crispy/Sales Navigator for LinkedIn-native search
-3. Use Lemlist/Instantly built-in DBs if the user has those tools active
-4. Apify as last resort — slower, costs compute units
+| Provider | Cost per find | Charged on miss? | Verification included? | Notes |
+|----------|--------------|-------------------|----------------------|-------|
+| Apollo | 1 email + 1 export credit | No (only on reveal) | No (email_status field only) | Three separate credit pools |
+| Icypeas | 1 credit ($0.005-0.019) | No | No (separate 0.01cr verify) | Credits never expire |
+| Prospeo | 1 credit ($0.007-0.039) | No | Yes (built-in) | Lifetime dedup — re-enrich same person = free |
+| Hunter.io | 1 credit (~$0.01) | No | No (separate 1cr verify) | Domain-based pattern matching |
+| Dropcontact | 1 credit (~$0.024) | No | Yes (built-in) | No database — algorithmic. GDPR compliant |
+| FindyMail | 1 credit (~$0.04) | No | Yes (<5% bounce guarantee) | Credits never expire |
+| Lemlist | 5 credits ($0.05) | No | Yes (waterfall across 7 sources) | Credits expire monthly |
+| Instantly | ~$0.02-0.05 | Separate subscription | Included | Separate lead finder plan required |
 
-**Stop condition:** Enough contacts to fill the list brief target (e.g., 500 contacts needed, stop when reached).
+### Email Verification (standalone)
 
----
+| Provider | Cost per verify | Catch-all handling | Enrichment data included? |
+|----------|----------------|-------------------|--------------------------|
+| MillionVerifier | $0.001-0.004 | Free (not charged) | No |
+| Icypeas | ~0.01 credits ($0.00005-0.0002) | Google/Microsoft catch-all detection | No |
+| ZeroBounce | $0.008-0.02 | Returns "catch-all" status | Yes (name, gender, location, domain age) |
+| Scrubby | $0.0015-0.007 | Specialist — sends real emails to test | No |
 
-## Company Search
+### People Enrichment
 
-Find companies matching ICP firmographics (industry, size, tech stack, funding).
+| Provider | Cost | Email included? | Phone included? | Company data? |
+|----------|------|-----------------|-----------------|---------------|
+| Apollo | 1 email + 1 export credit | Yes | +5 mobile credits | Yes (basic, embedded) |
+| Prospeo | 1 credit | Yes (verified) | +10 credits for mobile | Yes (50+ fields) |
+| Icypeas profile scraper | 1.5 credits | No | No | No |
+| Crispy / Sales Nav | Included in sub | No | No | No |
+| Apify | ~$0.003/profile | No | No | No |
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | Free (search) | POST `/mixed_organizations/search` — free org search |
-| 2 | Apollo (org enrich) | Free | GET `/organizations/enrich?domain={domain}` — free enrichment |
-| 3 | StoreLeads | Included in sub | E-commerce companies by platform, traffic, tech stack |
-| 4 | Opemart | Included in sub | SMB data by industry, location, size |
-| 5 | Apify (website scraper) | ~$0.01/site | Scrape company website for tech stack, team size, signals |
+### Company Enrichment
 
-**Logic:**
-1. Apollo org search first — free and comprehensive
-2. StoreLeads if targeting e-commerce (Shopify, WooCommerce, etc.)
-3. Opemart if targeting SMBs/local businesses
-4. Apify for custom scraping when structured databases don't cover the niche
+| Provider | Cost | Fields |
+|----------|------|--------|
+| Apollo org enrich | 1 export credit | Industry, employees, revenue, funding, tech stack, social URLs |
+| Icypeas company scraper | 0.5 credits | Name, description, employees, industry, address, website, specialties |
+| Icypeas find companies DB | 0.02 credits/result | Basic company records from leads DB |
+| Prospeo enrich-company | 1 credit (lifetime dedup) | 50+ fields: industry, employees, revenue, funding, tech, SIC/NAICS |
 
-**Stop condition:** Enough companies to build target account list.
+### Phone Finding
 
----
-
-## People Enrichment
-
-Enrich a known person (have name + company or LinkedIn URL) with title, seniority, location, social profiles.
-
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | 1 credit | POST `/people/match` — match by name + company or LinkedIn |
-| 2 | Crispy | Included in sub | MCP tool: get LinkedIn profile data (title, company, location, bio) |
-| 3 | Apify | ~$0.005-0.01/profile | Actor: LinkedIn profile scraper → full profile data |
-| 4 | Prospeo | 1 credit | POST `/linkedin-email-finder` — also returns profile data |
-
-**Logic:**
-1. Apollo first — 1 credit, returns structured data (title, seniority, company details, phone, social)
-2. Crispy if Apollo misses — LinkedIn profile data via MCP, included in subscription
-3. Apify for bulk enrichment or when Apollo credits are limited
-4. Prospeo as final fallback — primarily an email tool but returns person data too
-
-**Stop condition:** Title, company, and seniority confirmed. Location is a bonus.
+| Provider | Cost | Notes |
+|----------|------|-------|
+| Apollo | 5 mobile credits | DNC status included. Most reliable for direct dials |
+| Prospeo | 10 credits ($0.07-0.39) | Via enrich-person with mobile flag |
+| Icypeas | Available (cost TBC) | Non-EU contacts only |
+| Lemlist | 25 credits ($0.20) | Via built-in finder |
+| FindyMail | 10 credits (~$0.40) | Pay only on success |
 
 ---
 
-## Company Enrichment
+## Data Fields Returned Per Provider
 
-Enrich a known company (have domain or name) with firmographics, tech stack, funding, headcount.
+### Apollo — People Enrichment (`POST /api/v1/people/match`)
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | Free | GET `/organizations/enrich?domain={domain}` — industry, size, funding, tech |
-| 2 | Freckle | Included in sub | Auto-enriches CRM records with firmographics, tech, funding |
-| 3 | StoreLeads | Included in sub | E-commerce: platform, apps, traffic, Alexa rank |
-| 4 | Apify | ~$0.01/site | Custom scrape: about page, team page, job board, tech stack detection |
+**Person fields:**
+- `first_name`, `last_name`, `name`, `title`, `headline`
+- `email`, `email_status` (verified/guessed/unavailable)
+- `personal_emails[]` (if `reveal_personal_emails=true`)
+- `phone_numbers[]` — raw_number, sanitized_number, type, status, dnc_status (if `reveal_phone_number=true`)
+- `seniority`, `departments[]`, `subdepartments[]`, `functions[]`
+- `city`, `state`, `country`
+- `linkedin_url`, `twitter_url`, `facebook_url`, `github_url`
+- `photo_url`
+- `employment_history[]` — org name, title, current, start/end date, description
 
-**Logic:**
-1. Apollo always first — free org enrichment, returns industry, employee count, funding, tech stack
-2. Freckle if connected to CRM — auto-enriches in the background
-3. StoreLeads if e-commerce vertical — deeper platform/app data
-4. Apify for anything Apollo misses — website scraping fills gaps
+**Embedded company fields:**
+- `organization.name`, `website_url`, `primary_domain`
+- `organization.industry`, `keywords[]`
+- `organization.linkedin_url`, `twitter_url`, `facebook_url`
+- `organization.founded_year`, `logo_url`
+- Basic firmographics only — for full company data use org enrichment
 
-**Stop condition:** Industry, employee count, and at least one of (funding stage, tech stack, revenue range) confirmed.
+### Apollo — Organization Enrichment (`POST /api/v1/organizations/enrich`)
+
+- `name`, `website_url`, `primary_domain`, `blog_url`
+- `short_description`, `seo_description`
+- `industry`, `keywords[]`
+- `estimated_num_employees`, `departmental_head_count`
+- `annual_revenue`, `annual_revenue_printed`
+- `total_funding`, `total_funding_printed`, `latest_funding_stage`, `latest_funding_round_date`, `latest_funding_round_amount`, `funding_events[]`
+- `technology_names[]` (tech stack)
+- `linkedin_url`, `twitter_url`, `facebook_url`, `angellist_url`
+- `primary_phone`
+- `city`, `state`, `country`, `street_address`
+- `founded_year`
+- `publicly_traded_symbol`, `publicly_traded_exchange`
+- `alexa_ranking`
+
+### Prospeo — Enrich Person (`POST /enrich-person`)
+
+**Person fields:**
+- `person_id`, `first_name`, `last_name`, `full_name`
+- `email` (verified), `email_status` (VALID, CATCH_ALL, etc.)
+- `mobile` (if requested — 10 credits)
+- `linkedin_url`, `linkedin_member_id`
+- `current_job_title`, `current_job_key`, `headline`
+- `last_job_change_detected_at`
+- `job_history[]` — title, company_name, current, start/end dates, duration_in_months, departments, seniority, company_id
+
+**Company fields (embedded, can be null):**
+- `company_id`, `name`, `website`, `domain`, `other_websites`
+- `description`, `type`, `industry`
+- `employee_count`, `employee_range`
+- `location` (country, state, city)
+- `linkedin_url`
+- `sic_codes`, `naics_codes`
+- `email_tech` (domain, MX provider)
+- `funding`, `technologies`
+
+### Prospeo — Enrich Company (`POST /enrich-company`)
+
+- `company_id`, `name`, `website`, `domain`, `other_websites`
+- `description`, `type`, `industry`
+- `employee_count`, `employee_range`
+- `location` (country, state, city)
+- `linkedin_url`, `logo_url`
+- `sic_codes`, `naics_codes`
+- `funding` (stages, amounts)
+- `technologies` (tech stack)
+- `email_tech` (MX provider)
+- `departments`, `revenue`
+
+### Icypeas — Email Finder (`POST /email-search`)
+
+- `firstname`, `lastname`, `fullname`, `gender`
+- `emails[]` — email, certainty (ULTRA_SURE etc.), mxProvider, mxRecords
+- `phones` (if available)
+- `saasServices`
+
+### Icypeas — Company Scraper (`GET /scrape/company`)
+
+- `name`, `description`, `address`
+- `numberOfEmployees`, `industry`
+- `website`, `specialties`
+- Employee growth data
+
+### ZeroBounce — Email Verification (`GET /v2/validate`)
+
+- `status` (valid, invalid, catch-all, spamtrap, abuse, do_not_mail, unknown)
+- `sub_status` (mailbox_not_found, disposable, toxic, role_based, etc.)
+- **Enrichment bonus:** `firstname`, `lastname`, `gender`, `country`, `region`, `city`, `zipcode`
+- `domain_age_days`, `smtp_provider`, `mx_record`, `free_email`
+
+### Crispy / Sales Navigator — People Search
+
+Search returns per result:
+- `id` (provider ID — needed for full profile scrape)
+- `name`, `headline`, `location`
+- `profile_url`, `public_identifier`, `profile_picture`
+- `network_distance` (1st, 2nd, 3rd)
+- `shared_connections` count
+- `current_positions[]` — role, company, company_id, location, tenure
+- Flags: `pending_invitation`, `premium`, `open_profile`
+
+### Crispy / Sales Navigator — Full Profile Scrape (`get_profile`)
+
+On top of search fields:
+- `summary` — full bio/about text
+- `connections` — total connection count
+- `work_experience[]` — every role: position, company, company_id, location, description, start/end dates, current flag
+- `skills[]` — all listed skills
+- `education[]` — school, degree, field of study
+- `languages[]` — language + proficiency
+- `volunteering[]` — role, organization, cause
+- `contact_info.socials[]` — Twitter, websites
+- Flags: `premium`, `creator`, `hiring`, `open_to_work`, `can_send_inmail`
+
+### Crispy / Sales Navigator — Company Profile (`get_company_profile`)
+
+- `description`, `tagline`, `website`
+- `industry[]`, `employee_count`, `followers`
+- `headquarters` (city + country)
+- `growth.avg_tenure` — average employee tenure
+- `logo`
+
+### Crispy / Sales Navigator — NOT available
+
+- Email addresses (no personal or work email)
+- Phone numbers
+- Revenue / funding data
+- Technologies / tech stack
+- Company founding year
 
 ---
 
-## Email Enrichment
+## Optimal Waterfalls
 
-Find and verify a business email for a known person (have name + company or LinkedIn URL).
+### 1. Email Finding
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | 1 credit | POST `/people/match` — returns email if found |
-| 2 | Icypeas | 1 credit | POST `/email-search` — firstname + lastname + domain |
-| 3 | Prospeo | 1 credit | POST `/email-finder` or `/linkedin-email-finder` |
-| 4 | Lemlist (built-in) | Included in sub | Built-in email finder from contact database |
+Goal: find a verified business email for a known person (have name + company/domain/LinkedIn).
 
-**After finding — verify:**
+| Step | Source | Cost | Why this order |
+|------|--------|------|----------------|
+| 1 | **Apollo** | 1 email + 1 export credit | Largest database (275M+), cheap, often has email already |
+| 2 | **Icypeas** | 1 credit (only on success) | Very cheap ($0.005 on Hypergrowth), credits never expire |
+| 3 | **Prospeo** | 1 credit (lifetime dedup) | Returns verified email + company data. LinkedIn URL to email is a strength |
+| 4 | **Dropcontact** | 1 credit (~$0.024) | Algorithmic (no database) — finds emails other tools miss. GDPR compliant |
+| 5 | **Hunter.io** | 1 credit (~$0.01) | Pattern-based domain search, good for common formats |
+| 6 | **FindyMail** | 1 credit (~$0.04) | <5% bounce guarantee, good last resort |
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | ZeroBounce | $0.004-0.008 | GET `/validate?email={email}` — valid/invalid/catch-all |
-| 2 | MillionVerifier | $0.001-0.004 | Bulk upload or API — valid/invalid/catch-all |
+**After finding — always verify:**
+
+| Step | Source | Cost | Why |
+|------|--------|------|-----|
+| 1 | **Icypeas verify** | ~0.01 credits | Nearly free, includes Google/Microsoft catch-all detection |
+| 2 | **MillionVerifier** | $0.001-0.004 | Cheapest bulk verifier, catch-all results are free |
+| 3 | **ZeroBounce** | $0.008-0.02 | Most detailed — returns enrichment data alongside verification |
 
 **If result is catch-all:**
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Scrubby | $0.02-0.03 | Catch-all verification — confirms if the mailbox actually exists |
+| Step | Source | Cost | Why |
+|------|--------|------|-----|
+| 1 | **Scrubby** | $0.0015-0.007 | Sends real emails to test. 98% deliverability on validated catch-alls |
 
-**Logic:**
-1. Try Apollo first — cheapest and often has the email already from enrichment
-2. If Apollo returns no email, try Icypeas — pattern-based email finder
-3. If Icypeas misses, try Prospeo — LinkedIn URL to email is their strength
-4. Lemlist built-in DB as final finder attempt
-5. Once an email is found, always verify:
-   - ZeroBounce first (more accurate), MillionVerifier as backup
-   - If verification returns "catch-all", run through Scrubby
-   - If Scrubby says risky: flag the contact, do not send
-6. Never ship an unverified email
+**Skip verification if:** Prospeo or Dropcontact found the email (verification is built-in).
 
-**Stop condition:** Verified email (valid status). Catch-all only if Scrubby confirms deliverable.
+### 2. People Search
 
----
+Goal: find people matching ICP criteria (title, industry, company size, location).
 
-## Phone Number Enrichment
+| Step | Source | Cost | Why this order |
+|------|--------|------|----------------|
+| 1 | **Apollo** | FREE | People search is free. 275M+ contacts. No emails returned (preview only) |
+| 2 | **Prospeo** | 1 credit per 25 results | search-person returns up to 25 per credit. No email (need separate enrich) |
+| 3 | **Icypeas leads DB** | Low credit cost | Find People endpoint with filters |
+| 4 | **Crispy / Sales Navigator** | Included in sub | LinkedIn-native search with 36+ filters, intent signals, job change alerts |
+| 5 | **Apify** | ~$0.003/profile | LinkedIn search scraper. Slower, but no subscription needed |
 
-Find a direct phone number for a known person (have name + company).
+**After search — enrich:** Run found contacts through email finding waterfall above.
 
-| Priority | Source | Cost | How |
-|----------|--------|------|-----|
-| 1 | Apollo | 5 credits | POST `/people/match` with `reveal_phone_number: true` |
-| 2 | Crispy | Included in sub | MCP tool: LinkedIn profile may include phone if publicly listed |
-| 3 | Apify | ~$0.01/profile | LinkedIn profile scrape — phone only if publicly visible |
+### 3. Company Search
 
-**Logic:**
-1. Apollo is the only reliable source for direct dials — costs 5 credits per reveal
-2. Crispy/LinkedIn only returns phone if the person has it on their public profile (rare)
-3. Apify same as Crispy — limited to publicly visible data
+Goal: find companies matching ICP firmographics.
 
-**Important:** Phone numbers are expensive (5x email cost on Apollo). Only enrich phone for:
+| Step | Source | Cost | Why this order |
+|------|--------|------|----------------|
+| 1 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
+| 2 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 3 | **Apollo org search** | Credits (not free) | Large database but costs credits unlike people search |
+| 4 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 5 | **Opemart** | Included in sub | SMB/local businesses |
+
+### 4. People Enrichment
+
+Goal: enrich a known person (have name + company or LinkedIn URL) with title, seniority, employment history, company data.
+
+| Step | Source | Cost | What you get |
+|------|--------|------|-------------|
+| 1 | **Apollo** | 1 email + 1 export credit | Title, seniority, employment history, social URLs, email, basic company data |
+| 2 | **Prospeo** | 1 credit (lifetime dedup) | Title, seniority, job history, verified email, 50+ company fields |
+| 3 | **Icypeas profile scraper** | 1.5 credits | LinkedIn-style profile data (title, company, location) |
+| 4 | **Crispy / Sales Navigator** | Included in sub | Full LinkedIn profile: experience, education, skills, about section |
+| 5 | **Apify** | ~$0.003/profile | Same as Sales Nav but via scraping. No subscription needed |
+
+**Note:** Apollo and Prospeo both return email alongside person data — if you need people enrichment AND email, use step 1-2 and skip the separate email waterfall.
+
+### 5. Company Enrichment
+
+Goal: enrich a known company (have domain or name) with firmographics, tech stack, funding, headcount.
+
+| Step | Source | Cost | What you get |
+|------|--------|------|-------------|
+| 1 | **Apollo org enrich** | 1 export credit | Industry, employees, revenue, funding rounds, tech stack, social, HQ address |
+| 2 | **Icypeas company scraper** | 0.5 credits | Name, description, employees, industry, address, website, specialties, growth |
+| 3 | **Prospeo enrich-company** | 1 credit (lifetime dedup) | 50+ fields: industry, employees, revenue, funding, tech, SIC/NAICS codes |
+| 4 | **StoreLeads** | Included in sub | E-commerce only: platform, apps, traffic, Alexa rank |
+| 5 | **Apify** | ~$0.01/site | Custom website scrape for tech stack, team page, about page |
+
+**Strategy:** Apollo gives the most fields for 1 credit. If Apollo misses (company not in database), Icypeas is cheapest fallback. Prospeo's lifetime dedup makes it ideal for companies you'll look up again.
+
+### 6. Phone Number Finding
+
+Goal: find a direct dial or mobile number for a known person.
+
+| Step | Source | Cost | Notes |
+|------|--------|------|-------|
+| 1 | **Apollo** | 5 mobile credits | Most reliable for direct dials. Includes DNC status |
+| 2 | **Prospeo** | 10 credits ($0.07-0.39) | Via enrich-person with mobile flag |
+| 3 | **Icypeas mobile finder** | TBC | Non-EU contacts only. Expanding coverage |
+| 4 | **FindyMail** | 10 credits (~$0.40) | Pay only on success |
+| 5 | **Lemlist** | 25 credits ($0.20) | Most expensive option |
+
+**Important — only enrich phone for:**
 - A-tier leads (lead score 80+)
 - ABM campaigns where phone is a required channel
 - Contacts that haven't responded to email after full sequence
+- Phone is 5-10x more expensive than email — use selectively
 
-**Stop condition:** Direct dial or mobile number confirmed. Do not ship landlines or switchboard numbers.
+---
+
+## Clay — Optional Orchestration Layer
+
+Clay is NOT a data provider — it's a waterfall orchestration tool that connects to 100+ providers.
+
+**When to use Clay:**
+- You want a no-code UI to run enrichment workflows
+- You need Claygent (AI web research for unstructured data)
+- You want to combine providers you don't have direct API access to
+
+**When NOT to use Clay:**
+- You need API-level programmatic enrichment (Clay has no real API unless Enterprise)
+- You're cost-sensitive at scale (25-50 Clay credits per full enrichment)
+- Credits are charged on attempts, not results (unlike Icypeas/Prospeo/Apollo)
+
+**BYOK tip:** If using Clay, bring your own Apollo/Icypeas/Prospeo API keys — those calls use 0 Clay credits.
+
+**Pricing:** Starter $149/mo (2K credits), Explorer $349/mo (10K), Pro $800/mo (50K). Credits don't roll over.
 
 ---
 
 ## Waterfall Execution Rules
 
 ### Before starting any enrichment
-1. Check which tools are active in TOOLS.md — skip inactive tools in the waterfall
+1. Check which tools are active in TOOLS.md — skip inactive tools
 2. Check .env for API keys — skip tools with missing keys
-3. Check COSTS.md — ensure budget allows the estimated enrichment cost
-4. Display the enrichment plan before executing:
+3. Check COSTS.md — ensure budget allows estimated enrichment cost
+4. Display the enrichment plan:
 
 ```
   ┌─ ENRICHMENT PLAN ───────────────────────────┐
@@ -170,62 +338,41 @@ Find a direct phone number for a known person (have name + company).
   │  Contacts:  127 missing emails                │
   │                                               │
   │  Waterfall:                                   │
-  │    1. Apollo        (1 credit/ea)    ~$6.35   │
-  │    2. Icypeas       (1 credit/ea)    fallback │
-  │    3. Prospeo       (1 credit/ea)    fallback │
-  │    4. Verify: ZeroBounce             ~$1.02   │
+  │    1. Apollo        (1+1 credits)    ~$X.XX   │
+  │    2. Icypeas       (1 credit/hit)   fallback │
+  │    3. Prospeo       (1 credit/hit)   fallback │
+  │    4. Verify: Icypeas (0.01cr)       ~$X.XX   │
   │    5. Catch-all: Scrubby             if needed│
   │                                               │
-  │  Est. max cost:  $12.70                       │
-  │  Budget remaining: $187.30                    │
+  │  Est. max cost:  $XX.XX                       │
+  │  Budget remaining: $XXX.XX                    │
   │                                               │
   └───────────────────────────────────────────────┘
   >> Proceed? (y/n)
 ```
 
 ### During enrichment
-1. Process contacts in batches (50 at a time for API rate limits)
-2. After each source in the waterfall, report coverage:
+1. Process in batches (Apollo: 10 per bulk call, Prospeo: 50 per bulk call, Icypeas: 5,000 per bulk)
+2. Only send misses from previous step to the next source
+3. Report progress after each source:
 
 ```
   ── ENRICHMENT PROGRESS ─────────────────────────
-  Apollo:     94/127 found  (74%)    94 credits
+  Apollo:     94/127 found  (74%)    94 email + 94 export credits
   Icypeas:    21/33 found   (64%)    21 credits
-  Prospeo:    8/12 found    (67%)    8 credits
-  Not found:  4 contacts — no email from any source
+  Prospeo:    8/12 found    (67%)    8 credits (verified, deduped)
+  Not found:  4 contacts
   ────────────────────────────────────────────────
 ```
 
-3. Do NOT send all 127 contacts to every source — only send the misses from the previous step
 4. Log every enrichment action in COSTS.md
 
 ### After enrichment
-1. Display final results:
-
-```
-  ┌─ ENRICHMENT COMPLETE ───────────────────────┐
-  │                                               │
-  │  Contacts enriched:  123/127  (97%)           │
-  │  Not found:          4                        │
-  │                                               │
-  │  Source breakdown:                             │
-  │    Apollo:    94  (76%)     $4.70              │
-  │    Icypeas:   21  (17%)     $0.84              │
-  │    Prospeo:    8  (7%)      $0.32              │
-  │                                               │
-  │  Verification:                                │
-  │    Valid:      118                             │
-  │    Catch-all:   3  (Scrubby: 2 ok, 1 risky)  │
-  │    Invalid:     2  (removed)                  │
-  │                                               │
-  │  Total cost:  $7.12                           │
-  │                                               │
-  └───────────────────────────────────────────────┘
-```
-
+1. Display final results with source breakdown and cost
 2. Update COSTS.md with actual spend per tool
-3. Save enrichment log to campaign `logs/decisions.md`
-4. Flag not-found contacts — suggest removing or manual research
+3. Update enrichment hit rate tracker in TOOLS.md
+4. Save enriched list to lists/validated/
+5. Flag not-found contacts — suggest removing or manual research
 
 ### Hit rate tracking
 
@@ -237,12 +384,12 @@ After every enrichment run, update the workspace hit rate tracker in TOOLS.md:
 | Source | Email | Phone | People | Company | Last updated |
 |--------|-------|-------|--------|---------|-------------|
 | Apollo | 74% | 62% | 89% | 95% | 2026-03-07 |
-| Icypeas | 64% | — | — | — | 2026-03-07 |
-| Prospeo | 67% | — | — | — | 2026-03-07 |
+| Icypeas | 64% | — | — | 48% | 2026-03-07 |
+| Prospeo | 67% | — | 82% | 91% | 2026-03-07 |
 | Crispy | — | 12% | 71% | — | 2026-03-07 |
 ```
 
-Over time, if a source consistently outperforms another, suggest reordering the waterfall for this workspace.
+If a source consistently outperforms another, suggest reordering the waterfall for this workspace.
 
 ---
 
@@ -259,11 +406,75 @@ Users can override the default order in workspace RULES.md:
 3. Prospeo
 
 ### Skip sources
-- PhantomBuster (not using)
+- Hunter.io (not using)
 - Lemlist DB (data quality issues)
 
 ### Phone enrichment threshold
 - Only enrich phone for lead_score >= 85 (default: 80)
+
+### Verification
+- Use MillionVerifier instead of Icypeas for verification
 ```
 
 If overrides exist, use them. If not, use the defaults in this file.
+
+---
+
+## API Endpoint Quick Reference
+
+### Apollo
+- People Search: `POST /api/v1/mixed_people/api_search` (FREE)
+- People Enrich: `POST /api/v1/people/match` (1 email + 1 export credit)
+- Bulk People: `POST /api/v1/people/bulk_match` (max 10)
+- Org Search: `POST /api/v1/mixed_companies/search` (costs credits)
+- Org Enrich: `POST /api/v1/organizations/enrich` (1 export credit)
+- Bulk Org: `POST /api/v1/organizations/bulk_enrich` (max 10)
+- Auth: `X-Api-Key` header
+
+### Prospeo (new endpoints — old ones deprecated March 2025)
+- Enrich Person: `POST /enrich-person` (1 credit, 10 with mobile)
+- Bulk Enrich Person: `POST /bulk-enrich-person` (max 50)
+- Enrich Company: `POST /enrich-company` (1 credit)
+- Bulk Enrich Company: `POST /bulk-enrich-company` (max 50)
+- Search Person: `POST /search-person` (1 credit per 25 results)
+- Search Company: `POST /search-company` (1 credit per 25 results)
+- Auth: `X-KEY` header
+- Base: `https://api.prospeo.io`
+
+### Icypeas
+- Email Finder: `POST /email-search` (1 credit on success)
+- Email Verify: `POST /email-verification` (~0.01 credits)
+- Domain Scan: `POST /domain-scan` (0.1 credits)
+- Bulk Search: `POST /bulk-search` (max 5,000)
+- Company Scraper: `GET /scrape/company?url=URL` (0.5 credits)
+- Profile Scraper: `POST /scrape` (1.5 credits, max 50)
+- Find People: `POST /leads-db/find-people/`
+- Find Companies: `POST /leads-db/find-companies/` (0.02 credits/result)
+- Auth: `Authorization: {api_key}:{secret}`
+- Base: `https://app.icypeas.com/api`
+- Rate limit: 30 req/min
+
+### Hunter.io
+- Email Finder: `GET /v2/email-finder` (1 credit)
+- Email Verify: `GET /v2/email-verifier` (1 credit)
+- Domain Search: `GET /v2/domain-search` (1 credit)
+- Auth: `api_key` query param
+- Base: `https://api.hunter.io`
+
+### Dropcontact
+- Batch Enrich: `POST /batch` (1 credit, pay on success only)
+- Get Results: `GET /v1/enrich/all/{request-id}`
+- Auth: `X-Access-Token` header
+- Base: `https://api.dropcontact.com`
+
+### FindyMail
+- Email Finder, Verifier, Phone Finder, Company Info
+- Auth: API key
+- Base: `https://app.findymail.com`
+- Docs: `https://app.findymail.com/docs/`
+
+### Verification
+- ZeroBounce: `GET /v2/validate?api_key=KEY&email=EMAIL` (1 credit)
+- ZeroBounce Batch: `POST /v2/validatebatch` (max 200)
+- MillionVerifier: `GET /api/v3/?api=KEY&email=EMAIL` (rate: 160/sec)
+- Scrubby: See `https://docs.scrubby.io/`

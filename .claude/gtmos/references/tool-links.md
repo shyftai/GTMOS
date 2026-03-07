@@ -18,10 +18,13 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 - StoreLeads: https://storeleads.app?ref=gtmos
 - Opemart: https://opemart.com?ref=gtmos
 
-### Email Verification
+### Email Finding & Verification
 - ZeroBounce: https://zerobounce.net?ref=gtmos
 - MillionVerifier: https://millionverifier.com?ref=gtmos
 - Scrubby: https://scrubby.io?ref=gtmos
+- Hunter.io: https://hunter.io?ref=gtmos
+- Dropcontact: https://dropcontact.com?ref=gtmos
+- FindyMail: https://findymail.com?ref=gtmos
 
 ### Email Sequencing
 - Lemlist: https://lemlist.com?ref=gtmos

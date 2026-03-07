@@ -99,7 +99,7 @@ Pick a type when creating a campaign — defaults pre-fill automatically:
 ## Supported tools
 
 ### Prospecting & enrichment
-Apollo · Icypeas · Prospeo · Apify · StoreLeads · Opemart
+Apollo · Icypeas · Prospeo · Apify · StoreLeads · Opemart · Clay (optional orchestration)
 
 ### Email sequencing
 Instantly · Lemlist · Smartlead
@@ -116,8 +116,8 @@ Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jo
 ### Meeting transcripts
 Fireflies.ai (pull sales call transcripts via API for data deep-dives)
 
-### Verification
-ZeroBounce · MillionVerifier · Scrubby
+### Email finding & verification
+Hunter.io · Dropcontact · FindyMail · ZeroBounce · MillionVerifier · Scrubby
 
 Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md with date, units, cost, and approver.
 
