@@ -8,7 +8,7 @@ GTM:OS is a Claude Code plugin that runs your entire go-to-market workflow — f
 
 ---
 
-## 60-second quick start
+## Quick start
 
 ```
 git clone https://github.com/shyftai/GTMOS.git
@@ -23,7 +23,7 @@ That's it. Claude walks you through setup, creates your workspace, and you're re
 
 ---
 
-## What it does
+## How it works
 
 ```
   ┌─────────────────────────────────────────────┐
@@ -62,21 +62,21 @@ If it drifts from the brief, it doesn't ship.
 
 ---
 
-## How a campaign works
+## The campaign lifecycle
 
-**1. Onboard** → `/gtm:onboard` walks through your offer, ICP, persona, voice, tools, and infrastructure. Have CRM data? Start with `/gtm:deep-dive` to build ICP from evidence
+**1. Onboard** → `/gtm:onboard` walks through your offer, ICP, persona, voice, tools, and infrastructure. Have CRM data? Start with `/gtm:deep-dive` to build ICP from evidence.
 
-**2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals
+**2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals using Exa, Firecrawl, Ocean.io, and DiscoLike.
 
-**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:enrich` fills gaps via waterfall enrichment, `/gtm:validate-list` cleans, scores (0-100), and validates
+**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:enrich` fills gaps via waterfall enrichment across Apollo, Icypeas, Prospeo, and more. `/gtm:validate-list` cleans, scores (0-100), and validates.
 
-**4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch
+**4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch. `/gtm:write-multilang` writes natively in 12 languages.
 
-**5. Ship** → `/gtm:ship` runs a pre-flight checklist (suppression, DNS, warmup, budget, holiday calendar) and pushes to your sending tool
+**5. Ship** → `/gtm:ship` runs a pre-flight checklist (suppression, DNS, warmup, budget, holiday calendar, compliance) and pushes to Instantly, Lemlist, or Smartlead.
 
-**6. Manage** → `/gtm:replies` classifies and drafts responses, `/gtm:signals` triggers timely outreach, `/gtm:health` monitors performance
+**6. Manage** → `/gtm:replies` classifies and drafts responses, `/gtm:signals` triggers timely outreach, `/gtm:health` monitors performance, `/gtm:ab-test` runs A/B tests with statistical significance tracking.
 
-**7. Report** → `/gtm:report` generates client-facing reports, `/gtm:debrief` feeds learnings back into the system
+**7. Report** → `/gtm:report` generates client-facing reports, `/gtm:debrief` feeds learnings back into the system, `/gtm:attribution` connects pipeline revenue to campaigns.
 
 ---
 
@@ -98,37 +98,139 @@ Pick a type when creating a campaign — defaults pre-fill automatically:
 
 ## Supported tools
 
+GTM:OS connects to 40+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
+
 ### Prospecting & enrichment
-Apollo · Icypeas · Prospeo · Apify · StoreLeads · Opemart · Clay (optional orchestration)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Apollo** | 275M+ contact database, email/phone enrichment, lead search | Free tier (10K credits/mo), paid from $49/mo |
+| **Icypeas** | Email finder + verifier, domain search, bulk enrichment | From $39/mo (1K credits) |
+| **Prospeo** | Email finder from LinkedIn URLs, email verifier, domain search | From $39/mo (1K credits) |
+| **Apify** | Web scraping platform — LinkedIn, Google Maps, any website | Free $5/mo usage, paid from $49/mo |
+| **Dropcontact** | B2B email enrichment, GDPR-compliant, no database | From $24/mo |
+| **FindyMail** | Email finder + verifier, Sales Navigator scraping | From $49/mo |
+
+### Email verification
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **ZeroBounce** | Email verification, bounce detection, abuse detection | 100 free/mo, bulk from $0.004/email |
+| **MillionVerifier** | Bulk email verification, high accuracy | From $0.001/email |
+| **Scrubby** | Catch-all email verification (the ones others mark "risky") | ~$0.02/email |
 
 ### Email sequencing
-Instantly · Lemlist · Smartlead
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Instantly** | Unlimited email accounts, unlimited warmup, A/B testing | From $30/mo |
+| **Lemlist** | Multi-channel sequences, 450M+ lead database, inbox rotation | From $32/mo/seat |
+| **Smartlead** | Unlimited email accounts, sender rotation, webhooks | From $39/mo |
 
 ### LinkedIn
-Crispy (MCP server — Claude Code controls LinkedIn directly, including Sales Navigator)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Crispy** | MCP server — Claude Code controls LinkedIn directly. Connection requests, messaging, Sales Navigator search + extract. 78 tools. | From EUR19/mo/seat |
 
 ### CRM
-Attio · HubSpot · Salesforce · Pipedrive
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Attio** | Modern CRM with API-first design, unlimited contacts | From $29/mo/seat |
+| **HubSpot** | Full marketing + sales platform, free CRM tier | Free CRM, paid from $15/mo |
+| **Salesforce** | Enterprise CRM with extensive API | From $25/mo/user |
+| **Pipedrive** | Sales-focused CRM, simple pipeline management | From $14/mo/seat |
 
-### Signals
-Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jobs
+### Signal intelligence
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Signalbase** | Funding, hiring, job change, tech install signals | Subscription-based |
+| **Commonroom** | Community activity, social engagement, intent signals | Subscription-based |
+| **Jungler.ai** | LinkedIn activity monitoring, social selling signals | Subscription-based |
+| **Trigify** | Competitor content engagement, topic-based social signals | Subscription-based |
+| **Sentrion.ai** | Job post monitoring — hiring signals as buying triggers | Subscription-based |
+| **Fantastic.jobs** | Job post aggregation and structured hiring data | Subscription-based |
 
 ### Lookalike discovery
-Ocean.io (feed customers → get ranked lookalikes) · DiscoLike (AI-powered discovery across 60M+ domains)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Ocean.io** | Feed best customers → get ranked lookalike companies with firmographics | Credit-based, 0.2cr/result |
+| **DiscoLike** | AI discovery across 60M+ domains in 45 languages, semantic website analysis | $0.10/call + $2/1K records |
 
 ### Research & scraping
-Exa (MCP — semantic search, company research, deep research) · Firecrawl (MCP — web scraping, structured extraction)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Exa** | MCP server — semantic web search, company research, deep research agent | 1K free/mo, $0.007/search |
+| **Firecrawl** | MCP server — web scraping, structured data extraction, website crawling | 500 free credits, from $16/mo |
 
 ### Meeting transcripts
-Fireflies.ai (pull sales call transcripts via API for data deep-dives)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Fireflies.ai** | Meeting recording + transcription, pull transcripts via API for deep-dives | From $10/mo/seat |
 
-### Ad platforms (ABM audience sync)
-LinkedIn Ads (company/contact matched audiences) · Meta/Facebook (custom audiences) · Google Ads (customer match)
+### Ad platforms (optional ABM audience sync)
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **LinkedIn Ads** | Push company/contact lists as matched audiences for ABM ad warming | API free, ad spend separate |
+| **Meta Ads** | Custom audiences on Facebook/Instagram from contact lists | API free, ad spend separate |
+| **Google Ads** | Customer Match for search, display, YouTube, Gmail targeting | API free, ad spend separate |
 
-### Email finding & verification
-Dropcontact · FindyMail · ZeroBounce · MillionVerifier · Scrubby
+### Lead databases
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **StoreLeads** | E-commerce store database (Shopify, WooCommerce, etc.) | Subscription-based |
+| **Opemart** | Small business and SMB data with contact info | Subscription-based |
 
-Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md with date, units, cost, and approver.
+### CRM enrichment
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Freckle** | Auto-enriches CRM contacts with firmographics, tech stack, funding | Subscription-based |
+
+### Automation & integration
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **N8N** | Self-hosted workflow automation (free), or cloud | Free self-hosted, cloud from $20/mo |
+| **Zapier** | Task-based automation between tools | Free 100 tasks/mo, from $19.99/mo |
+| **Make** | Operation-based workflow automation | Free 1K ops/mo, from $9/mo |
+| **Supabase** | Team mode backend — shared state, edge functions | Free tier, Pro $25/mo |
+
+### Scheduling
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Calendly** | Meeting scheduling with calendar sync | Free 1 event type, from $10/mo |
+| **Cal.com** | Open-source scheduling, self-hosted option | Free self-hosted, from $12/mo |
+
+> Every tool is optional. Use what you have. GTM:OS reads tool availability from your `.env` and `TOOLS.md`, then adapts its workflows accordingly. Writes follow credit rules per workspace, and every write is logged in COSTS.md.
+
+---
+
+## Key features
+
+### Waterfall enrichment
+Cascading enrichment across multiple tools — email, phone, people, company. Cheapest sources first, skip tools you don't have, track hit rates to optimize order over time.
+
+### A/B testing
+Set up, track, and resolve A/B tests on subject lines, openers, CTAs, body copy, and send times. Statistical significance rules (50+ sends with >20% diff, or 100+ with >10%). Winners auto-feed into snippet library and campaign defaults.
+
+### Multi-language copy
+Write sequences natively in 12 languages (French, German, Dutch, Spanish, Italian, Portuguese, Swedish, Danish, Norwegian, Finnish, Polish, and more). Per-language formality defaults, word limit adjustments, cultural norms. Not translation — native writing.
+
+### ROI attribution
+Connect pipeline revenue to campaigns, channels, touches, personas, and signals. Four models: first touch, last touch, linear, time decay. Cost per reply, meeting, and deal.
+
+### ABM multi-threading
+Reach 2-4 people at one company with role-appropriate messaging and coordinated timing. Buying committee mapping, staggered sends, cross-reference coordination. Optional ad warming via LinkedIn/Meta/Google Ads or HubSpot ABM.
+
+### Data hygiene
+Monitor contact data freshness, re-verify emails older than 90 days, detect job changes via Apollo and Crispy, flag cold data, auto-suppress hard bounces. Data freshness score target: >80%.
+
+### Pipeline velocity
+Track stage durations, detect bottlenecks (>30% stall rate), stalled deal alerts with suggested actions. Velocity formula and week-over-week trend tracking.
+
+### Campaign cloning
+Clone a successful campaign's structure, config, briefing, and A/B winners for a new segment or market. Cross-workspace cloning for agencies.
+
+### Compliance (optional)
+Toggle privacy regulations on/off per workspace: CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, Australian Spam Act. Auto-detect from target geography or ignore entirely. All OFF by default.
+
+### Parallel processing (Swarm)
+Spin up parallel agents for personalization, research, reply handling, list validation, and signal scanning at scale.
 
 ---
 
@@ -139,7 +241,7 @@ GTM:OS ships with sensible defaults for everything:
 - **Copy:** 2-4 word lowercase subjects, 75-word first touch, interest-based CTAs, banned spam words
 - **Sending:** 40 emails/inbox/day, 14-day warmup minimum, holiday blackouts for 20+ countries
 - **Scoring:** weighted 0-100 lead scoring (company fit, persona, signals, data quality, engagement)
-- **Compliance:** suppression checks before every send, unsubscribe on every email, hard bounce auto-removal
+- **Compliance:** optional regulation toggles, suppression checks, unsubscribe on every email, bounce auto-removal
 
 **Every default is overridable per workspace.** Add a `## Lead scoring overrides` section to RULES.md, change copy rules in TOV.md, adjust sending limits in INFRASTRUCTURE.md. If you don't override, the defaults just work.
 
@@ -158,7 +260,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:switch <name>` | Switch active workspace |
 | `/gtm:status` | Show workspace status and commands |
 | `/gtm:dashboard <ws>` | Smart dashboard — what needs attention now |
-| `/gtm:compliance <ws>` | Configure privacy regulation toggles (GDPR, CAN-SPAM, CASL, etc.) |
+| `/gtm:compliance <ws>` | Configure privacy regulation toggles (optional) |
 
 ### Build
 | Command | What it does |
