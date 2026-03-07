@@ -63,25 +63,43 @@ curl -X POST "https://api.apollo.io/api/v1/organizations/enrich" \
 
 ## Instantly
 
-**Auth:** API key as query param `api_key`
-**Base URL:** `https://api.instantly.ai/api/v1`
+**Auth (V2):** Bearer token in header `Authorization: Bearer {key}`
+**Base URL:** `https://api.instantly.ai/api/v2`
+
+**Note:** V1 API is deprecated. Use V2 endpoints below.
 
 | Action | Method | Endpoint |
 |--------|--------|----------|
-| List campaigns | GET | `/campaign/list` |
-| Get campaign | GET | `/campaign/get?api_key={key}&campaign_id={id}` |
-| Add leads | POST | `/lead/add` |
-| Get lead status | GET | `/lead/get?api_key={key}&email={email}` |
-| Get campaign analytics | GET | `/analytics/campaign/summary?api_key={key}&campaign_id={id}` |
-| List accounts | GET | `/account/list` |
-| Pause campaign | POST | `/campaign/pause` |
+| List campaigns | GET | `/campaigns` |
+| Get campaign | GET | `/campaigns/{id}` |
+| Add leads | POST | `/leads` |
+| Get lead status | GET | `/leads?campaign_id={id}&email={email}` |
+| **Analytics overview** | GET | `/campaigns/analytics/overview` |
+| **Daily analytics** | GET | `/campaigns/{id}/analytics/daily` |
+| List accounts | GET | `/email-accounts` |
+| Pause campaign | POST | `/campaigns/{id}/pause` |
+
+**Analytics overview (sync endpoint):**
+```bash
+curl "https://api.instantly.ai/api/v2/campaigns/analytics/overview?id={campaign_id}&start_date=2026-01-01&end_date=2026-03-07" \
+  -H "Authorization: Bearer $INSTANTLY_API_KEY"
+```
+
+**Analytics response fields:**
+- `emails_sent_count`, `contacted_count`, `completed_count`
+- `open_count`, `open_count_unique`, `open_count_unique_by_step`
+- `reply_count`, `reply_count_unique`, `reply_count_unique_by_step`
+- `reply_count_automatic`, `reply_count_automatic_unique`
+- `link_click_count`, `link_click_count_unique`
+- `bounced_count`, `unsubscribed_count`
+- `total_opportunities`, `total_interested`, `total_meeting_booked`, `total_meeting_completed`, `total_closed`
 
 **Add leads example:**
 ```bash
-curl -X POST "https://api.instantly.ai/api/v1/lead/add" \
+curl -X POST "https://api.instantly.ai/api/v2/leads" \
+  -H "Authorization: Bearer $INSTANTLY_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "api_key": "'$INSTANTLY_API_KEY'",
     "campaign_id": "campaign-uuid",
     "skip_if_in_workspace": true,
     "leads": [
@@ -96,11 +114,6 @@ curl -X POST "https://api.instantly.ai/api/v1/lead/add" \
   }'
 ```
 
-**Get campaign analytics:**
-```bash
-curl "https://api.instantly.ai/api/v1/analytics/campaign/summary?api_key=$INSTANTLY_API_KEY&campaign_id=uuid&start_date=2024-01-01&end_date=2024-03-01"
-```
-
 ---
 
 ## Lemlist
@@ -112,10 +125,31 @@ curl "https://api.instantly.ai/api/v1/analytics/campaign/summary?api_key=$INSTAN
 |--------|--------|----------|
 | List campaigns | GET | `/campaigns` |
 | Get campaign | GET | `/campaigns/{id}` |
+| **Get campaign stats** | GET | `/campaigns/{id}/stats` |
+| **Get campaign reports** | GET | `/campaigns/reports` |
+| **Export campaign** | POST | `/campaigns/{id}/export` |
+| **Get export status** | GET | `/campaigns/{id}/export-status` |
 | Add lead to campaign | POST | `/campaigns/{id}/leads/{email}` |
-| Get campaign stats | GET | `/campaigns/{id}/export` |
+| Export leads | GET | `/campaigns/{id}/leads/export` |
+| Mark interested | POST | `/leads/{leadId}/interested` |
+| Mark not interested | POST | `/leads/{leadId}/not-interested` |
+| Pause lead | POST | `/leads/{leadId}/pause` |
 | Unsubscribe lead | DELETE | `/campaigns/{id}/leads/{email}` |
-| List activities | GET | `/activities` |
+| **List activities** | GET | `/activities?type={type}&campaignId={id}` |
+
+**Activity types:** `emailsSent`, `emailsOpened`, `emailsClicked`, `emailsReplied`, `emailsBounced`, `emailsUnsubscribed`, `emailsFailed`
+
+**Get campaign stats (sync endpoint):**
+```bash
+curl "https://api.lemlist.com/api/campaigns/{campaign_id}/stats" \
+  --user ":$LEMLIST_API_KEY"
+```
+
+**Stats response fields:**
+- `sent`, `opened`, `clicked`, `replied`, `booked`, `interested`
+- `bounced`, `unsubscribed`, `notInterested`
+- `invitationAccepted` (LinkedIn)
+- Open rate, click rate, reply rate, bounce rate (calculated)
 
 **Add lead example:**
 ```bash
@@ -143,8 +177,37 @@ curl -X POST "https://api.lemlist.com/api/campaigns/{campaign_id}/leads/john@acm
 | List campaigns | GET | `/campaigns?api_key={key}` |
 | Create campaign | POST | `/campaigns/create?api_key={key}` |
 | Add leads | POST | `/campaigns/{id}/leads?api_key={key}` |
-| Get campaign stats | GET | `/campaigns/{id}/statistics?api_key={key}` |
+| **Top-level analytics** | GET | `/campaigns/{id}/analytics?api_key={key}` |
+| **Lead-level stats** | GET | `/campaigns/{id}/statistics?api_key={key}&email_status={status}` |
 | Get leads by status | GET | `/campaigns/{id}/leads?api_key={key}&status={status}` |
+
+**email_status filter values:** `opened`, `clicked`, `replied`, `unsubscribed`, `bounced`
+
+**Get campaign analytics (sync endpoint):**
+```bash
+curl "https://server.smartlead.ai/api/v1/campaigns/{campaign_id}/analytics?api_key=$SMARTLEAD_API_KEY"
+```
+
+**Analytics response fields:**
+- `sent_count`, `unique_sent_count`
+- `open_count`, `unique_open_count`
+- `click_count`, `unique_click_count`
+- `reply_count`, `bounce_count`, `unsubscribed_count`
+- `total_count`, `drafted_count`
+- `campaign_lead_stats` — interested, total, notStarted, inprogress, completed, blocked, paused
+
+**Rate calculations:**
+- Open rate: `unique_open_count / unique_sent_count × 100`
+- Reply rate (plain text): `reply_count / unique_sent_count × 100`
+- Reply rate (tracked): `reply_count / unique_open_count × 100`
+- Positive reply rate: `campaign_lead_stats.interested / reply_count × 100`
+
+**Lead-level stats example (get all who replied):**
+```bash
+curl "https://server.smartlead.ai/api/v1/campaigns/{id}/statistics?api_key=$SMARTLEAD_API_KEY&email_status=replied"
+```
+
+**Lead stats response fields:** `lead_name`, `lead_email`, `sequence_number`, `email_subject`, `sent_time`, `open_time`, `click_time`, `reply_time`, `open_count`, `click_count`, `is_unsubscribed`, `is_bounced`
 
 **Add leads example:**
 ```bash
