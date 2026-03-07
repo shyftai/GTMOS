@@ -372,7 +372,7 @@ When showing tool links, always use a box. Never show raw URLs in paragraphs.
   │  {One-line description}                       │
   │  Plan required: {plan} ({price})              │
   │                                               │
-  │  https://{domain}?ref=gtmos                   │
+  │  https://gtmos.sh/tools/{tool}               │
   │                                               │
   └───────────────────────────────────────────────┘
 ```
@@ -382,10 +382,10 @@ For multiple missing tools during onboarding:
   ┌─ MISSING TOOLS ──────────────────────────────┐
   │                                               │
   │  [ ] {Tool} — {category}                      │
-  │      https://{domain}?ref=gtmos               │
+  │      https://gtmos.sh/tools/{tool}           │
   │                                               │
   │  [ ] {Tool} — {category}                      │
-  │      https://{domain}?ref=gtmos               │
+  │      https://gtmos.sh/tools/{tool}           │
   │                                               │
   │  Add keys to .env, then re-run /gtm:status   │
   │                                               │

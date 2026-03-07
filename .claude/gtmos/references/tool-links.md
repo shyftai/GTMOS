@@ -1,6 +1,8 @@
 # Tool Links — GTMOS
 
-When referencing a tool's website (in onboarding, status outputs, or when a user asks about a tool), use these links. The `?ref=gtmos` tag tracks referrals — may be swapped for affiliate links later.
+When referencing a tool's website, use the redirect URL from this file. These are branded short links that track referrals server-side — the user sees a clean `gtmos.sh/tools/...` URL.
+
+To set up the redirects: point each path to the tool's site with whatever tracking params or affiliate links you need. One redirect config to manage, every GTMOS command picks it up.
 
 **Display rule:** Always show links inside a tool setup box, never as raw inline text. See "How to display" below.
 
@@ -9,58 +11,58 @@ When referencing a tool's website (in onboarding, status outputs, or when a user
 ## Links
 
 ### Prospecting & Enrichment
-- Apollo: https://apollo.io?ref=gtmos
-- Icypeas: https://icypeas.com?ref=gtmos
-- Prospeo: https://prospeo.io?ref=gtmos
-- Apify: https://apify.com?ref=gtmos
+- Apollo: https://gtmos.sh/tools/apollo
+- Icypeas: https://gtmos.sh/tools/icypeas
+- Prospeo: https://gtmos.sh/tools/prospeo
+- Apify: https://gtmos.sh/tools/apify
 
 ### Lead Databases
-- StoreLeads: https://storeleads.app?ref=gtmos
-- Opemart: https://opemart.com?ref=gtmos
+- StoreLeads: https://gtmos.sh/tools/storeleads
+- Opemart: https://gtmos.sh/tools/opemart
 
 ### Email Verification
-- ZeroBounce: https://zerobounce.net?ref=gtmos
-- MillionVerifier: https://millionverifier.com?ref=gtmos
-- Scrubby: https://scrubby.io?ref=gtmos
+- ZeroBounce: https://gtmos.sh/tools/zerobounce
+- MillionVerifier: https://gtmos.sh/tools/millionverifier
+- Scrubby: https://gtmos.sh/tools/scrubby
 
 ### Email Sequencing
-- Lemlist: https://lemlist.com?ref=gtmos
-- Instantly: https://instantly.ai?ref=gtmos
-- Smartlead: https://smartlead.ai?ref=gtmos
+- Lemlist: https://gtmos.sh/tools/lemlist
+- Instantly: https://gtmos.sh/tools/instantly
+- Smartlead: https://gtmos.sh/tools/smartlead
 
 ### LinkedIn
-- Crispy: https://crispy.sh?ref=gtmos
-- PhantomBuster: https://phantombuster.com?ref=gtmos
+- Crispy: https://gtmos.sh/tools/crispy
+- PhantomBuster: https://gtmos.sh/tools/phantombuster
 
 ### CRM
-- Attio: https://attio.com?ref=gtmos
-- HubSpot: https://hubspot.com?ref=gtmos
-- Salesforce: https://salesforce.com?ref=gtmos
-- Pipedrive: https://pipedrive.com?ref=gtmos
+- Attio: https://gtmos.sh/tools/attio
+- HubSpot: https://gtmos.sh/tools/hubspot
+- Salesforce: https://gtmos.sh/tools/salesforce
+- Pipedrive: https://gtmos.sh/tools/pipedrive
 
 ### CRM Enrichment
-- Freckle: https://freckle.com?ref=gtmos
+- Freckle: https://gtmos.sh/tools/freckle
 
 ### Signal Intelligence
-- Signalbase: https://signalbase.com?ref=gtmos
-- Commonroom: https://commonroom.io?ref=gtmos
-- Sentrion.ai: https://sentrion.ai?ref=gtmos
-- Fantastic.jobs: https://fantastic.jobs?ref=gtmos
-- Jungler.ai: https://jungler.ai?ref=gtmos
-- Trigify: https://trigify.io?ref=gtmos
+- Signalbase: https://gtmos.sh/tools/signalbase
+- Commonroom: https://gtmos.sh/tools/commonroom
+- Sentrion.ai: https://gtmos.sh/tools/sentrion
+- Fantastic.jobs: https://gtmos.sh/tools/fantasticjobs
+- Jungler.ai: https://gtmos.sh/tools/jungler
+- Trigify: https://gtmos.sh/tools/trigify
 
 ### Meeting Transcripts
-- Fireflies.ai: https://fireflies.ai?ref=gtmos
+- Fireflies.ai: https://gtmos.sh/tools/fireflies
 
 ### Booking
-- Calendly: https://calendly.com?ref=gtmos
-- Cal.com: https://cal.com?ref=gtmos
+- Calendly: https://gtmos.sh/tools/calendly
+- Cal.com: https://gtmos.sh/tools/calcom
 
 ### Automation
-- N8N: https://n8n.io?ref=gtmos
-- Supabase: https://supabase.com?ref=gtmos
-- Zapier: https://zapier.com?ref=gtmos
-- Make: https://make.com?ref=gtmos
+- N8N: https://gtmos.sh/tools/n8n
+- Supabase: https://gtmos.sh/tools/supabase
+- Zapier: https://gtmos.sh/tools/zapier
+- Make: https://gtmos.sh/tools/make
 
 ---
 
@@ -76,7 +78,7 @@ When a user needs a tool link, show it inside a setup box — never as a bare UR
   │  Meeting transcript API                       │
   │  Plan required: Business ($19/mo/seat)        │
   │                                               │
-  │  https://fireflies.ai?ref=gtmos               │
+  │  https://gtmos.sh/tools/fireflies             │
   │                                               │
   └───────────────────────────────────────────────┘
 ```
@@ -88,13 +90,13 @@ When a user needs a tool link, show it inside a setup box — never as a bare UR
   │  The following tools need API keys:            │
   │                                               │
   │  [ ] Instantly — email sequencing              │
-  │      https://instantly.ai?ref=gtmos            │
+  │      https://gtmos.sh/tools/instantly          │
   │                                               │
   │  [ ] ZeroBounce — email verification           │
-  │      https://zerobounce.net?ref=gtmos          │
+  │      https://gtmos.sh/tools/zerobounce         │
   │                                               │
   │  [ ] Crispy — LinkedIn via MCP                 │
-  │      https://crispy.sh?ref=gtmos               │
+  │      https://gtmos.sh/tools/crispy             │
   │                                               │
   │  Add keys to .env, then re-run /gtm:status    │
   │                                               │
@@ -105,7 +107,7 @@ When a user needs a tool link, show it inside a setup box — never as a bare UR
 ```
   ┌─ SETUP: INSTANTLY ───────────────────────────┐
   │                                               │
-  │  1. Sign up at https://instantly.ai?ref=gtmos  │
+  │  1. Sign up at https://gtmos.sh/tools/instantly│
   │  2. Go to Settings → API                      │
   │  3. Copy your API key                         │
   │  4. Add to .env: INSTANTLY_API_KEY=your-key   │
@@ -121,4 +123,4 @@ When a user needs a tool link, show it inside a setup box — never as a bare UR
 - Never dump links unprompted — if someone is writing copy, they don't need tool URLs
 - Always use the box format above — no bare URLs in paragraphs
 - Always pull from this file, never hardcode URLs elsewhere
-- The `?ref=gtmos` tag may be updated to affiliate links in the future
+- Redirect destinations are managed server-side — swap in affiliate links, UTM params, or partner URLs without touching GTMOS
