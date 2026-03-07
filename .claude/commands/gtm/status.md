@@ -1,0 +1,92 @@
+---
+name: gtm:status
+description: Show workspace status and available commands
+argument-hint: "[workspace-name]"
+---
+<objective>
+Display the GTMOS banner, workspace status, and available commands.
+
+Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
+</objective>
+
+<execution_context>
+@./.claude/gtmos/references/ui-brand.md
+</execution_context>
+
+<process>
+1. Display the GTMOS startup banner
+
+2. If no workspace specified:
+   - List all workspaces in workspaces/ with name, status, and active campaigns
+   - Prompt: `>> Which workspace?`
+
+3. If workspace specified:
+   - Load workspace context
+   - Display workspace header from ui-brand.md
+   - Show loaded sources of truth: [x] for populated, [ ] for empty
+   - Show active campaigns with status
+   - Show tool connection status: [x] for key present, [ ] for missing
+   - Show cost summary: total spent, budget remaining, alert status
+
+4. Display available commands:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  GTMOS Commands
+
+  Setup
+    /gtm:onboard       Onboard a new workspace
+    /gtm:research      Research ICP and market
+    /gtm:new-campaign  Create a new campaign from template
+    /gtm:switch        Switch active workspace
+    /gtm:status        Show this command list
+
+  Build
+    /gtm:list-brief    Create a list building brief
+    /gtm:clean-list    Clean and normalize a raw list
+    /gtm:validate-list Clean + score + validate a raw list
+    /gtm:write         Draft an outbound sequence
+    /gtm:validate-copy QA check copy against rules
+
+  Ship
+    /gtm:ship          Push approved list + sequence to sending tool
+
+  Live Campaign
+    /gtm:replies       Classify and handle replies
+    /gtm:signals       Scan for signal-triggered outreach
+    /gtm:sync          Pull data from connected tools
+    /gtm:health        Run a campaign health check
+
+  Infrastructure
+    /gtm:infra         Check sending infrastructure health
+    /gtm:warmup        Check inbox warmup status
+    /gtm:pipeline      View CRM pipeline and conversions
+
+  Review
+    /gtm:brief-audit   Check briefing for gaps
+    /gtm:stress-test   Challenge ICP assumptions
+    /gtm:debrief       End-of-campaign performance review
+    /gtm:report        Generate client-facing report
+    /gtm:archive       Archive completed campaign or workspace
+
+  Costs
+    /gtm:costs         View spend by tool, campaign, workspace
+    /gtm:costs --all   Agency-level spend across all workspaces
+
+  Collaboration (optional — multi-user)
+    /gtm:collab setup    Connect Supabase for team mode
+    /gtm:collab status   Check collaboration connection
+    /gtm:collab invite   Invite a team member
+    /gtm:collab sync     Sync local files to Supabase
+
+  Swarm (optional — parallel agents)
+    /gtm:swarm personalize   Personalize outreach at scale
+    /gtm:swarm research      Research companies in parallel
+    /gtm:swarm replies       Process reply batch in parallel
+    /gtm:swarm validate      Validate large lists in parallel
+    /gtm:swarm signals       Scan signals across full list
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+</process>

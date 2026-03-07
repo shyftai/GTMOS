@@ -1,0 +1,15 @@
+# Environment
+.env
+
+# Raw lists (may contain PII)
+**/lists/raw/
+
+# Sync snapshots (large, regenerable)
+**/sync/**/*.json
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
