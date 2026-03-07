@@ -122,6 +122,12 @@ Run `/gtm:collab setup` to enable team mode. See `global/COLLABORATION.md` for f
 
 ---
 
+## Defaults
+
+GTMOS ships with sensible defaults for everything — copy rules, sending limits, lead scoring weights, sequence timing, compliance thresholds. See `.claude/gtmos/references/defaults.md` for the full list.
+
+Users can override any default in their workspace files. If a workspace doesn't specify a value, use the default. Non-overridable settings (suppression checks, unsubscribe requirements, hard bounce handling) always apply.
+
 ## Tool links
 
 When referencing a tool's website — during onboarding, when a user asks about a tool, or when suggesting a tool they don't have — use the UTM-tagged links from `.claude/gtmos/references/tool-links.md`. Never hardcode tool URLs elsewhere.
@@ -168,9 +174,12 @@ If any check fails, revise before presenting. Never show a draft that fails its 
 
 - Apply ICP filters strictly. When in doubt, reject.
 - Score every record 0-3 using the rubric in RULES.md
+- Calculate weighted lead score (0-100) using `.claude/gtmos/references/lead-scoring.md` — check workspace RULES.md for overrides
+- Use the standard CSV format from `.claude/gtmos/references/csv-format.md` for all list imports and exports
 - Explain rejections — say why, not just that it was rejected
-- Output a validated CSV with added columns: icp_score, rejection_reason, review_flag
+- Output a validated CSV with added columns: icp_score, lead_score, rejection_reason, review_flag
 - Save output to lists/validated/ inside the active campaign folder
+- When importing from external tools, map their column names to GTMOS standard columns
 
 ---
 
@@ -352,6 +361,19 @@ Do not write around gaps. Surface them.
 ### Moment 3 — Mid-task gaps
 If a task requires specific information not present in loaded context — a product
 detail, a proof point, a constraint — stop and ask. Never invent or assume.
+
+---
+
+## Notifications
+
+If Slack MCP is connected and `slack_enabled: true` in COLLABORATION.md, send Slack alerts for critical events:
+- Positive reply received
+- Meeting booked
+- Budget threshold crossed
+- Domain health red flag
+- Spam complaint
+
+See `.claude/gtmos/references/notifications.md` for full trigger list and message formats. If Slack is not connected, display notifications inline with `!!` prefix.
 
 ---
 

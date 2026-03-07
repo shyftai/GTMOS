@@ -11,17 +11,23 @@ Workspace and campaign name: $ARGUMENTS
 
 <execution_context>
 @./.claude/gtmos/references/ui-brand.md
+@./.claude/gtmos/references/campaign-types.md
+@./.claude/gtmos/references/defaults.md
+@./.claude/gtmos/references/sending-calendar.md
 </execution_context>
 
 <process>
 1. Display mode header: `<< GTMOS // NEW CAMPAIGN >>`
 2. Parse workspace name and campaign name from $ARGUMENTS
 3. Copy workspaces/{workspace}/campaigns/_campaign-template/ to workspaces/{workspace}/campaigns/{campaign-name}/
-4. Ask for campaign config details:
+4. Ask campaign type:
+   "What type of campaign? (cold outbound / signal-triggered / competitor displacement / event follow-up / product launch / ABM / re-engagement)"
+   Pre-fill config defaults from campaign-types.md based on selection.
+5. Ask for campaign config details (pre-filled values shown, user can override):
    - Channel: email / LinkedIn / multi-channel
    - Target list size
-   - Target send date
-   - Sequence length (e.g. 4-touch over 14 days)
+   - Target send date (check against sending-calendar.md for holiday conflicts)
+   - Sequence length (pre-filled from campaign type)
    - Sending tool (Lemlist / Instantly / Smartlead / Crispy)
    - Which inboxes to assign (from INFRASTRUCTURE.md)
    - Send timing (days, time window, timezone handling)

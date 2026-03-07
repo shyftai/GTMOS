@@ -174,6 +174,33 @@ Additional tools (email verification, CRM enrichment, LinkedIn automation, autom
 
 Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md.
 
+## Defaults and customization
+
+GTMOS ships with sensible defaults for everything — copy rules, sending limits, lead scoring weights, sequence timing, compliance thresholds, campaign type templates. Every default can be overridden per workspace. See `.claude/gtmos/references/defaults.md` for the full list.
+
+## Quick start
+
+Don't want to go through all 14 onboarding blocks? Run `/gtm:onboard <name> --quick` for a 5-block fast start. Fill in the rest later when you need it.
+
+## Campaign types
+
+When creating a campaign, choose a type to get pre-filled defaults:
+- **Cold outbound** — standard 4-touch sequence to new contacts
+- **Signal-triggered** — 2-3 touches driven by buying signals
+- **Competitor displacement** — targeting users of a specific competitor
+- **Event follow-up** — post-conference or webinar outreach
+- **Product launch** — outreach timed to a new feature or product
+- **ABM** — multi-threaded outreach to high-value accounts
+- **Re-engagement** — reviving cold leads with a new angle
+
+## Lead scoring
+
+Contacts are scored 0-100 using a weighted model: company fit (30%), persona fit (25%), signal strength (20%), data quality (15%), engagement (10%). Customize weights per workspace in RULES.md.
+
+## Notifications
+
+Connect Slack to get real-time alerts for positive replies, meetings booked, budget thresholds, and domain issues. Optional — configure in COLLABORATION.md.
+
 ## Cost tracking
 
 Every workspace has a COSTS.md file that tracks:
