@@ -155,6 +155,26 @@ Before the waterfalls — what each action actually costs across providers:
 - **Enrichment bonus:** `firstname`, `lastname`, `gender`, `country`, `region`, `city`, `zipcode`
 - `domain_age_days`, `smtp_provider`, `mx_record`, `free_email`
 
+### Apify + Sales Navigator — Company Search (Account Scraper)
+
+Via `pratikdani/sales-navigator-company-search-scraper-no-cookies` or similar actors:
+- `company_name`, `description`, `tagline`
+- `industry`, `industry_type`
+- `founding_year`
+- `website`, `linkedin_url`, `logo_url`
+- `employee_count`, `employee_growth_metrics`
+- `headquarters` (city, country, full location)
+- `revenue_estimates`
+- `specialties[]`
+- `saved_status`, `notes_count`
+- `employees[]` — name, LinkedIn profile URN, profile picture
+
+**Not available via SN scrape:** email, phone, tech stack, funding rounds, SIC/NAICS codes.
+
+**Reliability warning:** Community-maintained actors (3.4/5 avg rating). May break when LinkedIn changes layout. No-cookies actors are newer but more account-safe. Always have a fallback source.
+
+**Cost structure:** Apify compute (~$0.50/1K companies) + optional residential proxies. No per-result fee from the actor itself (pay-per-event model).
+
 ### Crispy / Sales Navigator — People Search
 
 Search returns per result:
@@ -218,6 +238,7 @@ Goal: find a verified business email for a known person (have name + company/dom
 | Apollo | FREE — 600 calls/day, 50K results/query | Plan credits | 10 per bulk call | 50 req/min (free), higher on paid |
 | Icypeas | 0.02cr/result (DB), credits never expire | 1cr/email, 0.5cr/company | 5,000 per bulk | 30 req/min |
 | Prospeo | 1cr per 25 results | 1cr/person (lifetime dedup) | 50 per bulk call | Standard |
+| Apify+SalesNav | ~$0.50/1K companies (compute) | Same (20+ fields) | Paginated | LinkedIn rate limits, proxy-dependent |
 | Crispy/SalesNav | Included in sub, no per-search cost | Included (profile data only) | Per-search | LinkedIn limits |
 | Lemlist | Included in sub (Email Pro+) | 5cr/email find | Via campaign API | Per-plan |
 | Instantly | Separate lead finder plan ($47-197/mo) | 1K-10K contacts/mo | Via lead API | Per-plan |
@@ -267,15 +288,16 @@ Goal: find companies matching ICP firmographics.
 |------|--------|------|----------------|
 | 1 | **Crunchbase Basic API** | FREE | Free API key, search by industry, size, funding, location. 200 calls/min. Best for startup/funded companies |
 | 2 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
-| 3 | **Crispy / Sales Navigator** | Included in sub | Company search with headcount, industry, location filters |
-| 4 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
-| 5 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
-| 6 | **Apollo org search** | Credits (not free) | Large database but costs credits |
-| 7 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 8 | **Opemart** | Included in sub | SMB/local businesses |
-| 9 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
+| 3 | **Apify + Sales Navigator** | ~$0.50/1K companies | Scrape SN account search results via API. 20+ fields: name, industry, headcount, growth, revenue est., HQ. No SN cookies needed (no-cookies actors available). Requires APIFY_API_KEY |
+| 4 | **Crispy / Sales Navigator** | Included in sub | Company search with headcount, industry, location filters. Fewer fields than Apify SN scrape |
+| 5 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
+| 6 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 7 | **Apollo org search** | Credits (not free) | Large database but costs credits |
+| 8 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 9 | **Opemart** | Included in sub | SMB/local businesses |
+| 10 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
 
-**Strategy:** Crunchbase free API first for funded/growth companies. Icypeas at 0.02 credits is nearly free. Crispy/Sales Nav included if you have it. Only use Apollo org search (costs credits) after free sources are exhausted.
+**Strategy:** Crunchbase free API first for funded/growth companies. Icypeas at 0.02 credits is nearly free. Apify + Sales Navigator is powerful for SN-specific filters (headcount growth, recent funding, hiring signals) at ~$0.50/1K — use when you need Sales Navigator's unique filters without burning Crispy credits. Only use Apollo org search (costs credits) after free/cheap sources are exhausted.
 
 ### 4. People Enrichment
 
@@ -476,13 +498,6 @@ If overrides exist, use them. If not, use the defaults in this file.
 - Base: `https://app.icypeas.com/api`
 - Rate limit: 30 req/min
 
-### Hunter.io
-- Email Finder: `GET /v2/email-finder` (1 credit)
-- Email Verify: `GET /v2/email-verifier` (1 credit)
-- Domain Search: `GET /v2/domain-search` (1 credit)
-- Auth: `api_key` query param
-- Base: `https://api.hunter.io`
-
 ### Dropcontact
 - Batch Enrich: `POST /batch` (1 credit, pay on success only)
 - Get Results: `GET /v1/enrich/all/{request-id}`
@@ -494,6 +509,15 @@ If overrides exist, use them. If not, use the defaults in this file.
 - Auth: API key
 - Base: `https://app.findymail.com`
 - Docs: `https://app.findymail.com/docs/`
+
+### Apify (Sales Navigator company scraping)
+- Run Actor: `POST /v2/acts/{actorId}/runs` (start scrape)
+- Get Results: `GET /v2/actor-runs/{runId}/dataset/items` (fetch results)
+- Recommended actor: `pratikdani/sales-navigator-company-search-scraper-no-cookies`
+- Auth: `Authorization: Bearer {APIFY_API_KEY}`
+- Base: `https://api.apify.com`
+- Input: Sales Navigator account search URL or filter params
+- Note: No-cookies actor — does not require LinkedIn session. Community-maintained
 
 ### Verification
 - ZeroBounce: `GET /v2/validate?api_key=KEY&email=EMAIL` (1 credit)
