@@ -107,6 +107,13 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Used for: immediate action triggers and ICP enrichment
 - Notes:
 
+### Sentrion.ai / Fantastic.jobs
+- Status: active / inactive
+- Mode: read-only
+- Pull: job post data, hiring signals, role expansion alerts
+- Used for: hiring = buying signal — company hiring for roles your product serves means they're investing in that area
+- Notes: Pick one — both do job post monitoring
+
 ---
 
 ## Additional tools (activate as needed)

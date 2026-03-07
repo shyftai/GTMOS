@@ -277,6 +277,24 @@ Last updated: 2026-03
 - **GTMOS unit:** signal query
 - **Typical cost:** $0.01-0.05 per query
 
+### Sentrion.ai
+- **Model:** Subscription-based
+- **What it does:** Job post monitoring — tracks hiring signals across companies (new roles, team expansion, tech stack hires)
+- **Use case:** Hiring = buying signal. Company posting for "RevOps Manager" likely needs RevOps tooling. Use as a trigger for signal-based outreach.
+- **Signal types:** New job posts, role expansion, tech-specific hires, leadership hires
+- **API access:** Check current plans
+- **GTMOS unit:** signal query
+- **Typical cost:** Varies by plan
+
+### Fantastic.jobs
+- **Model:** Subscription-based
+- **What it does:** Job post aggregation and monitoring — structured job data across companies
+- **Use case:** Same as Sentrion — hiring signals as buying triggers. Track when target ICP companies are hiring roles relevant to your offer.
+- **Signal types:** Job posts by company, role, location, seniority
+- **API access:** Check current plans
+- **GTMOS unit:** signal query
+- **Typical cost:** Varies by plan
+
 ---
 
 ## CRM Enrichment
