@@ -361,6 +361,39 @@ Swarm results summary:
 
 ---
 
+## Tool Link Display
+
+When showing tool links, always use a box. Never show raw URLs in paragraphs.
+
+```
+  ┌─ TOOL ───────────────────────────────────────┐
+  │                                               │
+  │  {Tool Name}                                  │
+  │  {One-line description}                       │
+  │  Plan required: {plan} ({price})              │
+  │                                               │
+  │  https://{domain}?ref=gtmos                   │
+  │                                               │
+  └───────────────────────────────────────────────┘
+```
+
+For multiple missing tools during onboarding:
+```
+  ┌─ MISSING TOOLS ──────────────────────────────┐
+  │                                               │
+  │  [ ] {Tool} — {category}                      │
+  │      https://{domain}?ref=gtmos               │
+  │                                               │
+  │  [ ] {Tool} — {category}                      │
+  │      https://{domain}?ref=gtmos               │
+  │                                               │
+  │  Add keys to .env, then re-run /gtm:status   │
+  │                                               │
+  └───────────────────────────────────────────────┘
+```
+
+---
+
 ## Anti-Patterns — What GTMOS never does
 
 - Never use `GSD ►` prefix — that is GSD's brand
@@ -369,5 +402,6 @@ Swarm results summary:
 - Never use `◆ ○` status dots — GTMOS uses `[x] [ ] [~]`
 - Never vary box widths within the same output
 - Never skip the five-check validation display on copy or list output
+- Never show tool links as bare URLs in paragraphs — always use the tool link box
 
 </ui_patterns>

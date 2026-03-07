@@ -1,70 +1,124 @@
 # Tool Links — GTMOS
 
-When referencing a tool's website (in onboarding, status outputs, or when a user asks about a tool), use these links with UTM parameters for referral tracking.
+When referencing a tool's website (in onboarding, status outputs, or when a user asks about a tool), use these links. The `?ref=gtmos` tag tracks referrals — may be swapped for affiliate links later.
 
-UTM format: `?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference`
+**Display rule:** Always show links inside a tool setup box, never as raw inline text. See "How to display" below.
 
 ---
 
-## Prospecting & Enrichment
-- Apollo: https://www.apollo.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Icypeas: https://icypeas.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Prospeo: https://prospeo.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Apify: https://apify.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+## Links
 
-## Lead Databases
-- StoreLeads: https://storeleads.app?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Opemart: https://opemart.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Prospecting & Enrichment
+- Apollo: https://apollo.io?ref=gtmos
+- Icypeas: https://icypeas.com?ref=gtmos
+- Prospeo: https://prospeo.io?ref=gtmos
+- Apify: https://apify.com?ref=gtmos
 
-## Email Verification
-- ZeroBounce: https://www.zerobounce.net?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- MillionVerifier: https://millionverifier.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Scrubby: https://scrubby.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Lead Databases
+- StoreLeads: https://storeleads.app?ref=gtmos
+- Opemart: https://opemart.com?ref=gtmos
 
-## Email Sequencing
-- Lemlist: https://www.lemlist.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Instantly: https://instantly.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Smartlead: https://smartlead.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Email Verification
+- ZeroBounce: https://zerobounce.net?ref=gtmos
+- MillionVerifier: https://millionverifier.com?ref=gtmos
+- Scrubby: https://scrubby.io?ref=gtmos
 
-## LinkedIn
-- Crispy: https://crispy.sh?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- PhantomBuster: https://phantombuster.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Email Sequencing
+- Lemlist: https://lemlist.com?ref=gtmos
+- Instantly: https://instantly.ai?ref=gtmos
+- Smartlead: https://smartlead.ai?ref=gtmos
 
-## CRM
-- Attio: https://attio.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- HubSpot: https://www.hubspot.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Salesforce: https://www.salesforce.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Pipedrive: https://www.pipedrive.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### LinkedIn
+- Crispy: https://crispy.sh?ref=gtmos
+- PhantomBuster: https://phantombuster.com?ref=gtmos
 
-## CRM Enrichment
-- Freckle: https://freckle.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### CRM
+- Attio: https://attio.com?ref=gtmos
+- HubSpot: https://hubspot.com?ref=gtmos
+- Salesforce: https://salesforce.com?ref=gtmos
+- Pipedrive: https://pipedrive.com?ref=gtmos
 
-## Signal Intelligence
-- Signalbase: https://signalbase.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Commonroom: https://www.commonroom.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Sentrion.ai: https://sentrion.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Fantastic.jobs: https://fantastic.jobs?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Jungler.ai: https://jungler.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Trigify: https://trigify.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### CRM Enrichment
+- Freckle: https://freckle.com?ref=gtmos
 
-## Meeting Transcripts
-- Fireflies.ai: https://fireflies.ai?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Signal Intelligence
+- Signalbase: https://signalbase.com?ref=gtmos
+- Commonroom: https://commonroom.io?ref=gtmos
+- Sentrion.ai: https://sentrion.ai?ref=gtmos
+- Fantastic.jobs: https://fantastic.jobs?ref=gtmos
+- Jungler.ai: https://jungler.ai?ref=gtmos
+- Trigify: https://trigify.io?ref=gtmos
 
-## Booking
-- Calendly: https://calendly.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Cal.com: https://cal.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Meeting Transcripts
+- Fireflies.ai: https://fireflies.ai?ref=gtmos
 
-## Automation
-- N8N: https://n8n.io?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Supabase: https://supabase.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Zapier: https://zapier.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
-- Make: https://www.make.com?utm_source=gtmos&utm_medium=plugin&utm_campaign=tool-reference
+### Booking
+- Calendly: https://calendly.com?ref=gtmos
+- Cal.com: https://cal.com?ref=gtmos
+
+### Automation
+- N8N: https://n8n.io?ref=gtmos
+- Supabase: https://supabase.com?ref=gtmos
+- Zapier: https://zapier.com?ref=gtmos
+- Make: https://make.com?ref=gtmos
+
+---
+
+## How to display
+
+When a user needs a tool link, show it inside a setup box — never as a bare URL in a paragraph.
+
+**Single tool (user asks about a tool or needs to sign up):**
+```
+  ┌─ TOOL ───────────────────────────────────────┐
+  │                                               │
+  │  Fireflies.ai                                 │
+  │  Meeting transcript API                       │
+  │  Plan required: Business ($19/mo/seat)        │
+  │                                               │
+  │  https://fireflies.ai?ref=gtmos               │
+  │                                               │
+  └───────────────────────────────────────────────┘
+```
+
+**During onboarding (missing tools detected):**
+```
+  ┌─ MISSING TOOLS ──────────────────────────────┐
+  │                                               │
+  │  The following tools need API keys:            │
+  │                                               │
+  │  [ ] Instantly — email sequencing              │
+  │      https://instantly.ai?ref=gtmos            │
+  │                                               │
+  │  [ ] ZeroBounce — email verification           │
+  │      https://zerobounce.net?ref=gtmos          │
+  │                                               │
+  │  [ ] Crispy — LinkedIn via MCP                 │
+  │      https://crispy.sh?ref=gtmos               │
+  │                                               │
+  │  Add keys to .env, then re-run /gtm:status    │
+  │                                               │
+  └───────────────────────────────────────────────┘
+```
+
+**During tool setup guide (step-by-step):**
+```
+  ┌─ SETUP: INSTANTLY ───────────────────────────┐
+  │                                               │
+  │  1. Sign up at https://instantly.ai?ref=gtmos  │
+  │  2. Go to Settings → API                      │
+  │  3. Copy your API key                         │
+  │  4. Add to .env: INSTANTLY_API_KEY=your-key   │
+  │                                               │
+  └───────────────────────────────────────────────┘
+```
 
 ---
 
 ## Usage rules
 
-- When a user asks "what is [tool]?" or "where do I sign up for [tool]?", use the link from this file
-- When onboarding mentions a tool the user doesn't have yet, include the link naturally
-- Never force links — only include when the user is actively looking for the tool
-- These links may be updated to affiliate links in the future — always pull from this file, never hardcode URLs elsewhere
+- Only show links when the user is actively looking for the tool (asking about it, missing a key, or following a setup guide)
+- Never dump links unprompted — if someone is writing copy, they don't need tool URLs
+- Always use the box format above — no bare URLs in paragraphs
+- Always pull from this file, never hardcode URLs elsewhere
+- The `?ref=gtmos` tag may be updated to affiliate links in the future
