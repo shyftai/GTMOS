@@ -135,6 +135,22 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Used for: data deep-dive — extract pain points, buying triggers, objections, and prospect language from sales calls
 - Notes: GraphQL API. Business plan required for API access. Pull transcripts via `/gtm:deep-dive`.
 
+### Exa
+- Status: active / inactive
+- Mode: read-only
+- Pull from Exa: semantic web search results, company research reports, industry intelligence
+- Used for: market research (`/gtm:research`), finding ICP-matching companies semantically, competitor intelligence, list building seeds
+- Credit behaviour (reads): auto-approved (1K free/mo)
+- Notes: MCP server available — Claude Code can use `web_search_exa`, `company_research_exa`, `deep_researcher_start` directly. $0.007/search on paid.
+
+### Firecrawl
+- Status: active / inactive
+- Mode: read-only
+- Pull from Firecrawl: scraped web pages as clean markdown, structured data extraction from any URL
+- Used for: competitor website scraping, extracting company data from directories/award lists, job board scraping for hiring signals, pricing page analysis
+- Credit behaviour (reads): auto-approved (500 free one-time)
+- Notes: MCP server available — Claude Code can use `FIRECRAWL_SCRAPE_EXTRACT_DATA_LLM`, `FIRECRAWL_EXTRACT` directly. 1 credit/page.
+
 ---
 
 ## Additional tools (activate as needed)
@@ -200,3 +216,5 @@ All keys stored in .env at repo root:
 - JUNGLER_API_KEY
 - TRIGIFY_API_KEY
 - FIREFLIES_API_KEY
+- EXA_API_KEY
+- FIRECRAWL_API_KEY

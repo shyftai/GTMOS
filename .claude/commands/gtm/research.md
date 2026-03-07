@@ -12,6 +12,7 @@ Workspace: $ARGUMENTS
 <execution_context>
 @./commands/run-research.md
 @./.claude/gtmos/references/ui-brand.md
+@./.claude/gtmos/references/api-reference.md
 </execution_context>
 
 <process>

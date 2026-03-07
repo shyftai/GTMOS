@@ -60,6 +60,10 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 - Calendly: https://calendly.com?ref=gtmos
 - Cal.com: https://cal.com?ref=gtmos
 
+### Research & Scraping
+- Exa: https://exa.ai?ref=gtmos
+- Firecrawl: https://firecrawl.dev?ref=gtmos
+
 ### Automation
 - N8N: https://n8n.io?ref=gtmos
 - Supabase: https://supabase.com?ref=gtmos

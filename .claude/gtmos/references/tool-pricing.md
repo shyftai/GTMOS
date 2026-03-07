@@ -48,31 +48,6 @@ Last updated: 2026-03
 - **GTMOS unit:** credit used
 - **Typical cost:** $0.01-0.04 per contact
 
-### Icypeas
-- **Model:** Credit-based (email finding + verification)
-- **Free tier:** 50 credits
-- **Paid plans:** Lite $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
-- **Credit costs:**
-  - Email finder: 1 credit
-  - Email verifier: 1 credit
-  - Domain search: 1 credit per result
-  - Bulk enrichment: 1 credit per contact
-- **API access:** All paid plans
-- **GTMOS unit:** credit used
-- **Typical cost:** $0.01-0.04 per contact
-
-### Prospeo
-- **Model:** Credit-based (email finder + verifier)
-- **Paid plans:** Basic $39/mo (1,000 credits), Pro $99/mo (5,000 credits), Business $199/mo (15,000 credits)
-- **Credit costs:**
-  - Email finder (from LinkedIn URL): 1 credit
-  - Email verifier: 1 credit
-  - Domain search: 1 credit per result
-  - LinkedIn email finder: 1 credit
-- **API access:** All plans
-- **GTMOS unit:** credit used
-- **Typical cost:** $0.01-0.04 per contact
-
 ### Apify
 - **Model:** Usage-based (compute units + platform fee)
 - **Free tier:** $5/month in usage
@@ -394,6 +369,45 @@ Last updated: 2026-03
 - **API access:** All plans
 - **GTMOS unit:** invocation
 - **Typical cost:** $0 for most use cases (within free tier)
+
+---
+
+## Research & Scraping
+
+### Exa
+- **Model:** Request-based
+- **Free tier:** 1,000 requests/month (no credit card required)
+- **Paid pricing:**
+  - Search (1-10 results): $7/1K requests ($0.007/search)
+  - Search (26-100 results): $25/1K requests
+  - Contents retrieval: $1/1K pages
+  - Answer: $5/1K answers
+  - Deep research: $5 per agent search + $5 per page read
+- **MCP server:** Yes — `exa-mcp-server` (free, open source)
+- **MCP tools:** `web_search_exa`, `company_research_exa`, `deep_researcher_start`, `people_search_exa`
+- **API access:** All plans
+- **GTMOS unit:** search request
+- **Typical cost:** $0.007 per search (free tier covers ~1K/mo)
+- **Startup grant:** $1,000 free credits available for qualifying projects
+
+### Firecrawl
+- **Model:** Credit-based
+- **Free tier:** 500 credits (one-time, no monthly refresh)
+- **Paid plans:** Hobby $16/mo (3K credits), Standard $83/mo (100K credits), Growth $333/mo (500K credits)
+- **Credit costs:**
+  - Scrape/Crawl: 1 credit per page
+  - Map: 1 credit
+  - Search: 2 credits per 10 results
+  - Extract: token-based (15 tokens/credit)
+  - FIRE-1 agent: always billed (even on failure)
+- **MCP server:** Yes — `firecrawl-mcp-server` (official)
+- **MCP tools:** `FIRECRAWL_SCRAPE_EXTRACT_DATA_LLM`, `FIRECRAWL_EXTRACT`, `FIRECRAWL_CRAWL_URLS`
+- **API access:** All plans
+- **GTMOS unit:** credit used
+- **Typical cost:** $0.005-0.03 per page depending on plan
+- **Note:** Credits do not roll over (except auto-recharge credits)
+
+---
 
 ### Make (Integromat)
 - **Model:** Operation-based

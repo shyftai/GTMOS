@@ -523,6 +523,101 @@ curl -X POST "https://api.fireflies.ai/graphql" \
 
 ---
 
+## Exa (AI-powered web search)
+
+**Auth:** API key in header `x-api-key`
+**Base URL:** `https://api.exa.ai`
+**Cost:** 1,000 free requests/month. Paid: $7/1K searches (1-10 results), $1/1K content pages
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Search | POST | `/search` | 1 search |
+| Get contents | POST | `/contents` | 1 per page |
+| Find similar | POST | `/findSimilar` | 1 search |
+| Answer | POST | `/answer` | 1 answer |
+
+**MCP tools (preferred — use these directly in Claude Code):**
+- `web_search_exa` — semantic web search, returns clean content
+- `company_research_exa` — deep company research (crawls company website)
+- `deep_researcher_start` — starts AI research agent, returns task ID
+- `deep_researcher_check` — check status / get research report
+- `people_search_exa` — find people and professional profiles (enable via config)
+- `web_search_advanced_exa` — advanced search with domain/date filters (enable via config)
+- `crawling_exa` — get full content from a known URL (enable via config)
+
+**Search example:**
+```bash
+curl -X POST "https://api.exa.ai/search" \
+  -H "x-api-key: $EXA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "B2B SaaS companies that raised Series A in 2025",
+    "type": "neural",
+    "numResults": 10,
+    "contents": { "text": true }
+  }'
+```
+
+**GTMOS use cases:**
+- Market research: find companies matching ICP semantically (not just keyword match)
+- Competitor intelligence: find reviews, comparisons, "alternatives to X" content
+- Signal discovery: find news about funding, launches, expansions in target market
+- Content research: find pain language, terminology, and framing buyers use
+
+---
+
+## Firecrawl (web scraping & extraction)
+
+**Auth:** Bearer token in header `Authorization: Bearer {key}`
+**Base URL:** `https://api.firecrawl.dev/v1`
+**Cost:** 500 free credits (one-time). Hobby $16/mo (3K credits), Standard $83/mo (100K credits)
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Scrape page | POST | `/scrape` | 1 per page |
+| Crawl site | POST | `/crawl` | 1 per page |
+| Map site URLs | POST | `/map` | 1 |
+| Extract structured data | POST | `/extract` | Token-based (15 tokens/credit) |
+| Search web | POST | `/search` | 2 per 10 results |
+
+**MCP tools (preferred — use these directly in Claude Code):**
+- `FIRECRAWL_SCRAPE_EXTRACT_DATA_LLM` — scrape a URL, returns clean markdown
+- `FIRECRAWL_EXTRACT` — extract structured data using prompt/schema
+- `FIRECRAWL_CRAWL_URLS` — crawl entire site with filters
+- `FIRECRAWL_CRAWL_JOB_STATUS` — check crawl progress
+
+**Scrape example:**
+```bash
+curl -X POST "https://api.firecrawl.dev/v1/scrape" \
+  -H "Authorization: Bearer $FIRECRAWL_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://competitor.com/pricing",
+    "formats": ["markdown"]
+  }'
+```
+
+**Extract example (structured data without knowing exact URL):**
+```bash
+curl -X POST "https://api.firecrawl.dev/v1/extract" \
+  -H "Authorization: Bearer $FIRECRAWL_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "urls": ["https://competitor.com/*"],
+    "prompt": "Extract pricing tiers, features per tier, and target audience",
+    "enableWebSearch": true
+  }'
+```
+
+**GTMOS use cases:**
+- Scrape competitor pricing, features, and positioning pages
+- Extract team/about pages for decision-maker intel
+- Crawl job boards for hiring signals
+- Extract structured company data from websites Exa finds
+- Build prospect lists from directory pages, award lists, conference speaker lists
+
+---
+
 ## Notes
 
 - Always check remaining credits/balance before batch operations

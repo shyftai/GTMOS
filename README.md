@@ -113,11 +113,14 @@ Attio · HubSpot · Salesforce · Pipedrive
 ### Signals
 Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jobs
 
+### Research & scraping
+Exa (MCP — semantic search, company research, deep research) · Firecrawl (MCP — web scraping, structured extraction)
+
 ### Meeting transcripts
 Fireflies.ai (pull sales call transcripts via API for data deep-dives)
 
 ### Email finding & verification
-Hunter.io · Dropcontact · FindyMail · ZeroBounce · MillionVerifier · Scrubby
+Dropcontact · FindyMail · ZeroBounce · MillionVerifier · Scrubby
 
 Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md with date, units, cost, and approver.
 

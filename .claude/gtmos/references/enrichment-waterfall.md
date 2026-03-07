@@ -315,6 +315,8 @@ Goal: find a verified business email for a known person (have name + company/dom
 | FindyMail | 1cr/find, credits never expire | Same | Via API | Standard |
 | Crunchbase | FREE — 200 calls/min | Same (basic fields) | 25 per page | 200 req/min |
 | Diffbot | FREE — 10K credits/mo (25cr/export) | Same | Per-query | 5 req/min (free) |
+| Exa | FREE — 1K searches/mo | N/A (search only) | 10-100 results/search | Standard |
+| Firecrawl | 500 free credits (one-time) | 1 credit/page | Paginated | Plan-dependent |
 | Companies House | FREE — unlimited | Same | Per-query | 600 req/5min |
 
 **After finding — always verify:**
@@ -358,14 +360,16 @@ Goal: find companies matching ICP firmographics.
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
 | 1 | **Crispy / Sales Navigator** | Included in sub | Primary discovery engine. 36+ filters: headcount, growth, industry, funding signals, hiring, tech adoption. Unmatched for precision targeting. Returns: name, industry, headcount, HQ, website, description |
-| 2 | **Crunchbase Basic API** | FREE | Best for startup/funded companies. Search by industry, size, funding, location. 200 calls/min |
-| 3 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
-| 4 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
-| 5 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
-| 6 | **Apollo org search** | Credits (not free) | Large database but costs credits |
-| 7 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 8 | **Opemart** | Included in sub | SMB/local businesses |
-| 9 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
+| 2 | **Exa semantic search** | FREE (1K/mo) | Find companies by meaning, not keywords. "B2B SaaS companies solving X problem" returns results no keyword search would find. Best for discovering lookalikes and niche segments |
+| 3 | **Crunchbase Basic API** | FREE | Best for startup/funded companies. Search by industry, size, funding, location. 200 calls/min |
+| 4 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
+| 5 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
+| 6 | **Firecrawl extract** | 1 credit/page | Extract company lists from directories, award lists, conference speaker pages, "Top X" articles. Structured extraction via prompt |
+| 7 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 8 | **Apollo org search** | Credits (not free) | Large database but costs credits |
+| 9 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 10 | **Opemart** | Included in sub | SMB/local businesses |
+| 11 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
 
 **Phase 2 — Company Enrichment at Volume (fill gaps on discovered companies)**
 
@@ -380,7 +384,7 @@ Once you have a company list from discovery, enrich missing fields (tech stack, 
 
 **Volume scraping alternative:** When you need to pull large company lists from Sales Navigator filters at scale (1K+ companies), use **Apify + Sales Navigator** (~$0.50/1K, no-cookies actors available) instead of Crispy. Crispy is best for discovery and precision targeting; Apify handles bulk extraction.
 
-**Strategy:** Crispy is the go-to for discovering companies — Sales Navigator's filters are the most powerful for ICP targeting. Once you have a list, enrich at volume via Icypeas (cheapest), Prospeo (most fields + lifetime dedup), or Apollo (deepest tech/funding data). Use Apify for bulk SN extraction when Crispy isn't practical at scale.
+**Strategy:** Crispy is the go-to for discovering companies — Sales Navigator's filters are the most powerful for ICP targeting. Exa adds semantic discovery (find companies by what they do, not just firmographics). Firecrawl lets you extract structured company lists from any web page (directories, award lists, conference sites). Once you have a list, enrich at volume via Icypeas (cheapest), Prospeo (most fields + lifetime dedup), or Apollo (deepest tech/funding data). Use Apify for bulk SN extraction when Crispy isn't practical at scale.
 
 ### 4. People Enrichment
 
