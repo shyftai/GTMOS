@@ -11,7 +11,7 @@ These are the variables the sending tool can resolve. Only use these in copy.
 | {{company}} | Contact record | Acme Corp |
 | {{job_title}} | Contact record | VP of RevOps |
 
-### Enrichment fields (available if enriched via Clay/Apollo)
+### Enrichment fields (available if enriched via Apollo/Apify)
 | Variable | Source | Example |
 |----------|--------|---------|
 | {{industry}} | Enrichment | SaaS |
@@ -28,8 +28,8 @@ These are the variables the sending tool can resolve. Only use these in copy.
 ### Custom fields (campaign-specific)
 | Variable | Source | Example |
 |----------|--------|---------|
-| {{custom_1}} | Manual / Clay | |
-| {{custom_2}} | Manual / Clay | |
+| {{custom_1}} | Manual / Apify | |
+| {{custom_2}} | Manual / Apify | |
 
 ---
 

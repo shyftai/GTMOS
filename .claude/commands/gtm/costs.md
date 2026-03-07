@@ -38,7 +38,7 @@ Flags:
   │                                                │
   │ By tool                                        │
   │   Apollo:      ${amount}   ({units} contacts)  │
-  │   Clay:        ${amount}   ({units} rows)      │
+  │   Apify:       ${amount}   ({units} CUs)        │
   │   Lemlist:     ${amount}   ({units} emails)    │
   │   Attio:       $0.00       (free)              │
   │                                                │

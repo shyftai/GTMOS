@@ -12,10 +12,16 @@
    - Bounce and invalid email flags
    - Save to sync/apollo/[YYYY-MM-DD-HH].json
 
-   Clay:
-   - Enrichment results for any pending jobs
-   - Field-level updates for records in validated/
-   - Save to sync/clay/[YYYY-MM-DD-HH].json
+   Apify:
+   - Scraping job results for any pending actors
+   - Enrichment data from completed runs
+   - Save to sync/apify/[YYYY-MM-DD-HH].json
+
+   HubSpot:
+   - Deal stage distribution for contacts in this campaign
+   - New replies or status changes since last sync
+   - Contact property updates, marketing engagement data
+   - Save to sync/hubspot/[YYYY-MM-DD-HH].json
 
    Lemlist:
    - Per-sequence: open rate, reply rate, bounce rate, unsubscribe rate

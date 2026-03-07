@@ -4,7 +4,7 @@ description: Create a structured brief for list building
 argument-hint: "<workspace-name> <campaign-name>"
 ---
 <objective>
-Build a structured list brief from ICP.md and campaign config — ready to hand to a VA or input into Clay/Apollo.
+Build a structured list brief from ICP.md and campaign config — ready to hand to a VA or input into Apollo/Apify.
 
 Workspace and campaign: $ARGUMENTS
 </objective>

@@ -26,16 +26,20 @@ On every startup, display this banner before doing anything else:
   │     │            │            │             │
   │     ▼            ▼            ▼             │
   │  VALIDATE ── APPROVE ──── SHIP             │
-  │                  │                          │
-  │              SYNC DATA                     │
-  │                  │                          │
+  │                  │            │             │
+  │              SYNC DATA    ◈ SWARM          │
+  │                  │        (optional)        │
   │          HEALTH CHECK                      │
   │                  │                          │
-  │             IMPROVE                        │
+  │          REPORT + IMPROVE                  │
+  │                  │                          │
+  │              PIPELINE ──── CRM             │
   └─────────────────────────────────────────────┘
 
   Ready. Which workspace are we loading?
 ```
+
+**Color:** When displaying the GTMOS banner, use orange/amber ANSI color if the terminal supports it. The brand color is orange. Use `\033[38;5;208m` (ANSI 208, orange) for the block letters and `\033[0m` to reset. If the terminal does not support color, display in plain white.
 
 ---
 

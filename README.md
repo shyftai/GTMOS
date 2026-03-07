@@ -140,7 +140,8 @@ Swarm agents draft only — nothing is sent without human approval.
 | Tool | Direction | What it does |
 |------|-----------|-------------|
 | Apollo | Bidirectional | Prospecting and enrichment |
-| Clay | Bidirectional | Waterfall enrichment |
+| Apify | Bidirectional | Web scraping and data extraction |
+| HubSpot | Bidirectional | CRM, marketing, sequences |
 | Lemlist | Bidirectional | Email sequencing |
 | Instantly | Bidirectional | Email sequencing |
 | Smartlead | Bidirectional | Email sequencing |
@@ -148,6 +149,8 @@ Swarm agents draft only — nothing is sent without human approval.
 | Attio | Bidirectional | CRM |
 | Signalbase | Read-only | Funding and hiring signals |
 | Commonroom | Read-only | Community and intent signals |
+
+Additional tools (email verification, LinkedIn automation, intent data, automation) can be activated per workspace. See `_template/TOOLS.md` for the full list and `.claude/gtmos/references/tool-pricing.md` for pricing.
 
 Reads are auto-approved. Writes follow credit rules per workspace. Every write is logged in COSTS.md.
 

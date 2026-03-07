@@ -2,9 +2,18 @@
 
 Visual patterns for user-facing GTMOS output. All commands @-reference this file.
 
+## Brand Color
+
+GTMOS brand color is **orange** (ANSI 208).
+- Use `\033[38;5;208m` to set orange text, `\033[0m` to reset
+- Apply orange to: the GTMOS block-letter banner, mode headers (`<< GTMOS // MODE >>`), section titles in dashboards
+- Use white/default for: body text, data values, box borders
+- If terminal doesn't support color, display everything in plain white
+- Never use blue, green, or red as brand colors — those are reserved for status indicators
+
 ## Startup Banner
 
-Display once when GTMOS loads.
+Display once when GTMOS loads. Render the block letters in orange.
 
 ```
  ██████╗ ████████╗███╗   ███╗ ██████╗ ███████╗
@@ -26,18 +35,57 @@ Use for workflow transitions. GTMOS uses angle brackets, not GSD's arrows.
 << GTMOS // {MODE NAME} >>
 ```
 
-**Mode names (uppercase):**
+**Mode names (uppercase, rendered in orange):**
 - `ONBOARDING`
 - `RESEARCH`
+- `LIST CLEAN`
 - `LIST BUILD`
 - `COPY LAB`
+- `SHIP`
 - `REPLY DESK`
 - `SIGNAL SCAN`
 - `DATA SYNC`
 - `HEALTH CHECK`
+- `INFRASTRUCTURE CHECK`
+- `WARMUP STATUS`
+- `PIPELINE`
 - `DEBRIEF`
+- `REPORT`
 - `AUDIT`
 - `STRESS TEST`
+- `COSTS`
+- `ARCHIVE`
+- `SWARM`
+- `COLLABORATION SETUP`
+
+---
+
+## System Flow Diagram
+
+Show below the banner on startup. Includes swarm and pipeline.
+
+```
+  ┌─────────────────────────────────────────────┐
+  │  ICP ─── PERSONA ─── BRIEFING ─── TOV      │
+  │                  │                          │
+  │              RULES.md                       │
+  │                  │                          │
+  │     ┌────────────┼────────────┐             │
+  │     ▼            ▼            ▼             │
+  │   LISTS        COPY       SIGNALS          │
+  │     │            │            │             │
+  │     ▼            ▼            ▼             │
+  │  VALIDATE ── APPROVE ──── SHIP             │
+  │                  │            │             │
+  │              SYNC DATA    ◈ SWARM          │
+  │                  │        (optional)        │
+  │          HEALTH CHECK                      │
+  │                  │                          │
+  │          REPORT + IMPROVE                  │
+  │                  │                          │
+  │              PIPELINE ──── CRM             │
+  └─────────────────────────────────────────────┘
+```
 
 ---
 
@@ -229,7 +277,7 @@ Single workspace:
   │                                                │
   │ By tool                                        │
   │   Apollo:      ${amount}   ({units} contacts)  │
-  │   Clay:        ${amount}   ({units} rows)      │
+  │   Apify:       ${amount}   ({units} CUs)        │
   │   Lemlist:     ${amount}   ({units} emails)    │
   │   Attio:       $0.00       (free)              │
   │                                                │
