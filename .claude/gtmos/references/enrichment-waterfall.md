@@ -235,13 +235,15 @@ Goal: find people matching ICP criteria (title, industry, company size, location
 
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
-| 1 | **Apollo** | FREE | People search is free. 275M+ contacts. No emails returned (preview only) |
-| 2 | **Prospeo** | 1 credit per 25 results | search-person returns up to 25 per credit. No email (need separate enrich) |
-| 3 | **Icypeas leads DB** | Low credit cost | Find People endpoint with filters |
-| 4 | **Crispy / Sales Navigator** | Included in sub | LinkedIn-native search with 36+ filters, intent signals, job change alerts |
-| 5 | **Apify** | ~$0.003/profile | LinkedIn search scraper. Slower, but no subscription needed |
+| 1 | **Apollo** | FREE | People search is free. 275M+ contacts, 600 calls/day. No emails in results (preview only) |
+| 2 | **Crispy / Sales Navigator** | Included in sub | LinkedIn-native search with 36+ filters, intent signals, job change alerts. No email/phone |
+| 3 | **Lemlist built-in DB** | Included in sub | 450M+ contacts, search by filters. Included in Email Pro+ plans |
+| 4 | **Instantly lead finder** | Included in lead finder plan | 160M+ contacts. Separate subscription from sending plan |
+| 5 | **Prospeo** | 1 credit per 25 results | search-person returns up to 25 per credit. No email (need separate enrich) |
+| 6 | **Icypeas leads DB** | Low credit cost | Find People endpoint with filters |
+| 7 | **Apify** | ~$0.003/profile | LinkedIn search scraper. Slower, no subscription needed |
 
-**After search — enrich:** Run found contacts through email finding waterfall above.
+**Strategy:** Start with Apollo (free) and Crispy (included) — between them you cover 275M+ contacts and LinkedIn. Only go to paid search if those miss. After search, run found contacts through email finding waterfall.
 
 ### 3. Company Search
 
@@ -249,11 +251,17 @@ Goal: find companies matching ICP firmographics.
 
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
-| 1 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
-| 2 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
-| 3 | **Apollo org search** | Credits (not free) | Large database but costs credits unlike people search |
-| 4 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 5 | **Opemart** | Included in sub | SMB/local businesses |
+| 1 | **Crunchbase Basic API** | FREE | Free API key, search by industry, size, funding, location. 200 calls/min. Best for startup/funded companies |
+| 2 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
+| 3 | **Crispy / Sales Navigator** | Included in sub | Company search with headcount, industry, location filters |
+| 4 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
+| 5 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 6 | **Apollo org search** | Credits (not free) | Large database but costs credits |
+| 7 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 8 | **Opemart** | Included in sub | SMB/local businesses |
+| 9 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
+
+**Strategy:** Crunchbase free API first for funded/growth companies. Icypeas at 0.02 credits is nearly free. Crispy/Sales Nav included if you have it. Only use Apollo org search (costs credits) after free sources are exhausted.
 
 ### 4. People Enrichment
 

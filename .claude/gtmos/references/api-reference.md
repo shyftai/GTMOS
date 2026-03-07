@@ -308,6 +308,83 @@ Guarantees <5% bounce rate. Credits never expire. Pay only on success.
 
 ---
 
+## Crunchbase (FREE company search)
+
+**Auth:** Free API key (register at crunchbase.com)
+**Base URL:** `https://api.crunchbase.com/api/v4`
+**Cost:** FREE (Basic API plan)
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Search organizations | POST | `/searches/organizations` | FREE |
+| Get organization | GET | `/entities/organizations/{id}` | FREE |
+| Autocomplete | GET | `/autocompletes` | FREE |
+
+**Rate limit:** 200 calls/minute
+
+**Filters:** Categories, location, employee count, company type, domain, funding stage, founding date.
+
+**Fields returned:** Company name, description, address, categories, founding date, employee count range, funding info, news, social profiles.
+
+**Search example:**
+```bash
+curl -X POST "https://api.crunchbase.com/api/v4/searches/organizations" \
+  -H "X-cb-user-key: $CRUNCHBASE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "field_ids": ["identifier", "short_description", "num_employees_enum", "categories"],
+    "query": [
+      { "type": "predicate", "field_id": "num_employees_enum", "operator_id": "includes", "values": ["c_00051_00100", "c_00101_00250"] }
+    ],
+    "limit": 25
+  }'
+```
+
+---
+
+## Diffbot Knowledge Graph (FREE tier)
+
+**Auth:** API token
+**Base URL:** `https://kg.diffbot.com/kg/v3`
+**Cost:** FREE — 10,000 credits/month, no credit card required
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Search entities | GET | `/dql?query=X` | 25 per export |
+| Enhance (enrich) | GET | `/enhance?url=X` | 25 per entity |
+
+**Search capabilities:** DQL (Diffbot Query Language) — search 10B+ entities by industry, location, revenue, employee count, tech stack.
+
+**Fields returned:** Company profiles, employee data, financials, news, products, technologies used.
+
+**Search example:**
+```bash
+curl "https://kg.diffbot.com/kg/v3/dql?token=$DIFFBOT_API_KEY&query=type%3AOrganization+industries%3A%22SaaS%22+nbEmployeesMin%3A50+nbEmployeesMax%3A200&size=25"
+```
+
+---
+
+## Companies House (UK — FREE)
+
+**Auth:** Free API key (register at developer.company-information.service.gov.uk)
+**Base URL:** `https://api.company-information.service.gov.uk`
+**Cost:** Completely free. No paid tiers.
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Search companies | GET | `/search/companies?q=X` | FREE |
+| Get company | GET | `/company/{number}` | FREE |
+| Get officers | GET | `/company/{number}/officers` | FREE |
+| Get filing history | GET | `/company/{number}/filing-history` | FREE |
+
+**Rate limit:** 600 requests per 5 minutes
+
+**Fields returned:** Company name, number, status, registered address, SIC codes, incorporation date, officers/directors, filing history, Persons with Significant Control.
+
+**Coverage:** UK companies only (~5M+).
+
+---
+
 ## HubSpot
 
 **Auth:** Bearer token in header `Authorization: Bearer {key}`
