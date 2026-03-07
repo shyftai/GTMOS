@@ -17,7 +17,6 @@ Before the waterfalls — what each action actually costs across providers:
 | Apollo | 1 email + 1 export credit | No (only on reveal) | No (email_status field only) | Three separate credit pools |
 | Icypeas | 1 credit ($0.005-0.019) | No | No (separate 0.01cr verify) | Credits never expire |
 | Prospeo | 1 credit ($0.007-0.039) | No | Yes (built-in) | Lifetime dedup — re-enrich same person = free |
-| Hunter.io | 1 credit (~$0.01) | No | No (separate 1cr verify) | Domain-based pattern matching |
 | Dropcontact | 1 credit (~$0.024) | No | Yes (built-in) | No database — algorithmic. GDPR compliant |
 | FindyMail | 1 credit (~$0.04) | No | Yes (<5% bounce guarantee) | Credits never expire |
 | Lemlist | 5 credits ($0.05) | No | Yes (waterfall across 7 sources) | Credits expire monthly |
@@ -210,8 +209,23 @@ Goal: find a verified business email for a known person (have name + company/dom
 | 2 | **Icypeas** | 1 credit (only on success) | Very cheap ($0.005 on Hypergrowth), credits never expire |
 | 3 | **Prospeo** | 1 credit (lifetime dedup) | Returns verified email + company data. LinkedIn URL to email is a strength |
 | 4 | **Dropcontact** | 1 credit (~$0.024) | Algorithmic (no database) — finds emails other tools miss. GDPR compliant |
-| 5 | **Hunter.io** | 1 credit (~$0.01) | Pattern-based domain search, good for common formats |
-| 6 | **FindyMail** | 1 credit (~$0.04) | <5% bounce guarantee, good last resort |
+| 5 | **FindyMail** | 1 credit (~$0.04) | <5% bounce guarantee, good last resort |
+
+**Volume per provider (programmatic API access):**
+
+| Provider | Search volume | Enrichment volume | API batch size | Rate limit |
+|----------|--------------|-------------------|----------------|------------|
+| Apollo | FREE — 600 calls/day, 50K results/query | Plan credits | 10 per bulk call | 50 req/min (free), higher on paid |
+| Icypeas | 0.02cr/result (DB), credits never expire | 1cr/email, 0.5cr/company | 5,000 per bulk | 30 req/min |
+| Prospeo | 1cr per 25 results | 1cr/person (lifetime dedup) | 50 per bulk call | Standard |
+| Crispy/SalesNav | Included in sub, no per-search cost | Included (profile data only) | Per-search | LinkedIn limits |
+| Lemlist | Included in sub (Email Pro+) | 5cr/email find | Via campaign API | Per-plan |
+| Instantly | Separate lead finder plan ($47-197/mo) | 1K-10K contacts/mo | Via lead API | Per-plan |
+| Dropcontact | 1cr/success, credits from ~€24/mo | Same as search | Batch endpoint | Standard |
+| FindyMail | 1cr/find, credits never expire | Same | Via API | Standard |
+| Crunchbase | FREE — 200 calls/min | Same (basic fields) | 25 per page | 200 req/min |
+| Diffbot | FREE — 10K credits/mo (25cr/export) | Same | Per-query | 5 req/min (free) |
+| Companies House | FREE — unlimited | Same | Per-query | 600 req/5min |
 
 **After finding — always verify:**
 

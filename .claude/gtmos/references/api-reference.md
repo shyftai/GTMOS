@@ -245,26 +245,6 @@ curl -X POST "https://api.prospeo.io/enrich-company" \
 
 ---
 
-## Hunter.io
-
-**Auth:** API key as query param `api_key`
-**Base URL:** `https://api.hunter.io/v2`
-
-| Action | Method | Endpoint | Credits |
-|--------|--------|----------|---------|
-| Email finder | GET | `/email-finder?domain=X&first_name=X&last_name=X` | 1 |
-| Email verifier | GET | `/email-verifier?email=X` | 1 |
-| Domain search | GET | `/domain-search?domain=X` | 1 |
-
-**Rate limits:** 15 req/s (finder), 10 req/s (verifier)
-
-**Email finder example:**
-```bash
-curl "https://api.hunter.io/v2/email-finder?domain=acme.com&first_name=John&last_name=Doe&api_key=$HUNTER_API_KEY"
-```
-
----
-
 ## Dropcontact
 
 **Auth:** Token in header `X-Access-Token`
