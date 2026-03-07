@@ -175,45 +175,114 @@ Via `pratikdani/sales-navigator-company-search-scraper-no-cookies` or similar ac
 
 **Cost structure:** Apify compute (~$0.50/1K companies) + optional residential proxies. No per-result fee from the actor itself (pay-per-event model).
 
-### Crispy / Sales Navigator — People Search
+### Crispy / Sales Navigator — People Search (`search_people`)
 
-Search returns per result:
-- `id` (provider ID — needed for full profile scrape)
-- `name`, `headline`, `location`
-- `profile_url`, `public_identifier`, `profile_picture`
-- `network_distance` (1st, 2nd, 3rd)
-- `shared_connections` count
-- `current_positions[]` — role, company, company_id, location, tenure
-- Flags: `pending_invitation`, `premium`, `open_profile`
+| Field | Description |
+|-------|-------------|
+| `provider_id` | SN provider ID (e.g. ACwAAAZ...) |
+| `name` | Full name |
+| `headline` | Current headline |
+| `location` | Geographic location |
+| `industry` | Industry |
+| `profile_url` | LinkedIn profile URL |
+| `public_identifier` | Public slug |
+| `profile_picture` | Avatar URL |
+| `network_distance` | 1st/2nd/3rd/out of network |
+| `shared_connections` | Count of mutual connections |
+| `current_positions[]` | Role, company, company_id, location, tenure_at_role, tenure_at_company |
+| `education[]` | School, degree |
+| `work_experience[]` | Role, company, industry (top 3) |
+| `last_outreach` | Last outreach type + date (if any) |
+| `flags.can_send_inmail` | InMail eligibility |
+| `flags.pending_invitation` | Pending invite exists |
+| `flags.premium` | Premium member |
+| `flags.open_profile` | Accepts free InMails |
 
-### Crispy / Sales Navigator — Full Profile Scrape (`get_profile`)
+### Crispy / Sales Navigator — Company Search (`search_companies`)
 
-On top of search fields:
-- `summary` — full bio/about text
-- `connections` — total connection count
-- `work_experience[]` — every role: position, company, company_id, location, description, start/end dates, current flag
-- `skills[]` — all listed skills
-- `education[]` — school, degree, field of study
-- `languages[]` — language + proficiency
-- `volunteering[]` — role, organization, cause
-- `contact_info.socials[]` — Twitter, websites
-- Flags: `premium`, `creator`, `hiring`, `open_to_work`, `can_send_inmail`
+| Field | Description |
+|-------|-------------|
+| `provider_id` | Company ID |
+| `name` | Company name |
+| `location` | HQ location (SN often returns null here) |
+| `industry` | Industry |
+| `summary` | Company description |
+| `profile_url` | LinkedIn company page URL |
+| `followers` | Follower count (if available) |
+| `headcount` | String like "12K+" |
+| `job_offers` | Open job count (if available) |
 
-### Crispy / Sales Navigator — Company Profile (`get_company_profile`)
+### Crispy / Sales Navigator — Person Profile Scrape (`get_profile`)
 
-- `description`, `tagline`, `website`
-- `industry[]`, `employee_count`, `followers`
-- `headquarters` (city + country)
-- `growth.avg_tenure` — average employee tenure
-- `logo`
+| Field | Description |
+|-------|-------------|
+| `provider_id` | SN provider ID |
+| `name` | Full name |
+| `headline` | Current headline |
+| `location` | Location |
+| `summary` | About section |
+| `profile_url` | Public profile URL |
+| `public_identifier` | Slug |
+| `profile_picture` | Avatar URL |
+| `network_distance` | Degree of connection |
+| `connections` | Connection count |
+| `followers` | Follower count (often null in SN, works in classic) |
+| `shared_connections` | Mutual connections |
+| `work_experience[]` | Position, company, company_id, location, description, current, start/end (top 5) |
+| `skills[]` | Skill names (top 10) |
+| `education[]` | School, degree, field of study (top 3) |
+| `languages[]` | Name + proficiency |
+| `certifications[]` | Name, organization, URL (top 5) |
+| `volunteering[]` | Role, company, cause (top 3) |
+| `contact_info` | Emails, phones, socials (when available) |
+| `websites[]` | Personal/company websites |
+| `hashtags[]` | Topics they follow/post about |
+| `locale` | Primary language + country |
+| `invitation` | Pending invite status (type + status) |
+| `flags.premium` | Premium member |
+| `flags.creator` | Creator mode |
+| `flags.influencer` | LinkedIn Top Voice |
+| `flags.hiring` | Actively hiring |
+| `flags.open_to_work` | Open to opportunities |
+| `flags.open_profile` | Accepts free InMails |
+| `flags.can_send_inmail` | InMail eligible |
+| `flags.saved_lead` | Already saved in SN |
+| `flags.crm_imported` | Imported to CRM |
+| `flags.relationship` | Existing SN relationship |
+
+### Crispy / Sales Navigator — Company Profile Scrape (`get_company_profile`)
+
+| Field | Description |
+|-------|-------------|
+| `name` | Company name |
+| `public_identifier` | URL slug |
+| `description` | Full description |
+| `tagline` | Company tagline |
+| `website` | Company website |
+| `phone` | Company phone |
+| `industry[]` | Industries |
+| `employee_count` | Exact employee count |
+| `followers` | Follower count |
+| `organization_type` | PUBLIC_COMPANY, PRIVATELY_HELD, etc. |
+| `founded` | Foundation date |
+| `profile_url` | LinkedIn company URL |
+| `logo` | Logo URL |
+| `headquarters` | City, country, area |
+| `other_locations[]` | All other offices |
+| `growth.total` | Total headcount (from insights) |
+| `growth.avg_tenure` | Average employee tenure |
+| `growth.growth_rates[]` | Growth % by time period |
+| `growth.headcount_history[]` | Last 6 headcount data points |
+| `flags.following` | Whether you follow this company |
+| `flags.employee` | Whether you work here |
 
 ### Crispy / Sales Navigator — NOT available
 
-- Email addresses (no personal or work email)
-- Phone numbers
 - Revenue / funding data
 - Technologies / tech stack
-- Company founding year
+- SIC/NAICS codes
+
+**Note:** `contact_info` on person profiles may contain emails/phones when the person has made them public on LinkedIn, but this is rare. Do NOT rely on Crispy for email/phone — always use the email finding waterfall.
 
 ---
 
