@@ -1,10 +1,10 @@
 ---
 name: gtm:feedback
-description: Submit feedback, report a bug, or request a feature for GTMOS
+description: Submit feedback, report a bug, or request a feature for GTM:OS
 argument-hint: "[bug|feature|idea]"
 ---
 <objective>
-Collect user feedback about GTMOS and submit it as a GitHub issue on the GTMOS repo.
+Collect user feedback about GTM:OS and submit it as a GitHub issue on the GTMOS repo.
 
 Type: $ARGUMENTS (optional — will ask if not provided)
 </objective>
@@ -14,14 +14,14 @@ Type: $ARGUMENTS (optional — will ask if not provided)
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // FEEDBACK >>`
+1. Display mode header: `<< GTM:OS // FEEDBACK >>`
 
 2. If no type specified, ask:
 ```
   What kind of feedback?
 
   1. Bug report — something isn't working right
-  2. Feature request — something you wish GTMOS could do
+  2. Feature request — something you wish GTM:OS could do
   3. Idea — general improvement or suggestion
 
   >> 1, 2, or 3?
@@ -36,7 +36,7 @@ Type: $ARGUMENTS (optional — will ask if not provided)
 - Which workspace/campaign? (if applicable)
 
 **Feature request:**
-- What do you want GTMOS to do?
+- What do you want GTM:OS to do?
 - Why is this useful? What problem does it solve?
 - How urgent is this for your workflow?
 
@@ -61,7 +61,7 @@ Type: $ARGUMENTS (optional — will ask if not provided)
    - Run: `gh issue create --repo shyftai/GTMOS --title "{title}" --body "{body}" --label "{type}"`
    - Labels: `bug`, `enhancement`, `idea`
    - Add system context automatically:
-     - GTMOS version (latest commit hash)
+     - GTM:OS version (latest commit hash)
      - Active workspace name (if any)
      - Tools connected (from TOOLS.md, if loaded)
 
@@ -69,7 +69,7 @@ Type: $ARGUMENTS (optional — will ask if not provided)
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Feedback submitted. Thanks for helping improve GTMOS.
+  Feedback submitted. Thanks for helping improve GTM:OS.
 
   Issue: {url}
 

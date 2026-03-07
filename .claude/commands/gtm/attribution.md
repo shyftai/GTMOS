@@ -16,7 +16,7 @@ Workspace and optional campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // ATTRIBUTION >>`
+1. Display mode header: `<< GTM:OS // ATTRIBUTION >>`
 2. Load TOOLS.md — check which CRM (Attio or HubSpot) and sending tools (Instantly, Lemlist, Smartlead) are active
 3. Load workspace.config.md — check which attribution model is selected (default: first touch)
 4. Determine mode:
@@ -34,14 +34,14 @@ Workspace and optional campaign: $ARGUMENTS
    - Time to meeting, time to close
    - Full funnel conversion rates (sent, reply, positive, meeting, proposal, won)
 10. Identify best and worst performers across persona, channel, touch, signal, source
-11. Display full attribution report in GTMOS box format
+11. Display full attribution report in GTM:OS box format
 12. Update performance/attribution.md with latest data
 
 **Cross-campaign comparison:**
 5. Load all campaign directories in the workspace
 6. For each campaign, load performance/results.md, PIPELINE.md, COSTS.md, performance/attribution.md
 7. Aggregate metrics per campaign: contacts, cost, meetings, deals, revenue, ROI, cost/meeting
-8. Display comparison table in GTMOS box format
+8. Display comparison table in GTM:OS box format
 9. Flag the top performer (highest ROI) and underperformer (lowest ROI or no deals)
 
 **Both modes:**

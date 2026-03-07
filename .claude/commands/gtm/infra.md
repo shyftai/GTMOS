@@ -15,7 +15,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // INFRASTRUCTURE CHECK >>`
+1. Display mode header: `<< GTM:OS // INFRASTRUCTURE CHECK >>`
 2. Load workspace INFRASTRUCTURE.md
 3. Load workspace SUPPRESSION.md
 4. Run domain audit:

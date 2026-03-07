@@ -15,7 +15,7 @@ Workspace and domain: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // DOMAIN RECOVERY >>`
+1. Display mode header: `<< GTM:OS // DOMAIN RECOVERY >>`
 2. Load INFRASTRUCTURE.md and identify the affected domain
 3. Phase 1 — Stop: pause all cold sending, document current state, identify cause
 4. Phase 2 — Clean: remove bounces, fix DNS, re-validate lists

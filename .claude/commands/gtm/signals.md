@@ -17,7 +17,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // SIGNAL SCAN >>`
+1. Display mode header: `<< GTM:OS // SIGNAL SCAN >>`
 2. Load workspace context — ICP.md, TOOLS.md, shipped list, signal-angles.md
 3. Check which signal tools are active in TOOLS.md — skip inactive/missing keys
 4. Display signal scan plan (active sources, skipped sources, contact count)

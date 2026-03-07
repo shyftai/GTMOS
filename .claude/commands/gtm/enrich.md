@@ -20,7 +20,7 @@ Types: email | phone | people | company | people-search | company-search | full
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // ENRICHMENT >>`
+1. Display mode header: `<< GTM:OS // ENRICHMENT >>`
 2. Load workspace context — TOOLS.md, RULES.md, COSTS.md
 3. Check .env for available API keys — determine which waterfall sources are active
 

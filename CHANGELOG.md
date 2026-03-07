@@ -1,10 +1,30 @@
-# Changelog — GTMOS
+# Changelog — GTM:OS
 
 All notable changes to this project are documented here.
 
 ---
 
 ## [Unreleased]
+
+## [1.0.0] — 2026-03-07
+
+### Added
+- **Compliance configuration** (`/gtm:compliance`) — toggle privacy and anti-spam regulations per workspace. Supports CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, and Australian Spam Act. Auto-detects from target geography. Pre-flight checks enforce active regulation requirements before every send
+- Regulation auto-detection from ICP geography during onboarding
+- Legitimate interest documentation template for GDPR
+- CASL consent tracking (type, source, date) per contact
+- Right to erasure workflow (GDPR Article 17)
+- Data retention policies per regulation
+- Compliance footer templates per regulation and language
+- Per-regulation pre-flight checks in shipping command
+- Active regulations table in SUPPRESSION.md template
+
+### Changed
+- **Rebranded from GTMOS to GTM:OS** — new banner, updated mode headers, all user-facing text
+- Compliance section in RULES-GLOBAL.md expanded with per-regulation rules
+- Compliance defaults in defaults.md expanded with all 7 regulations
+- Shipping pre-flight checklist now regulation-aware (checks only active regulations)
+- Onboarding now includes compliance configuration step with auto-detection
 
 ## [0.9.0] — 2026-03-07
 
@@ -111,9 +131,9 @@ All notable changes to this project are documented here.
 - Smart dashboard (`/gtm:dashboard`) — scans workspace state and surfaces what needs attention
 - ICP auto-refinement (`/gtm:auto-refine`) — suggests ICP, persona, and copy changes based on campaign data
 - Tool migration playbooks — step-by-step guides for switching between tools
-- Tool setup guides — how to configure each tool to work with GTMOS
+- Tool setup guides — how to configure each tool to work with GTM:OS
 - Performance trending — weekly metrics tracking with pattern detection per campaign
-- Copy swipe file — full anonymized sequence examples demonstrating GTMOS principles
+- Copy swipe file — full anonymized sequence examples demonstrating GTM:OS principles
 - Centralized defaults reference — all overridable per workspace
 - Smarter CLAUDE.md with pre-loaded reference index
 - Changelog
@@ -170,7 +190,7 @@ All notable changes to this project are documented here.
 ## [0.0.1] — 2026-03-07
 
 ### Added
-- Initial GTMOS framework
+- Initial GTM:OS framework
 - Five sources of truth: ICP.md, PERSONA.md, BRIEFING.md, TOV.md, RULES.md
 - Workspace isolation with template system
 - Intake interview (14-block onboarding)

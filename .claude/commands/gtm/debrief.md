@@ -18,7 +18,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // DEBRIEF >>`
+1. Display mode header: `<< GTM:OS // DEBRIEF >>`
 2. Load performance/results.md + approved copy + AB-TESTS.md
 3. Load PIPELINE.md for full-funnel conversion analysis
 4. Load BENCHMARKS.md for industry comparison

@@ -16,7 +16,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // LIST BUILD >>`
+1. Display mode header: `<< GTM:OS // LIST BUILD >>`
 2. Load workspace context — ICP.md, campaign.config.md
 3. Check context/research/list-seeds-*.md for existing research seeds
 4. Display workspace header

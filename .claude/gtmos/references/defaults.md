@@ -101,6 +101,14 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 
 | Setting | Default | Override in |
 |---------|---------|-------------|
+| All regulations | OFF by default — opt in via `/gtm:compliance` | SUPPRESSION.md `## Active regulations` |
+| CAN-SPAM | OFF (enable if targeting US) | SUPPRESSION.md |
+| GDPR | OFF (enable if targeting EU/UK) | SUPPRESSION.md |
+| CASL | OFF (enable if targeting Canada) | SUPPRESSION.md |
+| CCPA/CPRA | OFF (enable if targeting California) | SUPPRESSION.md |
+| PECR | OFF (enable with GDPR for UK) | SUPPRESSION.md |
+| LGPD | OFF (enable if targeting Brazil) | SUPPRESSION.md |
+| Australian Spam Act | OFF (enable if targeting Australia) | SUPPRESSION.md |
 | Unsubscribe mechanism | Required on every email | SUPPRESSION.md (non-overridable) |
 | Physical address | Required on every email | SUPPRESSION.md (non-overridable) |
 | Suppression check before send | Always | SUPPRESSION.md (non-overridable) |
@@ -108,6 +116,10 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Bounce handling — soft | Retry once after 48h, then suppress | RULES-GLOBAL.md |
 | Bounce rate pause threshold | 5% | RULES-GLOBAL.md |
 | Spam complaint pause threshold | 0.3% | RULES-GLOBAL.md |
+| GDPR data retention | Campaign + 30 days | SUPPRESSION.md |
+| CASL consent tracking | Required when CASL is ON | SUPPRESSION.md (non-overridable) |
+| Right to erasure | Process within 30 days | SUPPRESSION.md (non-overridable) |
+| Regulation auto-detect | ON during onboarding | `/gtm:compliance` |
 
 ## Budget defaults
 

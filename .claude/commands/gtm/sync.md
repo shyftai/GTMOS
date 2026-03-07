@@ -16,7 +16,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // DATA SYNC >>`
+1. Display mode header: `<< GTM:OS // DATA SYNC >>`
 2. Load TOOLS.md — identify active tools in bidirectional or read mode
 3. Check .env for API keys — skip tools with missing keys
 4. Display sync plan: active tools, skipped tools, last sync timestamp

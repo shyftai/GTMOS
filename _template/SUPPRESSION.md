@@ -10,6 +10,40 @@ This list takes absolute priority over any list, campaign, or signal.
 
 ---
 
+## Active regulations
+
+Optional. All regulations are OFF by default. Enable what you need with `/gtm:compliance`, or ignore entirely.
+
+| Regulation | Status | Reason |
+|------------|--------|--------|
+| CAN-SPAM (US) | OFF | |
+| GDPR (EU/UK) | OFF | |
+| CASL (Canada) | OFF | |
+| CCPA/CPRA (California) | OFF | |
+| PECR (UK) | OFF | |
+| LGPD (Brazil) | OFF | |
+| Australian Spam Act | OFF | |
+
+> All OFF by default. Turn on what applies to you. Run `/gtm:compliance --auto-detect` to set from ICP.md, or leave them all off.
+
+### Legitimate interest documentation (required when GDPR is ON)
+- **Purpose:**
+- **Necessity:**
+- **Balancing test:**
+
+### CASL consent tracking (required when CASL is ON)
+Maintain consent type and source for every Canadian contact in your list CSVs. Required columns: `casl_consent_type` (express/implied), `casl_consent_source`, `casl_consent_date`.
+
+### Data retention policy
+| Regulation | Retention period | Action after |
+|------------|-----------------|--------------|
+| GDPR | Campaign + 30 days | Delete or anonymize |
+| CASL | Until consent expires | Delete consent records after 3 years |
+| CCPA/CPRA | 12 months | Delete on request |
+| LGPD | Campaign + 30 days | Delete or anonymize |
+
+---
+
 ## Compliance requirements
 
 ### CAN-SPAM (US)

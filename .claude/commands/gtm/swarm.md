@@ -26,7 +26,7 @@ Available operations:
 
 ## Phase 1: Initialize
 
-1. Display mode header: `<< GTMOS // SWARM >>`
+1. Display mode header: `<< GTM:OS // SWARM >>`
 2. Parse operation type from $ARGUMENTS
 3. Load workspace context — all source-of-truth files
 4. Display workspace header
@@ -86,7 +86,7 @@ For each batch, spawn an agent with:
 Agent(
   subagent_type="general-purpose",
   prompt="
-    You are a GTMOS swarm agent. Your job is to {operation} for a batch of leads.
+    You are a GTM:OS swarm agent. Your job is to {operation} for a batch of leads.
 
     RULES:
     - Draft only — never send, push, or update any external tool
@@ -115,7 +115,7 @@ Agent(
 
 Display spawning indicator:
 ```
-  << GTMOS // SWARM >>
+  << GTM:OS // SWARM >>
 
   Spawning {N} agents...
     [~] Agent 1: leads 1-10

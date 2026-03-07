@@ -16,7 +16,7 @@ argument-hint: "<workspace-name> <campaign-name> [setup|check|resolve]"
 
 ### Step 1 — Display Mode Header
 
-Display the GTMOS mode header following ui-brand.md conventions:
+Display the GTM:OS mode header following ui-brand.md conventions:
 
 ```
 Mode: A/B TEST
@@ -49,7 +49,7 @@ Load the campaign's test log from `performance/ab-tests.md` within the campaign 
 
 8. **Save test config.** Add a new row to `performance/ab-tests.md` with the test ID, today's date, variable, both variants, metric, and placeholders for results (marked as "Pending"). Set Winner to "—" and Applied to "No".
 
-9. **Display confirmation.** Show the test setup in a GTMOS-styled result box with all details. Remind the user: do not modify variants once sends begin, and let both variants reach minimum sample size before checking.
+9. **Display confirmation.** Show the test setup in a GTM:OS-styled result box with all details. Remind the user: do not modify variants once sends begin, and let both variants reach minimum sample size before checking.
 
 ---
 
@@ -63,7 +63,7 @@ Load the campaign's test log from `performance/ab-tests.md` within the campaign 
    - Number of sends for Variant B
    - Metric result for Variant B
 
-3. **Display comparison.** Show a side-by-side comparison in a GTMOS-styled box:
+3. **Display comparison.** Show a side-by-side comparison in a GTM:OS-styled box:
    ```
    +----------------------------------------------------------+
    |  A/B TEST STATUS — {{Test ID}}                            |
@@ -106,7 +106,7 @@ Load the campaign's test log from `performance/ab-tests.md` within the campaign 
    - Confidence level (High, Moderate, or Inconclusive)
    - Relative difference
 
-4. **Display result box.** Show the full GTMOS-styled A/B Test Result box as defined in the command reference, including test ID, variants, results, relative difference, winner, and confidence level.
+4. **Display result box.** Show the full GTM:OS-styled A/B Test Result box as defined in the command reference, including test ID, variants, results, relative difference, winner, and confidence level.
 
 5. **Apply forward-feed.** If a winner was declared (not Inconclusive):
    - a. **Update default:** Identify where the winning variant should replace the current default in the campaign's sequence files. Make the replacement or instruct the user to do so.

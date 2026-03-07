@@ -16,7 +16,7 @@ Workspace, campaign, and report type: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // REPORT >>`
+1. Display mode header: `<< GTM:OS // REPORT >>`
 2. Load campaign performance/results.md, PIPELINE.md, COSTS.md, AB-TESTS.md
 3. Determine report type (weekly / monthly / final — default: weekly)
 4. Generate report with these sections:

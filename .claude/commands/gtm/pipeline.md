@@ -15,7 +15,7 @@ Workspace and optional campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // PIPELINE >>`
+1. Display mode header: `<< GTM:OS // PIPELINE >>`
 2. Load workspace PIPELINE.md
 3. Load BENCHMARKS.md for comparison
 4. If campaign specified, filter to that campaign's data

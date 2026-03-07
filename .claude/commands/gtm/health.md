@@ -17,7 +17,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // HEALTH CHECK >>`
+1. Display mode header: `<< GTM:OS // HEALTH CHECK >>`
 2. Load all workspace context + sync data + shipped list + approved copy
 3. Load INFRASTRUCTURE.md and SUPPRESSION.md for deliverability context
 4. Load PIPELINE.md for funnel conversion data

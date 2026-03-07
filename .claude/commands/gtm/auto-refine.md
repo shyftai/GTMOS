@@ -17,7 +17,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // AUTO-REFINE >>`
+1. Display mode header: `<< GTM:OS // AUTO-REFINE >>`
 2. Load all campaign performance data, PIPELINE.md win/loss log, trends.md, AB-TESTS.md
 3. Check minimum data thresholds (200+ contacts shipped or 5+ win/loss entries)
 4. Run pattern analysis across company fit, persona, signals, copy, and timing

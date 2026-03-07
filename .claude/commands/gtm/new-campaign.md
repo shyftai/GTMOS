@@ -17,7 +17,7 @@ Workspace and campaign name: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // NEW CAMPAIGN >>`
+1. Display mode header: `<< GTM:OS // NEW CAMPAIGN >>`
 2. Parse workspace name and campaign name from $ARGUMENTS
 3. Copy workspaces/{workspace}/campaigns/_campaign-template/ to workspaces/{workspace}/campaigns/{campaign-name}/
 4. Ask campaign type:

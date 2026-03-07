@@ -16,7 +16,7 @@ Workspace and contact: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // POST-MEETING >>`
+1. Display mode header: `<< GTM:OS // POST-MEETING >>`
 2. Load workspace context — BRIEFING.md, PERSONA.md, TOV.md, PIPELINE.md, COMPETITORS.md
 3. Determine if this is pre-call (research brief) or post-call (follow-up)
 4. Pre-call: generate research brief with company overview, signals, pain points, discovery questions

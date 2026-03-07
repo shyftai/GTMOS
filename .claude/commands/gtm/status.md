@@ -4,7 +4,7 @@ description: Show workspace status and available commands
 argument-hint: "[workspace-name]"
 ---
 <objective>
-Display the GTMOS banner, workspace status, and available commands.
+Display the GTM:OS banner, workspace status, and available commands.
 
 Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
 </objective>
@@ -14,7 +14,7 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
 </execution_context>
 
 <process>
-1. Display the GTMOS startup banner
+1. Display the GTM:OS startup banner
 
 2. If no workspace specified:
    - List all workspaces in workspaces/ with name, status, and active campaigns
@@ -33,7 +33,7 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  GTMOS Commands
+  GTM:OS Commands
 
   Setup
     /gtm:onboard       Onboard a new workspace (full / --quick / deep-dive)

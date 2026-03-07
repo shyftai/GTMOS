@@ -15,7 +15,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // WARMUP STATUS >>`
+1. Display mode header: `<< GTM:OS // WARMUP STATUS >>`
 2. Load workspace INFRASTRUCTURE.md
 3. For each mailbox, display warmup progress:
 ```

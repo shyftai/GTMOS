@@ -16,7 +16,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // DASHBOARD >>`
+1. Display mode header: `<< GTM:OS // DASHBOARD >>`
 2. Load full workspace context — all files
 3. Scan and assess each area:
 

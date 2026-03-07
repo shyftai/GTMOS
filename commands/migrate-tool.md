@@ -11,7 +11,7 @@
 1. Export all contacts from active campaigns in the source tool
    - Instantly: GET `/api/v1/lead/list?api_key={key}&campaign_id={id}`
    - Lemlist: GET `/api/campaigns/{id}/export`
-2. Map columns to GTMOS standard format (csv-format.md)
+2. Map columns to GTM:OS standard format (csv-format.md)
 3. Note which contacts are mid-sequence — record their current touch position
 4. In the new tool:
    - Create the campaign with the same sequence
@@ -38,7 +38,7 @@
 
 **General CRM migration:**
 1. Export all contacts and deals from the source CRM
-2. Map fields to GTMOS standard columns + CRM-specific fields
+2. Map fields to GTM:OS standard columns + CRM-specific fields
 3. Import to new CRM
 4. Map pipeline stages — ensure stage names match PIPELINE.md
 5. Update PIPELINE.md CRM sync rules section

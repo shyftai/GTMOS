@@ -14,7 +14,7 @@ Workspace and optional campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // ARCHIVE >>`
+1. Display mode header: `<< GTM:OS // ARCHIVE >>`
 
 ## If campaign specified:
 2. Load campaign.config.md — verify status is "complete" or "paused"

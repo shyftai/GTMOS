@@ -61,7 +61,7 @@ Before writing, determine the correct language using three signals:
 
 ## Writing process
 
-All GTMOS copy principles from cold-email-skill.md still apply without exception:
+All GTM:OS copy principles from cold-email-skill.md still apply without exception:
 - Peer voice — write as a colleague, not a salesperson
 - Observation-led — open with something specific about them
 - Ruthless brevity — adapted word limits per language (see table below)

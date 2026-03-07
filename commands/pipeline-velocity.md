@@ -95,7 +95,7 @@ What to watch for:
 
 ## Display
 
-Render the pipeline velocity dashboard using the GTMOS box style.
+Render the pipeline velocity dashboard using the GTM:OS box style.
 
 ```
 +------------------------------------------------------------------+

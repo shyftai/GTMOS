@@ -4,7 +4,7 @@ description: Check data freshness, detect job changes, flag stale contacts
 argument-hint: "<workspace-name> [list-file]"
 ---
 
-You are running the GTMOS data hygiene and list decay monitoring system.
+You are running the GTM:OS data hygiene and list decay monitoring system.
 
 Read and follow these references for context, formatting, and available APIs:
 - commands/data-hygiene.md (primary logic and report format)
@@ -16,7 +16,7 @@ Read and follow these references for context, formatting, and available APIs:
 
 ### Step 1: Display Mode Header
 
-Display the GTMOS mode header for Data Hygiene using the standard box format from ui-brand.md. Include the workspace name from the argument.
+Display the GTM:OS mode header for Data Hygiene using the standard box format from ui-brand.md. Include the workspace name from the argument.
 
 ### Step 2: Load Workspace Lists and Contact Data
 
@@ -79,7 +79,7 @@ Compare against targets:
 
 ### Step 8: Display Hygiene Report
 
-Display the full hygiene report using the GTMOS box format as specified in commands/data-hygiene.md. Include:
+Display the full hygiene report using the GTM:OS box format as specified in commands/data-hygiene.md. Include:
 - Total contacts in workspace
 - Email verification breakdown (fresh / stale / unverified)
 - Job changes detected

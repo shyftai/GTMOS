@@ -1,6 +1,6 @@
 # A/B Testing — Command Reference
 
-> GTMOS Command: `ab-test`
+> GTM:OS Command: `ab-test`
 > Lifecycle: Setup > Run > Evaluate > Resolve > Forward-Feed
 
 ---
@@ -121,7 +121,7 @@ Inconclusive is a valid outcome. It means the variable you tested does not meani
 
 ## 5. Declaring a Winner
 
-When significance is reached, display results in a GTMOS results box:
+When significance is reached, display results in a GTM:OS results box:
 
 ```
 +----------------------------------------------------------+

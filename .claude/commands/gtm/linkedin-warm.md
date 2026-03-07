@@ -16,7 +16,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // LINKEDIN WARMING >>`
+1. Display mode header: `<< GTM:OS // LINKEDIN WARMING >>`
 2. Load the target list segment about to enter a LinkedIn sequence
 3. Check LinkedIn activity per contact via Crispy
 4. For active profiles: plan 3-7 day warming sequence (view → like → comment → connect)

@@ -4,7 +4,7 @@ description: Track deal velocity, detect bottlenecks, and identify stalled deals
 argument-hint: "<workspace-name> [campaign-name]"
 ---
 
-You are running the GTMOS pipeline velocity tracker. Follow these steps precisely.
+You are running the GTM:OS pipeline velocity tracker. Follow these steps precisely.
 
 ## Execution context
 
@@ -17,7 +17,7 @@ Read these files before proceeding:
 
 ## Process
 
-1. **Display mode header** — render the GTMOS mode header for "Pipeline Velocity" using ui-brand.md formatting.
+1. **Display mode header** — render the GTM:OS mode header for "Pipeline Velocity" using ui-brand.md formatting.
 
 2. **Load PIPELINE.md** — read the workspace's PIPELINE.md to get current deal data with timestamps. Parse the pipeline stages table, conversion tracking, and any existing velocity data.
 
@@ -39,7 +39,7 @@ Read these files before proceeding:
    ```
    Pull deal values from CRM, win rate from PIPELINE.md conversion tracking, and cycle length from the calculated stage durations.
 
-8. **Display velocity dashboard** — render the full pipeline velocity dashboard using the GTMOS box style from ui-brand.md. Include:
+8. **Display velocity dashboard** — render the full pipeline velocity dashboard using the GTM:OS box style from ui-brand.md. Include:
    - Velocity score
    - Stage duration table with avg, median, stall threshold, and stall count
    - Bottleneck flags with actions

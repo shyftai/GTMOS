@@ -20,7 +20,7 @@ Workspace and company: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // ACCOUNT-BASED >>`
+1. Display mode header: `<< GTM:OS // ACCOUNT-BASED >>`
 2. Load ICP.md, PERSONA.md, BRIEFING.md, SUPPRESSION.md
 3. Research and qualify the target account (Crispy, Exa, Firecrawl, Apollo)
 4. Score the account against ICP — minimum 70/100 for ABM investment

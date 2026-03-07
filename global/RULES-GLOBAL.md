@@ -18,15 +18,20 @@
 - Inbox rotation must be enabled when using multiple inboxes
 - Custom tracking domains required — never use shared tracking domains
 
-## GDPR and compliance
-- Only prospect individuals where legitimate interest applies
+## Compliance and privacy regulations
+- Active regulations are configured per workspace in SUPPRESSION.md `## Active regulations`
+- Auto-detected from target geography during onboarding — overridable via `/gtm:compliance`
+- Pre-flight checks enforce all active regulation requirements before every send
+- Only prospect individuals where legitimate interest or valid consent applies
 - Do not store personal data beyond what is needed for the campaign
 - Honour unsubscribes immediately — flag any opted-out contact before it enters a sequence
 - Every outbound email must include a physical mailing address
 - Every outbound email must have a working unsubscribe mechanism
 - Unsubscribe requests processed immediately, not "within 10 days"
-- Right to erasure: if requested, delete all data about the person
+- Right to erasure: if requested, delete all data about the person within 30 days
 - Check SUPPRESSION.md before every send — suppressed contacts are never re-contacted
+- CASL (Canada): requires consent tracking — never send to Canadian contacts without documented consent
+- Data retention: follow the retention policy in SUPPRESSION.md for each active regulation
 
 ## Copy ethics
 - Never fabricate proof points, data, or case study details

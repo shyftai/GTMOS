@@ -16,7 +16,7 @@ Workspace, campaign, and optional platform filter: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // AUDIENCE SYNC >>`
+1. Display mode header: `<< GTM:OS // AUDIENCE SYNC >>`
 2. Load TOOLS.md — check which ad platforms are active
 3. Check .env for ad platform API keys (LINKEDIN_ADS_TOKEN, META_ACCESS_TOKEN, GOOGLE_ADS_DEVELOPER_TOKEN)
 4. Load the campaign's contact/company list from lists/

@@ -43,7 +43,7 @@ Optionally push your ABM target account list or contact list to ad platforms as 
   │    [ ] Google Ads      (no API key)              │
   │                                                 │
   │  Action: CREATE new audience                    │
-  │  Audience name: "GTMOS — {campaign_name}"       │
+  │  Audience name: "GTM:OS — {campaign_name}"       │
   │                                                 │
   └─────────────────────────────────────────────────┘
   >> Sync now? (y/n)
@@ -83,8 +83,8 @@ Headers:
 
 Body:
 {
-  "name": "GTMOS — {campaign_name}",
-  "sourcePlatform": "GTMOS",
+  "name": "GTM:OS — {campaign_name}",
+  "sourcePlatform": "GTM:OS",
   "account": "urn:li:sponsoredAccount:{LINKEDIN_AD_ACCOUNT_ID}",
   "type": "COMPANY",
   "destinations": [{ "destination": "LINKEDIN" }]
@@ -161,8 +161,8 @@ For targeting specific people (e.g., decision-makers) instead of entire companie
 POST https://api.linkedin.com/rest/dmpSegments
 Body:
 {
-  "name": "GTMOS — {campaign_name} contacts",
-  "sourcePlatform": "GTMOS",
+  "name": "GTM:OS — {campaign_name} contacts",
+  "sourcePlatform": "GTM:OS",
   "account": "urn:li:sponsoredAccount:{LINKEDIN_AD_ACCOUNT_ID}",
   "type": "USER",
   "destinations": [{ "destination": "LINKEDIN" }]
@@ -204,9 +204,9 @@ Headers:
 
 Body:
 {
-  "name": "GTMOS — {campaign_name}",
+  "name": "GTM:OS — {campaign_name}",
   "subtype": "CUSTOM",
-  "description": "ABM target accounts from GTMOS campaign",
+  "description": "ABM target accounts from GTM:OS campaign",
   "customer_file_source": "USER_PROVIDED_ONLY",
   "access_token": "$META_ACCESS_TOKEN"
 }
@@ -257,7 +257,7 @@ Body:
 {
   "operations": [{
     "create": {
-      "name": "GTMOS — {campaign_name}",
+      "name": "GTM:OS — {campaign_name}",
       "description": "ABM target accounts",
       "membershipLifeSpan": 90,
       "crmBasedUserList": {
@@ -322,10 +322,10 @@ POST https://googleads.googleapis.com/v18/{offlineUserDataJobResourceName}:run
 
 ```
   ── AUDIENCE SYNC COMPLETE ────────────────────────
-  LinkedIn Ads:  ✓  142 companies pushed → "GTMOS — Q1 ABM"
+  LinkedIn Ads:  ✓  142 companies pushed → "GTM:OS — Q1 ABM"
                     Status: BUILDING (ready in ~48h)
                     Segment ID: 10804
-  Meta:          ✓  287 contacts pushed → "GTMOS — Q1 ABM"
+  Meta:          ✓  287 contacts pushed → "GTM:OS — Q1 ABM"
                     Audience ID: 23850123456
                     Est. match rate: processing...
   Google Ads:    ○  skipped (no API key)

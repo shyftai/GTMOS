@@ -1,38 +1,38 @@
 <ui_patterns>
 
-Visual patterns for user-facing GTMOS output. All commands @-reference this file.
+Visual patterns for user-facing GTM:OS output. All commands @-reference this file.
 
 ## Brand Color
 
-GTMOS brand color is **orange** (ANSI 208).
+GTM:OS brand color is **orange** (ANSI 208).
 - Use `\033[38;5;208m` to set orange text, `\033[0m` to reset
-- Apply orange to: the GTMOS block-letter banner, mode headers (`<< GTMOS // MODE >>`), section titles in dashboards
+- Apply orange to: the GTM:OS block-letter banner, mode headers (`<< GTM:OS // MODE >>`), section titles in dashboards
 - Use white/default for: body text, data values, box borders
 - If terminal doesn't support color, display everything in plain white
 - Never use blue, green, or red as brand colors — those are reserved for status indicators
 
 ## Startup Banner
 
-Display once when GTMOS loads. Render the block letters in orange.
+Display once when GTM:OS loads. Render the block letters in orange.
 
 ```
- ██████╗ ████████╗███╗   ███╗ ██████╗ ███████╗
-██╔════╝ ╚══██╔══╝████╗ ████║██╔═══██╗██╔════╝
-██║  ███╗   ██║   ██╔████╔██║██║   ██║███████╗
-██║   ██║   ██║   ██║╚██╔╝██║██║   ██║╚════██║
-╚██████╔╝   ██║   ██║ ╚═╝ ██║╚██████╔╝███████║
- ╚═════╝    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚══════╝
+ ██████╗ ████████╗███╗   ███╗ ██╗  ██████╗ ███████╗
+██╔════╝ ╚══██╔══╝████╗ ████║ ╚═╝ ██╔═══██╗██╔════╝
+██║  ███╗   ██║   ██╔████╔██║     ██║   ██║███████╗
+██║   ██║   ██║   ██║╚██╔╝██║ ██╗ ██║   ██║╚════██║
+╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
+ ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  T H E   G T M   O P E R A T I N G   S Y S T E M
+  G T M : O S
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ## Mode Headers
 
-Use for workflow transitions. GTMOS uses angle brackets, not GSD's arrows.
+Use for workflow transitions. GTM:OS uses angle brackets, not GSD's arrows.
 
 ```
-<< GTMOS // {MODE NAME} >>
+<< GTM:OS // {MODE NAME} >>
 ```
 
 **Mode names (uppercase, rendered in orange):**
@@ -324,7 +324,7 @@ Status: `[x]` under threshold, `[!]` above threshold, `[!!]` over budget
 
 Spawning indicator:
 ```
-  << GTMOS // SWARM >>
+  << GTM:OS // SWARM >>
 
   Spawning 4 agents...
     [~] Agent 1: leads 1-10
@@ -394,12 +394,12 @@ For multiple missing tools during onboarding:
 
 ---
 
-## Anti-Patterns — What GTMOS never does
+## Anti-Patterns — What GTM:OS never does
 
 - Never use `GSD ►` prefix — that is GSD's brand
 - Never use `╔═══╗` double-line boxes — that is GSD's checkpoint style
 - Never use random emoji (no rockets, sparkles, stars)
-- Never use `◆ ○` status dots — GTMOS uses `[x] [ ] [~]`
+- Never use `◆ ○` status dots — GTM:OS uses `[x] [ ] [~]`
 - Never vary box widths within the same output
 - Never skip the five-check validation display on copy or list output
 - Never show tool links as bare URLs in paragraphs — always use the tool link box

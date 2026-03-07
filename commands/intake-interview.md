@@ -94,8 +94,17 @@ Flag any active tools with missing API keys using the MISSING TOOLS box from too
 - What is the physical mailing address for email footers?
 - Are you targeting EU contacts? (GDPR applies)
 - Are you targeting California residents? (CCPA applies)
+- Are you targeting Canadian contacts? (CASL applies)
+- Are you targeting UK contacts? (PECR applies)
 - Do you have an existing suppression/do-not-contact list to import?
 - What is your unsubscribe handling process today?
+
+### Compliance configuration
+- Auto-detect regulations from target geographies in ICP.md
+- Display detected regulations and ask user to confirm
+- If GDPR detected: prompt for legitimate interest documentation
+- If CASL detected: explain consent tracking requirements
+- Save active regulations to SUPPRESSION.md `## Active regulations`
 
 ## Block 11 — CRM pipeline questions
 - What CRM are you using? (Attio / HubSpot / Salesforce / other)

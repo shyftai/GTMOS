@@ -17,7 +17,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // DEEP DIVE >>`
+1. Display mode header: `<< GTM:OS // DEEP DIVE >>`
 
 2. Ask what data sources are available:
 ```

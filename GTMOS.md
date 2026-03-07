@@ -1,16 +1,16 @@
-# GTMOS — The GTM Operating System
+# GTM:OS — The GTM Operating System
 
 On every startup, display this banner before doing anything else:
 
 ```
- ██████╗ ████████╗███╗   ███╗ ██████╗ ███████╗
-██╔════╝ ╚══██╔══╝████╗ ████║██╔═══██╗██╔════╝
-██║  ███╗   ██║   ██╔████╔██║██║   ██║███████╗
-██║   ██║   ██║   ██║╚██╔╝██║██║   ██║╚════██║
-╚██████╔╝   ██║   ██║ ╚═╝ ██║╚██████╔╝███████║
- ╚═════╝    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚══════╝
+ ██████╗ ████████╗███╗   ███╗ ██╗  ██████╗ ███████╗
+██╔════╝ ╚══██╔══╝████╗ ████║ ╚═╝ ██╔═══██╗██╔════╝
+██║  ███╗   ██║   ██╔████╔██║     ██║   ██║███████╗
+██║   ██║   ██║   ██║╚██╔╝██║ ██╗ ██║   ██║╚════██║
+╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
+ ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  T H E   G T M   O P E R A T I N G   S Y S T E M
+  G T M : O S
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -39,7 +39,7 @@ On every startup, display this banner before doing anything else:
   Ready. Which workspace are we loading?
 ```
 
-**Color:** When displaying the GTMOS banner, use orange/amber ANSI color if the terminal supports it. The brand color is orange. Use `\033[38;5;208m` (ANSI 208, orange) for the block letters and `\033[0m` to reset. If the terminal does not support color, display in plain white.
+**Color:** When displaying the GTM:OS banner, use orange/amber ANSI color if the terminal supports it. The brand color is orange. Use `\033[38;5;208m` (ANSI 208, orange) for the block letters and `\033[0m` to reset. If the terminal does not support color, display in plain white.
 
 ---
 
@@ -57,7 +57,7 @@ Your job inside this repo is:
 
 ## On startup
 
-1. Display the GTMOS banner above
+1. Display the GTM:OS banner above
 2. Read global/COLLABORATION.md — check if mode is `solo` or `team`
    - If `team`: verify SUPABASE_URL and SUPABASE_ANON_KEY in .env. If missing, warn and fall back to solo.
    - If `solo`: proceed normally — all state is file-based.
@@ -100,7 +100,7 @@ Do not proceed with any task until this is confirmed.
 
 ## Collaboration mode
 
-GTMOS supports two modes, configured in `global/COLLABORATION.md`:
+GTM:OS supports two modes, configured in `global/COLLABORATION.md`:
 
 ### Solo mode (default)
 All state lives in markdown files. No database needed. One operator per workspace.
@@ -122,9 +122,18 @@ Run `/gtm:collab setup` to enable team mode. See `global/COLLABORATION.md` for f
 
 ---
 
+## Compliance configuration
+- Regulations are configured per workspace in SUPPRESSION.md `## Active regulations`
+- Auto-detected from ICP geography during onboarding
+- Supported: CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, Australian Spam Act
+- Pre-flight checks enforce active regulation requirements before every send
+- Configure with `/gtm:compliance`
+
+---
+
 ## Defaults
 
-GTMOS ships with sensible defaults for everything — copy rules, sending limits, lead scoring weights, sequence timing, compliance thresholds. See `.claude/gtmos/references/defaults.md` for the full list.
+GTM:OS ships with sensible defaults for everything — copy rules, sending limits, lead scoring weights, sequence timing, compliance thresholds. See `.claude/gtmos/references/defaults.md` for the full list.
 
 Users can override any default in their workspace files. If a workspace doesn't specify a value, use the default. Non-overridable settings (suppression checks, unsubscribe requirements, hard bounce handling) always apply.
 
@@ -189,7 +198,7 @@ After every enrichment run, update hit rate tracking in TOOLS.md so the waterfal
 - Explain rejections — say why, not just that it was rejected
 - Output a validated CSV with added columns: icp_score, lead_score, rejection_reason, review_flag
 - Save output to lists/validated/ inside the active campaign folder
-- When importing from external tools, map their column names to GTMOS standard columns
+- When importing from external tools, map their column names to GTM:OS standard columns
 
 ---
 

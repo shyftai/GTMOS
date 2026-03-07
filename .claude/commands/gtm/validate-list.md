@@ -19,7 +19,7 @@ Workspace and file: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // LIST BUILD >>`
+1. Display mode header: `<< GTM:OS // LIST BUILD >>`
 2. Load workspace context — ICP.md, RULES.md, SUPPRESSION.md, global/RULES-GLOBAL.md
 
 ## Step 1 — Clean (auto-runs before validation)
@@ -36,7 +36,7 @@ Workspace and file: $ARGUMENTS
 5. Show flagged records for review before proceeding
 
 ## Step 1.5 — Normalize columns
-5b. Map input columns to GTMOS standard format (csv-format.md)
+5b. Map input columns to GTM:OS standard format (csv-format.md)
     - If imported from Apollo, Sales Navigator, Instantly, or Lemlist: auto-map using import mappings
     - If unknown format: display column mapping for user confirmation
 
@@ -54,7 +54,7 @@ Workspace and file: $ARGUMENTS
 8. Assign score tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
 9. Add columns: icp_score, lead_score, score_tier, rejection_reason, review_flag
 10. Sort by lead_score descending
-11. Save to lists/validated/ in GTMOS standard CSV format
+11. Save to lists/validated/ in GTM:OS standard CSV format
 12. Display list validation summary using ui-brand.md format — include score tier breakdown
 13. Suggest next action: review score-1 records, then `/gtm:ship`
 </process>

@@ -17,13 +17,14 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // SHIP >>`
+1. Display mode header: `<< GTM:OS // SHIP >>`
 2. Load workspace context — TOOLS.md, INFRASTRUCTURE.md, SUPPRESSION.md, MULTICHANNEL.md, COSTS.md
 3. Load campaign context — campaign.config.md, BRIEFING.md, AB-TESTS.md
-4. Load sending calendar — `.claude/gtmos/references/sending-calendar.md`
-5. Check send date against each contact's country — flag any contacts whose send date falls on a local holiday
-4. Identify the sending tool from campaign.config.md (Lemlist / Instantly / Smartlead / Crispy)
-5. Identify assigned inboxes from campaign.config.md
+4. Load compliance config — SUPPRESSION.md `## Active regulations` — determine which regulation checks apply
+5. Load sending calendar — `.claude/gtmos/references/sending-calendar.md`
+6. Check send date against each contact's country — flag any contacts whose send date falls on a local holiday
+7. Identify the sending tool from campaign.config.md (Lemlist / Instantly / Smartlead / Crispy)
+8. Identify assigned inboxes from campaign.config.md
 
 ## Pre-flight checklist
 Run and display all checks before shipping:
@@ -58,10 +59,16 @@ Run and display all checks before shipping:
 ┃  [x] No holiday conflicts for send date    ┃
 ┃  [x] {n} contacts paused for local holiday ┃
 ┃                                            ┃
-┃  Compliance                                ┃
+┃  Compliance (if enabled)                   ┃
+┃  [--] Skipped — no regulations active      ┃
+┃  OR (if regulations are ON):               ┃
+┃  [x] Active regulations loaded from        ┃
+┃      SUPPRESSION.md                        ┃
 ┃  [x] Physical address set                  ┃
 ┃  [x] Unsubscribe mechanism active          ┃
-┃  [x] GDPR basis documented                 ┃
+┃  If CAN-SPAM: [x] From/Reply-to accurate  ┃
+┃  If GDPR: [x] Legitimate interest documented┃
+┃  If CASL: [x] Consent recorded per contact ┃
 ┃                                            ┃
 ┃  Budget                                    ┃
 ┃  [x] Estimated cost: {n} x {rate} = {total}┃
@@ -70,8 +77,8 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-6. If ANY check fails, stop and show what needs fixing — do not ship
-7. If all checks pass, show the shipping summary:
+9. If ANY check fails, stop and show what needs fixing — do not ship
+10. If all checks pass, show the shipping summary:
    - Tool: {sending tool}
    - Contacts: {count}
    - Sequence: {touch count} touches over {days} days
@@ -80,7 +87,7 @@ Run and display all checks before shipping:
    - Estimated daily volume: {n} per inbox
    - Estimated cost: {amount}
 
-8. Display approval gate:
+11. Display approval gate:
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  APPROVE TO SHIP?                          ┃
@@ -91,7 +98,7 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-9. On approval:
+12. On approval:
    - Push contacts to sending tool
    - Push sequence to sending tool
    - Configure send timing and inbox rotation
@@ -102,7 +109,7 @@ Run and display all checks before shipping:
    - Log ship event in logs/decisions.md
    - Copy shipped list to lists/shipped/
 
-10. Display confirmation and suggest next actions:
+13. Display confirmation and suggest next actions:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

@@ -15,7 +15,7 @@ Workspace and campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // REPLY DESK >>`
+1. Display mode header: `<< GTM:OS // REPLY DESK >>`
 2. Load workspace context — PERSONA.md, TOV.md, BRIEFING.md, TOOLS.md
 3. Pull unprocessed replies from active tools
 4. Classify each reply into one of seven types

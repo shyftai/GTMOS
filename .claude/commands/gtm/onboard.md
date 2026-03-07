@@ -17,8 +17,8 @@ Workspace name: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display the GTMOS startup banner from ui-brand.md
-2. Display mode header: `<< GTMOS // ONBOARDING >>`
+1. Display the GTM:OS startup banner from ui-brand.md
+2. Display mode header: `<< GTM:OS // ONBOARDING >>`
 3. Create workspace folder by copying _template/ to workspaces/$ARGUMENTS/
 4. Ask: "How do you want to onboard?"
    - **Quick start** (5 blocks) — get running in minutes, fill the rest later

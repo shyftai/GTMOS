@@ -14,7 +14,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // SWITCHING >>`
+1. Display mode header: `<< GTM:OS // SWITCHING >>`
 2. Confirm the target workspace exists in workspaces/
 3. If not found, list available workspaces and prompt for selection
 4. Load all source-of-truth files from the new workspace:

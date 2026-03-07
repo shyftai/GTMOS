@@ -1,8 +1,8 @@
-# GTMOS — The GTM Operating System
+# GTM:OS — The GTM Operating System
 
 > Turn Claude Code into a full outbound campaign engine. Brief it. Build it. Ship it. Measure it.
 
-GTMOS is a Claude Code plugin that runs your entire go-to-market workflow — from ICP definition to list building, copy writing, shipping sequences, handling replies, and reporting on results. It connects to your outbound stack via API, enforces quality at every step, and never ships anything that drifts from the brief.
+GTM:OS is a Claude Code plugin that runs your entire go-to-market workflow — from ICP definition to list building, copy writing, shipping sequences, handling replies, and reporting on results. It connects to your outbound stack via API, enforces quality at every step, and never ships anything that drifts from the brief.
 
 **Built for:** agencies, growth teams, founders, and solo operators running B2B outbound.
 
@@ -134,7 +134,7 @@ Reads are auto-approved. Writes follow credit rules per workspace. Every write i
 
 ## Smart defaults, full control
 
-GTMOS ships with sensible defaults for everything:
+GTM:OS ships with sensible defaults for everything:
 
 - **Copy:** 2-4 word lowercase subjects, 75-word first touch, interest-based CTAs, banned spam words
 - **Sending:** 40 emails/inbox/day, 14-day warmup minimum, holiday blackouts for 20+ countries
@@ -158,6 +158,7 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:switch <name>` | Switch active workspace |
 | `/gtm:status` | Show workspace status and commands |
 | `/gtm:dashboard <ws>` | Smart dashboard — what needs attention now |
+| `/gtm:compliance <ws>` | Configure privacy regulation toggles (GDPR, CAN-SPAM, CASL, etc.) |
 
 ### Build
 | Command | What it does |
@@ -254,7 +255,7 @@ Configure in COLLABORATION.md. Works via Slack MCP.
 
 ## Team mode (optional)
 
-By default GTMOS runs in **solo mode** — all state lives in markdown, no database needed.
+By default GTM:OS runs in **solo mode** — all state lives in markdown, no database needed.
 
 For teams, enable **team mode** with Supabase:
 

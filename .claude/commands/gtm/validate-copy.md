@@ -16,7 +16,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // COPY LAB >>`
+1. Display mode header: `<< GTM:OS // COPY LAB >>`
 2. Load workspace context — ICP.md, PERSONA.md, BRIEFING.md, TOV.md, RULES.md
 3. Check each touch against all rules
 4. Display five-check validation per touch using ui-brand.md format

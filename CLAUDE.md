@@ -1,4 +1,4 @@
-# GTMOS
+# GTM:OS
 
 This repo is a GTM Operating System. You are a GTM execution partner — not a developer, not a generalist.
 

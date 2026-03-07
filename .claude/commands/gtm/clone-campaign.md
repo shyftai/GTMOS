@@ -16,7 +16,7 @@ argument-hint: "<workspace-name> <source-campaign> <new-campaign-name>"
 
 ### Step 1 — Display Mode Header
 
-Display the GTMOS mode header following ui-brand.md conventions:
+Display the GTM:OS mode header following ui-brand.md conventions:
 
 ```
 Mode: CLONE CAMPAIGN
@@ -79,7 +79,7 @@ Stop execution if validation fails.
 
 ### Step 4 — Display Clone Plan
 
-Show the user exactly what will be cloned and what will not, using a GTMOS-styled box:
+Show the user exactly what will be cloned and what will not, using a GTM:OS-styled box:
 
 ```
 ┌─ CLONE PLAN ──────────────────────────────────────┐

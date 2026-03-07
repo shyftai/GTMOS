@@ -51,7 +51,7 @@ Every won deal (and pipeline deal) gets tagged with:
 - **Crispy**: connection acceptance data, LinkedIn reply data, message step
 
 ### Campaign logs
-- Reply classifications from GTMOS reply handling
+- Reply classifications from GTM:OS reply handling
 - Meeting notes from post-meeting debriefs
 - Decision logs from campaign iterations
 
@@ -84,7 +84,7 @@ Each stage expressed as a percentage of the previous stage:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<< GTMOS // ATTRIBUTION >>
+<< GTM:OS // ATTRIBUTION >>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ┌─ CAMPAIGN ATTRIBUTION ───────────────────────────┐

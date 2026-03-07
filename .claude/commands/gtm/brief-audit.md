@@ -15,7 +15,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // AUDIT >>`
+1. Display mode header: `<< GTM:OS // AUDIT >>`
 2. Load BRIEFING.md from workspace
 3. Check: offer specificity, hook defensibility, tone guidelines, CTA clarity, constraints
 4. Display five-check format for each area — [x] or [ ] with reason

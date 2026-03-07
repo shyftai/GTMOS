@@ -15,7 +15,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // STRESS TEST >>`
+1. Display mode header: `<< GTM:OS // STRESS TEST >>`
 2. Load ICP.md from workspace
 3. Challenge each major assumption: anti-signals, job titles, pain points, scoring criteria
 4. Propose 3 edge cases that expose weaknesses

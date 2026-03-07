@@ -100,7 +100,7 @@ Flag all job changes for review. Do not auto-archive without checking ICP fit fi
 
 ## Hygiene Report Display
 
-The hygiene report uses the standard GTMOS box format:
+The hygiene report uses the standard GTM:OS box format:
 
 ```
 +=========================================================+

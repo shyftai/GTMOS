@@ -16,7 +16,7 @@ Workspace: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // RESEARCH >>`
+1. Display mode header: `<< GTM:OS // RESEARCH >>`
 2. Load workspace context from workspaces/$ARGUMENTS/
 3. Display workspace header
 4. Execute research workflow from @./commands/run-research.md

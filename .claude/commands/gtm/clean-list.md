@@ -15,7 +15,7 @@ Workspace and file: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // LIST CLEAN >>`
+1. Display mode header: `<< GTM:OS // LIST CLEAN >>`
 2. Load workspace context — SUPPRESSION.md, RULES.md
 3. Load the raw CSV from lists/raw/ (or specified file path)
 4. Display record count and column headers

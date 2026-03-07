@@ -17,7 +17,7 @@ Workspace and source campaign: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // RE-ENGAGE >>`
+1. Display mode header: `<< GTM:OS // RE-ENGAGE >>`
 2. Load SUPPRESSION.md, ICP.md, PERSONA.md
 3. Pull non-responders from source campaign (minimum 60 days since last touch)
 4. Filter out: replied contacts, suppressed contacts, ICP mismatches

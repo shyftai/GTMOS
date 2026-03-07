@@ -21,7 +21,7 @@ Workspace, language, and options: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // COPY LAB — MULTILANG >>`
+1. Display mode header: `<< GTM:OS // COPY LAB — MULTILANG >>`
 2. Parse $ARGUMENTS for workspace name, target language, touch count, and channel
 3. Detect or confirm target language:
    - If language is explicitly provided, confirm it

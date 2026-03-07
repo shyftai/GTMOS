@@ -20,7 +20,7 @@ Workspace and options: $ARGUMENTS
 </execution_context>
 
 <process>
-1. Display mode header: `<< GTMOS // COPY LAB >>`
+1. Display mode header: `<< GTM:OS // COPY LAB >>`
 2. Load workspace context — BRIEFING.md, ICP.md, PERSONA.md, TOV.md, RULES.md
 3. Load campaign.config.md for channel and touch count
 4. Load campaign type from campaign-types.md — use type defaults for touch count, spacing, and structure

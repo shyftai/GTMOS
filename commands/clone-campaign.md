@@ -1,6 +1,6 @@
 # Campaign Cloning — Command Reference
 
-> GTMOS Command: `clone-campaign`
+> GTM:OS Command: `clone-campaign`
 > Lifecycle: Select Source > Name Target > Review Clone Plan > Adjust for Segment > Create > Flag for Review
 
 ---
@@ -81,7 +81,7 @@ Examples:
 
 ### Step 3 — Review Clone Plan
 
-Before creating anything, display a clear summary of what will and will not be cloned. Show this in a GTMOS box so the user can confirm before proceeding.
+Before creating anything, display a clear summary of what will and will not be cloned. Show this in a GTM:OS box so the user can confirm before proceeding.
 
 ```
 ┌─ CLONE PLAN ──────────────────────────────────────┐

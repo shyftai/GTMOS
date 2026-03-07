@@ -22,7 +22,7 @@ Flags:
 
 ## Single workspace view (default)
 
-1. Display mode header: `<< GTMOS // COSTS >>`
+1. Display mode header: `<< GTM:OS // COSTS >>`
 2. Load COSTS.md from the workspace
 3. Display cost dashboard:
 
