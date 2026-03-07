@@ -11,7 +11,7 @@ See .claude/gtmos/references/tool-pricing.md for current pricing guidance.
 | Prospeo | credit used | | USD | 1 credit per find or verify |
 | Apify | compute unit | | USD | Varies by actor |
 | StoreLeads | record exported | | USD | E-commerce data |
-| Opemart | record exported | | USD | SMB data |
+| Openmart | record exported | | USD | SMB data |
 | HubSpot | marketing contact | 0 | USD | Free for CRM-only use |
 | Lemlist | email sent | | USD | Monthly seat / expected sends |
 | Instantly | active contact | | USD | Monthly plan / contact volume |

@@ -157,7 +157,7 @@ All notable changes to this project are documented here.
 ## [0.2.0] — 2026-03-07
 
 ### Added
-- Icypeas, Prospeo, StoreLeads, Opemart, Freckle, N8N, Supabase Edge Functions, Sentrion.ai, Fantastic.jobs
+- Icypeas, Prospeo, StoreLeads, Openmart, Freckle, N8N, Supabase Edge Functions, Sentrion.ai, Fantastic.jobs
 - Tool pricing reference with per-unit costs for all tools
 - Orange brand color (ANSI 208) for banner and mode headers
 

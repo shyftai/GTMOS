@@ -416,7 +416,7 @@ Goal: find companies matching ICP firmographics.
 | 9 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
 | 10 | **Apollo org search** | Credits (not free) | Large database but costs credits |
 | 11 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 12 | **Opemart** | Included in sub | SMB/local businesses |
+| 12 | **Openmart** | Included in sub | SMB/local businesses |
 | 13 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
 
 **Phase 2 — Company Enrichment at Volume (fill gaps on discovered companies)**

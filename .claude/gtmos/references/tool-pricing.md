@@ -75,7 +75,7 @@ Last updated: 2026-03
 - **GTMOS unit:** record exported
 - **Typical cost:** Varies by plan — check current pricing
 
-### Opemart
+### Openmart
 - **Model:** Subscription-based
 - **What it does:** Small business data — local businesses, SMBs, with contact info, industry, and location data
 - **Use case:** Prospecting small businesses, local outreach campaigns, SMB targeting

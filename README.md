@@ -175,7 +175,7 @@ GTM:OS connects to 40+ tools across the outbound stack. Use what you have — sk
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **StoreLeads** | E-commerce store database (Shopify, WooCommerce, etc.) | Subscription-based |
-| **Opemart** | Small business and SMB data with contact info | Subscription-based |
+| **Openmart** | Small business and SMB data with contact info | Subscription-based |
 
 ### CRM enrichment
 | Tool | What it does | Pricing |

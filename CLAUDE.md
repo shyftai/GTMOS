@@ -23,6 +23,7 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 - `.claude/gtmos/references/notifications.md` — Slack alert config (check on startup if team mode)
 - `.claude/gtmos/references/tool-pricing.md` — per-unit costs (load during onboarding or cost checks)
 - `.claude/gtmos/references/BENCHMARKS.md` — industry benchmarks (load during health checks and reports)
+- `.claude/gtmos/references/clay-ecosystem.md` — Clay's 150+ integrations mapped to GTM:OS (load during onboarding, migration, or tool recommendations)
 
 ## Rules
 

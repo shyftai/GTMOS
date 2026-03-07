@@ -204,7 +204,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 
 ### Lead databases
 - StoreLeads: e-commerce store database (Shopify, WooCommerce, etc.)
-- Opemart: small business and SMB data
+- Openmart: small business and SMB data
 
 ### LinkedIn automation
 - PhantomBuster: $0.01-0.05/lead — execution-time based scraping and automation

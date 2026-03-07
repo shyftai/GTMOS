@@ -93,7 +93,7 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | People enrichment waterfall | Apollo → Crispy → Apify → Prospeo | RULES.md |
 | Company enrichment waterfall | Apollo (free) → Freckle → StoreLeads → Apify | RULES.md |
 | People search waterfall | Apollo (free) → Crispy/SalesNav → Lemlist → Instantly → Apify | RULES.md |
-| Company search waterfall | Apollo (free) → StoreLeads → Opemart → Apify | RULES.md |
+| Company search waterfall | Apollo (free) → StoreLeads → Openmart → Apify | RULES.md |
 | Batch size | 50 contacts per API call | RULES.md |
 | Ship unverified emails | Never | Non-overridable |
 
