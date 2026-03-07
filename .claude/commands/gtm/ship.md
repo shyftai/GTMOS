@@ -20,6 +20,8 @@ Workspace and campaign: $ARGUMENTS
 1. Display mode header: `<< GTMOS // SHIP >>`
 2. Load workspace context — TOOLS.md, INFRASTRUCTURE.md, SUPPRESSION.md, MULTICHANNEL.md, COSTS.md
 3. Load campaign context — campaign.config.md, BRIEFING.md, AB-TESTS.md
+4. Load sending calendar — `.claude/gtmos/references/sending-calendar.md`
+5. Check send date against each contact's country — flag any contacts whose send date falls on a local holiday
 4. Identify the sending tool from campaign.config.md (Lemlist / Instantly / Smartlead / Crispy)
 5. Identify assigned inboxes from campaign.config.md
 
@@ -51,6 +53,10 @@ Run and display all checks before shipping:
 ┃  [x] DNS auth complete on all domains      ┃
 ┃  [x] Daily volume within limits            ┃
 ┃  [x] Send timing configured                ┃
+┃                                            ┃
+┃  Calendar                                  ┃
+┃  [x] No holiday conflicts for send date    ┃
+┃  [x] {n} contacts paused for local holiday ┃
 ┃                                            ┃
 ┃  Compliance                                ┃
 ┃  [x] Physical address set                  ┃

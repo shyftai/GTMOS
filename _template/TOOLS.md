@@ -80,10 +80,10 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 ### Crispy
 - Status: active / inactive
 - Mode: bidirectional / read-only / write-only
-- Push to Crispy: connection requests, LinkedIn messages
-- Pull from Crispy: connection acceptance rates, reply rates, reply content
+- Push to Crispy: connection requests, LinkedIn messages, Sales Navigator searches
+- Pull from Crispy: connection acceptance rates, reply rates, reply content, Sales Navigator lead lists
 - Credit behaviour (writes): confirm-before-every-use
-- Notes:
+- Notes: MCP server with 78 tools — connects directly to Claude Code. Includes Sales Navigator integration. No CSV exports needed — Claude Code can run LinkedIn actions via tool calls.
 
 ### Attio
 - Status: active / inactive
@@ -113,6 +113,20 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull: job post data, hiring signals, role expansion alerts
 - Used for: hiring = buying signal — company hiring for roles your product serves means they're investing in that area
 - Notes: Pick one — both do job post monitoring
+
+### Jungler.ai
+- Status: active / inactive
+- Mode: read-only
+- Pull from Jungler: social signals, LinkedIn activity tracking, engagement signals
+- Used for: identifying prospects actively engaging with relevant content — warm outreach triggers
+- Notes:
+
+### Trigify
+- Status: active / inactive
+- Mode: read-only
+- Pull from Trigify: social signals, LinkedIn engagement data, content interaction tracking
+- Used for: social selling signals — detect when prospects engage with competitor content, industry topics, or relevant posts
+- Notes:
 
 ---
 
@@ -162,3 +176,5 @@ All keys stored in .env at repo root:
 - ATTIO_API_KEY
 - SIGNALBASE_API_KEY
 - COMMONROOM_API_KEY
+- JUNGLER_API_KEY
+- TRIGIFY_API_KEY

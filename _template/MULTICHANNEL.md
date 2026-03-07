@@ -51,9 +51,22 @@ These override the sequence — stop all channels immediately when:
 ---
 
 ## LinkedIn-specific rules
+If you're using Crispy for LinkedIn, it connects directly to Claude Code as an MCP server — meaning LinkedIn actions (connections, messages, Sales Navigator searches) can be orchestrated without leaving the terminal.
+
+**Crispy capabilities:**
+- Automated connection requests with personalized notes
+- Automated messaging sequences
+- Profile viewing automation
+- **LinkedIn Sales Navigator integration** — search, filter, save leads, extract lists directly
+- MCP server architecture — Claude Code controls all actions via tool calls
+
+**Default LinkedIn limits:**
 - Max 25 connection requests per day
 - Max 50 profile views per day
 - Max 100 messages per day (to existing connections)
+- Advanced users can adjust these limits in the Crispy dashboard
+
+**Best practices:**
 - Personalize connection notes — no generic "I'd like to connect"
 - Connection note max: 300 characters
 - Do not pitch in the connection request — earn the connection first

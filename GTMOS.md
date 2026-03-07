@@ -122,6 +122,12 @@ Run `/gtm:collab setup` to enable team mode. See `global/COLLABORATION.md` for f
 
 ---
 
+## Tool links
+
+When referencing a tool's website — during onboarding, when a user asks about a tool, or when suggesting a tool they don't have — use the UTM-tagged links from `.claude/gtmos/references/tool-links.md`. Never hardcode tool URLs elsewhere.
+
+---
+
 ## Before using any tool
 
 1. State what you are about to do
@@ -171,15 +177,20 @@ If any check fails, revise before presenting. Never show a draft that fails its 
 ## Copy tasks
 
 - Load the relevant template from commands/ before writing
+- Load `.claude/gtmos/references/cold-email-skill.md` for writing principles
 - Apply tone, angle, and CTA from BRIEFING.md — not from general knowledge
-- Subject lines: max 8 words
-- Line 1: never start with "I" or the company name — earn relevance immediately
-- First touch: max 75 words
-- One CTA per touch, no stacking asks
+- **Voice:** Write as a peer — a colleague sharing something useful, not a marketer pitching
+- **Subject lines:** 2-4 words, lowercase, no punctuation — must feel like an internal forward
+- **Opening:** Never start with "I" or the company name — open with a specific observation about them
+- **Brevity:** First touch max 75 words, follow-ups max 50 words. C-suite: max 50 words on any touch.
+- **CTA:** One interest-based ask per touch ("Worth a look?" not "Book a demo")
+- **Angle rotation:** Each follow-up must use a DIFFERENT angle than the previous touch
+- **Banned:** "excited to share", "game-changing", "synergy", "leverage", "unlock", compliment openers
 - Flag any claim not supported by BRIEFING.md before presenting
 - Only use personalization variables defined in PERSONALIZATION.md — never invent merge fields
 - Insert booking links from BOOKING.md — never guess or fabricate URLs
 - Append UTM parameters from BOOKING.md to all landing page links
+- For LinkedIn copy (via Crispy): max 50 words, no links in first message, more conversational
 
 ---
 
@@ -258,6 +269,7 @@ or company in the active campaign.
 
 Signal sources:
 - Signalbase, Commonroom, or similar signal APIs defined in TOOLS.md
+- Jungler.ai, Trigify, or similar social signal tools defined in TOOLS.md
 - Manual signal drops into context/meeting-notes/ or context/research/
 
 Signal types that trigger an immediate action:

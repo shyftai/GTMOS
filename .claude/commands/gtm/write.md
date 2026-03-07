@@ -13,6 +13,7 @@ Workspace and options: $ARGUMENTS
 @./commands/write-sequence.md
 @./commands/validate-copy.md
 @./.claude/gtmos/references/ui-brand.md
+@./.claude/gtmos/references/cold-email-skill.md
 </execution_context>
 
 <process>

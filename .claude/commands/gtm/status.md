@@ -58,16 +58,23 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
     /gtm:sync          Pull data from connected tools
     /gtm:health        Run a campaign health check
 
+  LinkedIn
+    /gtm:linkedin-warm Pre-outreach LinkedIn engagement warming
+    /gtm:account-based Multi-thread a target account
+
   Infrastructure
     /gtm:infra         Check sending infrastructure health
     /gtm:warmup        Check inbox warmup status
     /gtm:pipeline      View CRM pipeline and conversions
+    /gtm:domain-recovery  Recover a damaged sending domain
 
   Review
     /gtm:brief-audit   Check briefing for gaps
     /gtm:stress-test   Challenge ICP assumptions
     /gtm:debrief       End-of-campaign performance review
     /gtm:report        Generate client-facing report
+    /gtm:post-meeting  Post-meeting follow-up workflow
+    /gtm:re-engage     Re-engagement campaign for cold leads
     /gtm:archive       Archive completed campaign or workspace
 
   Costs
@@ -79,6 +86,9 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
     /gtm:collab status   Check collaboration connection
     /gtm:collab invite   Invite a team member
     /gtm:collab sync     Sync local files to Supabase
+
+  Feedback
+    /gtm:feedback      Submit feedback, report a bug, or request a feature
 
   Swarm (optional — parallel agents)
     /gtm:swarm personalize   Personalize outreach at scale

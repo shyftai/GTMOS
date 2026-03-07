@@ -41,7 +41,7 @@
 7. Suggest running the research phase next
 
 ## Block 7 — Tool stack questions
-- Which tools are active for this workspace? (Apollo / Icypeas / Prospeo / Apify / HubSpot / Lemlist / Instantly / Smartlead / Crispy / Attio / Signalbase / Commonroom)
+- Which tools are active for this workspace? (Apollo / Icypeas / Prospeo / Apify / HubSpot / Lemlist / Instantly / Smartlead / Crispy / Attio / Signalbase / Commonroom / Jungler.ai / Trigify)
 - For each active tool: what is the credit behaviour? (confirm-every-time / confirm-above-threshold / auto-approved)
 - For confirm-above-threshold tools: what is the batch size limit?
 - Are there any tools this workspace specifically should not use?

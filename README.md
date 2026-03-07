@@ -99,12 +99,19 @@ All commands use the `/gtm:` prefix.
 | `/gtm:sync <ws> [campaign]` | Pull latest data from connected tools |
 | `/gtm:health <ws> <campaign>` | Full health check with pattern detection |
 
+### LinkedIn
+| Command | What it does |
+|---------|-------------|
+| `/gtm:linkedin-warm <ws>` | Pre-outreach LinkedIn engagement warming |
+| `/gtm:account-based <ws>` | Multi-thread a high-value target account |
+
 ### Infrastructure
 | Command | What it does |
 |---------|-------------|
 | `/gtm:infra <ws>` | Check sending infrastructure health and DNS |
 | `/gtm:warmup <ws>` | Check inbox warmup status and readiness |
 | `/gtm:pipeline <ws> [campaign]` | View CRM pipeline funnel and conversions |
+| `/gtm:domain-recovery <ws>` | Recover a damaged sending domain |
 
 ### Review
 | Command | What it does |
@@ -113,8 +120,15 @@ All commands use the `/gtm:` prefix.
 | `/gtm:stress-test <ws>` | Challenge ICP assumptions with edge cases |
 | `/gtm:debrief <ws> <campaign>` | End-of-campaign debrief with forward-feed |
 | `/gtm:report <ws> <campaign>` | Generate client-facing campaign report |
+| `/gtm:post-meeting <ws>` | Post-meeting follow-up workflow |
+| `/gtm:re-engage <ws>` | Re-engagement campaign for cold leads |
 | `/gtm:archive <ws> [campaign]` | Archive completed campaign or workspace |
 | `/gtm:costs <ws> [--all]` | View spend by tool, campaign, or agency-wide |
+
+### Feedback
+| Command | What it does |
+|---------|-------------|
+| `/gtm:feedback` | Submit feedback, report a bug, or request a feature |
 
 ### Swarm (optional — parallel agents)
 | Command | What it does |
@@ -149,10 +163,12 @@ Swarm agents draft only — nothing is sent without human approval.
 | Lemlist | Bidirectional | Email sequencing + lead database |
 | Instantly | Bidirectional | Email sequencing + lead database |
 | Smartlead | Bidirectional | Email sequencing |
-| Crispy | Bidirectional | LinkedIn outreach |
+| Crispy | Bidirectional | LinkedIn outreach + Sales Navigator |
 | Attio | Bidirectional | CRM |
 | Signalbase | Read-only | Funding and hiring signals |
 | Commonroom | Read-only | Community and intent signals |
+| Jungler.ai | Read-only | Social signals and LinkedIn engagement tracking |
+| Trigify | Read-only | Social selling signals and content interaction |
 
 Additional tools (email verification, CRM enrichment, LinkedIn automation, automation) can be activated per workspace. See `_template/TOOLS.md` for the full list and `.claude/gtmos/references/tool-pricing.md` for pricing.
 

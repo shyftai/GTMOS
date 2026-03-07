@@ -67,21 +67,28 @@ Mention freely / avoid / never use
 ## Channel-specific rules
 
 ### Cold email
-- Subject line style: (e.g. lowercase, no punctuation, curiosity-led)
-- Line 1 rule: (e.g. never start with "I", must create relevance in under 10 words)
-- Body length first touch: max [X] words
+- Voice: peer-to-peer — write as a colleague sharing something useful (see cold-email-skill.md)
+- Subject line style: 2-4 words, lowercase, no punctuation — must feel like an internal forward
+- Line 1 rule: never start with "I" or company name — open with a specific observation about them
+- Opening framework: Observation > Problem > Proof > Ask (or Pattern > Insight > Bridge > Ask)
+- Body length first touch: max 75 words (adjust down for C-suite: 50 words)
+- Follow-ups: max 50 words, each must use a different angle
+- CTA style: interest-based only ("Worth a look?" not "Book a demo")
 - Sign-off style:
 - PS line: use / avoid
+- Banned phrases: "excited to share", "I hope this finds you well", "I wanted to reach out", "game-changing", "synergy"
 
-### LinkedIn connection note
+### LinkedIn connection note (via Crispy)
 - Max characters: 300
-- Pitch in note: never
-- Tone vs email:
+- Pitch in note: never — earn the connection first
+- Tone vs email: more conversational, slightly warmer
+- No links or attachments
 
 ### LinkedIn message (post-connect)
 - Reference the connection: always / only if relevant
-- Length: max [X] words
-- CTA style:
+- Length: max 50 words
+- CTA style: interest-based, low friction
+- No links in first message — build rapport first
 
 ---
 

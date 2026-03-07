@@ -101,3 +101,28 @@ Track why deals are lost to improve targeting and copy.
 | No pain | | | Tighten ICP signals |
 | Champion left | | | Add job change signal |
 | Went dark | | | Review sequence timing |
+
+---
+
+## Win/loss insight log
+
+After every closed deal (won or lost), log what worked or didn't. These insights compound across campaigns and feed back into ICP, copy, and objection handling.
+
+### Wins
+| Date | Company | Campaign | What worked | Winning touch | Winning angle | Time to close |
+|------|---------|----------|-------------|---------------|---------------|---------------|
+| | | | | | | |
+
+### Losses
+| Date | Company | Campaign | Why it died | Stage lost at | Competitor involved | Lesson |
+|------|---------|----------|-------------|---------------|--------------------|---------|
+| | | | | | | |
+
+### Pattern tracker
+Review this quarterly. Look for patterns that should change ICP, persona, or copy.
+
+| Pattern | Evidence | Action taken | Date |
+|---------|----------|-------------|------|
+| e.g. "Series B companies close 2x faster" | 4/6 wins were post-Series B | Added Series B signal to ICP.md | |
+| e.g. "VP Ops converts better than VP Sales" | 70% of meetings from VP Ops | Updated PERSONA.md primary persona | |
+| e.g. "'quick thought' subject line outperforms" | 8% reply rate vs 3% average | Added to snippet-library.md | |

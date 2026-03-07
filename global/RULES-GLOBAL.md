@@ -45,7 +45,7 @@
 - Never send email and LinkedIn message on the same day to the same contact
 - If contact replies on any channel, pause all other channels immediately
 - LinkedIn connection requests must be personalized — no generic invites
-- Max 25 LinkedIn connection requests per day
+- Max 25 LinkedIn connection requests per day (adjustable in Crispy dashboard)
 
 ## CRM and pipeline
 - Every contact shipped in a list must be created in the CRM

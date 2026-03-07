@@ -189,14 +189,16 @@ Last updated: 2026-03
 
 ### Crispy
 - **Model:** Per-seat subscription
-- **Paid plans:** Varies by plan
+- **Paid plans:** Pro €19/mo/seat, Team €29/mo/seat, Agency €99/mo base + €29/mo/seat
+- **What it is:** LinkedIn MCP server — 78 tools that connect directly to Claude Code
 - **What's included:**
-  - Automated connection requests
-  - Automated messaging sequences
-  - Profile viewing automation
-- **LinkedIn limits apply:** Max 25 connections/day, 50 profile views/day
+  - Connection requests, messaging sequences, profile views
+  - Sales Navigator integration — search, filter, save leads, extract lists
+  - MCP architecture — Claude Code orchestrates LinkedIn actions via tool calls (no CSV export/import)
+- **Default limits:** 25 connections/day, 50 profile views/day (adjustable in dashboard)
 - **GTMOS unit:** LinkedIn action
-- **Typical cost:** $0.05-0.15 per action
+- **Typical cost:** €19/mo flat (Pro) — no per-action charges
+- **Note:** Because Crispy works as an MCP server, it's the only LinkedIn tool in this list that Claude Code can control directly. Other LinkedIn tools (PhantomBuster) require manual setup and CSV handling.
 
 ### PhantomBuster
 - **Model:** Execution-time based
@@ -291,6 +293,24 @@ Last updated: 2026-03
 - **What it does:** Job post aggregation and monitoring — structured job data across companies
 - **Use case:** Same as Sentrion — hiring signals as buying triggers. Track when target ICP companies are hiring roles relevant to your offer.
 - **Signal types:** Job posts by company, role, location, seniority
+- **API access:** Check current plans
+- **GTMOS unit:** signal query
+- **Typical cost:** Varies by plan
+
+### Jungler.ai
+- **Model:** Subscription-based
+- **What it does:** Social signal intelligence — tracks LinkedIn activity and engagement patterns across target accounts
+- **Use case:** Identify prospects actively engaging with relevant content. Use social engagement as a warm outreach trigger — someone liking/commenting on industry content is more receptive to outreach.
+- **Signal types:** LinkedIn post engagement, content interactions, profile activity changes
+- **API access:** Check current plans
+- **GTMOS unit:** signal query
+- **Typical cost:** Varies by plan
+
+### Trigify
+- **Model:** Subscription-based
+- **What it does:** Social selling signal detection — monitors LinkedIn engagement data and content interactions at scale
+- **Use case:** Detect when target prospects engage with competitor content, industry topics, or relevant posts. Use as trigger for timely, relevant outreach.
+- **Signal types:** Content engagement, competitor content interaction, topic-based social signals
 - **API access:** Check current plans
 - **GTMOS unit:** signal query
 - **Typical cost:** Varies by plan

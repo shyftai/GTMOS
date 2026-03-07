@@ -12,6 +12,7 @@ Workspace: $ARGUMENTS
 <execution_context>
 @./commands/validate-copy.md
 @./.claude/gtmos/references/ui-brand.md
+@./.claude/gtmos/references/cold-email-skill.md
 </execution_context>
 
 <process>

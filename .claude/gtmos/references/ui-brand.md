@@ -57,6 +57,12 @@ Use for workflow transitions. GTMOS uses angle brackets, not GSD's arrows.
 - `ARCHIVE`
 - `SWARM`
 - `COLLABORATION SETUP`
+- `POST-MEETING`
+- `ACCOUNT-BASED`
+- `RE-ENGAGE`
+- `LINKEDIN WARMING`
+- `DOMAIN RECOVERY`
+- `FEEDBACK`
 
 ---
 
