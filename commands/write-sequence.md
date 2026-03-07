@@ -21,9 +21,17 @@ Load `.claude/gtmos/references/cold-email-skill.md` before writing any copy. All
 1. Load ICP.md, PERSONA.md, and TOV.md from active workspace; load BRIEFING.md from active campaign
 2. Load campaign.config.md for channel and touch count
 3. Load cold-email-skill.md for writing principles and quality checklist
-4. Check context/research/signal-angles.md for relevant angles to incorporate
-5. Calibrate tone to persona seniority (C-suite: max 50 words, Director: max 65, Manager/IC: max 75)
-6. Draft each touch in order:
+4. Load campaign-types.md — match campaign type for default structure (touch count, spacing, framework)
+5. Load global/snippet-library.md — scan for proven opening lines, CTAs, and proof lines that match:
+   - The channel (email / LinkedIn)
+   - The campaign angle (growth signal, competitor, event, etc.)
+   - Adapt to fit this workspace's TOV.md — never copy-paste raw snippets
+6. Load global/swipe-file.md — find full sequence examples matching this campaign type:
+   - Use as structural reference (framework, touch flow, tone calibration)
+   - Adapt to this workspace's ICP, persona, and offer — never copy-paste
+7. Check context/research/signal-angles.md for relevant angles to incorporate
+8. Calibrate tone to persona seniority (C-suite: max 50 words, Director: max 65, Manager/IC: max 75)
+9. Draft each touch in order:
    - Touch 1: observation-led cold open using Observation > Problem > Proof > Ask framework, single interest-based CTA
    - Touch 2: different angle — new pain point, social proof, or industry insight
    - Touch 3: value add — share something useful (benchmark, insight, case study) without asking
