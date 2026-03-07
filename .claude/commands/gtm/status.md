@@ -36,7 +36,8 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
   GTMOS Commands
 
   Setup
-    /gtm:onboard       Onboard a new workspace (full or --quick)
+    /gtm:onboard       Onboard a new workspace (full / --quick / deep-dive)
+    /gtm:deep-dive     Data deep-dive — build ICP from CRM, campaigns, transcripts
     /gtm:research      Research ICP and market
     /gtm:new-campaign  Create a campaign with type selection
     /gtm:switch        Switch active workspace

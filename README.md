@@ -64,7 +64,7 @@ If it drifts from the brief, it doesn't ship.
 
 ## How a campaign works
 
-**1. Onboard** → `/gtm:onboard` walks through your offer, ICP, persona, voice, tools, and infrastructure
+**1. Onboard** → `/gtm:onboard` walks through your offer, ICP, persona, voice, tools, and infrastructure. Have CRM data? Start with `/gtm:deep-dive` to build ICP from evidence
 
 **2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals
 
@@ -138,7 +138,8 @@ GTMOS ships with sensible defaults for everything:
 ### Setup
 | Command | What it does |
 |---------|-------------|
-| `/gtm:onboard <name>` | Onboard a new workspace (full or `--quick`) |
+| `/gtm:onboard <name>` | Onboard a new workspace (full, `--quick`, or deep-dive) |
+| `/gtm:deep-dive <name>` | Build ICP from CRM data, campaigns, and transcripts |
 | `/gtm:research <name>` | Research ICP companies and market |
 | `/gtm:new-campaign <ws> <name>` | Create a campaign with type selection |
 | `/gtm:switch <name>` | Switch active workspace |
@@ -260,6 +261,7 @@ GTMOS/
 ├── global/                    <- Cross-workspace standards
 │   ├── RULES-GLOBAL.md        <- Global quality rules
 │   ├── snippet-library.md     <- Reusable copy fragments
+│   ├── swipe-file.md          <- Full sequence examples
 │   └── feedback-log.md        <- Feedback tracking
 ├── .claude/
 │   ├── commands/gtm/          <- Slash commands (/gtm:*)
@@ -275,7 +277,8 @@ GTMOS/
 │       ├── report-template.md <- Client report formats
 │       ├── sending-calendar.md <- Holiday blackouts (20+ countries)
 │       ├── tool-links.md      <- Tool website links
-│       └── tool-pricing.md    <- Per-unit pricing for all tools
+│       ├── tool-pricing.md    <- Per-unit pricing for all tools
+│       └── tool-setup-guides.md <- Tool configuration guides
 └── supabase/                  <- Team mode schema (optional)
 ```
 

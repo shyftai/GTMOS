@@ -12,6 +12,8 @@ Workspace and campaign: $ARGUMENTS
 <execution_context>
 @./commands/campaign-health-check.md
 @./.claude/gtmos/references/ui-brand.md
+@./.claude/gtmos/references/BENCHMARKS.md
+@./.claude/gtmos/references/sending-calendar.md
 </execution_context>
 
 <process>
@@ -25,9 +27,13 @@ Workspace and campaign: $ARGUMENTS
 8. Run engagement analysis (open rate, reply rate vs benchmarks)
 9. Run pipeline analysis (conversion rates per stage vs benchmarks, revenue attribution)
 10. Run persona performance analysis
-7. Display health check dashboard from ui-brand.md
-8. Run pattern detection — for each pattern, display suggestion block
-9. Wait for approval on each suggestion before applying
-10. Display health check summary: status, top 3 working, top 3 to fix
-11. Save to performance/health-check-[date].md
+11. Update performance/trends.md with this week's data
+12. Check sending-calendar.md for upcoming holiday conflicts
+13. Display health check dashboard from ui-brand.md
+14. Display week-over-week trends if 2+ weeks of data exist
+15. Run pattern detection — for each pattern, display suggestion block
+16. If enough data exists for auto-refinement, suggest: `/gtm:auto-refine`
+17. Wait for approval on each suggestion before applying
+18. Display health check summary: status, top 3 working, top 3 to fix
+19. Save to performance/health-check-[date].md
 </process>

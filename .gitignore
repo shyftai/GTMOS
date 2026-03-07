@@ -3,9 +3,31 @@
 
 # Raw lists (may contain PII)
 **/lists/raw/
+**/lists/cleaned/
+**/lists/validated/
+**/lists/shipped/
+
+# Reply content (PII)
+**/replies/*.md
+!**/replies/.gitkeep
 
 # Sync snapshots (large, regenerable)
 **/sync/**/*.json
+**/sync/**/*.csv
+
+# Performance data (regenerable from tools)
+**/performance/results.md
+**/performance/health-check-*.md
+**/performance/report-*.md
+**/performance/debrief-*.md
+
+# Campaign logs (may contain PII)
+**/logs/decisions.md
+!**/logs/.gitkeep
+
+# Transcripts and meeting notes (confidential)
+**/context/meeting-notes/*.md
+!**/context/meeting-notes/.gitkeep
 
 # Local Claude Code settings
 .claude/settings.local.json
@@ -13,3 +35,11 @@
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

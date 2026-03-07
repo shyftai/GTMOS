@@ -20,7 +20,10 @@ Workspace name: $ARGUMENTS
 1. Display the GTMOS startup banner from ui-brand.md
 2. Display mode header: `<< GTMOS // ONBOARDING >>`
 3. Create workspace folder by copying _template/ to workspaces/$ARGUMENTS/
-4. Ask: "Full onboarding or quick start? Full covers everything (14 blocks). Quick start gets you running in 5 blocks — you can fill in the rest later."
+4. Ask: "How do you want to onboard?"
+   - **Quick start** (5 blocks) — get running in minutes, fill the rest later
+   - **Full onboarding** (14 blocks) — covers everything up front
+   - **Data deep-dive** — pull from CRM, existing campaigns, and transcripts to build ICP from evidence. Run `/gtm:deep-dive` first, then onboard from the data.
 
 ## Quick start path (--quick or user chooses quick)
 5. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
@@ -44,5 +47,8 @@ Workspace name: $ARGUMENTS
 10. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
 11. Check .env for required API keys
 12. Display workspace header with loaded context
-13. Suggest next action: `/gtm:research $ARGUMENTS` or `/gtm:new-campaign $ARGUMENTS {name}`
+13. Suggest next actions:
+    - `/gtm:deep-dive $ARGUMENTS` — if they have CRM data or transcripts to analyze
+    - `/gtm:research $ARGUMENTS` — to research ICP and market
+    - `/gtm:new-campaign $ARGUMENTS {name}` — to start the first campaign
 </process>

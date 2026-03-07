@@ -6,7 +6,17 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-03-07
+
 ### Added
+- Data deep-dive command (`/gtm:deep-dive`) — build ICP from CRM data, outbound campaign analytics, and sales transcripts
+- Slash command wrappers for: auto-refine, migrate, linkedin-warm, post-meeting, re-engage, domain-recovery, account-based
+- Deep-dive path in `/gtm:onboard` — onboard from evidence instead of guesswork
+- Health check now updates performance trends and suggests auto-refine when enough data exists
+- Debrief now runs auto-refinement, updates win/loss log, saves winning copy to snippet library
+- Re-engagement flagging in debrief for 60+ day old contacts
+- MIT License
+- Expanded .gitignore for workspace data safety (lists, replies, sync, performance, logs, transcripts)
 - API reference for Apollo, Instantly, Lemlist, Smartlead, Icypeas, Prospeo, HubSpot, Attio, Apify, ZeroBounce
 - CSV format spec with standard columns and import mappings from Apollo, Sales Navigator, Instantly, Lemlist
 - Lead scoring model (0-100 weighted score) with customizable weights per workspace
