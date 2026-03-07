@@ -135,6 +135,24 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Used for: data deep-dive — extract pain points, buying triggers, objections, and prospect language from sales calls
 - Notes: GraphQL API. Business plan required for API access. Pull transcripts via `/gtm:deep-dive`.
 
+### Ocean.io
+- Status: active / inactive
+- Mode: read-only
+- Pull from Ocean.io: lookalike company lists, company enrichment (revenue, tech stack, headcount growth, web traffic)
+- Used for: finding companies similar to your best customers — feed domains, get ranked lookalikes with firmographic + semantic matching
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold:
+- Notes: 0.2 credits per search result. Enrich: 1 credit (with domain), 5 credits (without). Contact sales for pricing plans.
+
+### DiscoLike
+- Status: active / inactive
+- Mode: read-only
+- Pull from DiscoLike: lookalike company lists, technographic data, website semantic matching
+- Used for: discovering high-fit companies that traditional databases miss — analyzes 60M+ domains across 45 languages using AI
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold:
+- Notes: $0.10/API call + $2/1K records. Platform $99/mo. SaaS $1,000/mo. API access conditional on plan.
+
 ### Exa
 - Status: active / inactive
 - Mode: read-only
@@ -216,5 +234,7 @@ All keys stored in .env at repo root:
 - JUNGLER_API_KEY
 - TRIGIFY_API_KEY
 - FIREFLIES_API_KEY
+- OCEAN_API_KEY
+- DISCOLIKE_API_KEY
 - EXA_API_KEY
 - FIRECRAWL_API_KEY

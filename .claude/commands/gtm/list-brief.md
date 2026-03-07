@@ -25,6 +25,7 @@ Workspace and campaign: $ARGUMENTS
    - Crispy/Sales Navigator filters (primary discovery)
    - Apollo people search (free, 275M+ contacts)
    - Exa semantic search (find similar companies by meaning)
+   - Ocean.io / DiscoLike (lookalike discovery — feed best customers, get ranked matches)
    - Firecrawl (extract company lists from directories, award lists, conference sites)
    - Crunchbase/Diffbot (free company search)
 7. Format as copy-paste ready

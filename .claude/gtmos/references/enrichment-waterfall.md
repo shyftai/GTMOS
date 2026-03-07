@@ -155,6 +155,50 @@ Before the waterfalls — what each action actually costs across providers:
 - **Enrichment bonus:** `firstname`, `lastname`, `gender`, `country`, `region`, `city`, `zipcode`
 - `domain_age_days`, `smtp_provider`, `mx_record`, `free_email`
 
+### Ocean.io — Lookalike Company Search (`POST /v2/search/companies`)
+
+Feed your best customer domains → get ranked lookalikes back.
+
+- `name`, `legalName`, `domain`, `rootUrl`, `description`
+- `locations[]` — country, city, region, streetAddress, postalCode (with primary flag)
+- `employeeCountOcean`, `employeeCountLinkedin`
+- `departmentSizes`, `headcountGrowth`, `headcountGrowthPerDepartment`
+- `revenue`, `yearFounded`
+- `fundingRound` — date, type, moneyRaisedInUsd, cbUrl
+- `industryCategories[]`, `industries[]`, `linkedinIndustry`
+- `companySize`, `ecommerce`, `keywords[]`
+- `emails[]`, `phones[]` (country, number, primary flag), `faxes[]`
+- `technologies[]`, `technologyCategories[]`
+- `webTraffic` — visits, pageViews, pagesPerVisit, bounceRate
+- `medias` — LinkedIn, Twitter, YouTube, Facebook, TikTok, Instagram (url, handle)
+- `mobileApps[]`
+- `logo`
+
+**Enrich credit cost:** 1 credit (with domain), 5 credits (without domain). Search results: 0.2 credits/result.
+
+### DiscoLike — Lookalike Company Discovery
+
+AI-powered lookalike from 60M+ SSL-verified domains across 45 languages.
+
+**API endpoints:**
+- Discover — search for entities by keywords and domain lookalike
+- Metrics — domain performance metrics
+- Bulk Match — match large datasets against DiscoLike DB
+- Extract — extract data from URLs
+- Subsidiaries — identify subsidiary relationships
+- Count — count keyword occurrences
+
+**Data returned per company:**
+- Domain, company name, description
+- Technographic data (vendor/technology stack)
+- Website semantic analysis (content matching)
+- Relevance ranking score
+
+**Auth:** `x-discolike-key` header
+**Cost:** $0.10/API call + $2/1K records. SaaS platform $99-1,000/mo.
+
+**Best for:** Finding companies that traditional databases miss — analyzes actual website content, not just firmographic databases.
+
 ### Apify + Sales Navigator — Company Search (Account Scraper)
 
 Via `pratikdani/sales-navigator-company-search-scraper-no-cookies` or similar actors:
@@ -317,6 +361,8 @@ Goal: find a verified business email for a known person (have name + company/dom
 | Diffbot | FREE — 10K credits/mo (25cr/export) | Same | Per-query | 5 req/min (free) |
 | Exa | FREE — 1K searches/mo | N/A (search only) | 10-100 results/search | Standard |
 | Firecrawl | 500 free credits (one-time) | 1 credit/page | Paginated | Plan-dependent |
+| Ocean.io | 0.2cr/result (search), 1cr/enrich | Same | Per-query | Standard |
+| DiscoLike | $0.10/call + $2/1K records | Same | Per-query | Standard |
 | Companies House | FREE — unlimited | Same | Per-query | 600 req/5min |
 
 **After finding — always verify:**
@@ -360,16 +406,18 @@ Goal: find companies matching ICP firmographics.
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
 | 1 | **Crispy / Sales Navigator** | Included in sub | Primary discovery engine. 36+ filters: headcount, growth, industry, funding signals, hiring, tech adoption. Unmatched for precision targeting. Returns: name, industry, headcount, HQ, website, description |
-| 2 | **Exa semantic search** | FREE (1K/mo) | Find companies by meaning, not keywords. "B2B SaaS companies solving X problem" returns results no keyword search would find. Best for discovering lookalikes and niche segments |
-| 3 | **Crunchbase Basic API** | FREE | Best for startup/funded companies. Search by industry, size, funding, location. 200 calls/min |
-| 4 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
-| 5 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
-| 6 | **Firecrawl extract** | 1 credit/page | Extract company lists from directories, award lists, conference speaker pages, "Top X" articles. Structured extraction via prompt |
-| 7 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
-| 8 | **Apollo org search** | Credits (not free) | Large database but costs credits |
-| 9 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 10 | **Opemart** | Included in sub | SMB/local businesses |
-| 11 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
+| 2 | **Exa semantic search** | FREE (1K/mo) | Find companies by meaning, not keywords. "B2B SaaS companies solving X problem" returns results no keyword search would find |
+| 3 | **Ocean.io lookalike** | 0.2 credits/result | Feed your best customers → get ranked lookalikes. Semantic similarity + firmographics. Also enriches with revenue, tech stack, headcount growth, web traffic |
+| 4 | **DiscoLike** | $0.10/call + $2/1K records | AI-powered lookalike from 60M+ domains across 45 languages. Finds companies traditional databases miss. LLM-powered natural language search |
+| 5 | **Crunchbase Basic API** | FREE | Best for startup/funded companies. Search by industry, size, funding, location. 200 calls/min |
+| 6 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
+| 7 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
+| 8 | **Firecrawl extract** | 1 credit/page | Extract company lists from directories, award lists, conference speaker pages, "Top X" articles. Structured extraction via prompt |
+| 9 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 10 | **Apollo org search** | Credits (not free) | Large database but costs credits |
+| 11 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 12 | **Opemart** | Included in sub | SMB/local businesses |
+| 13 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
 
 **Phase 2 — Company Enrichment at Volume (fill gaps on discovered companies)**
 

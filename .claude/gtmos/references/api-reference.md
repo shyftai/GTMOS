@@ -523,6 +523,73 @@ curl -X POST "https://api.fireflies.ai/graphql" \
 
 ---
 
+## Ocean.io (lookalike company search)
+
+**Auth:** `x-api-token` header or `apiToken` query param
+**Base URL:** `https://api.ocean.io/v2`
+**Cost:** 0.2 credits/search result, 1 credit/enrich (with domain), 5 credits/enrich (without domain)
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Lookalike company search | POST | `/search/companies` | 0.2 per result |
+| Lookalike people search | POST | `/search/people` | 0.2 per result |
+| Enrich company | POST | `/enrich/company` | 1 (with domain) / 5 (without) |
+| Enrich person | POST | `/enrich/person` | Credits vary |
+| Reveal emails | POST | `/reveal/emails` | Credits vary |
+| Reveal phones | POST | `/reveal/phones` | Credits vary |
+| Credit balance | GET | `/credits` | 0 |
+
+**Search parameters:** Feed customer domains for lookalike, or filter by industry, company size, location, technologies, keywords, revenue range, headcount growth.
+
+**Fields returned per company:** name, domain, description, locations, employeeCount (Ocean + LinkedIn), departmentSizes, headcountGrowth, revenue, yearFounded, fundingRound, industries, technologies, technologyCategories, webTraffic (visits, pageViews, bounceRate), emails, phones, social media URLs, logo.
+
+**Lookalike search example:**
+```bash
+curl -X POST "https://api.ocean.io/v2/search/companies" \
+  -H "x-api-token: $OCEAN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domains": ["bestcustomer1.com", "bestcustomer2.com"],
+    "filters": {
+      "companySize": ["11-50", "51-200"],
+      "countries": ["US", "UK"]
+    },
+    "limit": 25
+  }'
+```
+
+---
+
+## DiscoLike (AI lookalike discovery)
+
+**Auth:** `x-discolike-key` header
+**Base URL:** `https://api.discolike.com/v1`
+**Cost:** $0.10/API call + $2/1K records
+
+| Action | Method | Endpoint | Cost |
+|--------|--------|----------|------|
+| Discover entities | POST | `/discover` | $0.10/call |
+| Bulk match | POST | `/bulk-match` | $2/1K records |
+| Extract from URL | POST | `/extract` | $0.10/call |
+| Domain metrics | GET | `/metrics/{domain}` | $0.10/call |
+| Subsidiaries | GET | `/subsidiaries/{domain}` | $0.10/call |
+| Count keywords | POST | `/count` | $0.10/call |
+
+**How it works:** Analyzes 60M+ SSL-verified domains across 45 languages. Uses LLM-powered semantic matching against actual website content — finds companies traditional databases miss.
+
+**Discovery example:**
+```bash
+curl -X POST "https://api.discolike.com/v1/discover" \
+  -H "x-discolike-key: $DISCOLIKE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domains": ["bestcustomer1.com", "bestcustomer2.com"],
+    "query": "B2B SaaS companies selling sales enablement tools"
+  }'
+```
+
+---
+
 ## Exa (AI-powered web search)
 
 **Auth:** API key in header `x-api-key`

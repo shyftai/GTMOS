@@ -15,6 +15,8 @@ Check which tools are available before starting:
 | **Apollo API** | `POST /mixed_people/api_search` | Free people search (275M+ contacts) for validating persona assumptions |
 | **Crunchbase API** | `POST /searches/organizations` | Free company search — funding, headcount, industry filters |
 | **Diffbot API** | `GET /dql?query=X` | Free entity search (10B+ entities) — tech stack, revenue, employees |
+| **Ocean.io API** | `POST /v2/search/companies` | Lookalike company search — feed best customer domains, get ranked similar companies |
+| **DiscoLike API** | `POST /v1/discover` | AI lookalike discovery across 60M+ domains — finds companies databases miss |
 
 **Priority:** Use Exa for semantic discovery and market intelligence. Use Firecrawl to scrape specific company/competitor pages for structured data. Use Crispy/Apollo/Crunchbase for building actual prospect lists.
 
@@ -78,13 +80,22 @@ For every meaningful signal found in research:
 Save all signals and angles to: context/research/signal-angles.md
 Format as a scannable table — one row per signal.
 
-### List building seeds (new)
+### Lookalike expansion
+If the workspace has existing customers or known-good companies:
+1. Feed their domains to **Ocean.io** for ranked lookalikes with firmographic data
+2. Feed their domains to **DiscoLike** for AI-powered discovery across 60M+ domains (finds companies databases miss)
+3. Use **Exa `web_search_exa`** with "companies similar to [best customer]" for semantic matches
+4. Cross-reference results — companies appearing in multiple sources are highest confidence
+5. Save to: context/research/lookalikes-[YYYY-MM-DD].md
+
+### List building seeds
 From research, extract concrete list-building inputs:
 1. **Company lists** — specific companies discovered that match ICP. Save LinkedIn URLs, domains, names
-2. **Search filters** — Sales Navigator / Apollo filters that would find more companies like these
-3. **Lookalike signals** — what makes these companies similar (tech stack, funding stage, hiring patterns)
-4. Save to: context/research/list-seeds-[YYYY-MM-DD].md
-5. These seeds feed directly into `/gtm:list-brief`
+2. **Lookalike outputs** — ranked lists from Ocean.io and DiscoLike with relevance scores
+3. **Search filters** — Sales Navigator / Apollo filters that would find more companies like these
+4. **Lookalike signals** — what makes these companies similar (tech stack, funding stage, hiring patterns)
+5. Save to: context/research/list-seeds-[YYYY-MM-DD].md
+6. These seeds feed directly into `/gtm:list-brief`
 
 ### After all files are saved
 - Update context/INDEX.md to reference all research files as priority reads

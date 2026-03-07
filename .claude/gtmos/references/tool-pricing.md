@@ -372,6 +372,34 @@ Last updated: 2026-03
 
 ---
 
+## Lookalike Discovery
+
+### Ocean.io
+- **Model:** Credit-based
+- **Paid plans:** Custom pricing — contact sales
+- **Credit costs:**
+  - Lookalike company search: 0.2 credits per result
+  - Company enrich (with domain): 1 credit
+  - Company enrich (without domain): 5 credits
+  - People search: 0.2 credits per result
+  - Email/phone reveal: credits vary
+- **What it does:** Feed your best customer domains → get ranked lookalike companies. Combines semantic similarity with firmographic filtering (industry, size, location, tech stack, revenue)
+- **Data returned:** Company name, domain, description, employee count + growth, revenue, funding, tech stack, web traffic, emails, phones, social URLs
+- **API access:** All plans
+- **GTMOS unit:** credit used
+- **Typical cost:** Varies by plan — contact for pricing
+
+### DiscoLike
+- **Model:** API call + record based
+- **Paid plans:** Platform $99/mo (basic), SaaS $1,000/mo (10 users), API $0.10/call + $2/1K records
+- **What it does:** AI-powered lookalike discovery across 60M+ SSL-verified domains in 45 languages. Analyzes actual website content, not just database records — finds companies traditional databases miss
+- **Data returned:** Domain, company name, description, technographic data, relevance score, website semantic analysis
+- **API access:** Paid plans (conditional)
+- **GTMOS unit:** API call + records
+- **Typical cost:** $0.10/call + $0.002/record
+
+---
+
 ## Research & Scraping
 
 ### Exa

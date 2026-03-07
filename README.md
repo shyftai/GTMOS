@@ -113,6 +113,9 @@ Attio · HubSpot · Salesforce · Pipedrive
 ### Signals
 Signalbase · Commonroom · Jungler.ai · Trigify · Sentrion.ai · Fantastic.jobs
 
+### Lookalike discovery
+Ocean.io (feed customers → get ranked lookalikes) · DiscoLike (AI-powered discovery across 60M+ domains)
+
 ### Research & scraping
 Exa (MCP — semantic search, company research, deep research) · Firecrawl (MCP — web scraping, structured extraction)
 
