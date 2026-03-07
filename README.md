@@ -154,6 +154,7 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:deep-dive <name>` | Build ICP from CRM data, campaigns, and transcripts |
 | `/gtm:research <name>` | Research ICP companies and market |
 | `/gtm:new-campaign <ws> <name>` | Create a campaign with type selection |
+| `/gtm:clone-campaign <ws> <src> <new>` | Clone a successful campaign for a new segment |
 | `/gtm:switch <name>` | Switch active workspace |
 | `/gtm:status` | Show workspace status and commands |
 | `/gtm:dashboard <ws>` | Smart dashboard — what needs attention now |
@@ -181,6 +182,8 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:account-based <ws>` | Multi-thread a target account (ABM) |
 | `/gtm:audience-sync <ws>` | Push lists to LinkedIn/Meta/Google Ads |
 | `/gtm:ab-test <ws> <campaign>` | Set up, check, or resolve an A/B test |
+| `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes |
+| `/gtm:pipeline-velocity <ws>` | Track deal velocity and detect bottlenecks |
 
 ### Infrastructure
 | Command | What it does |

@@ -6,6 +6,14 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.9.0] — 2026-03-07
+
+### Added
+- **Data hygiene** (`/gtm:data-hygiene`) — monitor contact data freshness, re-verify emails >90 days old, detect job changes via Apollo/Crispy, flag cold data (2+ campaigns, zero engagement), auto-suppress hard bounces, data freshness score
+- **Pipeline velocity** (`/gtm:pipeline-velocity`) — track stage durations, detect bottlenecks (>30% stall rate), stalled deal alerts with suggested actions, velocity formula, week-over-week trend tracking
+- **Campaign cloning** (`/gtm:clone-campaign`) — clone a successful campaign's structure, config, briefing, and A/B winners for a new segment or market. Cross-workspace cloning supported. Flags what needs review before shipping
+- Pipeline velocity tracking tables in PIPELINE.md template (stage durations, velocity trend, stalled deals)
+
 ## [0.8.0] — 2026-03-07
 
 ### Added

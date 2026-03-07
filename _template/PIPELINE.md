@@ -89,6 +89,36 @@ Track conversion rates between each stage per campaign.
 
 ---
 
+## Pipeline velocity
+
+Track how long deals spend in each stage. Updated during `/gtm:sync` and `/gtm:pipeline-velocity`.
+
+### Stage durations
+
+| Stage transition | Avg days | Median days | Stall threshold | Deals currently stalling |
+|-----------------|----------|-------------|-----------------|-------------------------|
+| Contacted -> Reply | — | — | — | — |
+| Reply -> Meeting | — | — | — | — |
+| Meeting -> Qualified | — | — | — | — |
+| Qualified -> Proposal | — | — | — | — |
+| Proposal -> Negotiation | — | — | — | — |
+| Negotiation -> Won/Lost | — | — | — | — |
+| **Full cycle (first touch -> won)** | — | — | — | — |
+
+### Velocity trend
+
+| Week | Avg cycle (days) | Deals in pipeline | Stall rate | Velocity score |
+|------|-----------------|-------------------|------------|---------------|
+| | | | | |
+
+### Stalled deals
+
+| Deal | Company | Current stage | Days in stage | Stall threshold | Suggested action |
+|------|---------|--------------|---------------|-----------------|-----------------|
+| | | | | | |
+
+---
+
 ## Lost deal analysis
 
 Track why deals are lost to improve targeting and copy.
