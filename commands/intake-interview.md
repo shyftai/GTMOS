@@ -41,10 +41,35 @@
 7. Suggest running the research phase next
 
 ## Block 7 — Tool stack questions
-- Which tools are active for this workspace? (Apollo / Icypeas / Prospeo / Apify / HubSpot / Lemlist / Instantly / Smartlead / Crispy / Attio / Signalbase / Commonroom / Jungler.ai / Trigify)
+- Which tools are active for this workspace?
+
+  **Prospecting & enrichment:** Apollo / Icypeas / Prospeo / Apify
+  **Sending:** Lemlist / Instantly / Smartlead
+  **LinkedIn:** Crispy
+  **CRM:** Attio / HubSpot / Salesforce / Pipedrive
+  **Signals:** Signalbase / Commonroom / Jungler.ai / Trigify / Sentrion.ai / Fantastic.jobs
+  **Lookalike discovery:** Ocean.io / DiscoLike
+  **Research & scraping:** Exa / Firecrawl
+  **Email verification:** ZeroBounce / MillionVerifier / Scrubby
+  **Email finding:** Dropcontact / FindyMail
+  **Meeting transcripts:** Fireflies.ai
+
 - For each active tool: what is the credit behaviour? (confirm-every-time / confirm-above-threshold / auto-approved)
 - For confirm-above-threshold tools: what is the batch size limit?
 - Are there any tools this workspace specifically should not use?
+
+**After tool selection, check .env for API keys:**
+- APOLLO_API_KEY, ICYPEAS_API_KEY, PROSPEO_API_KEY, APIFY_API_KEY
+- LEMLIST_API_KEY, INSTANTLY_API_KEY, SMARTLEAD_API_KEY
+- CRISPY_API_KEY
+- ATTIO_API_KEY, HUBSPOT_API_KEY
+- SIGNALBASE_API_KEY, COMMONROOM_API_KEY, JUNGLER_API_KEY, TRIGIFY_API_KEY
+- OCEAN_API_KEY, DISCOLIKE_API_KEY
+- EXA_API_KEY, FIRECRAWL_API_KEY
+- DROPCONTACT_API_KEY, FINDYMAIL_API_KEY
+- FIREFLIES_API_KEY
+
+Flag any active tools with missing API keys using the MISSING TOOLS box from tool-links.md.
 
 ## Block 8 — Cost tracking questions
 - For each active tool: what is the cost per unit? (e.g. $0.05 per Apollo enrichment, $0.01 per Lemlist email)

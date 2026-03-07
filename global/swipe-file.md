@@ -129,6 +129,123 @@ Either way — congrats on the launch.
 
 ---
 
+## Example 6: Fintech → CFO (Event Follow-Up)
+
+**Context:** Met briefly at a fintech conference. Selling an expense management platform to mid-market companies. 3-touch follow-up starting 1 day after the event.
+
+**Subject:** from [event name]
+
+**Touch 1 (58 words):**
+{{first_name}} — good to cross paths at [event name].
+
+Your comment during the panel on manual expense reporting stuck with me — most finance teams I talk to lose 15+ hours a month on it.
+
+[Customer] automated their entire flow and cut close time by 4 days. Pretty relevant to what you described.
+
+Worth continuing the conversation?
+
+**Touch 2 — Re: from [event name] (40 words):**
+Quick follow-up from [event name] — the session on real-time spend visibility reminded me of something.
+
+[Customer] shared their before/after numbers publicly last quarter. 62% fewer expense policy violations, zero manual reconciliation.
+
+Happy to send the breakdown.
+
+**Touch 3 — Re: from [event name] (26 words):**
+Last note on this — know post-conference weeks are packed.
+
+If modernising expense flows comes back up next quarter, I'm easy to find. Enjoyed the conversation.
+
+---
+
+## Example 7: DevTool → Engineering Lead (Product Launch)
+
+**Context:** Just launched a new CI/CD feature. Targeting engineering leads at companies with 20-100 developers. Timed to the launch announcement.
+
+**Subject:** your build pipeline
+
+**Touch 1 (54 words):**
+Noticed {{company}}'s engineering team has grown 3x this year — that usually means the build pipeline is feeling it.
+
+We just shipped [feature name] — it cuts CI run time by 40% for teams at your scale. [Beta customer] went from 45-minute builds to 12.
+
+Relevant to anything you're dealing with?
+
+**Touch 2 — Re: your build pipeline (42 words):**
+Separate angle — not about speed.
+
+[Tech publication] just covered how mid-size eng teams are spending 30% of sprint capacity on infrastructure instead of product. The teams that fix this usually start with the build pipeline.
+
+Thought this might resonate.
+
+**Touch 3 — Re: your build pipeline (30 words):**
+No pitch — just sharing this.
+
+We published the architecture behind [feature name] on our eng blog. Useful read even if you're building in-house.
+
+[link from BOOKING.md]
+
+---
+
+## Example 8: B2B SaaS → VP Marketing (ABM — Multi-threaded)
+
+**Context:** Target account identified. Multiple decision-makers being contacted: VP Marketing, Director of Demand Gen, Marketing Ops Manager. Each gets a tailored sequence. Same account, different angles per persona.
+
+### Thread A: VP Marketing
+
+**Subject:** {{company}} pipeline
+
+**Touch 1 (52 words):**
+{{first_name}} — noticed {{company}} is investing heavily in outbound but your organic pipeline seems flat based on the content cadence.
+
+Most marketing leaders I talk to at this stage are trying to solve the "we generate leads but sales says they're not qualified" problem.
+
+Is that on your radar?
+
+**Touch 2 — Re: {{company}} pipeline (38 words):**
+Different thought — [Customer VP Marketing] shared how they restructured their lead scoring and saw sales acceptance jump from 30% to 71%. Not about more leads, just better signal on which ones matter.
+
+Want the details?
+
+**Touch 3 — Re: {{company}} pipeline (22 words):**
+Closing the loop. If pipeline quality comes back as a priority, happy to share what's working for similar teams.
+
+Either way — all the best.
+
+### Thread B: Director of Demand Gen
+
+**Subject:** demand gen at {{company}}
+
+**Touch 1 (56 words):**
+{{first_name}} — saw {{company}} is running paid campaigns across 4 channels but the landing pages haven't changed in months.
+
+Most demand gen teams I work with find that 70% of their budget goes to traffic and 5% to conversion. The math inverts when you fix the middle.
+
+[Customer] proved this — interested?
+
+**Touch 2 — Re: demand gen at {{company}} (34 words):**
+Quick follow-up — [industry benchmark] shows companies with dedicated landing pages per campaign convert 2.5x higher than those using a single page.
+
+Happy to share the full report. Useful either way.
+
+### Thread C: Marketing Ops Manager
+
+**Subject:** your martech stack
+
+**Touch 1 (48 words):**
+{{first_name}} — noticed {{company}} is running [tool A] + [tool B] + [tool C] for your marketing stack.
+
+That combo usually means data lives in 3 places and nobody trusts the attribution.
+
+[Customer] consolidated down and finally got one source of truth. Relevant?
+
+**Touch 2 — Re: your martech stack (32 words):**
+No agenda — just thought this benchmark report on martech consolidation might be useful. 45% of teams at your scale plan to reduce tools this year.
+
+[link from BOOKING.md]
+
+---
+
 ## What makes these work
 
 | Principle | How it shows up |

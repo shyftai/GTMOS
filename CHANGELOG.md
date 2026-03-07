@@ -6,6 +6,39 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-03-07
+
+### Added
+- **Ocean.io** — lookalike company search. Feed best customer domains, get ranked matches with revenue, tech stack, headcount growth, web traffic. 0.2 credits/result
+- **DiscoLike** — AI-powered lookalike discovery across 60M+ domains in 45 languages. $0.10/call + $2/1K records
+- **Exa MCP** — semantic web search, company research, deep research agent. 1K free searches/mo. MCP tools: `web_search_exa`, `company_research_exa`, `deep_researcher_start`
+- **Firecrawl MCP** — web scraping and structured data extraction. 500 free credits. MCP tools: `FIRECRAWL_SCRAPE_EXTRACT_DATA_LLM`, `FIRECRAWL_EXTRACT`
+- **Apify + Sales Navigator** company scraping — bulk SN account extraction via API (~$0.50/1K companies, no-cookies actors available)
+- Signal waterfall — cascading signal scan across 4 tiers: dedicated platforms (Signalbase, Commonroom, Jungler, Trigify), job monitors (Sentrion, Fantastic.jobs), web signals (Exa, Firecrawl, Crunchbase — free), LinkedIn (Crispy). Checks TOOLS.md + .env, skips missing tools
+- Sync command rebuilt with real API endpoints: Instantly V2 analytics, Lemlist stats + activities, Smartlead analytics + lead-level stats, Crispy metrics, Attio/HubSpot pipeline queries, Apollo status updates
+- Swipe file expanded: 8 examples covering all 7 campaign types (cold outbound, signal-triggered, competitor displacement, multi-channel LinkedIn, re-engagement, event follow-up, product launch, ABM multi-threaded)
+- Research command rewritten with Exa, Firecrawl, Ocean.io, DiscoLike integration — includes competitor intelligence section and lookalike expansion step
+- List-brief now includes sourcing plan with all discovery tools and lookalike sources
+- Company discovery split into Phase 1 (discovery) and Phase 2 (volume enrichment via APIs)
+- Onboarding now checks for all new tools (Ocean.io, DiscoLike, Exa, Firecrawl, Dropcontact, FindyMail, ZeroBounce, MillionVerifier, Scrubby, Sentrion, Fantastic.jobs, Fireflies)
+
+### Changed
+- Crispy repositioned as primary discovery engine for both people and company search
+- Crispy field mappings updated with complete data from docs — all 4 endpoints (search_people, search_companies, get_profile, get_company_profile) with newly added fields
+- Company enrichment waterfall reordered cheapest-first: Icypeas (0.5cr) → Prospeo (1cr, lifetime dedup) → Apollo (1 export credit)
+- Instantly API migrated from V1 to V2 (Bearer auth, new endpoint structure)
+- Lemlist API reference expanded with stats, activities, and export endpoints
+- Smartlead API reference expanded with top-level analytics, lead-level stats, and rate calculation formulas
+- Copy writing (`/gtm:write`) now loads snippet-library.md and swipe-file.md for reference
+- Signal scan uses Trigger > Relevance > Value > Ask framework for draft messages
+
+### Removed
+- Hunter.io (only 25 free searches — insufficient volume for programmatic use)
+- Duplicate Icypeas and Prospeo entries in tool-pricing.md
+
+### Fixed
+- Hunter.io remnant in enrichment waterfall API quick reference section
+
 ## [0.5.0] — 2026-03-07
 
 ### Added
