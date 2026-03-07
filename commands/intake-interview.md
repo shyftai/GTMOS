@@ -53,6 +53,7 @@
   **Email verification:** ZeroBounce / MillionVerifier / Scrubby
   **Email finding:** Dropcontact / FindyMail
   **Meeting transcripts:** Fireflies.ai
+  **Ad platforms (ABM audience sync):** LinkedIn Ads / Meta (Facebook) / Google Ads
 
 - For each active tool: what is the credit behaviour? (confirm-every-time / confirm-above-threshold / auto-approved)
 - For confirm-above-threshold tools: what is the batch size limit?
@@ -68,6 +69,9 @@
 - EXA_API_KEY, FIRECRAWL_API_KEY
 - DROPCONTACT_API_KEY, FINDYMAIL_API_KEY
 - FIREFLIES_API_KEY
+- LINKEDIN_ADS_TOKEN, LINKEDIN_AD_ACCOUNT_ID
+- META_ACCESS_TOKEN, META_AD_ACCOUNT_ID
+- GOOGLE_ADS_TOKEN, GOOGLE_ADS_DEVELOPER_TOKEN, GOOGLE_ADS_CUSTOMER_ID
 
 Flag any active tools with missing API keys using the MISSING TOOLS box from tool-links.md.
 

@@ -443,6 +443,32 @@ curl "https://kg.diffbot.com/kg/v3/dql?token=$DIFFBOT_API_KEY&query=type%3AOrgan
 | Get pipeline | GET | `/crm/v3/pipelines/deals` |
 | Batch create | POST | `/crm/v3/objects/contacts/batch/create` |
 
+**ABM — Mark company as target account:**
+```bash
+curl -X PATCH "https://api.hubapi.com/crm/v3/objects/companies/{companyId}" \
+  -H "Authorization: Bearer $HUBSPOT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "properties": {
+      "hs_target_account": "true",
+      "hs_target_account_probability": "0.85"
+    }
+  }'
+```
+
+**ABM — Set buying role on contact:**
+Buying role values: `BLOCKER`, `BUDGET_HOLDER`, `CHAMPION`, `DECISION_MAKER`, `END_USER`, `EXECUTIVE_SPONSOR`, `INFLUENCER`, `LEGAL_AND_COMPLIANCE`, `OTHER`
+```bash
+curl -X PATCH "https://api.hubapi.com/crm/v3/objects/contacts/{contactId}" \
+  -H "Authorization: Bearer $HUBSPOT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "properties": {
+      "hs_buying_role": "CHAMPION"
+    }
+  }'
+```
+
 **Create contact example:**
 ```bash
 curl -X POST "https://api.hubapi.com/crm/v3/objects/contacts" \
@@ -745,6 +771,147 @@ curl -X POST "https://api.firecrawl.dev/v1/extract" \
 - Crawl job boards for hiring signals
 - Extract structured company data from websites Exa finds
 - Build prospect lists from directory pages, award lists, conference speaker lists
+
+---
+
+## LinkedIn Ads (Matched Audiences)
+
+**Auth:** OAuth2 Bearer token
+**Base URL:** `https://api.linkedin.com/rest`
+**Access:** Requires separate Audiences API approval (not included in Marketing API). Apply via [interest form](https://forms.office.com/r/eiffXL3iUW).
+**Permissions:** `rw_dmp_segments` (streaming), `rw_ads` (CSV upload)
+
+| Action | Method | Endpoint | Notes |
+|--------|--------|----------|-------|
+| Create DMP Segment | POST | `/dmpSegments` | type: COMPANY or USER |
+| Stream companies | POST | `/dmpSegments/{id}/companies` | Up to 5,000/batch |
+| Stream users | POST | `/dmpSegments/{id}/users` | Up to 5,000/batch |
+| Get segment status | GET | `/dmpSegments/{id}` | BUILDING → READY |
+| Find segments | GET | `/dmpSegments?q=account&account={urn}` | List all segments |
+| Delete segment | DELETE | `/dmpSegments/{id}` | Cannot delete if used by predictive audience |
+
+**Required headers (all requests):**
+```
+Authorization: Bearer $LINKEDIN_ADS_TOKEN
+Content-Type: application/json
+Linkedin-Version: 202602
+X-Restli-Protocol-Version: 2.0.0
+```
+
+**Create company segment + stream example:**
+```bash
+# Step 1: Create segment
+curl -X POST "https://api.linkedin.com/rest/dmpSegments" \
+  -H "Authorization: Bearer $LINKEDIN_ADS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -H "Linkedin-Version: 202602" \
+  -H "X-Restli-Protocol-Version: 2.0.0" \
+  -d '{
+    "name": "GTMOS ABM targets",
+    "sourcePlatform": "GTMOS",
+    "account": "urn:li:sponsoredAccount:516848833",
+    "type": "COMPANY",
+    "destinations": [{ "destination": "LINKEDIN" }]
+  }'
+
+# Wait 5 seconds
+
+# Step 2: Batch stream companies
+curl -X POST "https://api.linkedin.com/rest/dmpSegments/{segmentId}/companies" \
+  -H "X-RestLi-Method: BATCH_CREATE" \
+  -H "Authorization: Bearer $LINKEDIN_ADS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -H "Linkedin-Version: 202602" \
+  -H "X-Restli-Protocol-Version: 2.0.0" \
+  -d '{
+    "elements": [
+      { "action": "ADD", "companyName": "Acme Inc", "companyWebsiteDomain": "acme.com", "country": "US" },
+      { "action": "ADD", "companyName": "Globex Corp", "companyWebsiteDomain": "globex.com", "country": "US" }
+    ]
+  }'
+```
+
+**Company matching fields:** companyName, companyWebsiteDomain, companyEmailDomain, organizationUrn, companyPageUrl, stockSymbol, industries (max 3), city, state, country, postalCode. Must provide at least one of: name, URN, domain, or page URL.
+
+**User matching:** SHA256 or SHA512 hashed emails. Lowercase + trim before hashing.
+
+**Rate limits:** 300 req/min (/companies), 600 req/min (/users). Initial processing: up to 48 hours. Updates: up to 24 hours. Min audience: 300 matched members.
+
+---
+
+## Meta Ads (Custom Audiences)
+
+**Auth:** Access token (OAuth2 or system user token)
+**Base URL:** `https://graph.facebook.com/v22.0`
+**Permissions:** `ads_management` scope
+
+| Action | Method | Endpoint | Notes |
+|--------|--------|----------|-------|
+| Create custom audience | POST | `/{ad_account_id}/customaudiences` | Returns audience ID |
+| Add users | POST | `/{audience_id}/users` | Batch up to 10,000 rows |
+| Remove users | DELETE | `/{audience_id}/users` | Same format as add |
+| Get audience | GET | `/{audience_id}` | Status and size |
+| Delete audience | DELETE | `/{audience_id}` | Permanent |
+
+**Create audience + upload contacts example:**
+```bash
+# Step 1: Create blank audience
+curl -X POST "https://graph.facebook.com/v22.0/act_123456789/customaudiences" \
+  -F 'name=GTMOS ABM targets' \
+  -F 'subtype=CUSTOM' \
+  -F 'description=ABM target accounts' \
+  -F 'customer_file_source=USER_PROVIDED_ONLY' \
+  -F "access_token=$META_ACCESS_TOKEN"
+
+# Step 2: Upload hashed contacts
+curl -X POST "https://graph.facebook.com/v22.0/{audience_id}/users" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "payload": {
+      "schema": ["EMAIL", "FN", "LN", "COUNTRY"],
+      "data": [
+        ["sha256_hash_of_email", "sha256_hash_of_firstname", "sha256_hash_of_lastname", "sha256_hash_of_us"],
+        ["sha256_hash_of_email2", "sha256_hash_of_fn2", "sha256_hash_of_ln2", "sha256_hash_of_uk"]
+      ]
+    },
+    "access_token": "'$META_ACCESS_TOKEN'"
+  }'
+```
+
+**Schema fields:** EMAIL, PHONE, FN, LN, GEN, DOB, CT (city), ST (state), ZIP, COUNTRY, MADID, EXTERN_ID
+
+**Hashing rules:** SHA256. Lowercase + trim before hashing. Phone: digits only with country code (e.g., 12025551234). Do NOT hash country codes — use ISO 2-letter lowercase.
+
+**Limits:** Max 500 custom audiences per ad account. 10,000 rows per upload request. Min audience: ~100 matched users.
+
+---
+
+## Google Ads (Customer Match)
+
+**Auth:** OAuth2 Bearer token + developer token
+**Base URL:** `https://googleads.googleapis.com/v18`
+**Permissions:** Customer Match access on developer token
+
+| Action | Method | Endpoint | Notes |
+|--------|--------|----------|-------|
+| Create user list | POST | `/customers/{id}/userLists:mutate` | crmBasedUserList type |
+| Create upload job | POST | `/customers/{id}/offlineUserDataJobs:create` | CUSTOMER_MATCH_USER_LIST |
+| Add data to job | POST | `/{jobResourceName}:addOperations` | Up to 100,000 identifiers |
+| Run job | POST | `/{jobResourceName}:run` | Processes async |
+| Get job status | GET | `/{jobResourceName}` | Check completion |
+
+**Required headers:**
+```
+Authorization: Bearer $GOOGLE_ADS_TOKEN
+developer-token: $GOOGLE_ADS_DEVELOPER_TOKEN
+Content-Type: application/json
+```
+
+**User identifiers:** hashedEmail, hashedPhoneNumber, addressInfo (hashedFirstName, hashedLastName, countryCode, postalCode). SHA256 hashed, lowercase + trimmed.
+
+**Important:** Starting April 1, 2026, new developer tokens without prior Customer Match usage must use the Data Manager API instead.
+
+**Limits:** 100,000 identifiers per addOperations request. 15 operations per userLists:mutate. Min audience: 1,000 matched users.
 
 ---
 

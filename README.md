@@ -122,6 +122,9 @@ Exa (MCP — semantic search, company research, deep research) · Firecrawl (MCP
 ### Meeting transcripts
 Fireflies.ai (pull sales call transcripts via API for data deep-dives)
 
+### Ad platforms (ABM audience sync)
+LinkedIn Ads (company/contact matched audiences) · Meta/Facebook (custom audiences) · Google Ads (customer match)
+
 ### Email finding & verification
 Dropcontact · FindyMail · ZeroBounce · MillionVerifier · Scrubby
 
@@ -174,7 +177,8 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:sync <ws>` | Pull latest data from connected tools |
 | `/gtm:health <ws> <campaign>` | Full health check with pattern detection |
 | `/gtm:linkedin-warm <ws>` | Pre-outreach LinkedIn warming |
-| `/gtm:account-based <ws>` | Multi-thread a target account |
+| `/gtm:account-based <ws>` | Multi-thread a target account (ABM) |
+| `/gtm:audience-sync <ws>` | Push lists to LinkedIn/Meta/Google Ads |
 
 ### Infrastructure
 | Command | What it does |

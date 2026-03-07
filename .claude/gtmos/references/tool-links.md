@@ -68,6 +68,11 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 - Exa: https://exa.ai?ref=gtmos
 - Firecrawl: https://firecrawl.dev?ref=gtmos
 
+### Ad Platforms (ABM Audience Sync)
+- LinkedIn Campaign Manager: https://www.linkedin.com/campaignmanager
+- Meta Business Suite: https://business.facebook.com
+- Google Ads: https://ads.google.com
+
 ### Automation
 - N8N: https://n8n.io?ref=gtmos
 - Supabase: https://supabase.com?ref=gtmos

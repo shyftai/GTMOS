@@ -6,6 +6,24 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-03-07
+
+### Added
+- **Audience sync command** (`/gtm:audience-sync`) — push account/contact lists to LinkedIn Ads, Meta (Facebook/Instagram), and Google Ads as matched/custom audiences for ABM ad warming
+- **LinkedIn Ads API** — DMP Segment creation, batch company streaming (up to 5,000/batch), contact streaming via SHA256 email, segment status monitoring
+- **Meta Ads API** — custom audience creation, hashed contact upload (email, phone, name, location), batch up to 10,000 rows
+- **Google Ads API** — Customer Match user list creation, OfflineUserDataJob workflow, hashed identifier upload
+- **HubSpot ABM integration** — if HubSpot Marketing Hub Professional+ is active, use built-in Target Accounts, buying roles, account overview, and native LinkedIn Ads sync instead of direct API audience sync
+- **ABM tiering** — Tier 1 (full, 1-10 accounts), Tier 2 (lite, 10-50), Tier 3 (programmatic, 50-200) with different resource allocation per tier
+- **Optional ad warming strategy** — suggested timeline for audience warming before outreach (not required)
+- Ad platform API keys in .env.example (LINKEDIN_ADS_TOKEN, META_ACCESS_TOKEN, GOOGLE_ADS_TOKEN, etc.)
+- Ad platform sections in tool-links.md, tool-pricing.md, template TOOLS.md
+
+### Changed
+- ABM command (`/gtm:account-based`) fully rebuilt with: account qualification scoring, deep research phase (Crispy, Exa, Firecrawl, Apollo), buying committee mapping, audience warming integration, staggered timing rules, cross-reference coordination, account-level tracking
+- ABM slash command now loads enrichment-waterfall.md, api-reference.md, and audience-sync.md for full context
+- Onboarding Block 7 updated with ad platform tools and API keys
+
 ## [0.6.0] — 2026-03-07
 
 ### Added

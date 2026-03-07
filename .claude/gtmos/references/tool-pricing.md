@@ -437,6 +437,41 @@ Last updated: 2026-03
 
 ---
 
+## Ad Platforms (ABM Audience Sync)
+
+### LinkedIn Ads (Matched Audiences)
+- **Model:** Ad spend (CPM/CPC) — API calls are free
+- **What it does:** Push company lists or contact lists to LinkedIn as matched audiences for targeted ad campaigns
+- **Access:** Requires LinkedIn Marketing API + separate Audiences API approval
+- **Audience types:** Company targeting (ABM), Contact targeting (email match), Website retargeting
+- **Min audience:** 300 matched members
+- **Rate limits:** 300 req/min (companies), 600 req/min (users), 5,000 per batch
+- **Ad spend:** ~$10-25/day per 500-company audience (CPM-based)
+- **GTMOS unit:** audience synced (API calls free, ad spend separate)
+
+### Meta Ads (Custom Audiences)
+- **Model:** Ad spend (CPM/CPC) — API calls are free
+- **What it does:** Push contact lists to Facebook/Instagram as custom audiences for targeted ads
+- **Access:** Meta Marketing API with `ads_management` permission
+- **Audience types:** Customer list (email/phone match), Lookalike audiences, Website custom audiences
+- **Min audience:** ~100 matched users
+- **Limits:** Max 500 custom audiences per ad account, 10,000 rows per upload
+- **Ad spend:** ~$5-15/day per 1,000-contact audience
+- **GTMOS unit:** audience synced (API calls free, ad spend separate)
+
+### Google Ads (Customer Match)
+- **Model:** Ad spend (CPC/CPM) — API calls are free
+- **What it does:** Push contact lists to Google Ads for search, display, YouTube, and Gmail targeting
+- **Access:** Google Ads API with Customer Match access
+- **Audience types:** Customer list (email/phone/address match)
+- **Min audience:** 1,000 matched users
+- **Limits:** 100,000 identifiers per request
+- **Ad spend:** ~$5-10/day for awareness campaigns
+- **GTMOS unit:** audience synced (API calls free, ad spend separate)
+- **Note:** Starting April 2026, new developer tokens must use Data Manager API
+
+---
+
 ### Make (Integromat)
 - **Model:** Operation-based
 - **Free tier:** 1,000 operations/month

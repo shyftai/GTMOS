@@ -169,6 +169,30 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Credit behaviour (reads): auto-approved (500 free one-time)
 - Notes: MCP server available — Claude Code can use `FIRECRAWL_SCRAPE_EXTRACT_DATA_LLM`, `FIRECRAWL_EXTRACT` directly. 1 credit/page.
 
+### LinkedIn Ads
+- Status: active / inactive
+- Mode: write-only
+- Push to LinkedIn Ads: company lists and contact lists as matched audiences (DMP segments)
+- Used for: ABM audience warming — run brand awareness ads to target accounts before cold outreach
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Requires Audiences API approval (separate from Marketing API). Min 300 matched members. Up to 5,000 companies per batch. Processing: 24-48 hours.
+
+### Meta Ads
+- Status: active / inactive
+- Mode: write-only
+- Push to Meta: contact lists as custom audiences for Facebook/Instagram ad targeting
+- Used for: ABM audience warming — show thought leadership ads to prospects across Facebook and Instagram
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Max 500 custom audiences per ad account. 10,000 rows per upload. Requires `ads_management` permission.
+
+### Google Ads
+- Status: active / inactive
+- Mode: write-only
+- Push to Google Ads: contact lists as customer match audiences for search, display, YouTube targeting
+- Used for: ABM audience warming — show brand ads across Google ecosystem
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Min 1,000 matched users. Starting April 2026, new dev tokens need Data Manager API.
+
 ---
 
 ## Additional tools (activate as needed)
@@ -238,3 +262,10 @@ All keys stored in .env at repo root:
 - DISCOLIKE_API_KEY
 - EXA_API_KEY
 - FIRECRAWL_API_KEY
+- LINKEDIN_ADS_TOKEN
+- LINKEDIN_AD_ACCOUNT_ID
+- META_ACCESS_TOKEN
+- META_AD_ACCOUNT_ID
+- GOOGLE_ADS_TOKEN
+- GOOGLE_ADS_DEVELOPER_TOKEN
+- GOOGLE_ADS_CUSTOMER_ID
