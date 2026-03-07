@@ -270,34 +270,48 @@ Goal: find people matching ICP criteria (title, industry, company size, location
 
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
-| 1 | **Apollo** | FREE | People search is free. 275M+ contacts, 600 calls/day. No emails in results (preview only) |
-| 2 | **Crispy / Sales Navigator** | Included in sub | LinkedIn-native search with 36+ filters, intent signals, job change alerts. No email/phone |
+| 1 | **Crispy / Sales Navigator** | Included in sub | Primary discovery engine. LinkedIn-native search with 36+ filters, intent signals, job change alerts, spotlights. No email/phone but best targeting precision |
+| 2 | **Apollo** | FREE | People search is free. 275M+ contacts, 600 calls/day. No emails in results (preview only) |
 | 3 | **Lemlist built-in DB** | Included in sub | 450M+ contacts, search by filters. Included in Email Pro+ plans |
 | 4 | **Instantly lead finder** | Included in lead finder plan | 160M+ contacts. Separate subscription from sending plan |
 | 5 | **Prospeo** | 1 credit per 25 results | search-person returns up to 25 per credit. No email (need separate enrich) |
 | 6 | **Icypeas leads DB** | Low credit cost | Find People endpoint with filters |
-| 7 | **Apify** | ~$0.003/profile | LinkedIn search scraper. Slower, no subscription needed |
+| 7 | **Apify** | ~$0.003/profile | LinkedIn search scraper at volume. Use when you need to bulk-extract from SN search results |
 
-**Strategy:** Start with Apollo (free) and Crispy (included) — between them you cover 275M+ contacts and LinkedIn. Only go to paid search if those miss. After search, run found contacts through email finding waterfall.
+**Strategy:** Crispy is the primary people discovery tool — Sales Navigator's filters (title, seniority, spotlights, job changes) are unmatched. Apollo (free) is the best complement for broad searches. After discovery, run found contacts through the email finding waterfall to get verified emails.
 
-### 3. Company Search
+### 3. Company Discovery
 
 Goal: find companies matching ICP firmographics.
 
+**Phase 1 — Discovery (find target companies)**
+
 | Step | Source | Cost | Why this order |
 |------|--------|------|----------------|
-| 1 | **Crunchbase Basic API** | FREE | Free API key, search by industry, size, funding, location. 200 calls/min. Best for startup/funded companies |
-| 2 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
-| 3 | **Apify + Sales Navigator** | ~$0.50/1K companies | Scrape SN account search results via API. 20+ fields: name, industry, headcount, growth, revenue est., HQ. No SN cookies needed (no-cookies actors available). Requires APIFY_API_KEY |
-| 4 | **Crispy / Sales Navigator** | Included in sub | Company search with headcount, industry, location filters. Fewer fields than Apify SN scrape |
-| 5 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
-| 6 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
-| 7 | **Apollo org search** | Credits (not free) | Large database but costs credits |
-| 8 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
-| 9 | **Opemart** | Included in sub | SMB/local businesses |
-| 10 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
+| 1 | **Crispy / Sales Navigator** | Included in sub | Primary discovery engine. 36+ filters: headcount, growth, industry, funding signals, hiring, tech adoption. Unmatched for precision targeting. Returns: name, industry, headcount, HQ, website, description |
+| 2 | **Crunchbase Basic API** | FREE | Best for startup/funded companies. Search by industry, size, funding, location. 200 calls/min |
+| 3 | **Icypeas find companies DB** | 0.02 credits/result | Extremely cheap for basic company discovery |
+| 4 | **Diffbot Knowledge Graph** | FREE (10K credits/mo) | 10B+ entities, search by industry, revenue, employee count, tech stack |
+| 5 | **Prospeo search-company** | 1 credit per 25 results | Good filters, 50+ fields per result |
+| 6 | **Apollo org search** | Credits (not free) | Large database but costs credits |
+| 7 | **StoreLeads** | Included in sub | E-commerce only: Shopify, WooCommerce, platform/app data |
+| 8 | **Opemart** | Included in sub | SMB/local businesses |
+| 9 | **Companies House** | FREE | UK companies only. Full government registry, unlimited |
 
-**Strategy:** Crunchbase free API first for funded/growth companies. Icypeas at 0.02 credits is nearly free. Apify + Sales Navigator is powerful for SN-specific filters (headcount growth, recent funding, hiring signals) at ~$0.50/1K — use when you need Sales Navigator's unique filters without burning Crispy credits. Only use Apollo org search (costs credits) after free/cheap sources are exhausted.
+**Phase 2 — Company Enrichment at Volume (fill gaps on discovered companies)**
+
+Once you have a company list from discovery, enrich missing fields (tech stack, revenue, funding, SIC/NAICS) via API:
+
+| Step | Source | Cost | What it adds |
+|------|--------|------|-------------|
+| 1 | **Icypeas company scraper** | 0.5 credits | Employees, industry, specialties, growth data. Cheapest option |
+| 2 | **Prospeo enrich-company** | 1 credit (lifetime dedup) | 50+ fields: revenue, funding, tech stack, SIC/NAICS. Re-enrich same company = free forever |
+| 3 | **Apollo org enrich** | 1 export credit | Industry, employees, revenue, funding rounds, tech stack, social URLs, HQ |
+| 4 | **Apify scraper** | ~$0.50/1K companies | Custom scrape for data not in databases (website tech stack, team pages, about pages) |
+
+**Volume scraping alternative:** When you need to pull large company lists from Sales Navigator filters at scale (1K+ companies), use **Apify + Sales Navigator** (~$0.50/1K, no-cookies actors available) instead of Crispy. Crispy is best for discovery and precision targeting; Apify handles bulk extraction.
+
+**Strategy:** Crispy is the go-to for discovering companies — Sales Navigator's filters are the most powerful for ICP targeting. Once you have a list, enrich at volume via Icypeas (cheapest), Prospeo (most fields + lifetime dedup), or Apollo (deepest tech/funding data). Use Apify for bulk SN extraction when Crispy isn't practical at scale.
 
 ### 4. People Enrichment
 
@@ -315,17 +329,17 @@ Goal: enrich a known person (have name + company or LinkedIn URL) with title, se
 
 ### 5. Company Enrichment
 
-Goal: enrich a known company (have domain or name) with firmographics, tech stack, funding, headcount.
+Goal: enrich a known company (have domain or name) with firmographics, tech stack, funding, headcount. Same providers as Company Discovery Phase 2, but used standalone when you already have a company list.
 
 | Step | Source | Cost | What you get |
 |------|--------|------|-------------|
-| 1 | **Apollo org enrich** | 1 export credit | Industry, employees, revenue, funding rounds, tech stack, social, HQ address |
-| 2 | **Icypeas company scraper** | 0.5 credits | Name, description, employees, industry, address, website, specialties, growth |
-| 3 | **Prospeo enrich-company** | 1 credit (lifetime dedup) | 50+ fields: industry, employees, revenue, funding, tech, SIC/NAICS codes |
+| 1 | **Icypeas company scraper** | 0.5 credits | Name, description, employees, industry, address, website, specialties, growth. Cheapest |
+| 2 | **Prospeo enrich-company** | 1 credit (lifetime dedup) | 50+ fields: industry, employees, revenue, funding, tech, SIC/NAICS codes. Re-enrich = free |
+| 3 | **Apollo org enrich** | 1 export credit | Industry, employees, revenue, funding rounds, tech stack, social, HQ address |
 | 4 | **StoreLeads** | Included in sub | E-commerce only: platform, apps, traffic, Alexa rank |
 | 5 | **Apify** | ~$0.01/site | Custom website scrape for tech stack, team page, about page |
 
-**Strategy:** Apollo gives the most fields for 1 credit. If Apollo misses (company not in database), Icypeas is cheapest fallback. Prospeo's lifetime dedup makes it ideal for companies you'll look up again.
+**Strategy:** Icypeas is cheapest at 0.5 credits. Prospeo's lifetime dedup makes it ideal for companies you'll look up repeatedly. Apollo gives the deepest tech/funding data for 1 credit.
 
 ### 6. Phone Number Finding
 
