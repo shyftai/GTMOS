@@ -186,6 +186,275 @@ Step-by-step guides for setting up each tool to work with GTMOS. Share these wit
 
 ---
 
+## Icypeas
+
+### Initial setup
+1. Create an account at icypeas.com
+2. Go to Settings → API
+3. Copy your API key and API secret
+4. Add both to `.env`:
+   - `ICYPEAS_API_KEY=your-key`
+   - `ICYPEAS_SECRET=your-secret`
+
+### GTMOS integration
+- Reads: email finder results, company data
+- Writes: submit enrichment requests
+- Credit behaviour: confirm-before-every-use (1 credit per email find, 0.5 per company scrape)
+- Auth uses `key:secret` format in requests
+
+---
+
+## Prospeo
+
+### Initial setup
+1. Create an account at prospeo.io
+2. Go to Dashboard → API → copy your API key
+3. Add to `.env`: `PROSPEO_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: enrichment results, email search results
+- Writes: submit search/enrich requests
+- Credit behaviour: confirm-before-every-use
+- Auth header: `X-KEY`
+- Note: old endpoints were deprecated March 2025 — use the new `enrich` and `search` endpoints only
+
+---
+
+## Apify
+
+### Initial setup
+1. Create an account at apify.com
+2. Go to Settings → Integrations → API → copy your API token
+3. Add to `.env`: `APIFY_API_KEY=your-token`
+
+### Sales Navigator scraping
+1. In the Apify Store, search for "Sales Navigator" actors
+2. Recommend using no-cookies actors for account safety (avoids LinkedIn session risks)
+3. Configure the actor with your search URL or filters, then run via API
+
+### GTMOS integration
+- Reads: actor run results, dataset exports
+- Writes: start actor runs, configure actor inputs
+- Credit behaviour: confirm-before-every-use (usage-based compute pricing)
+
+---
+
+## Dropcontact
+
+### Initial setup
+1. Create an account at dropcontact.com
+2. Get your API token from the dashboard
+3. Add to `.env`: `DROPCONTACT_API_KEY=your-token`
+
+### GTMOS integration
+- Reads: enrichment results (email, phone, company data)
+- Writes: submit enrichment requests
+- Credit behaviour: confirm-before-every-use
+- Auth header: `X-Access-Token`
+- No database — 100% algorithmic, GDPR compliant
+
+---
+
+## FindyMail
+
+### Initial setup
+1. Create an account at findymail.com
+2. Go to Settings → copy your API key
+3. Add to `.env`: `FINDYMAIL_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: email finder results, verification results
+- Writes: submit email search requests
+- Credit behaviour: confirm-before-every-use (credits never expire)
+- <5% bounce guarantee on found emails
+
+---
+
+## Scrubby
+
+### Initial setup
+1. Create an account at scrubby.io
+2. Get your API key from the dashboard
+3. Add to `.env`: `SCRUBBY_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: catch-all verification results
+- Writes: submit emails for catch-all verification
+- Credit behaviour: confirm-before-every-use
+- Specialist in catch-all email verification — use after other verifiers (ZeroBounce, MillionVerifier) return "catch-all" status
+
+---
+
+## Ocean.io
+
+### Initial setup
+1. Create an account at ocean.io
+2. Contact sales for API access
+3. Get your API token once approved
+4. Add to `.env`: `OCEAN_API_KEY=your-token`
+
+### Using for lookalike prospecting
+1. Feed your best customer domains into Ocean.io
+2. It returns ranked lookalike companies based on similarity
+3. Export results or pull via API for GTMOS list building
+
+### GTMOS integration
+- Reads: lookalike company results, similarity scores
+- Writes: submit seed domains for lookalike analysis
+- Credit behaviour: confirm-before-every-use
+- Auth header: `x-api-token`
+
+---
+
+## DiscoLike
+
+### Initial setup
+1. Create an account at discolike.com
+2. Get your API key from the dashboard
+3. Add to `.env`: `DISCOLIKE_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: AI-powered lookalike results across 60M+ domains
+- Writes: submit seed domains for lookalike discovery
+- Credit behaviour: confirm-before-every-use
+- Auth header: `x-discolike-key`
+
+---
+
+## Exa
+
+### Initial setup
+1. Create an account at exa.ai
+2. Get your API key from the dashboard
+3. Add to `.env`: `EXA_API_KEY=your-key`
+
+### MCP integration
+1. Install the `exa-mcp-server` for Claude Code MCP integration
+2. Once installed, tools appear as `web_search_exa`, `company_research_exa`, etc.
+3. These tools are available directly in Claude Code sessions
+
+### GTMOS integration
+- Reads: web search results, company research data
+- Writes: submit search queries
+- Credit behaviour: 1,000 free searches/month included
+
+---
+
+## Firecrawl
+
+### Initial setup
+1. Create an account at firecrawl.dev
+2. Get your API key from the dashboard
+3. Add to `.env`: `FIRECRAWL_API_KEY=your-key`
+
+### MCP integration
+1. Install the `firecrawl-mcp-server` for Claude Code MCP integration
+2. Once installed, crawl and scrape tools are available directly in Claude Code sessions
+
+### GTMOS integration
+- Reads: scraped page content, crawl results
+- Writes: submit URLs for scraping/crawling
+- Credit behaviour: confirm-before-every-use (500 free credits one-time on signup)
+
+---
+
+## Fireflies.ai
+
+### Initial setup
+1. Create an account at fireflies.ai (Business plan required for API access)
+2. Go to Settings → Integrations → API → copy your API key
+3. Add to `.env`: `FIREFLIES_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: meeting transcripts, action items, summaries
+- Writes: query transcripts via GraphQL API
+- Credit behaviour: auto-approved (subscription-based)
+
+---
+
+## Signalbase
+
+### Initial setup
+1. Create an account at signalbase.com
+2. Get your API key from the dashboard
+3. Add to `.env`: `SIGNALBASE_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: intent signals, buying signals
+- Writes: configure signal tracking
+- Credit behaviour: confirm-before-every-use
+
+---
+
+## Commonroom
+
+### Initial setup
+1. Create an account at commonroom.io
+2. Go to Settings → copy your API key
+3. Add to `.env`: `COMMONROOM_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: community signals, member activity, digital exhaust data
+- Writes: submit queries for signal data
+- Credit behaviour: confirm-before-every-use
+
+---
+
+## LinkedIn Ads
+
+### Initial setup
+1. Go to LinkedIn Campaign Manager at linkedin.com/campaignmanager
+2. Create or select an ad account
+3. Apply for Audiences API access (separate from Marketing API) via the Microsoft application form
+4. Set up OAuth2 and generate your access token
+5. Add to `.env`:
+   - `LINKEDIN_ADS_TOKEN=your-oauth-token`
+   - `LINKEDIN_AD_ACCOUNT_ID=your-account-id`
+
+### GTMOS integration
+- Reads: campaign performance, audience match rates
+- Writes: create/update matched audiences, manage campaigns
+- Credit behaviour: confirm-before-every-use (ad spend implications)
+- Note: DMP Segment APIs require separate approval from LinkedIn
+
+---
+
+## Meta Ads
+
+### Initial setup
+1. Go to Meta Business Suite → Settings → Business Settings → System Users
+2. Create a system user with `ads_management` permission
+3. Generate an access token for the system user
+4. Add to `.env`:
+   - `META_ACCESS_TOKEN=your-token`
+   - `META_AD_ACCOUNT_ID=your-account-id`
+
+### GTMOS integration
+- Reads: campaign performance, audience insights
+- Writes: create/update custom audiences, manage campaigns
+- Credit behaviour: confirm-before-every-use (ad spend implications)
+
+---
+
+## Google Ads
+
+### Initial setup
+1. Sign up for Google Ads API access at developers.google.com/google-ads/api
+2. Apply for a developer token (requires a Google Ads manager account)
+3. Set up OAuth2 credentials in Google Cloud Console
+4. Add to `.env`:
+   - `GOOGLE_ADS_TOKEN=your-oauth-token`
+   - `GOOGLE_ADS_DEVELOPER_TOKEN=your-developer-token`
+   - `GOOGLE_ADS_CUSTOMER_ID=your-customer-id`
+
+### GTMOS integration
+- Reads: campaign performance, audience match rates
+- Writes: create/update Customer Match audiences, manage campaigns
+- Credit behaviour: confirm-before-every-use (ad spend implications)
+- Note: starting April 2026, new developer tokens must use Data Manager API for Customer Match
+
+---
+
 ## Notes
 
 - Always test API connectivity after adding keys: run `/gtm:status` to verify

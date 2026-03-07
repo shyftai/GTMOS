@@ -6,6 +6,16 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.8.0] — 2026-03-07
+
+### Added
+- **A/B testing lifecycle** (`/gtm:ab-test`) — setup, track, and resolve A/B tests on subject lines, opening lines, CTAs, email body, send times. Statistical significance rules (50+ sends with >20% relative diff or 100+ with >10%). Winners auto-feed into snippet library and campaign defaults
+- **Multi-language copy** (`/gtm:write-multilang`) — write outbound sequences natively in 12 languages (French, German, Dutch, Spanish, Italian, Portuguese, Swedish, Danish, Norwegian, Finnish, Polish). Per-language formality defaults, word limit adjustments, cultural norms. 14-point quality checklist. Language detection via Crispy locale + Firecrawl
+- **ROI attribution** (`/gtm:attribution`) — connect pipeline revenue to campaigns, channels, touches, personas, and signals. Four attribution models (first touch, last touch, linear, time decay). Cost per reply/meeting/deal, ROI, velocity metrics, cross-campaign comparison
+- **Tool setup guides expanded** — step-by-step API key setup for 16 additional tools: Icypeas, Prospeo, Apify, Dropcontact, FindyMail, Scrubby, Ocean.io, DiscoLike, Exa, Firecrawl, Fireflies.ai, Signalbase, Commonroom, LinkedIn Ads, Meta Ads, Google Ads
+- A/B test tracking template (performance/ab-tests.md) in campaign template
+- Attribution tracking template (performance/attribution.md) in campaign template
+
 ## [0.7.0] — 2026-03-07
 
 ### Added

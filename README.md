@@ -166,6 +166,7 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:clean-list <ws> [file]` | Clean and normalize a raw list |
 | `/gtm:validate-list <ws> [file]` | Clean + score (0-100) + validate |
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |
+| `/gtm:write-multilang <ws> <lang>` | Write sequence in a non-English language |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
 | `/gtm:ship <ws> <campaign>` | Push to sending tool with pre-flight checks |
 
@@ -179,6 +180,7 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:linkedin-warm <ws>` | Pre-outreach LinkedIn warming |
 | `/gtm:account-based <ws>` | Multi-thread a target account (ABM) |
 | `/gtm:audience-sync <ws>` | Push lists to LinkedIn/Meta/Google Ads |
+| `/gtm:ab-test <ws> <campaign>` | Set up, check, or resolve an A/B test |
 
 ### Infrastructure
 | Command | What it does |
@@ -199,6 +201,7 @@ GTMOS ships with sensible defaults for everything:
 | `/gtm:re-engage <ws>` | Re-engagement campaign for cold leads |
 | `/gtm:archive <ws>` | Archive completed campaign or workspace |
 | `/gtm:costs <ws> [--all]` | View spend by tool, campaign, or agency-wide |
+| `/gtm:attribution <ws> [campaign]` | View ROI attribution across campaigns |
 | `/gtm:auto-refine <ws>` | Suggest ICP/persona/copy refinements from data |
 | `/gtm:migrate <ws>` | Tool migration playbook |
 | `/gtm:feedback` | Report a bug or request a feature |
