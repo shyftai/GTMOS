@@ -31,13 +31,16 @@ Workspace: $ARGUMENTS
 
 **Today (do before end of day):**
 - Unhandled neutral/objection replies — respond same day
+- Nurture contacts due for follow-up today — `/gtm:nurture --due`
 - Open to-dos marked Urgent or High in ROADMAP.md
 - Signals detected that match active campaigns — time-sensitive outreach
 - A/B tests that hit statistical significance — pick winner
 - Campaigns ready to ship (copy approved, list validated)
+- Meetings booked today — prep needed? — `/gtm:prep-meeting`
 
 **This week (plan for it):**
 - Planned campaigns approaching target start date
+- Nurture contacts due this week
 - Data hygiene tasks (emails needing re-verification)
 - To-dos marked Medium in ROADMAP.md
 - Health check due (last one >7 days ago)
@@ -55,6 +58,8 @@ Workspace: $ARGUMENTS
 
   Today
     >> Respond to 3 objection replies — /gtm:replies {ws}
+    >> 2 nurture contacts due — /gtm:nurture {ws} --due
+    >> Prep meeting with {name} at 2pm — /gtm:prep-meeting {ws} {email}
     >> Ship "Q2 Expansion" (copy approved, list ready) — /gtm:ship {ws} q2-expansion
     >> To-do: Rewrite Touch 1 opener (High) — ROADMAP.md
 

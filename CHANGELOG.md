@@ -6,12 +6,19 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
-## [1.3.0] — 2026-03-08
+## [1.4.0] — 2026-03-08
 
 ### Added
-- **Collaboration mode in onboarding** — asks "Are you working solo or with a team?" right after role selection. Solo = file-based (default), Team = Supabase shared state. Role-aware defaults (Agency → suggest team, Founder → default solo). Guides through Supabase setup or skips gracefully.
+- **Meeting prep** (`/gtm:prep-meeting`) — generates a complete briefing before a booked call. Contact research, company intel, career path, recent activity, talking points, objection prep with responses from learnings, discovery questions, do-not-mention list. Saves to context/meeting-prep/
+- **SDR → AE handoff** (`/gtm:handoff`) — structured context transfer when a meeting is booked. How you got here (signal, campaign, touch that converted, their exact reply), what you know (pain points, buying stage, decision makers, competitor context), recommended approach. Distributes via Slack and CRM if connected
+- **Per-contact personalization** (`/gtm:personalize`) — researches each contact individually and generates custom opening lines at scale. Sources: LinkedIn activity (Crispy), company news (Exa), job posts, website observations. Quality-rated ★-★★★★★ per contact. Batch processing with cost estimates. Swarm mode for 25+ contacts
+- **Nurture track** (`/gtm:nurture`) — manages warm leads on a timer. Auto-scans replies for "not now" language, extracts follow-up dates, tracks warmth level and trigger to watch. Cross-references with signal scan — fires when a nurtured contact's trigger happens. --scan, --add, --due modes
+- **Pipeline forecasting** (`/gtm:forecast`) — weighted pipeline calculation, campaign-sourced revenue projection, planned campaign estimates. Best/expected/worst scenarios. Velocity-adjusted close dates, risk flags, trend tracking across forecast snapshots
+- **Warm intro detection** (`/gtm:warm-intro`) — checks LinkedIn for mutual connections before cold outreach. Scans entire lists, categorizes into warm intro / warm reference / cold tiers. Drafts intro requests with forwardable blurbs. Tracks warm intro conversion vs cold
+- **Collaboration mode in onboarding** — asks "Are you working solo or with a team?" right after role selection. Solo = file-based (default), Team = Supabase shared state. Role-aware defaults (Agency → suggest team, Founder → default solo). Guides through Supabase setup or skips gracefully
 - Slack notification setup in onboarding (auto-detected from MCP)
 - Mode and Slack fields in workspace.config.md template
+- Template directories: nurture/, context/meeting-prep/, context/handoffs/
 - **Daily briefing** (`/gtm:today`) — morning action briefing that scans workspace and prioritizes what to do right now. Urgency tiers (do now / today / this week), role-aware recommendations, campaign pulse
 - **Contact history** (`/gtm:contact`) — unified timeline of every touchpoint with a person across all campaigns, channels, CRM, signals, and website visits. Cross-campaign summary, risk flags, next action suggestions
 - **Competitor monitoring** (`/gtm:watch-competitors`) — actively track competitor pricing, messaging, hiring, and news using Exa and Firecrawl. Surfaces actionable signals and suggests displacement campaigns. Setup, scan, and report modes

@@ -12,6 +12,27 @@ they activate only when explicitly requested via the `--swarm` flag or the `/gtm
 - Processing a batch of replies across multiple campaigns
 - Running health checks across multiple campaigns simultaneously
 
+### Execution mode — Claude Code vs API
+
+For large-scale operations, ask the user how they want to run it:
+
+```
+  How do you want to run this?
+
+  >> Claude Code (default) — runs here, you see results in real time
+     Best for: <50 contacts, interactive review, first-time runs
+
+  >> API (faster, more scale) — runs via Anthropic API in the background
+     Best for: 50-500+ contacts, batch processing, overnight runs
+     Requires: ANTHROPIC_API_KEY in .env
+```
+
+**Claude Code mode:** Uses agent swarm within the current session. Interactive, real-time review, but limited by session context.
+
+**API mode:** Spawns work via the Anthropic API (Claude) or Supabase Edge Functions. Results saved to files, user reviews when ready. Handles 100-500+ contacts without session limits. Requires API key.
+
+Always ask before choosing — never default to API mode without user consent.
+
 ### When NOT to use swarms
 
 - Single lead or small batch (<10) — sequential is faster

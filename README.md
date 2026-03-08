@@ -481,6 +481,21 @@ Save proven sequences as reusable templates (`/gtm:save-template`), browse the l
 ### Agency portfolio
 `/gtm:portfolio` shows all workspaces at a glance — campaign status, reply rates, spend, and what needs attention across all clients. Cross-workspace learnings surface patterns that work everywhere.
 
+### Meeting prep & handoff
+`/gtm:prep-meeting` generates a complete briefing sheet before a booked call — contact research, company intel, talking points, objection prep, discovery questions. `/gtm:handoff` creates a structured SDR → AE context transfer so prospects never repeat themselves.
+
+### Per-contact personalization
+`/gtm:personalize` researches each contact individually and generates custom opening lines — LinkedIn activity, company news, job posts, website observations. Not merge fields. Real, researched insights at scale. Quality-rated per contact (★★★★★ to ★★☆☆☆).
+
+### Nurture track
+`/gtm:nurture` manages warm leads on a timer. "Not now, maybe Q3" gets tracked with a follow-up date, trigger to watch, and warmth level. Auto-scans replies for nurture candidates. Cross-references with signal scan — when a nurtured contact's trigger fires, you know immediately.
+
+### Pipeline forecasting
+`/gtm:forecast` predicts revenue based on weighted pipeline, active campaign conversion rates, and planned campaigns. Best/expected/worst case scenarios. Velocity-adjusted close dates. Risk flags for stalled deals and declining reply rates.
+
+### Warm intro detection
+`/gtm:warm-intro` checks for mutual LinkedIn connections before cold outreach. Scans entire lists, categorizes contacts into warm intro / warm reference / cold tiers, and drafts intro requests. Warm intros convert 5-10x better.
+
 ### Campaign cloning
 Clone a successful campaign's structure, config, briefing, and A/B winners for a new segment or market. Cross-workspace cloning for agencies.
 
@@ -535,6 +550,8 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:use-template <ws> <name>` | Create a sequence from a template |
 | `/gtm:save-template <ws> <campaign>` | Save a proven sequence as a reusable template |
 | `/gtm:import-template <file/URL/--paste>` | Import a sequence template from external source |
+| `/gtm:personalize <ws> <campaign>` | Generate per-contact personalization lines at scale |
+| `/gtm:warm-intro <ws> [campaign]` | Find mutual connections for warm introductions |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
 | `/gtm:ship <ws> <campaign>` | Push to sending tool with launch check |
 
@@ -554,6 +571,10 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
 | `/gtm:contact <ws> <email>` | View full contact history across all campaigns and channels |
 | `/gtm:watch-competitors <ws>` | Monitor competitor pricing, messaging, hiring, and news |
+| `/gtm:nurture <ws>` | Manage warm leads on a timer — track "not now" replies with follow-up dates |
+| `/gtm:prep-meeting <ws> <contact>` | Generate meeting briefing with research and talking points |
+| `/gtm:handoff <ws> <contact>` | SDR → AE handoff with full context transfer |
+| `/gtm:forecast <ws>` | Pipeline forecast with weighted deals and campaign projections |
 
 ### Infrastructure
 | Command | What it does |

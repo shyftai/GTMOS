@@ -10,7 +10,7 @@ On every startup, display this full boot sequence before doing anything else:
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S                             v1.3.0
+  G T M : O S                             v1.4.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -72,11 +72,13 @@ Then show the quick commands reference:
   │  Start      /gtm:today · /gtm:dashboard        │
   │  Setup      /gtm:onboard · /gtm:research       │
   │  Build      /gtm:list-brief · /gtm:enrich      │
-  │             /gtm:write · /gtm:templates         │
-  │  Ship       /gtm:ship · /gtm:ab-test           │
+  │             /gtm:write · /gtm:personalize       │
+  │  Ship       /gtm:ship · /gtm:warm-intro         │
   │  Manage     /gtm:replies · /gtm:signals         │
-  │             /gtm:health · /gtm:inbox-health     │
+  │             /gtm:nurture · /gtm:inbox-health    │
+  │  Meetings   /gtm:prep-meeting · /gtm:handoff    │
   │  Intel      /gtm:contact · /gtm:watch-competitors│
+  │  Pipeline   /gtm:forecast · /gtm:pipeline-velocity│
   │  Report     /gtm:report · /gtm:debrief          │
   │  Agency     /gtm:portfolio · /gtm:clone-campaign │
   │  More       /gtm:status for all commands        │
