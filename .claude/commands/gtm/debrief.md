@@ -30,7 +30,7 @@ Workspace and campaign: $ARGUMENTS
 10. Update PIPELINE.md win/loss insight log with campaign outcomes
 11. Add winning copy to global/snippet-library.md and global/swipe-file.md
 12. **Update LEARNINGS.md** — append new insights to the relevant sections (ICP, persona, copy, channel, signal, objections, anti-learnings). Tag each with source campaign, confidence level, and date. Don't duplicate existing learnings — update confidence if a pattern is confirmed again.
-13. **Update ROADMAP.md** — move completed campaign to "Completed campaigns" table with key learning. If debrief surfaces new campaign ideas (e.g. "this segment deserves its own campaign"), add to "Ideas backlog".
+13. **Update ROADMAP.md** — move completed campaign to "Completed campaigns" table with key learning. If debrief surfaces new campaign ideas (e.g. "this segment deserves its own campaign"), add to "Ideas backlog". **Generate to-dos** from learnings — e.g. "Rewrite Touch 1 opener" from copy learnings, "Shorten SMB sequences" from anti-learnings, "Add Series B as signal" from ICP learnings. Each to-do gets priority (Urgent/High/Medium/Low) and source attribution.
 14. Display suggestion blocks for each proposed file edit
 15. Wait for approval on each
 16. Save to performance/debrief-[date].md

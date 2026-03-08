@@ -1,8 +1,29 @@
 # Campaign Roadmap — [Workspace Name]
 
-Pipeline view of planned, in-progress, and completed campaigns. Updated during onboarding, debriefs, and planning sessions.
+Pipeline view of campaigns, to-dos, and action items. The single place to see what's running, what's next, and what needs fixing.
 
-**Updated by:** `/gtm:new-campaign`, `/gtm:debrief`, `/gtm:dashboard`, manual planning
+**Updated by:** `/gtm:new-campaign`, `/gtm:debrief`, `/gtm:dashboard`, `/gtm:health`, `/gtm:auto-refine`, `/gtm:replies`, manual planning
+
+---
+
+## To-dos
+
+Action items sourced from learnings, health checks, debriefs, and manual input. Checked off when done.
+
+| # | To-do | Priority | Source | Date added |
+|---|-------|----------|--------|-----------|
+| — | — | — | — | — |
+
+<!-- Example:
+| 1 | Rewrite Touch 1 opener — observation-led beats compliment by 2x | High | Learnings: Copy #3 | 2026-03-15 |
+| 2 | Rotate inbox-3@outbound.co out — bounce rate 4.2% | Urgent | Health check Mar 12 | 2026-03-12 |
+| 3 | Add "Series B funding" as signal to ICP.md | Medium | Auto-refine suggestion | 2026-03-20 |
+| 4 | Shorten SMB sequences to 3 touches (anti-learning #1) | High | Debrief Q1 Cold | 2026-03-25 |
+| 5 | Set up Firecrawl MCP server for competitor scraping | Low | Manual | 2026-03-10 |
+| 6 | Re-verify 140 emails from Jan batch (>90 days old) | Medium | Data hygiene scan | 2026-04-01 |
+| 7 | Test question subject lines on VP persona | Medium | Learnings: Copy #1 | 2026-03-18 |
+| 8 | ~~Switch CTA to "worth a conversation?"~~ | ~~Done~~ | A/B test #5 | ~~2026-03-25~~ |
+-->
 
 ---
 

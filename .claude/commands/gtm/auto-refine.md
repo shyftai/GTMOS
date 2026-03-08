@@ -25,4 +25,6 @@ Workspace: $ARGUMENTS
 6. Present suggestions grouped by confidence (high, medium, low)
 7. On approval, apply changes and log in PIPELINE.md pattern tracker
 8. Add winning copy patterns to global/snippet-library.md
+9. **Update LEARNINGS.md** — append confirmed patterns to relevant sections
+10. **Update ROADMAP.md to-dos** — convert each approved suggestion into an actionable to-do. Examples: "Update ICP.md — add Series B as high-priority signal" (High, from auto-refine), "Test question subject lines on VP persona" (Medium, from copy pattern). Unapproved suggestions with medium+ confidence also get added as to-dos for later review.
 </process>

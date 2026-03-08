@@ -36,5 +36,6 @@ Workspace and campaign: $ARGUMENTS
 17. Wait for approval on each suggestion before applying
 18. Display health check summary: status, top 3 working, top 3 to fix
 19. **Update LEARNINGS.md** — if health check surfaces confirmed patterns (e.g. consistently high/low performance for a segment, timing pattern, channel insight), append to relevant section with confidence level.
-20. Save to performance/health-check-[date].md
+20. **Update ROADMAP.md to-dos** — add action items from health check findings. Examples: "Rotate out inbox-3 — bounce rate 4.2%" (Urgent), "Re-verify 140 emails from Jan batch" (Medium), "Test send time shift to 10am" (Low). Tag source as "Health check — {date}".
+21. Save to performance/health-check-[date].md
 </process>

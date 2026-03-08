@@ -58,6 +58,12 @@ Check for items that need human attention:
     {campaign-1}   ACTIVE   Day 8    Reply: 4.2%    3 meetings
     {campaign-2}   DRAFT    —        —              —
 
+  To-dos ({n} open)
+    !! Rotate out inbox-3 — bounce rate 4.2%          Urgent   Health check
+    >> Rewrite Touch 1 opener (observation-led +2x)   High     Learnings
+    >> Test question subject lines on VP persona       Medium   A/B test
+    {show top 5 by priority, link to ROADMAP.md for full list}
+
   Roadmap
     {planned-1}    PLANNED  Target: Apr 1    Depends: Q1 debrief
     {planned-2}    IDEA     —                Source: Learnings #4

@@ -25,5 +25,6 @@ Workspace and campaign: $ARGUMENTS
 8. Present each for approval — nothing sent without explicit yes
 9. Log all classifications and actions in logs/decisions.md
 10. **Update LEARNINGS.md** — if reply patterns emerge (new objections, unexpected positive signals, persona insights), append to relevant sections. Tag source as "Reply analysis — {campaign} — {date}".
-11. Save to replies/[date].md
+11. **Update ROADMAP.md to-dos** — if replies surface actionable improvements. Examples: "Add objection response for '{objection}' to snippet library" (Medium), "Remove {company type} from ICP — 3rd negative reply from this segment" (High). Only add if pattern is clear, not for one-off replies.
+12. Save to replies/[date].md
 </process>
