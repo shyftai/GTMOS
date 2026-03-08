@@ -31,36 +31,69 @@ Workspace name: $ARGUMENTS
 5. Save role to workspace.config.md
 6. Adjust onboarding path based on role (see intake-interview.md Block 0)
 
+## Collaboration mode (after role)
+7. Ask: "Are you working solo or with a team?"
+   - **Solo** (default) — everything stays in local files, no setup needed
+   - **Team** — shared state via Supabase: real-time suppression lists, claim-based reply handling, live cost tracking, approval audit trail, activity feed
+
+   Role-based defaults:
+   - **SDR** → ask (depends on team size)
+   - **GTM Engineer** → suggest team mode if multiple operators
+   - **Head of Sales** → suggest team mode (needs visibility into what SDRs are doing)
+   - **Founder** → default solo (unless they have a team)
+   - **Agency** → strongly suggest team mode (multiple operators, multiple clients, need audit trail)
+
+   If **Team** selected:
+   a. Check .env for SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY
+   b. If keys present → test connection, confirm tables exist, set mode to `team` in COLLABORATION.md
+   c. If keys missing → show setup steps:
+      ```
+      1. Create a free Supabase project at supabase.com
+      2. Run the migration: supabase/migrations/001_initial_schema.sql
+      3. Copy your project URL and keys to .env
+      4. Run /gtm:collab setup to connect
+      ```
+   d. Ask: "Want to set this up now or skip and add it later?"
+   e. If skip → set mode to `solo`, note in workspace.config.md that team mode is pending
+
+   If **Solo** selected:
+   - Set mode to `solo` in COLLABORATION.md
+   - Skip Supabase setup entirely
+
+8. Ask if they want Slack notifications (works in both modes if Slack MCP connected):
+   - If Slack MCP detected → "Want alerts for positive replies, budget warnings, and domain issues in Slack?"
+   - If not detected → skip
+
 ## Onboarding path selection
-7. Ask: "How do you want to onboard?"
+9. Ask: "How do you want to onboard?"
    - **Quick start** (5 blocks) — get running in minutes, fill the rest later (default for Founders)
    - **Full onboarding** (14 blocks) — covers everything up front
    - **Data deep-dive** — pull from CRM, existing campaigns, and transcripts to build ICP from evidence. Run `/gtm:deep-dive` first, then onboard from the data.
 
 ## Quick start path (--quick or user chooses quick)
-8. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
-9. Pre-fill remaining files with defaults from defaults.md
-10. Display quick start completion summary
-11. Suggest role-appropriate next steps (see step 16)
+10. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
+11. Pre-fill remaining files with defaults from defaults.md
+12. Display quick start completion summary
+13. Suggest role-appropriate next steps (see step 19)
 
 ## Full onboarding path (default)
-8. Run the intake interview from @./commands/intake-interview.md
-9. Ask questions in blocks — one block at a time, confirm before moving on
-   - Skip or lighten blocks based on role:
-     - SDR: skip Block 9 (infra), Block 11 (CRM pipeline) unless they manage it
-     - GTM Engineer: deep-dive on Block 7 (tools), Block 9 (infra)
-     - Head of Sales: light on Block 7, deep on Block 11 (pipeline), Block 14 (competitors)
-     - Founder: suggest quick start, or keep blocks short
-     - Agency: ask about multi-workspace needs, client reporting preferences
-10. For any field the user skips or doesn't know yet, use defaults from defaults.md
-11. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
-12. Ask if they want to configure Slack notifications (optional)
-13. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
-14. Check .env for required API keys
-15. Display workspace header with loaded context
+10. Run the intake interview from @./commands/intake-interview.md
+11. Ask questions in blocks — one block at a time, confirm before moving on
+    - Skip or lighten blocks based on role:
+      - SDR: skip Block 9 (infra), Block 11 (CRM pipeline) unless they manage it
+      - GTM Engineer: deep-dive on Block 7 (tools), Block 9 (infra)
+      - Head of Sales: light on Block 7, deep on Block 11 (pipeline), Block 14 (competitors)
+      - Founder: suggest quick start, or keep blocks short
+      - Agency: ask about multi-workspace needs, client reporting preferences
+12. For any field the user skips or doesn't know yet, use defaults from defaults.md
+13. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
+14. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
+15. Check .env for required API keys and MCP servers
+16. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
+17. Display workspace header with loaded context — include collaboration mode and Slack status
 
 ## Role-based next steps
-16. Suggest next actions based on role:
+18. Suggest next actions based on role:
 
 **SDR:**
 - `/gtm:research $ARGUMENTS` — research your market

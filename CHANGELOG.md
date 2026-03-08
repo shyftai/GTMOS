@@ -9,6 +9,9 @@ All notable changes to this project are documented here.
 ## [1.3.0] — 2026-03-08
 
 ### Added
+- **Collaboration mode in onboarding** — asks "Are you working solo or with a team?" right after role selection. Solo = file-based (default), Team = Supabase shared state. Role-aware defaults (Agency → suggest team, Founder → default solo). Guides through Supabase setup or skips gracefully.
+- Slack notification setup in onboarding (auto-detected from MCP)
+- Mode and Slack fields in workspace.config.md template
 - **Daily briefing** (`/gtm:today`) — morning action briefing that scans workspace and prioritizes what to do right now. Urgency tiers (do now / today / this week), role-aware recommendations, campaign pulse
 - **Contact history** (`/gtm:contact`) — unified timeline of every touchpoint with a person across all campaigns, channels, CRM, signals, and website visits. Cross-campaign summary, risk flags, next action suggestions
 - **Competitor monitoring** (`/gtm:watch-competitors`) — actively track competitor pricing, messaging, hiring, and news using Exa and Firecrawl. Surfaces actionable signals and suggests displacement campaigns. Setup, scan, and report modes
