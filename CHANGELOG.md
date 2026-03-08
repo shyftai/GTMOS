@@ -6,6 +6,25 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.3.0] — 2026-03-08
+
+### Added
+- **Daily briefing** (`/gtm:today`) — morning action briefing that scans workspace and prioritizes what to do right now. Urgency tiers (do now / today / this week), role-aware recommendations, campaign pulse
+- **Contact history** (`/gtm:contact`) — unified timeline of every touchpoint with a person across all campaigns, channels, CRM, signals, and website visits. Cross-campaign summary, risk flags, next action suggestions
+- **Competitor monitoring** (`/gtm:watch-competitors`) — actively track competitor pricing, messaging, hiring, and news using Exa and Firecrawl. Surfaces actionable signals and suggests displacement campaigns. Setup, scan, and report modes
+- **Agency portfolio** (`/gtm:portfolio`) — multi-workspace dashboard showing all clients at a glance. Campaign status, reply rates, spend, cross-workspace learnings. Optional detailed report for agency leadership
+- **Inbox health monitor** (`/gtm:inbox-health`) — proactive deliverability monitoring per inbox and domain. Bounce rates, warmup status, DNS checks, volume vs limits. Critical/warning/monitor severity tiers with auto-generated to-dos
+- **Sequence templates** — full template lifecycle:
+  - `/gtm:save-template` — save a proven campaign sequence as a reusable template with performance metadata
+  - `/gtm:use-template` — adapt a template for a new campaign, applying workspace TOV, learnings, and persona rules
+  - `/gtm:import-template` — import templates from files, URLs, or paste. Parses structure, runs quality check, converts to GTM:OS format
+  - `/gtm:templates` — browse the template library, compare performance, get recommendations
+  - `global/templates/` directory for storing templates
+
+### Changed
+- Boot sequence commands box reorganized — new "Start" row with `/gtm:today`, new "Intel" row with `/gtm:contact` and `/gtm:watch-competitors`, new "Agency" row
+- README updated with 7 new feature descriptions and 9 new commands in command tables
+
 ## [1.2.0] — 2026-03-08
 
 ### Added

@@ -463,6 +463,24 @@ Track stage durations, detect bottlenecks (>30% stall rate), stalled deal alerts
 ### Website visitor identification
 Identify companies (and people) visiting your website, cross-reference against ICP, and route high-intent visitors into signal-triggered campaigns. Supports Snitcher, RB2B, Warmly, and Leadinfo. Page intent scoring (pricing page = high, blog = low). Website visits sit at Tier 1 in the signal priority waterfall.
 
+### Daily briefing
+`/gtm:today` scans everything and tells you what to do right now. Positive replies waiting? Ship a campaign? Signals to act on? Prioritized by urgency, adapted to your role.
+
+### Contact history
+`/gtm:contact` shows every touchpoint with a person — campaigns they've been in, emails sent, replies, website visits, LinkedIn interactions, CRM deal stage. One unified timeline.
+
+### Competitor monitoring
+`/gtm:watch-competitors` actively tracks competitor pricing pages, messaging, hiring patterns, and news using Exa and Firecrawl. Surfaces actionable signals — "Competitor X raised prices 61%" → triggers a displacement campaign suggestion.
+
+### Inbox health
+`/gtm:inbox-health` monitors deliverability proactively — bounce rates per inbox, warmup status, domain reputation, DNS issues. Catches problems before they hurt campaigns.
+
+### Sequence templates
+Save proven sequences as reusable templates (`/gtm:save-template`), browse the library (`/gtm:templates`), adapt them for new campaigns (`/gtm:use-template`), or import templates from files, URLs, or paste (`/gtm:import-template`). Templates carry performance data so you know what works.
+
+### Agency portfolio
+`/gtm:portfolio` shows all workspaces at a glance — campaign status, reply rates, spend, and what needs attention across all clients. Cross-workspace learnings surface patterns that work everywhere.
+
 ### Campaign cloning
 Clone a successful campaign's structure, config, briefing, and A/B winners for a new segment or market. Cross-workspace cloning for agencies.
 
@@ -500,6 +518,8 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:switch <name>` | Switch active workspace |
 | `/gtm:status` | Show workspace status and commands |
 | `/gtm:dashboard <ws>` | Smart dashboard — what needs attention now |
+| `/gtm:today <ws>` | Daily action briefing — what to do right now |
+| `/gtm:portfolio` | Multi-workspace dashboard for agencies |
 | `/gtm:compliance <ws>` | Configure privacy regulation toggles (optional) |
 
 ### Build
@@ -511,6 +531,10 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:validate-list <ws> [file]` | Clean + score (0-100) + validate |
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |
 | `/gtm:write-multilang <ws> <lang>` | Write sequence in a non-English language |
+| `/gtm:templates` | Browse saved sequence templates |
+| `/gtm:use-template <ws> <name>` | Create a sequence from a template |
+| `/gtm:save-template <ws> <campaign>` | Save a proven sequence as a reusable template |
+| `/gtm:import-template <file/URL/--paste>` | Import a sequence template from external source |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
 | `/gtm:ship <ws> <campaign>` | Push to sending tool with launch check |
 
@@ -528,6 +552,8 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes |
 | `/gtm:pipeline-velocity <ws>` | Track deal velocity and detect bottlenecks |
 | `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
+| `/gtm:contact <ws> <email>` | View full contact history across all campaigns and channels |
+| `/gtm:watch-competitors <ws>` | Monitor competitor pricing, messaging, hiring, and news |
 
 ### Infrastructure
 | Command | What it does |
@@ -536,6 +562,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:warmup <ws>` | Check inbox warmup status |
 | `/gtm:pipeline <ws>` | View CRM pipeline and conversions |
 | `/gtm:domain-recovery <ws>` | Recover a damaged sending domain |
+| `/gtm:inbox-health <ws>` | Monitor inbox/domain health, warmup, bounce rates |
 
 ### Review
 | Command | What it does |

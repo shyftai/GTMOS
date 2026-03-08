@@ -10,7 +10,7 @@ On every startup, display this full boot sequence before doing anything else:
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S                             v1.2.0
+  G T M : O S                             v1.3.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -69,14 +69,17 @@ Then show the quick commands reference:
 ```
   ┌─ COMMANDS ────────────────────────────────────┐
   │                                                │
-  │  Setup      /gtm:onboard · /gtm:research      │
-  │  Build      /gtm:list-brief · /gtm:enrich     │
-  │             /gtm:write · /gtm:validate-list    │
-  │  Ship       /gtm:ship · /gtm:ab-test          │
-  │  Manage     /gtm:replies · /gtm:signals        │
-  │             /gtm:health · /gtm:sync            │
-  │  Report     /gtm:report · /gtm:debrief         │
-  │  More       /gtm:status for all commands       │
+  │  Start      /gtm:today · /gtm:dashboard        │
+  │  Setup      /gtm:onboard · /gtm:research       │
+  │  Build      /gtm:list-brief · /gtm:enrich      │
+  │             /gtm:write · /gtm:templates         │
+  │  Ship       /gtm:ship · /gtm:ab-test           │
+  │  Manage     /gtm:replies · /gtm:signals         │
+  │             /gtm:health · /gtm:inbox-health     │
+  │  Intel      /gtm:contact · /gtm:watch-competitors│
+  │  Report     /gtm:report · /gtm:debrief          │
+  │  Agency     /gtm:portfolio · /gtm:clone-campaign │
+  │  More       /gtm:status for all commands        │
   │                                                │
   └────────────────────────────────────────────────┘
 ```
