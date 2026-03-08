@@ -704,4 +704,4 @@ Found a bug? Want a feature? Run `/gtm:feedback` inside Claude Code, or open an 
 
 ## License
 
-MIT
+MIT — Built by [Shyft AI](https://shyft.ai)

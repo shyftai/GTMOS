@@ -14,6 +14,7 @@ On every startup, display this full boot sequence before doing anything else:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
+                                          by Shyft AI
 ```
 
 Then immediately scan for workspaces and tools, and display the system status:
