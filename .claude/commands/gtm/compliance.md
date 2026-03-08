@@ -4,7 +4,7 @@ description: Configure privacy and anti-spam regulation toggles for a workspace
 argument-hint: "<workspace-name> [--auto-detect | --show | --set <regulation> on/off]"
 ---
 <objective>
-Configure which privacy and anti-spam regulations apply to this workspace. Auto-detect from target geography or manually toggle regulations on/off. Active regulations are enforced during pre-flight checks.
+Configure which privacy and anti-spam regulations apply to this workspace. Auto-detect from target geography or manually toggle regulations on/off. Active regulations are enforced during launch check.
 
 Workspace and options: $ARGUMENTS
 </objective>
@@ -26,7 +26,7 @@ Workspace and options: $ARGUMENTS
    - Save to SUPPRESSION.md
 5. If `--show`:
    - Display current regulation status table
-   - Show which pre-flight checks each active regulation adds
+   - Show which launch checks each active regulation adds
 6. If `--set <regulation> on/off`:
    - Toggle the specified regulation
    - Update SUPPRESSION.md

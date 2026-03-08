@@ -21,7 +21,7 @@
 ## Compliance and privacy regulations
 - Active regulations are configured per workspace in SUPPRESSION.md `## Active regulations`
 - Auto-detected from target geography during onboarding — overridable via `/gtm:compliance`
-- Pre-flight checks enforce all active regulation requirements before every send
+- Launch check enforces all active regulation requirements before every send
 - Only prospect individuals where legitimate interest or valid consent applies
 - Do not store personal data beyond what is needed for the campaign
 - Honour unsubscribes immediately — flag any opted-out contact before it enters a sequence

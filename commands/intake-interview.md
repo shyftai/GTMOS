@@ -6,6 +6,7 @@
 ## Steps
 1. Create the workspace folder structure from _template/
 2. Ask intake questions in blocks — not all at once:
+   Block 0: Role — who are you?
    Block 1: Offer and product
    Block 2: ICP — company profile and persona
    Block 3: Pain points and buying triggers
@@ -39,6 +40,28 @@
 5. Check .env for any keys needed by active tools — flag any that are missing
 6. Flag any fields still empty that will need to be filled before copy can start
 7. Suggest running the research phase next
+
+## Block 0 — Role selection
+Ask: "What's your role?"
+
+| Role | Focus | Priority commands |
+|------|-------|-------------------|
+| **SDR** | Daily execution — prospecting, writing sequences, managing replies | `/gtm:write`, `/gtm:ship`, `/gtm:replies`, `/gtm:enrich`, `/gtm:signals` |
+| **GTM Engineer** | Infrastructure — tool setup, automation, data flows, enrichment optimization | `/gtm:onboard`, `/gtm:enrich`, `/gtm:data-hygiene`, `/gtm:visitor-id`, `/gtm:audience-sync` |
+| **Head of Sales** | Strategy — pipeline, reporting, attribution, ICP refinement | `/gtm:dashboard`, `/gtm:report`, `/gtm:attribution`, `/gtm:pipeline-velocity`, `/gtm:auto-refine` |
+| **Founder** | Everything — needs guided workflow, quick wins | `/gtm:onboard --quick`, `/gtm:research`, `/gtm:write`, `/gtm:ship`, `/gtm:dashboard` |
+| **Agency** | Multi-workspace — client management, cloning, reporting | `/gtm:clone-campaign`, `/gtm:report`, `/gtm:dashboard`, `/gtm:onboard`, `/gtm:debrief` |
+
+Save selected role to workspace.config.md `**Role:**` field.
+
+### Role-based experience adjustments
+- **SDR**: Skip deep infrastructure blocks (9, 11) unless they ask. Prioritize getting to first campaign fast. Surface reply management and signal commands after shipping.
+- **GTM Engineer**: Deep-dive into tool setup (Block 7), infrastructure (Block 9), and automation. Surface data hygiene, enrichment waterfall optimization, and visitor ID setup.
+- **Head of Sales**: Light on execution details, heavy on pipeline (Block 11), reporting, and attribution. Surface dashboard and auto-refine after first campaign data comes in.
+- **Founder**: Suggest quick onboarding path. Keep blocks short. Surface the "what do I do next?" dashboard prominently.
+- **Agency**: Ask about multi-workspace needs early. Surface cloning, cross-workspace reporting, and client-facing report templates.
+
+---
 
 ## Block 7 — Tool stack questions
 - Which tools are active for this workspace?

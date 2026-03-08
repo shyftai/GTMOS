@@ -1,6 +1,6 @@
 # GTM:OS — The GTM Operating System
 
-On every startup, display this banner before doing anything else:
+On every startup, display this full boot sequence before doing anything else:
 
 ```
  ██████╗ ████████╗███╗   ███╗ ██╗  ██████╗ ███████╗
@@ -9,12 +9,35 @@ On every startup, display this banner before doing anything else:
 ██║   ██║   ██║   ██║╚██╔╝██║ ██╗ ██║   ██║╚════██║
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  G T M : O S                             v1.2.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
+```
 
+Then immediately scan for workspaces and tools, and display the system status:
+
+```
+  ┌─ SYSTEM ──────────────────────────────────────┐
+  │                                                │
+  │  Workspaces:  {list workspace folders or "none — run /gtm:onboard"}
+  │  Mode:        {solo / team}                    │
+  │                                                │
+  │  Connected tools:                              │
+  │  [x] Apollo          [x] Instantly             │
+  │  [x] Crispy          [x] Attio                 │
+  │  [ ] Lemlist         [ ] Smartlead             │
+  │  {show all tools from .env — [x] if key present, [ ] if missing}
+  │                                                │
+  │  {n} tools connected, {n} API keys missing     │
+  │                                                │
+  └────────────────────────────────────────────────┘
+```
+
+Then show the flow diagram:
+
+```
   ┌─────────────────────────────────────────────┐
   │  ICP ─── PERSONA ─── BRIEFING ─── TOV      │
   │                  │                          │
@@ -35,11 +58,35 @@ On every startup, display this banner before doing anything else:
   │                  │                          │
   │              PIPELINE ──── CRM             │
   └─────────────────────────────────────────────┘
-
-  Ready. Which workspace are we loading?
 ```
 
-**Color:** When displaying the GTM:OS banner, use orange/amber ANSI color if the terminal supports it. The brand color is orange. Use `\033[38;5;208m` (ANSI 208, orange) for the block letters and `\033[0m` to reset. If the terminal does not support color, display in plain white.
+Then show the quick commands reference:
+
+```
+  ┌─ COMMANDS ────────────────────────────────────┐
+  │                                                │
+  │  Setup      /gtm:onboard · /gtm:research      │
+  │  Build      /gtm:list-brief · /gtm:enrich     │
+  │             /gtm:write · /gtm:validate-list    │
+  │  Ship       /gtm:ship · /gtm:ab-test          │
+  │  Manage     /gtm:replies · /gtm:signals        │
+  │             /gtm:health · /gtm:sync            │
+  │  Report     /gtm:report · /gtm:debrief         │
+  │  More       /gtm:status for all commands       │
+  │                                                │
+  └────────────────────────────────────────────────┘
+```
+
+Finally, prompt for workspace:
+
+```
+  >> Which workspace are we loading?
+     Or: /gtm:onboard <name> to create one
+```
+
+**Color:** Use orange/amber ANSI color for the block-letter banner, section headers (SYSTEM, COMMANDS), and the `>>` prompt. Use `\033[38;5;208m` (ANSI 208, orange) for orange text and `\033[0m` to reset. Body text and box borders stay white/default. If the terminal doesn't support color, display in plain white.
+
+**Tool scan logic:** Check .env at repo root for all known API key names. For each key that has a value, show `[x]`. For each key that's empty or missing, show `[ ]`. Group by category. This gives users an instant view of what's connected.
 
 ---
 
@@ -126,7 +173,7 @@ Run `/gtm:collab setup` to enable team mode. See `global/COLLABORATION.md` for f
 - Regulations are configured per workspace in SUPPRESSION.md `## Active regulations`
 - Auto-detected from ICP geography during onboarding
 - Supported: CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, Australian Spam Act
-- Pre-flight checks enforce active regulation requirements before every send
+- Launch check enforces active regulation requirements before every send
 - Configure with `/gtm:compliance`
 
 ---

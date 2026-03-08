@@ -6,6 +6,16 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-03-08
+
+### Added
+- **Role-based onboarding** — ask "What's your role?" as Block 0 during onboarding. Supports SDR, GTM Engineer, Head of Sales, Founder, and Agency. Each role gets tailored block depth, skipped sections, and role-specific next steps after setup
+- Role field in workspace.config.md template
+
+### Changed
+- Renamed "pre-flight" to "launch check" across all user-facing text — shipping command, compliance enforcement, README, changelog
+- Onboarding now suggests quick start for Founders, deep tool setup for GTM Engineers, pipeline focus for Heads of Sales
+
 ## [1.1.0] — 2026-03-08
 
 ### Added
@@ -22,21 +32,21 @@ All notable changes to this project are documented here.
 ## [1.0.0] — 2026-03-07
 
 ### Added
-- **Compliance configuration** (`/gtm:compliance`) — toggle privacy and anti-spam regulations per workspace. Supports CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, and Australian Spam Act. Auto-detects from target geography. Pre-flight checks enforce active regulation requirements before every send
+- **Compliance configuration** (`/gtm:compliance`) — toggle privacy and anti-spam regulations per workspace. Supports CAN-SPAM, GDPR, CASL, CCPA/CPRA, PECR, LGPD, and Australian Spam Act. Auto-detects from target geography. Launch check enforces active regulation requirements before every send
 - Regulation auto-detection from ICP geography during onboarding
 - Legitimate interest documentation template for GDPR
 - CASL consent tracking (type, source, date) per contact
 - Right to erasure workflow (GDPR Article 17)
 - Data retention policies per regulation
 - Compliance footer templates per regulation and language
-- Per-regulation pre-flight checks in shipping command
+- Per-regulation launch checks in shipping command
 - Active regulations table in SUPPRESSION.md template
 
 ### Changed
 - **Rebranded from GTMOS to GTM:OS** — new banner, updated mode headers, all user-facing text
 - Compliance section in RULES-GLOBAL.md expanded with per-regulation rules
 - Compliance defaults in defaults.md expanded with all 7 regulations
-- Shipping pre-flight checklist now regulation-aware (checks only active regulations)
+- Shipping launch check now regulation-aware (checks only active regulations)
 - Onboarding now includes compliance configuration step with auto-detection
 
 ## [0.9.0] — 2026-03-07
@@ -192,7 +202,7 @@ All notable changes to this project are documented here.
 - Competitor intelligence tracking
 - A/B testing framework
 - Personalization variable management
-- Pre-flight shipping checklist
+- Launch check before shipping
 - Infrastructure health audit
 - Campaign reporting and archiving
 - 26 slash commands with `/gtm:` prefix

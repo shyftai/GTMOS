@@ -23,6 +23,203 @@ That's it. Claude walks you through setup, creates your workspace, and you're re
 
 ---
 
+## What it looks like
+
+When you open GTM:OS in Claude Code, this is what you see.
+
+### Boot sequence
+```
+ ██████╗ ████████╗███╗   ███╗ ██╗  ██████╗ ███████╗
+██╔════╝ ╚══██╔══╝████╗ ████║ ╚═╝ ██╔═══██╗██╔════╝
+██║  ███╗   ██║   ██╔████╔██║     ██║   ██║███████╗
+██║   ██║   ██║   ██║╚██╔╝██║ ██╗ ██║   ██║╚════██║
+╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
+ ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  G T M : O S                             v1.1.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Brief it. Build it. Ship it. Measure it.
+
+  ┌─ SYSTEM ──────────────────────────────────────┐
+  │                                                │
+  │  Workspaces:  acme-corp, startup-x             │
+  │  Mode:        solo                             │
+  │                                                │
+  │  Connected tools:                              │
+  │  [x] Apollo          [x] Instantly             │
+  │  [x] Crispy          [x] Attio                 │
+  │  [ ] Lemlist         [ ] Smartlead             │
+  │                                                │
+  │  4 tools connected, 2 API keys missing         │
+  │                                                │
+  └────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────┐
+  │  ICP ─── PERSONA ─── BRIEFING ─── TOV      │
+  │                  │                          │
+  │              RULES.md                       │
+  │                  │                          │
+  │     ┌────────────┼────────────┐             │
+  │     ▼            ▼            ▼             │
+  │   LISTS        COPY       SIGNALS          │
+  │     │            │            │             │
+  │     ▼            ▼            ▼             │
+  │  VALIDATE ── APPROVE ──── SHIP             │
+  │                  │            │             │
+  │              SYNC DATA    ◈ SWARM          │
+  │                  │        (optional)        │
+  │          HEALTH CHECK                      │
+  │                  │                          │
+  │          REPORT + IMPROVE                  │
+  │                  │                          │
+  │              PIPELINE ──── CRM             │
+  └─────────────────────────────────────────────┘
+
+  ┌─ COMMANDS ────────────────────────────────────┐
+  │                                                │
+  │  Setup      /gtm:onboard · /gtm:research      │
+  │  Build      /gtm:list-brief · /gtm:enrich     │
+  │             /gtm:write · /gtm:validate-list    │
+  │  Ship       /gtm:ship · /gtm:ab-test          │
+  │  Manage     /gtm:replies · /gtm:signals        │
+  │             /gtm:health · /gtm:sync            │
+  │  Report     /gtm:report · /gtm:debrief         │
+  │  More       /gtm:status for all commands       │
+  │                                                │
+  └────────────────────────────────────────────────┘
+
+  >> Which workspace are we loading?
+```
+
+### Workspace loaded
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  WORKSPACE: Acme Corp                                      ┃
+┃  CAMPAIGN:  Q1 Cold Outbound                               ┃
+┃  STATUS:    active         TOOLS: Apollo, Instantly, Attio  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+### Quality gates — every piece of copy, every list is checked
+```
+  ── FIVE CHECKS ──────────────────────────────────
+  [x] ICP fit       [x] Persona fit    [x] Briefing fit
+  [x] Voice fit     [x] Quality fit
+  ─────────────────────────────────────────────────
+```
+
+### Launch check before shipping
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  LAUNCH CHECK — Q1 Cold Outbound                  ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                                                   ┃
+┃  List                                             ┃
+┃  [x] Validated list — 247 contacts                ┃
+┃  [x] Suppression list checked — 0 matches         ┃
+┃  [x] All emails verified                          ┃
+┃                                                   ┃
+┃  Copy                                             ┃
+┃  [x] 4-touch sequence approved                    ┃
+┃  [x] Five-check validation passed                 ┃
+┃  [x] Unsubscribe link present                     ┃
+┃                                                   ┃
+┃  Infrastructure                                   ┃
+┃  [x] 3 inboxes warmed and live                    ┃
+┃  [x] DNS auth complete on all domains             ┃
+┃  [x] Daily volume within limits                   ┃
+┃                                                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+### Nothing ships without your approval
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  APPROVE TO SHIP?                                 ┃
+┃  247 contacts, 4-touch sequence via Instantly.     ┃
+┃                                                   ┃
+┃  >> approve / reject / edit                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+### Health monitoring
+```
+  ┌─ CAMPAIGN HEALTH ─────────────────────────────┐
+  │                                                │
+  │  Deliverability   [GREEN]  Bounce: 1.2%        │
+  │  Engagement       [GREEN]  Reply: 6.8%         │
+  │  Pipeline         [GREEN]  5 meetings booked   │
+  │  Persona fit      [AMBER]  "VP" outperforms    │
+  │                                                │
+  │  Overall: ON TRACK                             │
+  └────────────────────────────────────────────────┘
+```
+
+### Credit tracking — every API call is logged before it runs
+```
+  ┌ CREDIT CHECK ─────────────────────────────────┐
+  │ Tool:   Apollo                                 │
+  │ Action: Enrich 247 contacts (email + company)  │
+  │ Cost:   247 credits (~$12.35)                  │
+  │ Rule:   confirm-before-every-use               │
+  └────────────────────────────────────────────────┘
+  >> Proceed? (y/n)
+```
+
+### Reply handling
+```
+  ┌─ REPLY ───────────────────────────────────────┐
+  │ From:     Sarah Chen, VP Sales at TechCorp     │
+  │ Channel:  email                                │
+  │ Type:     POSITIVE                             │
+  │                                                │
+  │ "This is timely — we're actually looking at    │
+  │  this right now. Can you send more info?"      │
+  │                                                │
+  │ Drafted response:                              │
+  │ "Great timing, Sarah. Here's a quick overview  │
+  │  of how we've helped similar teams..."         │
+  │                                                │
+  │ Actions:                                       │
+  │   - Attio: move to Interested                  │
+  │   - Sequence: pause                            │
+  └────────────────────────────────────────────────┘
+  >> Approve / Edit / Skip
+```
+
+### List validation with scoring
+```
+  ┌─ LIST VALIDATION ─────────────────────────────┐
+  │ Records reviewed:  300                         │
+  │                                                │
+  │   Score 3 (ship):     87  ████████░░░░  29%    │
+  │   Score 2 (good):    125  ██████████░░  42%    │
+  │   Score 1 (review):   38  ████░░░░░░░░  13%    │
+  │   Score 0 (reject):   50  █████░░░░░░░  17%    │
+  │                                                │
+  │ Top rejection reasons:                         │
+  │   1. Wrong industry (30)                       │
+  │   2. Company too small (12)                    │
+  │   3. Personal email (8)                        │
+  └────────────────────────────────────────────────┘
+```
+
+### After every workflow — clear next steps
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Shipped. 247 contacts, 4 touches via Instantly.
+
+  >> Next: /gtm:health acme q1-cold
+     Also: /gtm:replies acme
+     Also: /gtm:signals acme
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
 ## How it works
 
 ```
@@ -72,7 +269,7 @@ If it drifts from the brief, it doesn't ship.
 
 **4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch. `/gtm:write-multilang` writes natively in 12 languages.
 
-**5. Ship** → `/gtm:ship` runs a pre-flight checklist (suppression, DNS, warmup, budget, holiday calendar, compliance) and pushes to Instantly, Lemlist, or Smartlead.
+**5. Ship** → `/gtm:ship` runs a launch check (suppression, DNS, warmup, budget, holiday calendar, compliance) and pushes to Instantly, Lemlist, or Smartlead.
 
 **6. Manage** → `/gtm:replies` classifies and drafts responses, `/gtm:signals` triggers timely outreach, `/gtm:health` monitors performance, `/gtm:ab-test` runs A/B tests with statistical significance tracking.
 
@@ -283,7 +480,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |
 | `/gtm:write-multilang <ws> <lang>` | Write sequence in a non-English language |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
-| `/gtm:ship <ws> <campaign>` | Push to sending tool with pre-flight checks |
+| `/gtm:ship <ws> <campaign>` | Push to sending tool with launch check |
 
 ### Live campaign
 | Command | What it does |

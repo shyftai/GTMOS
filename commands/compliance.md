@@ -133,7 +133,7 @@ During `/gtm:onboard`, `/gtm:list-brief`, and `/gtm:validate-list`:
 
 ---
 
-## Pre-flight enforcement
+## Launch check enforcement
 
 During `/gtm:ship`, check each active regulation:
 

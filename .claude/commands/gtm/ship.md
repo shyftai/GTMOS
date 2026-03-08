@@ -4,7 +4,7 @@ description: Ship approved list and sequence to the sending tool
 argument-hint: "<workspace-name> <campaign-name>"
 ---
 <objective>
-Push the approved list and sequence to the configured sending tool. Run final pre-flight checks before shipping.
+Push the approved list and sequence to the configured sending tool. Run final launch check before shipping.
 
 Workspace and campaign: $ARGUMENTS
 </objective>
@@ -26,11 +26,11 @@ Workspace and campaign: $ARGUMENTS
 7. Identify the sending tool from campaign.config.md (Lemlist / Instantly / Smartlead / Crispy)
 8. Identify assigned inboxes from campaign.config.md
 
-## Pre-flight checklist
+## Launch check
 Run and display all checks before shipping:
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃  PRE-FLIGHT — {campaign}                   ┃
+┃  LAUNCH CHECK — {campaign}                 ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃                                            ┃
 ┃  List                                      ┃
