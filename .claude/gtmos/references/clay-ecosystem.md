@@ -146,7 +146,7 @@ Source: clay.com/integrations
 | **Sentrion.ai** | Job post monitoring — hiring signals as buying triggers | Yes (not in Clay) |
 | **Fantastic.jobs** | Job post aggregation and structured hiring data | Yes (not in Clay) |
 | **Demandbase** | Convert IP addresses into company-level firmographics and intent | No — enterprise |
-| **Warmly** | IP de-anonymization at company level, real-time website visitor intent | No |
+| **Warmly** | IP de-anonymization at company level, real-time website visitor intent | Yes |
 | **TrustRadius** | Augment workflows with downstream intent signals from reviews | No |
 | **MadKudu** | Get intent data and lead scores from email addresses | No |
 | **Champify** | Track former customers/users who move to new companies | No |
@@ -308,8 +308,7 @@ Source: clay.com/integrations
 These Clay integrations could add value:
 
 1. **BuiltWith** — know what tech stack prospects use before outreach (ICP targeting)
-2. **Warmly / RB2B** — website visitor identification (know who's on your site)
-3. **Datagma** — contact enrichment + job change detection (alternative signal source)
+2. **Datagma** — contact enrichment + job change detection (alternative signal source)
 4. **DeepL** — higher quality translation for multi-language sequences
 5. **ContactOut** — strong LinkedIn email/phone finder (enrichment waterfall addition)
 6. **Gong** — conversation intelligence (alternative to Fireflies for transcript analysis)
@@ -341,6 +340,8 @@ These tools are in GTM:OS but not available as Clay integrations:
 | Sentrion.ai | Signal intelligence |
 | Fantastic.jobs | Signal intelligence |
 | Fireflies.ai | Meeting transcripts |
+| Snitcher | Website visitor identification |
+| Leadinfo | Website visitor identification |
 | LinkedIn Ads | Ad platforms |
 | Meta Ads | Ad platforms |
 | Google Ads | Ad platforms |

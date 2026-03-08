@@ -6,6 +6,19 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-03-08
+
+### Added
+- **Website visitor identification** (`/gtm:visitor-id`) — identify companies and people visiting your website, cross-reference against ICP, route high-intent visitors into signal-triggered campaigns. Supports Snitcher (API, from $49/mo), RB2B (person-level US, free tier), Warmly (AI-powered, enterprise), and Leadinfo (EU-focused, 70+ integrations)
+- Page intent scoring — score visitor intent by page type (pricing +20, demo +25, case study +15, blog +5, careers -10)
+- Website visits as Tier 1 signal in the signal priority waterfall
+- Visitor ID tool sections in TOOLS.md template, tool-pricing.md, tool-links.md
+- API keys for Snitcher, RB2B, Warmly in .env.example
+- Clay ecosystem reference (`.claude/gtmos/references/clay-ecosystem.md`) — 150+ Clay integrations mapped with descriptions, coverage analysis, and tools-to-watch list
+
+### Fixed
+- Openmart spelling corrected across all files (was "Opemart")
+
 ## [1.0.0] — 2026-03-07
 
 ### Added

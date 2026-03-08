@@ -193,6 +193,46 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Credit behaviour (writes): confirm-before-every-use
 - Notes: Min 1,000 matched users. Starting April 2026, new dev tokens need Data Manager API.
 
+## Website visitor identification
+Identifies companies (and sometimes people) visiting your website. Feeds into signal scan as a buying intent signal.
+
+### Snitcher
+- Status: [ ] active
+- Mode: API + integrations
+- What it does: IP-to-company identification, behavioral tracking, page intent signals
+- Data: Company name, industry, size, location, pages visited, session behavior
+- Integrations: HubSpot, Salesforce, Pipedrive, Attio, Slack, Zapier, webhooks
+- Credit behaviour: Monthly subscription based on unique companies identified
+- Key: SNITCHER_API_KEY
+
+### RB2B
+- Status: [ ] active
+- Mode: Webhooks + integrations
+- What it does: Person-level visitor identification (US only), company-level (global)
+- Data: Full name, job title, LinkedIn URL, business email, company data
+- Integrations: HubSpot, Salesforce, Slack, Zapier, webhooks
+- Credit behaviour: Free plan available, paid for higher volume
+- Limitation: Person-level identification is US-only
+- Key: RB2B_WEBHOOK_URL
+
+### Warmly
+- Status: [ ] active
+- Mode: Platform + API
+- What it does: Company + person identification, AI chat/email agents, intent signals
+- Data: Company firmographics, contact details, intent signals, engagement data
+- Integrations: HubSpot, Salesforce (others via Zapier)
+- Credit behaviour: Enterprise pricing — contact sales
+- Key: WARMLY_API_KEY
+
+### Leadinfo
+- Status: [ ] active
+- Mode: Integrations only (no API)
+- What it does: Company-level visitor identification, decision-maker data
+- Data: Company name, industry, size, decision-makers
+- Integrations: 70+ integrations including HubSpot, Salesforce, Pipedrive, Slack
+- Credit behaviour: From EUR69/mo based on unique companies identified
+- Limitation: No API — integration-only
+
 ---
 
 ## Additional tools (activate as needed)
@@ -269,3 +309,6 @@ All keys stored in .env at repo root:
 - GOOGLE_ADS_TOKEN
 - GOOGLE_ADS_DEVELOPER_TOKEN
 - GOOGLE_ADS_CUSTOMER_ID
+- SNITCHER_API_KEY
+- RB2B_WEBHOOK_URL
+- WARMLY_API_KEY

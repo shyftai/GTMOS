@@ -73,6 +73,12 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 - Meta Business Suite: https://business.facebook.com
 - Google Ads: https://ads.google.com
 
+### Website Visitor Identification
+- Snitcher: https://www.snitcher.com?ref=gtmos
+- RB2B: https://www.rb2b.com?ref=gtmos
+- Warmly: https://www.warmly.ai?ref=gtmos
+- Leadinfo: https://www.leadinfo.com?ref=gtmos
+
 ### Automation
 - N8N: https://n8n.io?ref=gtmos
 - Supabase: https://supabase.com?ref=gtmos

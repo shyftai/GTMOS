@@ -98,7 +98,7 @@ Pick a type when creating a campaign — defaults pre-fill automatically:
 
 ## Supported tools
 
-GTM:OS connects to 40+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
+GTM:OS connects to 50+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
 
 ### Prospecting & enrichment
 | Tool | What it does | Pricing |
@@ -164,6 +164,14 @@ GTM:OS connects to 40+ tools across the outbound stack. Use what you have — sk
 |------|-------------|---------|
 | **Fireflies.ai** | Meeting recording + transcription, pull transcripts via API for deep-dives | From $10/mo/seat |
 
+### Website visitor identification
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Snitcher** | IP-to-company identification, behavioral tracking, page intent signals, API available | From $49/mo |
+| **RB2B** | Person-level visitor ID (US) — name, title, LinkedIn, email. Company-level globally | Free plan, paid for volume |
+| **Warmly** | Company + person identification, AI chat/email agents, intent orchestration | Enterprise — contact sales |
+| **Leadinfo** | Company-level visitor identification, 70+ integrations, EU-focused | From EUR69/mo |
+
 ### Ad platforms (optional ABM audience sync)
 | Tool | What it does | Pricing |
 |------|-------------|---------|
@@ -222,6 +230,9 @@ Monitor contact data freshness, re-verify emails older than 90 days, detect job 
 
 ### Pipeline velocity
 Track stage durations, detect bottlenecks (>30% stall rate), stalled deal alerts with suggested actions. Velocity formula and week-over-week trend tracking.
+
+### Website visitor identification
+Identify companies (and people) visiting your website, cross-reference against ICP, and route high-intent visitors into signal-triggered campaigns. Supports Snitcher, RB2B, Warmly, and Leadinfo. Page intent scoring (pricing page = high, blog = low). Website visits sit at Tier 1 in the signal priority waterfall.
 
 ### Campaign cloning
 Clone a successful campaign's structure, config, briefing, and A/B winners for a new segment or market. Cross-workspace cloning for agencies.
@@ -287,6 +298,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:ab-test <ws> <campaign>` | Set up, check, or resolve an A/B test |
 | `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes |
 | `/gtm:pipeline-velocity <ws>` | Track deal velocity and detect bottlenecks |
+| `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
 
 ### Infrastructure
 | Command | What it does |

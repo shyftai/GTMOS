@@ -472,6 +472,50 @@ Last updated: 2026-03
 
 ---
 
+## Website Visitor Identification
+
+### Snitcher
+- **Model:** Subscription based on unique companies identified
+- **Free tier:** 14-day free trial
+- **Paid plans:** From $49/mo (unlimited users, unlimited websites, all features)
+- **How it charges:** Each identified company counts as one unique identification per month, regardless of how many visits or employees
+- **Filters:** Auto-filters ISPs and irrelevant traffic — you only pay for real companies
+- **API access:** Yes — "Powered by Snitcher" real-time IP-to-company API
+- **GTMOS unit:** unique company identified
+- **Typical cost:** $49/mo base
+
+### RB2B
+- **Model:** Freemium + usage-based
+- **Free tier:** Yes — limited volume
+- **Paid plans:** Contact for pricing (usage-based)
+- **How it charges:** Based on volume of identified visitors
+- **Person-level (US only):** Name, job title, LinkedIn, business email
+- **Company-level (global):** Via Demandbase Reverse-IP
+- **API access:** Webhooks + Zapier (no direct REST API)
+- **GTMOS unit:** visitor identified
+- **Typical cost:** Free for low volume, paid for scale
+
+### Warmly
+- **Model:** Enterprise subscription
+- **Free tier:** No
+- **Paid plans:** Contact sales for pricing
+- **How it charges:** Platform fee + feature tiers
+- **Includes:** Visitor ID, AI chat, AI email, intent orchestration
+- **API access:** Platform-based
+- **GTMOS unit:** n/a (platform subscription)
+- **Typical cost:** Enterprise pricing
+
+### Leadinfo
+- **Model:** Subscription based on unique companies identified
+- **Free tier:** 14-day free trial
+- **Paid plans:** From EUR69/mo (0-50 companies), scaling up — EUR99 (51-100), EUR149 (101-250), EUR179 (251-500), EUR259 (501-750), EUR339 (751-1000), EUR499 (1001-1500)
+- **How it charges:** Unique companies identified per month
+- **API access:** No API — 70+ integrations only
+- **GTMOS unit:** unique company identified
+- **Typical cost:** EUR69-499/mo depending on volume
+
+---
+
 ### Make (Integromat)
 - **Model:** Operation-based
 - **Free tier:** 1,000 operations/month
