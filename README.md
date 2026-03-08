@@ -8,18 +8,47 @@ GTM:OS is a Claude Code plugin that runs your entire go-to-market workflow — f
 
 ---
 
-## Quick start
+## Install
 
+### Prerequisites
+You need [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed:
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+### Get started
 ```
 git clone https://github.com/shyftai/GTMOS.git
 cd GTMOS
-cp .env.example .env          # add your API keys
-# open in Claude Code, then:
-/gtm:onboard my-company       # full onboarding (14 blocks)
-/gtm:onboard my-company --quick  # fast start (5 blocks)
+claude
 ```
 
-That's it. Claude walks you through setup, creates your workspace, and you're ready to build campaigns.
+That's it. GTM:OS boots automatically — shows the banner, scans your connected tools, and asks which workspace to load. No config files to edit, no build step.
+
+### Connect your tools
+GTM:OS works with your existing tools. Two ways to connect:
+
+**MCP servers (recommended)** — Claude can use these tools directly with full capabilities:
+- [Crispy](https://crispy.so) — LinkedIn automation (78 tools)
+- [Exa](https://exa.ai) — semantic web search and company research
+- [Firecrawl](https://firecrawl.dev) — web scraping and data extraction
+
+Add MCP servers to your Claude Code settings — GTM:OS detects them automatically on boot.
+
+**API keys** — add to `.env` for tools that connect via API:
+```
+cp .env.example .env
+# add your keys (Apollo, Instantly, Attio, etc.)
+```
+
+You don't need all tools to start. GTM:OS works with whatever you have and tells you what's missing.
+
+### First run
+When GTM:OS boots, run:
+```
+/gtm:onboard my-company
+```
+It asks your role (SDR, GTM Engineer, Head of Sales, Founder, or Agency), walks you through setup, and creates your workspace. Then you're ready to build campaigns.
 
 ---
 
@@ -36,7 +65,7 @@ When you open GTM:OS in Claude Code, this is what you see.
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S                             v1.1.0
+  G T M : O S                             v1.2.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -46,12 +75,15 @@ When you open GTM:OS in Claude Code, this is what you see.
   │  Workspaces:  acme-corp, startup-x             │
   │  Mode:        solo                             │
   │                                                │
-  │  Connected tools:                              │
-  │  [x] Apollo          [x] Instantly             │
-  │  [x] Crispy          [x] Attio                 │
-  │  [ ] Lemlist         [ ] Smartlead             │
+  │  MCP servers:                                  │
+  │  [x] Crispy (LinkedIn)    [x] Exa (search)     │
+  │  [x] Firecrawl (scraping) [ ] Slack            │
   │                                                │
-  │  4 tools connected, 2 API keys missing         │
+  │  API keys:                                     │
+  │  [x] Apollo          [x] Instantly             │
+  │  [x] Attio           [ ] Lemlist               │
+  │                                                │
+  │  3 MCP servers · 3 API keys · 2 missing        │
   │                                                │
   └────────────────────────────────────────────────┘
 

@@ -24,13 +24,17 @@ Then immediately scan for workspaces and tools, and display the system status:
   │  Workspaces:  {list workspace folders or "none — run /gtm:onboard"}
   │  Mode:        {solo / team}                    │
   │                                                │
-  │  Connected tools:                              │
+  │  MCP servers:                                  │
+  │  [x] Crispy (LinkedIn)    [ ] Exa (search)     │
+  │  [x] Firecrawl (scraping) [ ] Slack            │
+  │  {show [x] if MCP tools are available, [ ] if not}
+  │                                                │
+  │  API keys:                                     │
   │  [x] Apollo          [x] Instantly             │
-  │  [x] Crispy          [x] Attio                 │
-  │  [ ] Lemlist         [ ] Smartlead             │
+  │  [x] Attio           [ ] Lemlist               │
   │  {show all tools from .env — [x] if key present, [ ] if missing}
   │                                                │
-  │  {n} tools connected, {n} API keys missing     │
+  │  {n} MCP servers · {n} API keys · {n} missing  │
   │                                                │
   └────────────────────────────────────────────────┘
 ```
@@ -86,7 +90,20 @@ Finally, prompt for workspace:
 
 **Color:** Use orange/amber ANSI color for the block-letter banner, section headers (SYSTEM, COMMANDS), and the `>>` prompt. Use `\033[38;5;208m` (ANSI 208, orange) for orange text and `\033[0m` to reset. Body text and box borders stay white/default. If the terminal doesn't support color, display in plain white.
 
-**Tool scan logic:** Check .env at repo root for all known API key names. For each key that has a value, show `[x]`. For each key that's empty or missing, show `[ ]`. Group by category. This gives users an instant view of what's connected.
+**Tool scan logic:**
+
+1. **MCP servers** — check if these MCP tool prefixes are available in the current session:
+   - `crispy` → Crispy (LinkedIn — 78 tools)
+   - `exa` → Exa (semantic search, company research)
+   - `firecrawl` or `FIRECRAWL` → Firecrawl (web scraping, data extraction)
+   - `slack` → Slack (notifications, alerts)
+   Show `[x]` if any tools with that prefix exist, `[ ]` if not. MCP servers are more powerful than API keys — Claude can use the tools directly instead of making HTTP calls.
+
+2. **API keys** — check .env at repo root for all known API key names. For each key that has a value, show `[x]`. For each key that's empty or missing, show `[ ]`. Group by category.
+
+3. **Priority** — when a tool has both an MCP server and an API key (e.g. Exa, Firecrawl), prefer the MCP server. Mark it as `[x] Exa (MCP)` to signal it's using the direct integration.
+
+This gives users an instant view of what's connected and how.
 
 ---
 
