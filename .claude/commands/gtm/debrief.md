@@ -26,12 +26,14 @@ Workspace and campaign: $ARGUMENTS
 6. Output structured debrief: what worked, what didn't, anomalies, carry-forwards
 7. Include ROI analysis: cost per meeting, cost per opportunity, pipeline generated
 8. Run forward-feed for ICP, persona, copy, and pipeline
-6. Run auto-refinement analysis (from auto-refine.md) — surface ICP/persona/copy patterns
-7. Update PIPELINE.md win/loss insight log with campaign outcomes
-8. Add winning copy to global/snippet-library.md and global/swipe-file.md
-9. Display suggestion blocks for each proposed file edit
-10. Wait for approval on each
-11. Save to performance/debrief-[date].md
-12. Update logs/decisions.md
-13. If contacts are eligible for re-engagement (60+ days), flag: `/gtm:re-engage`
+9. Run auto-refinement analysis (from auto-refine.md) — surface ICP/persona/copy patterns
+10. Update PIPELINE.md win/loss insight log with campaign outcomes
+11. Add winning copy to global/snippet-library.md and global/swipe-file.md
+12. **Update LEARNINGS.md** — append new insights to the relevant sections (ICP, persona, copy, channel, signal, objections, anti-learnings). Tag each with source campaign, confidence level, and date. Don't duplicate existing learnings — update confidence if a pattern is confirmed again.
+13. **Update ROADMAP.md** — move completed campaign to "Completed campaigns" table with key learning. If debrief surfaces new campaign ideas (e.g. "this segment deserves its own campaign"), add to "Ideas backlog".
+14. Display suggestion blocks for each proposed file edit
+15. Wait for approval on each
+16. Save to performance/debrief-[date].md
+17. Update logs/decisions.md
+18. If contacts are eligible for re-engagement (60+ days), flag: `/gtm:re-engage`
 </process>

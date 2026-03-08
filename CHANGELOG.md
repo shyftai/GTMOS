@@ -9,12 +9,23 @@ All notable changes to this project are documented here.
 ## [1.2.0] — 2026-03-08
 
 ### Added
+- **Learnings system** (`LEARNINGS.md`) — persistent workspace intelligence that accumulates from every debrief, deep dive, reply analysis, and health check. Tracks ICP, persona, copy, channel, signal, and objection learnings with source attribution and confidence levels. Anti-learnings section captures what doesn't work. Loaded automatically when writing copy or creating campaigns.
+- **Campaign roadmap** (`ROADMAP.md`) — pipeline view of active, planned, and backlog campaigns per workspace. Tracks dependencies, target dates, and campaign cadence. Updated by `/gtm:new-campaign` (moves planned → active), `/gtm:debrief` (moves active → completed, surfaces new ideas), and `/gtm:dashboard` (flags approaching deadlines).
+- **MCP server detection** — boot sequence now scans for MCP servers (Crispy, Exa, Firecrawl, Slack) alongside API keys. MCP preferred when both available.
 - **Role-based onboarding** — ask "What's your role?" as Block 0 during onboarding. Supports SDR, GTM Engineer, Head of Sales, Founder, and Agency. Each role gets tailored block depth, skipped sections, and role-specific next steps after setup
 - Role field in workspace.config.md template
+- Installation guide in README for non-technical users
 
 ### Changed
 - Renamed "pre-flight" to "launch check" across all user-facing text — shipping command, compliance enforcement, README, changelog
 - Onboarding now suggests quick start for Founders, deep tool setup for GTM Engineers, pipeline focus for Heads of Sales
+- `/gtm:debrief` now writes learnings to LEARNINGS.md and updates ROADMAP.md (completed + new ideas)
+- `/gtm:deep-dive` now writes findings to LEARNINGS.md
+- `/gtm:replies` now captures emerging objection patterns in LEARNINGS.md
+- `/gtm:health` now logs confirmed performance patterns in LEARNINGS.md
+- `/gtm:write` now loads LEARNINGS.md before drafting — applies proven patterns, avoids known failures
+- `/gtm:new-campaign` now loads relevant learnings and updates ROADMAP.md
+- `/gtm:dashboard` now shows campaign roadmap, upcoming planned campaigns, and latest learnings
 
 ## [1.1.0] — 2026-03-08
 

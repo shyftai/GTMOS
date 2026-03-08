@@ -235,5 +235,7 @@ Workspace: $ARGUMENTS
   >> Review each file? (y/n)
 ```
 
-13. After approval, suggest: `/gtm:new-campaign` to build the first campaign from the data-backed ICP.
+13. **Update LEARNINGS.md** — append all findings to the relevant sections. Deep dives often surface ICP learnings, persona learnings, objection patterns, and copy learnings. Tag source as "Deep dive — {date}" with confidence based on data volume.
+
+14. After approval, suggest: `/gtm:new-campaign` to build the first campaign from the data-backed ICP.
 </process>

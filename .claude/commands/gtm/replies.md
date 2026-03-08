@@ -24,5 +24,6 @@ Workspace and campaign: $ARGUMENTS
 7. Display each reply using the reply classification format from ui-brand.md
 8. Present each for approval — nothing sent without explicit yes
 9. Log all classifications and actions in logs/decisions.md
-10. Save to replies/[date].md
+10. **Update LEARNINGS.md** — if reply patterns emerge (new objections, unexpected positive signals, persona insights), append to relevant sections. Tag source as "Reply analysis — {campaign} — {date}".
+11. Save to replies/[date].md
 </process>

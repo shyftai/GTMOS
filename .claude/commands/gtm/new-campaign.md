@@ -38,7 +38,9 @@ Workspace and campaign name: $ARGUMENTS
    (Each campaign has its own BRIEFING.md — different campaigns can run different angles)
 7. Write answers into the campaign's BRIEFING.md
 8. Update workspace.config.md to add campaign to active campaigns list
-9. Log campaign creation in logs/workspace-log.md
+9. **Update ROADMAP.md** — if campaign was in "Planned campaigns" table, move to "Active campaigns". If it's net new, add directly to "Active campaigns". Remove from "Ideas backlog" if it originated there.
+10. **Load LEARNINGS.md** — check for relevant learnings that should inform this campaign (e.g. if targeting same persona, apply copy learnings; if same segment, apply ICP learnings). Surface top 3 relevant learnings to the user.
+11. Log campaign creation in logs/workspace-log.md
 10. Display workspace header showing new campaign
 11. Auto-run briefing audit — check BRIEFING.md for gaps before any copy work
 10. Suggest next actions:

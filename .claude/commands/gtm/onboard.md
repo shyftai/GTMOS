@@ -53,7 +53,7 @@ Workspace name: $ARGUMENTS
      - Founder: suggest quick start, or keep blocks short
      - Agency: ask about multi-workspace needs, client reporting preferences
 10. For any field the user skips or doesn't know yet, use defaults from defaults.md
-11. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md
+11. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
 12. Ask if they want to configure Slack notifications (optional)
 13. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
 14. Check .env for required API keys

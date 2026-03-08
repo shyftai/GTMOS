@@ -35,6 +35,8 @@
    - MULTICHANNEL.md (workspace level)
    - BOOKING.md (workspace level)
    - COMPETITORS.md (workspace level)
+   - LEARNINGS.md (workspace level — starts empty, populated by debriefs, deep dives, and reply analysis)
+   - ROADMAP.md (workspace level — campaign pipeline, populated during planning)
    - BRIEFING.md (campaign level — written when first campaign is created)
    - PERSONALIZATION.md (campaign level — written when campaign is created)
 5. Check .env for any keys needed by active tools — flag any that are missing

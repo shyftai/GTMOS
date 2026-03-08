@@ -29,7 +29,8 @@ Workspace and options: $ARGUMENTS
 7. Load PERSONALIZATION.md — only use defined merge fields
 8. Load BOOKING.md — use correct booking link and UTM parameters
 9. Check context/research/signal-angles.md for relevant angles
-10. Load global/snippet-library.md — reference proven opening lines, CTAs, and proof lines matching this campaign's channel and angle
+10. **Load LEARNINGS.md** — check copy learnings, persona learnings, and anti-learnings. Apply proven patterns (e.g. "question subject lines +40%") and avoid known failures (e.g. "don't use 6-touch for SMB"). Surface relevant learnings before drafting.
+11. Load global/snippet-library.md — reference proven opening lines, CTAs, and proof lines matching this campaign's channel and angle
 11. Load global/swipe-file.md — reference full sequence examples matching this campaign type as structural guides (adapt, never copy-paste)
 12. Draft each touch following the sequence structure
 13. Verify all {{variables}} exist in PERSONALIZATION.md — flag any that don't

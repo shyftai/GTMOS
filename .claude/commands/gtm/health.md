@@ -35,5 +35,6 @@ Workspace and campaign: $ARGUMENTS
 16. If enough data exists for auto-refinement, suggest: `/gtm:auto-refine`
 17. Wait for approval on each suggestion before applying
 18. Display health check summary: status, top 3 working, top 3 to fix
-19. Save to performance/health-check-[date].md
+19. **Update LEARNINGS.md** — if health check surfaces confirmed patterns (e.g. consistently high/low performance for a segment, timing pattern, channel insight), append to relevant section with confidence level.
+20. Save to performance/health-check-[date].md
 </process>

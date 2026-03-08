@@ -30,6 +30,11 @@ Workspace: $ARGUMENTS
 - List all campaigns with status (draft / active / paused / complete)
 - For active campaigns: days running, contacts shipped, current reply rate
 
+**Campaign roadmap:**
+- Load ROADMAP.md — show planned campaigns with target start dates
+- Flag any planned campaigns whose target start date is approaching (within 2 weeks)
+- Surface ideas from backlog that align with current learnings
+
 **Pending actions:**
 Check for items that need human attention:
 - Unhandled replies (replies/ folder has unprocessed files)
@@ -52,6 +57,13 @@ Check for items that need human attention:
   Campaigns
     {campaign-1}   ACTIVE   Day 8    Reply: 4.2%    3 meetings
     {campaign-2}   DRAFT    —        —              —
+
+  Roadmap
+    {planned-1}    PLANNED  Target: Apr 1    Depends: Q1 debrief
+    {planned-2}    IDEA     —                Source: Learnings #4
+
+  Learnings ({n} total)
+    Latest: "{most recent learning}" ({source}, {date})
 
   Needs attention
     !! 4 unhandled replies — /gtm:replies {ws}
