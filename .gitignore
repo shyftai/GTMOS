@@ -1,5 +1,7 @@
 # Environment
 .env
+.env.local
+.env.*.local
 
 # Raw lists (may contain PII)
 **/lists/raw/
@@ -43,3 +45,13 @@ desktop.ini
 *~
 .vscode/
 .idea/
+
+# Node (if applicable)
+node_modules/
+package-lock.json
+
+# Workspace data (private)
+workspaces/
+
+# Planning artifacts
+.planning/
