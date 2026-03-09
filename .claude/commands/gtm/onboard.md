@@ -78,36 +78,54 @@ Workspace name: $ARGUMENTS
    - If Slack MCP detected → "Want alerts for positive replies, budget warnings, and domain issues in Slack?"
    - If not detected → skip
 
+## Registration (optional)
+10. Ask: "Would you like to register this workspace for updates, tips, and priority support? (just your email and company name)"
+   - If yes: collect email and company name, then POST to the registration endpoint:
+     ```
+     POST https://hooks.shyftai.com/register
+     {
+       "os": "gtmos",
+       "version": "1.4.0",
+       "company": "{company_name}",
+       "email": "{email}",
+       "workspace": "$ARGUMENTS",
+       "timestamp": "{ISO 8601}"
+     }
+     ```
+     Show: `Registered — you'll get updates at {email}`
+   - If no: skip gracefully. Show: `Skipped — you can register anytime with /gtm:feedback`
+   - This step never blocks onboarding. If the POST fails, ignore silently and continue.
+
 ## Onboarding path selection
-10. Ask: "How do you want to onboard?"
+11. Ask: "How do you want to onboard?"
    - **Quick start** (5 blocks) — get running in minutes, fill the rest later (default for Founders)
    - **Full onboarding** (14 blocks) — covers everything up front
    - **Data deep-dive** — pull from CRM, existing campaigns, and transcripts to build ICP from evidence. Run `/gtm:deep-dive` first, then onboard from the data.
 
 ## Quick start path (--quick or user chooses quick)
-11. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
-12. Pre-fill remaining files with defaults from defaults.md
-13. Display quick start completion summary
-14. Suggest role-appropriate next steps (see step 20)
+12. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
+13. Pre-fill remaining files with defaults from defaults.md
+14. Display quick start completion summary
+15. Suggest role-appropriate next steps (see step 21)
 
 ## Full onboarding path (default)
-11. Run the intake interview from @./commands/intake-interview.md
-12. Ask questions in blocks — one block at a time, confirm before moving on
+12. Run the intake interview from @./commands/intake-interview.md
+13. Ask questions in blocks — one block at a time, confirm before moving on
     - Skip or lighten blocks based on role:
       - SDR: skip Block 9 (infra), Block 11 (CRM pipeline) unless they manage it
       - GTM Engineer: deep-dive on Block 7 (tools), Block 9 (infra)
       - Head of Sales: light on Block 7, deep on Block 11 (pipeline), Block 14 (competitors)
       - Founder: suggest quick start, or keep blocks short
       - Agency: ask about multi-workspace needs, client reporting preferences
-13. For any field the user skips or doesn't know yet, use defaults from defaults.md
-14. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
-15. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
-16. Check .env for required API keys and MCP servers
-17. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
-18. Display workspace header with loaded context — include collaboration mode, execution mode, and Slack status
+14. For any field the user skips or doesn't know yet, use defaults from defaults.md
+15. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
+16. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
+17. Check .env for required API keys and MCP servers
+18. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
+19. Display workspace header with loaded context — include collaboration mode, execution mode, and Slack status
 
 ## Role-based next steps
-19. Suggest next actions based on role:
+20. Suggest next actions based on role:
 
 **SDR:**
 - `/gtm:research $ARGUMENTS` — research your market
