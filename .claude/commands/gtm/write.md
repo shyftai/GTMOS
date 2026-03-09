@@ -38,7 +38,8 @@ Workspace and options: $ARGUMENTS
 15. If A/B test is planned, create variants A and B clearly labeled
 16. Apply TOV.md channel-specific rules
 17. Auto-run five-check validation on every touch — display results inline
-18. Present with approval gate from ui-brand.md
-19. On approval, save to copy/approved/
-20. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
+18. Check execution mode from workspace.config.md:
+    - **Interactive:** Present with approval gate from ui-brand.md. On approval, save to copy/approved/
+    - **Auto:** Auto-approve, save to copy/approved/, show `⚡ Auto-approved: sequence saved`, log in decisions.md
+19. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
 </process>

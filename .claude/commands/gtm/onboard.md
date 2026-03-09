@@ -60,40 +60,54 @@ Workspace name: $ARGUMENTS
    - Set mode to `solo` in COLLABORATION.md
    - Skip Supabase setup entirely
 
-8. Ask if they want Slack notifications (works in both modes if Slack MCP connected):
+## Execution mode (after collaboration)
+8. Ask: "How should I handle approvals?"
+   - **Interactive** (default) — I'll confirm each major decision before proceeding
+   - **Auto** — I'll auto-approve and keep moving. Only stops for shipping, suppression violations, budget overages, and compliance failures.
+
+   Role-based defaults:
+   - **SDR** → suggest auto (they want speed)
+   - **GTM Engineer** → default interactive (configuring infra needs precision)
+   - **Head of Sales** → default interactive (reviewing strategy)
+   - **Founder** → suggest auto (they want to move fast)
+   - **Agency** → default interactive (client work needs checkpoints)
+
+   Save to workspace.config.md as `**Execution mode:** auto` or `**Execution mode:** interactive`
+
+9. Ask if they want Slack notifications (works in both modes if Slack MCP connected):
    - If Slack MCP detected → "Want alerts for positive replies, budget warnings, and domain issues in Slack?"
    - If not detected → skip
 
 ## Onboarding path selection
-9. Ask: "How do you want to onboard?"
+10. Ask: "How do you want to onboard?"
    - **Quick start** (5 blocks) — get running in minutes, fill the rest later (default for Founders)
    - **Full onboarding** (14 blocks) — covers everything up front
    - **Data deep-dive** — pull from CRM, existing campaigns, and transcripts to build ICP from evidence. Run `/gtm:deep-dive` first, then onboard from the data.
 
 ## Quick start path (--quick or user chooses quick)
-10. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
-11. Pre-fill remaining files with defaults from defaults.md
-12. Display quick start completion summary
-13. Suggest role-appropriate next steps (see step 19)
+11. Run quick-start.md — 5 blocks covering offer, target, pain, angle, voice
+12. Pre-fill remaining files with defaults from defaults.md
+13. Display quick start completion summary
+14. Suggest role-appropriate next steps (see step 20)
 
 ## Full onboarding path (default)
-10. Run the intake interview from @./commands/intake-interview.md
-11. Ask questions in blocks — one block at a time, confirm before moving on
+11. Run the intake interview from @./commands/intake-interview.md
+12. Ask questions in blocks — one block at a time, confirm before moving on
     - Skip or lighten blocks based on role:
       - SDR: skip Block 9 (infra), Block 11 (CRM pipeline) unless they manage it
       - GTM Engineer: deep-dive on Block 7 (tools), Block 9 (infra)
       - Head of Sales: light on Block 7, deep on Block 11 (pipeline), Block 14 (competitors)
       - Founder: suggest quick start, or keep blocks short
       - Agency: ask about multi-workspace needs, client reporting preferences
-12. For any field the user skips or doesn't know yet, use defaults from defaults.md
-13. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
-14. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
-15. Check .env for required API keys and MCP servers
-16. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
-17. Display workspace header with loaded context — include collaboration mode and Slack status
+13. For any field the user skips or doesn't know yet, use defaults from defaults.md
+14. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
+15. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
+16. Check .env for required API keys and MCP servers
+17. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
+18. Display workspace header with loaded context — include collaboration mode, execution mode, and Slack status
 
 ## Role-based next steps
-18. Suggest next actions based on role:
+19. Suggest next actions based on role:
 
 **SDR:**
 - `/gtm:research $ARGUMENTS` — research your market

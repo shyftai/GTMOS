@@ -24,6 +24,7 @@ Then immediately scan for workspaces and tools, and display the system status:
   │                                                │
   │  Workspaces:  {list workspace folders or "none — run /gtm:onboard"}
   │  Mode:        {solo / team}                    │
+  │  Execution:   {interactive / auto}              │
   │                                                │
   │  MCP servers:                                  │
   │  [x] Crispy (LinkedIn)    [ ] Exa (search)     │
@@ -192,6 +193,41 @@ Run `/gtm:collab setup` to enable team mode. See `global/COLLABORATION.md` for f
 
 ---
 
+## Execution mode
+
+GTM:OS supports two execution modes, configured per workspace in `workspace.config.md`:
+
+### Interactive mode (default)
+- Confirms each major decision with an approval gate
+- Shows full context before proceeding
+- Pauses at every checkpoint for user input
+- Best for: new workspaces, learning the system, high-stakes campaigns
+
+### Auto mode
+- Auto-approves most decisions — just executes
+- Skips approval gates for copy drafts, list validation results, enrichment batches, and campaign setup
+- Still shows results inline so you can review, but does not pause
+- Only stops for **hard gates** (non-skippable):
+  - `/gtm:ship` — always requires explicit approval before pushing to sending tool
+  - Suppression list violations — never auto-skip
+  - Budget overages — always flags if spend exceeds campaign budget
+  - Compliance failures — never auto-skip regulation violations
+  - Tool credit checks marked `confirm-before-every-use` in TOOLS.md — always stop
+
+**How it works in commands:**
+- Commands that show `>> Approve / Edit / Reject` gates: in auto mode, auto-approve and continue. Log the auto-approval in `logs/decisions.md`.
+- Commands that ask clarifying questions: in auto mode, use sensible defaults from `defaults.md` and proceed. Log what was assumed.
+- Multi-step workflows (write → validate → ship): in auto mode, chain automatically. Stop only at hard gates.
+- Credit checks with `confirm-above-threshold` behaviour: in auto mode, auto-approve if under threshold. Still stop if over.
+- Credit checks with `auto-approved` behaviour: proceed as normal in both modes.
+
+**Toggling:**
+- Set during onboarding, or change anytime in `workspace.config.md`
+- `**Execution mode:** auto` or `**Execution mode:** interactive`
+- Can also toggle mid-session: just say "switch to auto" or "switch to interactive"
+
+---
+
 ## Compliance configuration
 - Regulations are configured per workspace in SUPPRESSION.md `## Active regulations`
 - Auto-detected from ICP geography during onboarding
@@ -221,9 +257,9 @@ When referencing a tool's website — during onboarding, when a user asks about 
 4. Check COSTS.md — show current spend and remaining budget for this tool and campaign
 5. If spend would exceed the alert threshold or budget, flag it before proceeding
 6. Apply the credit behaviour from TOOLS.md:
-   - confirm-before-every-use → stop and wait for explicit approval
-   - confirm-above-threshold → proceed if under threshold, stop if over
-   - auto-approved → proceed and log what was used
+   - confirm-before-every-use → always stop and wait for explicit approval (hard gate — even in auto mode)
+   - confirm-above-threshold → interactive: always stop. Auto: proceed if under threshold, stop if over.
+   - auto-approved → proceed and log what was used (both modes)
 7. Never batch-process, enrich, or send without going through this check
 
 ## After every tool write

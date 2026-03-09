@@ -3,6 +3,7 @@
 **Name:**
 **Role:** SDR / GTM Engineer / Head of Sales / Founder / Agency
 **Mode:** solo / team
+**Execution mode:** interactive
 **Type:** agency-client / in-house-segment / market / product-line / geography
 **Status:** active / paused / archived
 **Primary contact:**

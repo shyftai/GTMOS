@@ -59,6 +59,13 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Same-day cross-channel | Never | MULTICHANNEL.md (non-overridable) |
 | Reply on any channel | Pause all other channels | MULTICHANNEL.md (non-overridable) |
 
+## Workspace defaults
+
+| Setting | Default | Override in |
+|---------|---------|-------------|
+| Execution mode | interactive | workspace.config.md |
+| Collaboration mode | solo | workspace.config.md |
+
 ## List quality defaults
 
 | Setting | Default | Override in |

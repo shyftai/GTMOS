@@ -87,7 +87,7 @@ Run and display all checks before shipping:
    - Estimated daily volume: {n} per inbox
    - Estimated cost: {amount}
 
-11. Display approval gate:
+11. Display approval gate (HARD GATE — always stops, even in auto mode):
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  APPROVE TO SHIP?                          ┃

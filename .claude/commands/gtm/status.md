@@ -25,6 +25,7 @@ Workspace: $ARGUMENTS (optional — if omitted, list all workspaces)
    - Display workspace header from ui-brand.md
    - Show loaded sources of truth: [x] for populated, [ ] for empty
    - Show active campaigns with status
+   - Show execution mode: interactive or auto (with indicator)
    - Show tool connection status: [x] for key present, [ ] for missing
    - Show cost summary: total spent, budget remaining, alert status
 

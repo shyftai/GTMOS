@@ -116,6 +116,7 @@ Show after loading a workspace. Always displayed before any task.
 
 When human decision is needed. Uses double borders.
 
+**Interactive mode:**
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  APPROVAL REQUIRED                                         ┃
@@ -125,6 +126,21 @@ When human decision is needed. Uses double borders.
 
 >> Approve / Edit / Reject
 ```
+
+**Auto mode:** Skip the gate — auto-approve and continue. Show a one-line confirmation instead:
+```
+⚡ Auto-approved: {what was approved}
+```
+Log the auto-approval in `logs/decisions.md` with timestamp and what was approved.
+
+**Hard gates (always stop, even in auto mode):**
+- `/gtm:ship` — shipping to sending tool
+- Suppression list violations
+- Budget overages (spend exceeds campaign budget)
+- Compliance failures
+- Tool credit checks marked `confirm-before-every-use`
+
+Hard gates always use the full approval gate format above, regardless of execution mode.
 
 ---
 
