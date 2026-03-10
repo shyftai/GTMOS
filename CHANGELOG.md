@@ -6,6 +6,13 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.4.1] — 2026-03-10
+
+### Added
+- Auto execution mode (interactive/auto with hard gates)
+- Opt-in registration endpoint in /onboard (POST to shyft.ai/api/hooks/register)
+- Waitlist endpoint for team tier interest (POST to shyft.ai/api/hooks/waitlist)
+
 ## [1.4.0] — 2026-03-08
 
 ### Added
