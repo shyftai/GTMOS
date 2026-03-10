@@ -18,7 +18,7 @@ npm install -g @anthropic-ai/claude-code
 
 ### Get started
 ```
-git clone https://github.com/shyftai/GTMOS.git
+git clone https://github.com/crispy-sh/GTMOS.git
 cd GTMOS
 claude
 ```
@@ -29,9 +29,9 @@ That's it. GTM:OS boots automatically — shows the banner, scans your connected
 GTM:OS works with your existing tools. Two ways to connect:
 
 **MCP servers (recommended)** — Claude can use these tools directly with full capabilities:
-- [Crispy](https://crispy.so) — LinkedIn automation (78 tools)
-- [Exa](https://exa.ai) — semantic web search and company research
-- [Firecrawl](https://firecrawl.dev) — web scraping and data extraction
+- [Crispy](https://crispy.sh?ref=gtmos) — LinkedIn automation (78 tools)
+- [Exa](https://exa.ai?ref=gtmos) — semantic web search and company research
+- [Firecrawl](https://firecrawl.dev?ref=gtmos) — web scraping and data extraction
 
 Add MCP servers to your Claude Code settings — GTM:OS detects them automatically on boot.
 

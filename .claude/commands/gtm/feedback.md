@@ -58,7 +58,7 @@ Type: $ARGUMENTS (optional — will ask if not provided)
 ```
 
 5. On approval, create the issue:
-   - Run: `gh issue create --repo shyftai/GTMOS --title "{title}" --body "{body}" --label "{type}"`
+   - Run: `gh issue create --repo crispy-sh/GTMOS --title "{title}" --body "{body}" --label "{type}"`
    - Labels: `bug`, `enhancement`, `idea`
    - Add system context automatically:
      - GTM:OS version (latest commit hash)

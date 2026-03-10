@@ -104,6 +104,21 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Batch size | 50 contacts per API call | RULES.md |
 | Ship unverified emails | Never | Non-overridable |
 
+## Scrape cache defaults
+
+| Setting | Default | Override in |
+|---------|---------|-------------|
+| Cache staleness threshold | 30 days | RULES.md `## Scrape cache overrides` |
+| Always check cache before API call | Yes | Non-overridable |
+| Max records per API call | Tool maximum (see scrape-cache.md) | RULES.md |
+| Paginate all results | Yes — always fetch all pages | RULES.md |
+| Write to cache after each page | Yes — immediate write | Non-overridable |
+| Log every scrape in SCRAPE-JOURNAL.md | Yes | Non-overridable |
+| Resume in-progress scrapes on startup | Yes — check and report | Non-overridable |
+| Supabase sync (team mode) | Metadata only, raw data stays local | RULES.md |
+| Enrichment dedup cache | Check before every enrichment call | Non-overridable |
+| Cache file naming | `{date}_{tool}_{angle-slug}_{id}.md` | RULES.md |
+
 ## Compliance defaults
 
 | Setting | Default | Override in |

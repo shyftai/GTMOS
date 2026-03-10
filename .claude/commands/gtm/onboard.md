@@ -82,7 +82,7 @@ Workspace name: $ARGUMENTS
 10. Ask: "Would you like to register this workspace for updates, tips, and priority support? (just your email and company name)"
    - If yes: collect email and company name, then POST to the registration endpoint:
      ```
-     POST https://shyft.ai/api/hooks/register
+     POST https://crispy.sh/api/hooks/register
      {
        "os": "gtmos",
        "version": "1.4.0",

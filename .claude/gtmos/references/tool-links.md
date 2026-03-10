@@ -16,7 +16,7 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 
 ### Lead Databases
 - StoreLeads: https://storeleads.app?ref=gtmos
-- Openmart: https://opemart.com?ref=gtmos
+- Openmart: https://openmart.com?ref=gtmos
 - Crunchbase: https://crunchbase.com?ref=gtmos
 - Diffbot: https://diffbot.com?ref=gtmos
 

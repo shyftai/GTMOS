@@ -24,6 +24,7 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 - `.claude/gtmos/references/tool-pricing.md` — per-unit costs (load during onboarding or cost checks)
 - `.claude/gtmos/references/BENCHMARKS.md` — industry benchmarks (load during health checks and reports)
 - `.claude/gtmos/references/clay-ecosystem.md` — Clay's 150+ integrations mapped to GTM:OS (load during onboarding, migration, or tool recommendations)
+- `.claude/gtmos/references/scrape-cache.md` — scrape caching rules (load before any scrape or enrichment)
 
 ## Rules
 
@@ -32,4 +33,8 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 - Never invent merge fields or URLs
 - Never use a tool without checking credit behaviour first
 - Log every tool write in COSTS.md
+- **Always check cache before making an API call** — reuse existing data if < 30 days old
+- **Always pull maximum records per API call** — minimize calls, maximize cache
+- **Log every scrape in SCRAPE-JOURNAL.md** with angle, goal, and status
+- **Write to cache after every page/batch** — protect against session drops
 - All defaults are overridable per workspace — check workspace files first, then fall back to defaults

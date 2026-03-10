@@ -147,6 +147,7 @@ Your job inside this repo is:
    - MULTICHANNEL.md
    - BOOKING.md
    - COMPETITORS.md
+   - SCRAPE-JOURNAL.md (check for in-progress or partial scrapes — report and offer to resume)
    - workspace.config.md
    - context/INDEX.md (then read any files it flags as priority)
 5. Ask which campaign is active, or detect from workspace.config.md
@@ -249,6 +250,44 @@ When referencing a tool's website — during onboarding, when a user asks about 
 
 ---
 
+## Scrape caching and journaling
+
+Every API call that pulls data MUST be cached locally and logged. This prevents data loss on session drops, avoids wasting credits re-pulling the same data, and creates a searchable history of what's been scraped.
+
+See `.claude/gtmos/references/scrape-cache.md` for full rules. Summary:
+
+### Before every scrape or enrichment
+1. **Check cache first** — search `cache/scrapes/` and SCRAPE-JOURNAL.md for existing data matching this angle
+2. If usable cache exists (< 30 days), use it instead of making a new API call
+3. Log the scrape in SCRAPE-JOURNAL.md with status `in-progress`
+4. Create the cache file with metadata header BEFORE the first API call
+
+### Maximum data pull rule
+**Always request the maximum number of records per API call.** This minimizes call count, saves rate limit budget, and ensures comprehensive cache.
+- Apollo: `per_page: 100` (not the default 25)
+- Prospeo bulk: 50 per call
+- Icypeas bulk: 5,000 per call
+- Always paginate through ALL results, not just page 1
+- Write each page to cache immediately — if session drops, partial data is saved
+
+### During scraping
+1. After each page/batch, **append results to the cache file immediately**
+2. Update `Records cached` in SCRAPE-JOURNAL.md after each batch
+3. If rate-limited, log the pause and wait — never skip
+
+### After scraping
+1. Update cache file status to `complete` or `partial`
+2. Update SCRAPE-JOURNAL.md with final counts and status
+3. Log credits used in COSTS.md
+4. If team mode: sync journal metadata to Supabase `scrape_cache` table (raw data stays local)
+
+### On session startup
+1. Read SCRAPE-JOURNAL.md
+2. Check for `in-progress` or `partial` entries
+3. If found, read the cache file, report what was found, and ask: resume, retry, or skip?
+
+---
+
 ## Before using any tool
 
 1. State what you are about to do
@@ -256,11 +295,12 @@ When referencing a tool's website — during onboarding, when a user asks about 
 3. State the estimated credit cost or record count
 4. Check COSTS.md — show current spend and remaining budget for this tool and campaign
 5. If spend would exceed the alert threshold or budget, flag it before proceeding
-6. Apply the credit behaviour from TOOLS.md:
+6. **Check cache** — search SCRAPE-JOURNAL.md and `cache/` for existing data. If a usable cache exists, use it.
+7. Apply the credit behaviour from TOOLS.md:
    - confirm-before-every-use → always stop and wait for explicit approval (hard gate — even in auto mode)
    - confirm-above-threshold → interactive: always stop. Auto: proceed if under threshold, stop if over.
    - auto-approved → proceed and log what was used (both modes)
-7. Never batch-process, enrich, or send without going through this check
+8. Never batch-process, enrich, or send without going through this check
 
 ## After every tool write
 
@@ -268,6 +308,7 @@ When referencing a tool's website — during onboarding, when a user asks about 
    - Date, tool, action description, units consumed, cost (units x price from pricing table), campaign, approved by
 2. Update the running totals in COSTS.md
 3. If the updated total crosses the alert threshold, display a budget warning immediately
+4. **Update the cache** — save response data to `cache/scrapes/` or `cache/enrichments/` and update SCRAPE-JOURNAL.md
 
 ---
 
