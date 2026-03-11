@@ -134,13 +134,47 @@ When human decision is needed. Uses double borders.
 Log the auto-approval in `logs/decisions.md` with timestamp and what was approved.
 
 **Hard gates (always stop, even in auto mode):**
+
+*Outbound (people see it):*
 - `/gtm:ship` — shipping to sending tool
-- Suppression list violations
+- Outbound replies — any reply to a prospect on any channel
+- LinkedIn actions — connection requests, InMails, messages, comments, reactions
+- Social posting — publishing or commenting on any platform
+- External messages — Slack/email sent outside the team
+
+*Data integrity (corrupts pipeline):*
+- CRM writes — any create, update, or delete
+- Suppression list edits — adding or removing entries
+- List deletion or overwrite — destroying validated list data
+- Workspace strategy files — edits to ICP.md, PERSONA.md, TOV.md, BRIEFING.md, RULES.md
+
+*Infrastructure (breaks sending):*
+- Campaign state changes — pause, unpause, archive, delete a live campaign
+- Sending infrastructure — DNS, inbox settings, warmup start/stop, domain config
+- API key or credential changes — rotating, updating, or exposing keys
+- Webhook creation/deletion — webhooks push data externally
+- Tool migration — switching tools mid-campaign
+
+*Financial / compliance:*
 - Budget overages (spend exceeds campaign budget)
 - Compliance failures
 - Tool credit checks marked `confirm-before-every-use`
 
 Hard gates always use the full approval gate format above, regardless of execution mode.
+
+**Circuit breaker format** (when a limit is hit in auto mode):
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  ⚡ CIRCUIT BREAKER                                        ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+{What limit was hit}
+{Current count / threshold}
+{Summary of what was done so far}
+
+>> Continue / Stop / Review audit log
+```
+Switching to interactive mode after a circuit breaker fires.
 
 ---
 

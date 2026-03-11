@@ -209,11 +209,31 @@ GTM:OS supports two execution modes, configured per workspace in `workspace.conf
 - Skips approval gates for copy drafts, list validation results, enrichment batches, and campaign setup
 - Still shows results inline so you can review, but does not pause
 - Only stops for **hard gates** (non-skippable):
-  - `/gtm:ship` — always requires explicit approval before pushing to sending tool
-  - Suppression list violations — never auto-skip
-  - Budget overages — always flags if spend exceeds campaign budget
-  - Compliance failures — never auto-skip regulation violations
-  - Tool credit checks marked `confirm-before-every-use` in TOOLS.md — always stop
+
+  **Outbound (people see it — irreversible):**
+  - `/gtm:ship` — pushing leads/sequences to sending tool
+  - Outbound replies — sending any reply to a prospect on any channel
+  - LinkedIn actions — connection requests, InMails, messages, comments, reactions via Crispy
+  - Social posting — publishing or commenting on any platform
+  - External messages — Slack/email sent outside the team
+
+  **Data integrity (corrupts your pipeline):**
+  - CRM writes — any create, update, or delete (bad data pollutes pipeline, may trigger automations)
+  - List deletion or overwrite — destroying validated list data in `lists/`
+  - Suppression list edits — adding or removing entries (removal = legal exposure)
+  - Workspace strategy file edits — changes to ICP.md, PERSONA.md, TOV.md, BRIEFING.md, or RULES.md (these define campaign direction — silent changes derail everything)
+
+  **Infrastructure (breaks sending ability):**
+  - Campaign state changes — pause, unpause, archive, or delete a live campaign
+  - Sending infrastructure — DNS records, inbox settings, warmup start/stop, domain config
+  - Tool migration — switching sending tools, CRM, or enrichment providers mid-campaign
+  - Webhook creation/deletion — webhooks push data to external systems
+  - API key or credential changes — rotating, updating, or exposing keys in .env
+
+  **Financial / compliance:**
+  - Budget overages — spend exceeds campaign budget
+  - Compliance failures — regulation violations
+  - Tool credit checks marked `confirm-before-every-use` in TOOLS.md
 
 **How it works in commands:**
 - Commands that show `>> Approve / Edit / Reject` gates: in auto mode, auto-approve and continue. Log the auto-approval in `logs/decisions.md`.
@@ -221,6 +241,47 @@ GTM:OS supports two execution modes, configured per workspace in `workspace.conf
 - Multi-step workflows (write → validate → ship): in auto mode, chain automatically. Stop only at hard gates.
 - Credit checks with `confirm-above-threshold` behaviour: in auto mode, auto-approve if under threshold. Still stop if over.
 - Credit checks with `auto-approved` behaviour: proceed as normal in both modes.
+
+### Audit log
+
+Every action in auto mode — not just gate decisions — gets logged to `logs/auto-audit.md`. This is the "black box" that lets you trace what happened if something goes wrong.
+
+**Log every auto-mode action with:**
+```
+## [ISO timestamp]
+- **Action:** what was done (e.g. "Enriched 47 leads via Apollo")
+- **Tool:** which tool/API was called
+- **Input:** key parameters (endpoint, record count, query)
+- **Output:** result summary (records returned, status, errors)
+- **Cost:** credits/units consumed
+- **Files changed:** which files were created or modified
+- **Auto-approved gate?** yes/no — if yes, what gate was skipped
+```
+
+Keep this log append-only. Never truncate or overwrite. Rotate monthly to `logs/auto-audit-YYYY-MM.md`.
+
+### Circuit breakers
+
+Auto mode must enforce these limits per session. If any limit is hit, stop and ask.
+
+| Breaker | Threshold | What happens |
+|---------|-----------|--------------|
+| API calls per session | 500 | Stop, show count by tool, ask to continue |
+| Credits spent per session | 80% of campaign budget | Stop, show spend summary |
+| Records modified per batch | 1000 | Stop, confirm before processing rest |
+| Consecutive errors | 3 | Stop, diagnose before retrying |
+| Enrichment with <70% match rate | After first batch (50 records) | Stop, review data quality before continuing |
+| File overwrites in single session | 10 | Stop, show list of files changed |
+| Cross-workspace writes | 1 (any) | Hard stop — never auto-approve writing outside active workspace |
+
+If a circuit breaker fires, log it in `logs/auto-audit.md` with full context and switch to interactive mode for the remainder of that workflow.
+
+### Rollback safety
+
+Before any multi-step auto-mode chain (write → validate → enrich → ship), create a git checkpoint:
+- `git add -A && git commit -m "AUTO checkpoint: before [workflow name]"`
+- If the chain fails or a circuit breaker fires, the user can `git revert` to the checkpoint
+- Log the checkpoint commit hash in `logs/auto-audit.md`
 
 **Toggling:**
 - Set during onboarding, or change anytime in `workspace.config.md`
