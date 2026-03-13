@@ -532,8 +532,13 @@ Clay is NOT a data provider — it's a waterfall orchestration tool that connect
 
 ### During enrichment
 1. Process in batches (Apollo: 10 per bulk call, Prospeo: 50 per bulk call, Icypeas: 5,000 per bulk)
-2. Only send misses from previous step to the next source
-3. Report progress after each source:
+2. **Incremental checkpointing:** Write results to disk every 100 contacts (or after each batch, whichever is smaller). Do NOT wait until the end to write the output file. This protects against session drops on large enrichment runs (4,000+ contacts can take 20+ minutes).
+3. **Dual-write:** Every enrichment run must write to TWO locations:
+   - Primary: `lists/` (the working output)
+   - Backup: `cache/enrichments/{date}_{tool}_{list-name}.csv`
+   If the session drops or the primary write path is wrong, the cache copy survives. Log every enrichment run in SCRAPE-JOURNAL.md with status, tool, record count, and cache file path.
+4. Only send misses from previous step to the next source
+5. Report progress after each source:
 
 ```
   ── ENRICHMENT PROGRESS ─────────────────────────
@@ -544,14 +549,16 @@ Clay is NOT a data provider — it's a waterfall orchestration tool that connect
   ────────────────────────────────────────────────
 ```
 
-4. Log every enrichment action in COSTS.md
+6. Log every enrichment action in COSTS.md
 
 ### After enrichment
 1. Display final results with source breakdown and cost
 2. Update COSTS.md with actual spend per tool
 3. Update enrichment hit rate tracker in TOOLS.md
 4. Save enriched list to lists/validated/
-5. Flag not-found contacts — suggest removing or manual research
+5. Verify cache backup exists in `cache/enrichments/` — if missing, write it now
+6. Update SCRAPE-JOURNAL.md entry status to `complete`
+7. Flag not-found contacts — suggest removing or manual research
 
 ### Hit rate tracking
 

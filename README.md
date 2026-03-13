@@ -25,6 +25,8 @@ claude
 
 That's it. GTM:OS boots automatically — shows the banner, scans your connected tools, and asks which workspace to load. No config files to edit, no build step.
 
+> **Note:** After cloning, restart Claude Code (`/exit` then relaunch) for slash commands to become available. Claude Code loads commands at session start, so a freshly cloned repo's commands won't appear until the next session.
+
 ### Connect your tools
 GTM:OS works with your existing tools. Two ways to connect:
 
@@ -49,6 +51,18 @@ When GTM:OS boots, run:
 /gtm:onboard my-company
 ```
 It asks your role (SDR, GTM Engineer, Head of Sales, Founder, or Agency), walks you through setup, and creates your workspace. Then you're ready to build campaigns.
+
+---
+
+## Legal & Compliance
+
+GTM:OS is a tool — not a compliance solution. You are responsible for how you use it.
+
+- [Legal Disclaimer](LEGAL-DISCLAIMER.md) — warranty, liability, and indemnification terms
+- [Acceptable Use Policy](ACCEPTABLE-USE.md) — what responsible use looks like
+- [LICENSE](LICENSE) — MIT License
+
+GTM:OS includes built-in compliance helpers (suppression lists, regulation detection, consent tracking, hard gates before shipping) but these do not guarantee legal compliance. Consult legal counsel for your jurisdiction.
 
 ---
 

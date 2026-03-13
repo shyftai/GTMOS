@@ -31,6 +31,7 @@ Workspace: $ARGUMENTS
 
 **Today (do before end of day):**
 - Unhandled neutral/objection replies — respond same day
+- OOO contacts whose return date has passed — `/gtm:re-engage {ws} --ooo`
 - Nurture contacts due for follow-up today — `/gtm:nurture --due`
 - Open to-dos marked Urgent or High in ROADMAP.md
 - Signals detected that match active campaigns — time-sensitive outreach

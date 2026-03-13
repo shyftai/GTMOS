@@ -52,6 +52,13 @@
 - LinkedIn connection requests must be personalized — no generic invites
 - Max 25 LinkedIn connection requests per day (adjustable in Crispy dashboard)
 
+## Script standards
+- All scripts must resolve paths relative to `__file__` or `REPO_ROOT` — never assume CWD
+- Python scripts must set `SCRIPT_DIR = Path(__file__).resolve().parent` and `REPO_ROOT = SCRIPT_DIR.parent` at the top
+- Bash scripts must set `REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"` and use `$REPO_ROOT` for all file paths
+- Subagents and background processes may run from a different working directory — relative paths will silently write to the wrong location
+- This rule is non-negotiable: lost data from wrong CWD is unrecoverable
+
 ## CRM and pipeline
 - Every contact shipped in a list must be created in the CRM
 - Every reply classification must be synced to the CRM
