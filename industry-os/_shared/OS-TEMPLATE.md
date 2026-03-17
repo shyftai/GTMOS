@@ -203,4 +203,4 @@ An industry OS is ready to ship when:
 | OS | Status | Vertical | Primary buyer |
 |----|--------|---------|---------------|
 | AGENCY:OS | v1.0.0 — live | Marketing/creative/digital agencies | CMO, VP Marketing, Founder |
-| [Next OS] | — | | |
+| ECOMMERCE:OS | v1.0.0 — live | DTC and ecommerce brands | DTC Founder, Head of Ecommerce, Performance Marketing Manager |
