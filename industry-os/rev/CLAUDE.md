@@ -12,9 +12,11 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 
 ## Key references (load as needed)
 
-### Data quality
+### Data quality and CRM setup
 - `references/rev-data-standards.md` — field standards, dedup rules, enrichment requirements by record type
 - `references/rev-integrations.md` — RevOps tech stack, integration patterns, common sync issues
+- `references/rev-crm-setup.md` — step-by-step CRM configuration for HubSpot, Salesforce, Pipedrive (load when user is setting up CRM or asks how to configure fields/pipelines)
+- `references/rev-touchpoints.md` — touchpoint taxonomy, CRM tracking setup, multi-touch attribution standards (load before any attribution analysis or win/loss touchpoint review)
 
 ### Pipeline and analysis
 - `references/rev-metrics.md` — metric definitions, formulas, and calculation standards

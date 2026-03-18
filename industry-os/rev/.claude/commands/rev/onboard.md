@@ -48,9 +48,13 @@ Ask for the workspace name: what should we call this workspace? (Usually the com
 Ask in one block:
 
 1. **Company name** — and what industry are you in?
-2. **CRM system** — Salesforce or HubSpot? What edition?
-3. **Company stage** — Series A / B / C+ / bootstrapped / public?
-4. **Team** — who's in RevOps? Who do you serve (AEs, SDRs, CS)?
+2. **CRM system** — Salesforce, HubSpot, or Pipedrive? What edition? (e.g. HubSpot Sales Hub Professional / Salesforce Enterprise)
+3. **CRM status** — is your CRM already configured for RevOps, or does it need setup? (Already set up / Needs fields + pipelines / Just migrated / Starting fresh)
+4. **Company stage** — Series A / B / C+ / bootstrapped / public?
+5. **Currency and locale** — what currency do you report revenue in? (USD / EUR / GBP / AUD / CAD / other) Any other currencies in your pipeline?
+6. **Team headcount** — how many: AEs? SDRs? CSMs? RevOps people?
+
+> If the user says CRM needs setup or they're starting fresh, recommend loading `references/rev-crm-setup.md` before continuing. Offer to walk them through it: "Before we configure your workspace, let's make sure your CRM has the right fields and pipelines. Want me to guide you through the setup for [CRM]?"
 
 ### Step 3: Revenue basics
 
@@ -116,17 +120,20 @@ gate_skipped: [none]
 ```
 
 Pre-fill based on answers:
+- `workspace.config.md` — workspace name, CRM system, currency, locale, team composition, mode (interactive), fiscal year
 - `CRM.md` — system, edition, stage definitions (standard template + user's stages)
-- `REVENUE.md` — ARR, MRR definition, targets
-- `PIPELINE.md` — stages, quota, velocity targets (use rev-benchmarks.md defaults for missing fields)
-- `DATA-QUALITY.md` — initial score based on user's self-assessment; known issues from intake
-- `STRIPE.md` — integration status, MRR definition
-- `FORECAST.md` — methodology (default: weighted pipeline), quota from intake
+- `REVENUE.md` — ARR, MRR definition, targets (all monetary values in configured currency)
+- `PIPELINE.md` — stages, quota, velocity targets (use rev-benchmarks.md defaults for missing fields); quota in configured currency
+- `DATA-QUALITY.md` — initial score based on user's self-assessment; known issues from intake; note if CRM needs setup
+- `STRIPE.md` — integration status, MRR definition, currency (Stripe currency must match workspace primary currency)
+- `FORECAST.md` — methodology selected based on team size (bottom-up for 1–3 AEs, blended for 4–10, territory model for 10+); quota in configured currency
 - `CUSTOMERS.md` — customer registry (empty, with instructions to populate via CS platform export)
 - `CS-CONFIG.md` — CS platform, health score weights (defaults from rev-health-scoring.md), CRM field mapping
-- `TEAM.md` — names and roles from intake
-- `INTEGRATIONS.md` — connected tools from intake (including CS platform status)
-- `workspace.config.md` — workspace name, mode (interactive), fiscal year
+- `TEAM.md` — names, roles, headcounts from intake; rep quota in configured currency
+- `INTEGRATIONS.md` — connected tools from intake (including CS platform status); flag any missing integrations from CRM readiness checklist
+- `ATTRIBUTION.md` — source taxonomy, UTM standards, default attribution model
+
+**Currency setup note:** Write the configured currency symbol and code into every monetary field placeholder across all workspace files. Replace `$` with the configured symbol (e.g., `€` for EUR). All monetary values throughout REV:OS sessions use this currency unless a deal-level override is specified.
 
 ### Step 8: Display summary
 

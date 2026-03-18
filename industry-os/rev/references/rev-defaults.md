@@ -4,6 +4,42 @@ Sensible defaults for every configurable behavior in REV:OS. All values are over
 
 ---
 
+## Locale and Currency
+
+| Setting | Default | Override location |
+|---------|---------|-------------------|
+| Primary currency | USD | `workspace.config.md` |
+| Currency symbol | $ | `workspace.config.md` |
+| Currency code (ISO 4217) | USD | `workspace.config.md` |
+| Number format | 1,234,567.89 | `workspace.config.md` |
+| Date format | MM/DD/YYYY | `workspace.config.md` |
+| Multi-currency deals | Convert to primary at close rate | `workspace.config.md` |
+| Exchange rate restatement | Never — use rate at close | Cannot be overridden |
+
+---
+
+## Team Size Modes
+
+REV:OS adapts its outputs, forecast methodology, and cadence recommendations based on team size. Set in `workspace.config.md`.
+
+| Mode | RevOps headcount | AE count | Forecast model default | Reporting cadence |
+|------|-----------------|----------|----------------------|-------------------|
+| Solo | 1 | 1–3 | Bottom-up rep commit | Weekly pipeline + monthly revenue |
+| Small team | 2–3 | 4–10 | Weighted pipeline + rep commit | Weekly pipeline + weekly forecast call + monthly revenue |
+| Full team | 4+ | 10+ | Weighted pipeline + territory model + rep commit | Weekly pipeline + weekly forecast + monthly revenue + QBR |
+
+**Quota display by team size:**
+- 1–3 AEs: show individual quotas + team total
+- 4–10 AEs: show by segment (SMB / MM / Enterprise) + total
+- 10+ AEs: show by territory + segment + total
+
+**Pipeline review format by team size:**
+- Solo: 10-minute weekly self-review, note-based
+- Small team: 30-minute weekly meeting with AEs + CRO
+- Full team: 60-minute weekly meeting with segment leads; separate forecast call
+
+---
+
 ## Execution
 
 | Setting | Default | Override location |
