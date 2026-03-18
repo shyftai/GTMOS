@@ -12,6 +12,29 @@ Set up a new REV:OS workspace through structured intake — creates all workspac
 
 ## What to do
 
+### Step 0: Workspace exists check
+
+Before starting intake, check if `workspaces/{any-name}/` already exists.
+
+If a workspace is found:
+
+```
+⚠ EXISTING WORKSPACE DETECTED
+
+  Workspace: {name}
+  Created:   {date from workspace.config.md}
+  ARR:       ${value from REVENUE.md}
+
+  Running /rev:onboard will overwrite all workspace files.
+  Are you sure? [yes — overwrite / no — keep existing / migrate — update specific files]
+```
+
+If the user selects **migrate**, ask which files they want to update and proceed with only those files. Do not touch the others.
+
+If the user selects **no**, abort and suggest `/rev:health` or `/rev:dashboard` instead.
+
+Only proceed with full onboard if the user selects **yes** or no workspace exists.
+
 ### Step 1: Welcome and scope
 
 Tell the user:
@@ -72,6 +95,25 @@ Ask in one block:
 2. Copy all files from `_template/` into the new workspace directory
 3. Populate each file with answers from the intake
 4. Create `logs/` directory with `auto-log.md` and `workspace-log.md`
+
+Seed `logs/auto-log.md` with the audit log header:
+
+```markdown
+# Auto Mode Audit Log — {Workspace Name}
+
+All auto-approved actions are logged here. Format per entry:
+
+---
+timestamp: [YYYY-MM-DD HH:MM]
+action: [what was done]
+tool: [tool used]
+input: [what triggered it]
+output: [result]
+cost: [$X or N/A]
+files_changed: [list]
+gate_skipped: [none]
+---
+```
 
 Pre-fill based on answers:
 - `CRM.md` — system, edition, stage definitions (standard template + user's stages)

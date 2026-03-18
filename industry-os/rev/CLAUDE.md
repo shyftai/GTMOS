@@ -29,6 +29,9 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 - `references/rev-cs-platforms.md` — CS platform integration patterns (Gainsight, ChurnZero, Vitally, Planhat, Totango, manual)
 - `references/rev-health-scoring.md` — health score methodology, component weights, override rules, calibration
 
+### Defaults and configuration
+- `references/rev-defaults.md` — all configurable defaults (thresholds, weights, cadences, circuit breakers)
+
 ### Personas
 - `references/rev-personas.md` — RevOps buyer personas (VP RevOps, RevOps Analyst, CRO, CFO)
 

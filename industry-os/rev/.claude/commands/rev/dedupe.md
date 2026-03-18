@@ -22,6 +22,18 @@ Ask the user:
 2. Starting point — fresh scan, or resolve from a prior `/rev:health` run?
 3. Focus area — all records, or specific segment (e.g., "Tier 1 accounts only", "contacts on active deals")?
 
+### Step 1b: Circuit breaker check
+
+Before scanning, state the session limits:
+
+```
+  Session limits (auto mode):
+  Max merges this batch: 50  |  Current session merges: [X]
+  If limit reached → halt and ask before continuing.
+```
+
+In interactive mode, limits still apply but user is informed rather than auto-halted.
+
 ### Step 2: Duplicate detection
 
 **For Accounts:**

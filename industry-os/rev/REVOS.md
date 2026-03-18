@@ -3,12 +3,14 @@
 On every startup, display this full boot sequence before doing anything else:
 
 ```
+\033[38;5;208m
 ██████╗ ███████╗██╗   ██╗     ██████╗ ███████╗
 ██╔══██╗██╔════╝██║   ██║    ██╔═══██╗██╔════╝
 ██████╔╝█████╗  ██║   ██║    ██║   ██║███████╗
 ██╔══██╗██╔══╝  ╚██╗ ██╔╝    ██║   ██║╚════██║
 ██║  ██║███████╗ ╚████╔╝     ╚██████╔╝███████║
 ╚═╝  ╚═╝╚══════╝  ╚═══╝       ╚═════╝ ╚══════╝
+\033[0m
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   REV:OS                                v1.0.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -222,6 +224,27 @@ On every session start, load context in this order. Do not proceed with any task
 14. `RULES.md` — workspace-level rules
 15. `COSTS.md` — tool and enrichment spend
 16. `SCRAPE-JOURNAL.md` — API call audit trail
+17. `LEARNINGS.md` — persistent memory: forecast misses, data incidents, win/loss patterns
+18. `ROADMAP.md` — RevOps growth plan: active initiatives, planned improvements
+
+**Before every forecast, data strategy, or process recommendation: check LEARNINGS.md for relevant prior learnings.**
+
+**Before displaying the workspace header, check for in-progress scrapes:**
+
+Scan `SCRAPE-JOURNAL.md` for any entry with status `In progress`. If found:
+
+```
+  ⚠ IN-PROGRESS SCRAPE DETECTED
+
+  Angle:   {angle from journal}
+  Goal:    {goal from journal}
+  Started: {date}
+  Last batch: {batch/page number}
+
+  Resume? [yes / no — start fresh]
+```
+
+If resuming: load cache from last checkpoint before executing any enrichment. Do not re-call APIs for records already in cache.
 
 **Display the workspace header after loading all context.**
 
@@ -263,15 +286,43 @@ Auto-approves:
 5. **Report gate**: before any board-level or executive report is finalized and sent
 6. **Quota gate**: before quota or territory assignments are changed
 
-**Circuit breakers (auto mode only — halt and ask user):**
-- API calls in one session: > 300
-- CRM records modified in one session: > 500
-- Duplicate records merged in one batch: > 50
-- Consecutive data quality check failures: > 3
-- Enrichment credit spend in session: > $50
+**Circuit breakers (auto mode only — halt immediately and ask user before continuing):**
+
+| Breaker | Threshold | Halt behavior |
+|---------|-----------|---------------|
+| API calls per session | > 300 | Stop all API activity. Report count, list remaining work, ask how to proceed. |
+| CRM records modified per session | > 500 | Pause all writes. Show modified record count and types. Ask user to confirm continuation or set new limit. |
+| Duplicate records merged per batch | > 50 | Halt merge queue. Show pending merges with confidence scores. Require per-batch approval to continue. |
+| Consecutive data quality failures | > 3 | Stop enrichment run. Report failure pattern and root cause hypothesis. Do not retry without instruction. |
+| Enrichment credit spend per session | > $50 | Pause all enrichment. Show spend breakdown by source. Require explicit approval to continue. |
+| Enrichment match rate (first 50 records) | < 70% | Stop run. Report match rate and likely cause (bad ICP, stale data, wrong source). Recommend waterfall adjustment before continuing. |
 
 **Auto mode audit log:**
-Every auto-approved decision is logged to `logs/auto-log.md` with: timestamp, action taken, context, outcome.
+
+Every auto-approved action is appended to `logs/auto-log.md` in this format:
+
+```
+---
+timestamp: [YYYY-MM-DD HH:MM]
+action: [what was done — e.g. "enriched 12 contact records from Apollo"]
+tool: [Apollo / Clay / Clearbit / CRM write / internal / none]
+input: [what triggered it — e.g. "enrich command, Tier 1 accounts with missing email"]
+output: [result — e.g. "11/12 enriched, 1 skipped (suppression list)"]
+cost: [$X or N/A]
+files_changed: [list of files written or modified]
+gate_skipped: [none / name of gate if a hard gate was bypassed — should be empty in normal operation]
+---
+```
+
+**Git rollback checkpoint (auto mode, multi-step chains only):**
+
+Before executing any auto-mode chain that modifies more than 3 files or merges more than 10 records, create a checkpoint commit:
+
+```
+git add -A && git commit -m "REV:OS checkpoint — pre-auto [{action name}] [{timestamp}]"
+```
+
+Log the checkpoint hash in `logs/auto-log.md`. If the chain fails or produces unexpected results, instruct the user to roll back with `git reset --hard {hash}`.
 
 ---
 
@@ -347,6 +398,28 @@ Update ROADMAP.md when a pattern in LEARNINGS.md points to a systemic gap.
 
 ---
 
+## What you never do
+
+These are non-negotiable behaviors. No workspace config, user instruction, or auto mode can override them.
+
+- **Never invent data** — if a field is missing, flag the gap. Do not fill it with a guess, average, or placeholder.
+- **Never write to CRM without approval** — read and analyze freely; write only after explicit confirmation.
+- **Never merge records without a confidence score** — every merge must be scored and must exceed the threshold in DATA-QUALITY.md.
+- **Never change ARR or MRR definitions mid-period** — methodology changes require a new baseline and explicit documentation.
+- **Never publish a forecast without a coverage check** — pipeline coverage ratio must be stated alongside every forecast call.
+- **Never present win/loss analysis with N < 10** — flag the sample size risk prominently and do not draw strong conclusions.
+- **Never attribute revenue to an unverifiable source** — flag attribution gaps as gaps, not zeros.
+- **Never delete CRM records** — archive or suppress; deletion destroys history and breaks attribution.
+- **Never produce a board report without a prior executive draft review** — no surprises at board level.
+- **Never pitch expansion to a 🔴 Red or 🚨 Critical account** — health must be stabilized first; expansion on an unhappy customer accelerates churn.
+- **Never mark a customer churned without a win/loss record** — every churn is a learning; capture it within 14 days.
+- **Never start renewal outreach after 30 days-to-renewal** — 60 days is the minimum; < 30 days requires VP CS escalation.
+- **Never skip SCRAPE-JOURNAL.md** — every API and enrichment call is logged, no exceptions.
+- **Never skip COSTS.md** — every tool write and credit spend is logged, no exceptions.
+- **Never use an enrichment API call when cache is < 30 days old** — always check cache first.
+
+---
+
 ## Rules — hard
 
 These rules are non-negotiable. They cannot be overridden by workspace config or user instruction.
@@ -373,11 +446,25 @@ These rules are non-negotiable. They cannot be overridden by workspace config or
 
 Three moments where questions are appropriate:
 
-1. **Workspace onboarding** — structured intake to configure CRM.md, PIPELINE.md, REVENUE.md, DATA-QUALITY.md, ATTRIBUTION.md, STRIPE.md, FORECAST.md, TEAM.md, INTEGRATIONS.md
-2. **Analysis or report start** — check scope and audience gaps before producing output
-3. **Mid-task gaps** — ask only when specific information is missing that cannot be reasonably inferred
+1. **Workspace onboarding** — run the full structured intake before configuring any workspace file
+2. **Analysis or report start** — one block to check scope, audience, and date range before producing output
+3. **Mid-task gaps** — ask only when specific information is missing that cannot be reasonably inferred from existing workspace files
 
-Ask one block of questions at a time. Do not scatter questions across multiple messages.
+Ask one block of questions at a time. Do not scatter questions across multiple messages. Do not re-ask questions already answered in workspace files.
+
+### Onboarding intake — structured 6-block intake
+
+Run in six blocks via `/rev:onboard`. Each block asks 3–5 questions and completes before the next starts. See `commands/rev/onboard.md` for the full intake sequence.
+
+**Blocks:**
+1. Company and CRM basics (company, CRM system, stage, team)
+2. Revenue basics (ARR, MRR definition, billing system, targets)
+3. Pipeline configuration (stages, win rate, cycle, ACV)
+4. Customer success setup (CS platform, customer count, health scoring, product analytics, NRR)
+5. Data and integrations (data quality rating, biggest problems, connected tools, attribution)
+6. Workspace creation (populate all template files from answers, seed auto-log.md, display summary)
+
+Do not proceed to workspace creation until all five intake blocks are complete. Do not ask questions from earlier blocks during later blocks.
 
 ---
 
