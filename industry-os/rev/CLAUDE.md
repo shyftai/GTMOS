@@ -17,6 +17,7 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 - `references/rev-integrations.md` — RevOps tech stack, integration patterns, common sync issues
 - `references/rev-crm-setup.md` — step-by-step CRM configuration for HubSpot, Salesforce, Pipedrive (load when user is setting up CRM or asks how to configure fields/pipelines)
 - `references/rev-touchpoints.md` — touchpoint taxonomy, CRM tracking setup, multi-touch attribution standards (load before any attribution analysis or win/loss touchpoint review)
+- `references/rev-migration.md` — cross-CRM field mapping tables, migration tool recommendations, what survives each migration path (load when running /rev:migrate)
 
 ### Pipeline and analysis
 - `references/rev-metrics.md` — metric definitions, formulas, and calculation standards

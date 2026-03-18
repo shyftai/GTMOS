@@ -54,7 +54,9 @@ Ask in one block:
 5. **Currency and locale** — what currency do you report revenue in? (USD / EUR / GBP / AUD / CAD / other) Any other currencies in your pipeline?
 6. **Team headcount** — how many: AEs? SDRs? CSMs? RevOps people?
 
-> If the user says CRM needs setup or they're starting fresh, recommend loading `references/rev-crm-setup.md` before continuing. Offer to walk them through it: "Before we configure your workspace, let's make sure your CRM has the right fields and pipelines. Want me to guide you through the setup for [CRM]?"
+> If the user says CRM needs setup or they're starting fresh → recommend `references/rev-crm-setup.md` before continuing: "Before we configure your workspace, let's make sure your CRM has the right fields and pipelines. Want me to walk you through the setup for [CRM]?"
+>
+> If the user says "just migrated" or is mid-migration → stop onboard and route to `/rev:migrate` instead: "It sounds like you're in a migration — let's use `/rev:migrate` which is built specifically for this. It will audit your data before or after the move, map your fields, and validate everything arrived correctly. Run `/rev:migrate` and come back to complete workspace setup once the migration is done."
 
 ### Step 3: Revenue basics
 

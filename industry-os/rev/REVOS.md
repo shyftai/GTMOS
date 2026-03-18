@@ -96,6 +96,8 @@ Then show the commands reference:
   │               /rev:renewal · /rev:expansion                   │
   │               /rev:churn-risk                                 │
   │                                                               │
+  │  Migrate    /rev:migrate                                      │
+  │                                                               │
   └───────────────────────────────────────────────────────────────┘
 ```
 
@@ -191,7 +193,8 @@ industry-os/rev/
 │       ├── COSTS.md               Tool and credit spend tracking
 │       ├── SUPPRESSION.md         Do-not-contact list (if enrichment used)
 │       ├── SCRAPE-JOURNAL.md      API and enrichment audit trail
-│       ├── workspace.config.md    Execution mode, collaboration mode
+│       ├── MIGRATION.md           CRM migration log (created by /rev:migrate)
+│       ├── workspace.config.md    Execution mode, collaboration mode, currency, team
 │       └── logs/
 │           ├── auto-log.md
 │           └── workspace-log.md
