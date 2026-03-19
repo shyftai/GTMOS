@@ -7,7 +7,7 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 ## On startup
 
 1. Read `REVOS.md` — defines your role, the four-loop model (Clean / Analyze / Forecast / Retain), execution modes, hard gates, quality gates, and startup sequence
-2. Read `../../global/RULES-GLOBAL.md` — quality and compliance standards (relevant for any enrichment or outbound data use)
+2. Read `references/rev-data-standards.md` — data quality and compliance standards
 3. Follow the startup sequence in REVOS.md exactly — display banner, scan workspace, load all context files, display workspace header
 
 ## Key references (load as needed)
@@ -41,13 +41,8 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 ### Personas
 - `references/rev-personas.md` — RevOps buyer personas (VP RevOps, RevOps Analyst, CRO, CFO)
 
-## Optional GTM:OS references (load when doing enrichment or outbound data work)
-
-- `../../.claude/gtmos/references/enrichment-waterfall.md` — enrichment waterfall logic (load before any enrichment run)
-- `../../.claude/gtmos/references/api-reference.md` — API endpoints for Apollo, Clay, Clearbit, etc.
-- `../../.claude/gtmos/references/scrape-cache.md` — caching rules (load before any API call)
-- `../../.claude/gtmos/references/tool-pricing.md` — credit costs (load before any enrichment)
-- `../../.claude/gtmos/references/ui-brand.md` — visual formatting standards
+### Enrichment
+- `references/rev-enrichment.md` — enrichment waterfall, provider options, cache rules, cost guidelines (load before any enrichment run or API call)
 
 ## Rules
 

@@ -105,17 +105,19 @@ The common RevOps tech stack — tool categories, primary use cases, integration
 
 ## Data Enrichment
 
-Load `../../.claude/gtmos/references/enrichment-waterfall.md` for the full enrichment waterfall logic.
+Load `references/rev-enrichment.md` for the full enrichment waterfall, provider options, and cache rules.
 
-### Apollo.io
-**Use:** B2B contact and account data, email finding, verification
-**RevOps value:** Enriching CRM contacts with email, phone, title, LinkedIn; account firmographics
-**Rate limits:** Depends on plan; typically 50,000 exports/month on growth plan
-**Credit model:** Each contact export = 1 credit; account enrichment = 1 credit
+### Prospeo
+**Use:** Email finding by name + domain, email verification, deliverability checks
+**RevOps value:** Finding and verifying email addresses for CRM contacts; domain-level email format inference; bulk email verification before outreach sequences
+**Credit model:** Credits per search/verification; bulk pricing available
+**Best use:** Primary contact enrichment provider — run before any outreach sequence; verify emails on active deal contacts weekly
 
-### Clearbit (now Breyta / HubSpot)
-**Use:** Account-level firmographics, tech stack, funding data
-**RevOps value:** Enrich CRM accounts; website visitor enrichment; ICP scoring inputs
+### Freckle
+**Use:** Company and contact enrichment; firmographic data; seniority and role mapping; direct phone
+**RevOps value:** Enriching accounts with headcount, industry, revenue; contact enrichment for title, seniority, LinkedIn; primary waterfall provider for both accounts and contacts
+**Credit model:** Per enrichment or subscription
+**Best use:** First provider in account enrichment waterfall; fills firmographic gaps (headcount, industry, tech stack, annual revenue)
 
 ### ZoomInfo
 **Use:** B2B contact data, intent data, technographics
@@ -125,7 +127,7 @@ Load `../../.claude/gtmos/references/enrichment-waterfall.md` for the full enric
 ### Clay
 **Use:** Enrichment waterfall automation; multi-source enrichment; workflow automation
 **RevOps value:** Automate enrichment pipeline; cascade across multiple providers; AI rows for custom enrichment
-**Note:** See `../../.claude/gtmos/references/clay-ecosystem.md` for full Clay integration map
+**Note:** Clay connects to 150+ data providers — use it as the orchestration layer for your enrichment waterfall. See Clay's documentation for the full integration map.
 
 ---
 

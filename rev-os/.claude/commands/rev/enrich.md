@@ -13,7 +13,7 @@ Run enrichment on CRM records to fill gaps in firmographic, contact, and technog
 
 ## What to do
 
-Load `../../.claude/gtmos/references/enrichment-waterfall.md`, `../../.claude/gtmos/references/scrape-cache.md`, `rev-data-standards.md`, and `COSTS.md`.
+Load `references/rev-enrichment.md`, `references/rev-data-standards.md`, and `COSTS.md`.
 
 **Always check cache first** — if a record was enriched within 30 days, use cached data and do not make a new API call.
 

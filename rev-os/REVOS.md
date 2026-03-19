@@ -129,7 +129,7 @@ Finally, display the workspace prompt:
 
 REV:OS is a complete, standalone revenue operations system. It covers everything needed to run RevOps at a B2B company — keeping data clean, understanding pipeline and revenue drivers, and producing reliable forecasts and reports.
 
-REV:OS does not depend on GTM:OS. GTM:OS outbound tools (Apollo, Instantly, Crispy, etc.) are **available as optional integrations** for list enrichment and prospect data — but REV:OS runs fully without them.
+REV:OS is fully standalone. No other tool is required. Enrichment providers (Apollo, Clay, Clearbit, ZoomInfo), billing systems (Stripe), CS platforms (Gainsight, ChurnZero), and revenue intelligence tools (Gong, Clari) are all **optional integrations** — REV:OS runs without any of them.
 
 The four operational loops are:
 
@@ -168,12 +168,12 @@ The four operational loops are:
 
 ## Workspace structure
 
-REV:OS workspaces live at `industry-os/rev/workspaces/{workspace-name}/`. Each workspace represents one company's RevOps instance.
+REV:OS workspaces live at `workspaces/{workspace-name}/`. Each workspace represents one company's RevOps instance.
 
-When Claude Code is invoked, the working directory should be `industry-os/rev/`. All file paths in commands and references are relative to this root.
+When Claude Code is invoked, the working directory should be the root of this repo. All file paths in commands and references are relative to this root.
 
 ```
-industry-os/rev/
+rev-os/  (repo root)
 ├── workspaces/
 │   └── {workspace-name}/         ← created by /rev:onboard
 │       ├── CRM.md                 CRM system, fields, data standards
@@ -508,11 +508,10 @@ REV:OS works best with connected data sources. Load tool references only when ne
 - Gong, Chorus — call data for win/loss analysis
 - Clari, Aviso, Boostup — forecast and deal inspection
 
-**Enrichment (via GTM:OS waterfall):**
-- `../../.claude/gtmos/references/enrichment-waterfall.md` — cascading enrichment logic
-- `../../.claude/gtmos/references/api-reference.md` — API endpoints
-- `../../.claude/gtmos/references/scrape-cache.md` — caching rules
-- `../../.claude/gtmos/references/tool-pricing.md` — credit costs
+**Enrichment (optional — load `references/rev-enrichment.md`):**
+- Apollo, Clay, Clearbit, ZoomInfo — firmographic and contact enrichment
+- Hunter.io — email finding and verification
+- All enrichment follows the waterfall and cache rules in `references/rev-enrichment.md`
 
 **Reporting and BI:**
 - Looker, Metabase, Tableau — BI layer for dashboards; REV:OS produces the analysis and copy

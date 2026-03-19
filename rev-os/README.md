@@ -2,7 +2,7 @@
 
 **Clean your data. Understand your pipeline. Retain your customers.**
 
-REV:OS is a complete revenue operations system built on top of GTM:OS. It covers everything needed to run RevOps at a B2B company — from CRM hygiene and Stripe reconciliation to pipeline velocity, win/loss analysis, 360-degree customer health, and board-ready revenue reporting.
+REV:OS is a standalone revenue operations system for B2B companies. It covers everything needed to run RevOps — from CRM hygiene and Stripe reconciliation to pipeline velocity, win/loss analysis, 360-degree customer health, and board-ready revenue reporting.
 
 ---
 
@@ -65,7 +65,7 @@ REV:OS is a complete revenue operations system built on top of GTM:OS. It covers
 
 ## Quick start
 
-1. Open Claude Code in `industry-os/rev/`
+1. Open Claude Code in this repo's root directory
 2. Run `/rev:onboard` — 15-minute setup (includes CS platform config)
 3. Run `/rev:health` — baseline your data quality
 4. Run `/rev:cs-health` — baseline your customer health fleet
@@ -85,17 +85,13 @@ REV:OS is **not** a CRM. It works alongside your CRM (Salesforce, HubSpot) and b
 
 REV:OS is **not** a BI tool. It produces analysis and reports; your BI layer (Looker, Metabase, Sheets) handles visualization and self-serve dashboards.
 
-REV:OS is **not** a sales tool. It doesn't run sequences or manage outbound campaigns — that's GTM:OS.
+REV:OS is **not** a sales tool. It doesn't run sequences or manage outbound campaigns.
 
 ---
 
-## Part of GTM:OS
+## Works with GTM:OS (optional)
 
-REV:OS is built on the GTM:OS platform. It inherits:
-- Enrichment waterfall and caching rules
-- Compliance framework (GDPR, CASL, CAN-SPAM)
-- API reference and tool integrations
-- Visual formatting standards
+If your team also uses GTM:OS for outbound execution, REV:OS can use it as an enrichment source. This is purely optional — REV:OS runs fully without GTM:OS.
 
 ---
 

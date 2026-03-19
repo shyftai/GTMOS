@@ -186,20 +186,20 @@ Field standards, deduplication rules, and enrichment requirements for CRM object
 
 ### Enrichment waterfall for CRM (in priority order)
 
-Load `../../.claude/gtmos/references/enrichment-waterfall.md` for the full GTM:OS waterfall. For CRM-specific enrichment, apply this order:
+Load `references/rev-enrichment.md` for the full enrichment waterfall, cache rules, and provider cost guide. For CRM-specific enrichment, apply this order:
 
 **Account/company enrichment:**
-1. Clearbit (firmographics, tech stack, funding)
-2. Apollo (headcount, industry, LinkedIn)
-3. Hunter.io (domain validation, email format)
-4. LinkedIn scrape (public page data — check `scrape-cache.md` first)
+1. Freckle (firmographics, headcount, industry, tech stack)
+2. ZoomInfo (enterprise accounts, intent data)
+3. Prospeo (domain validation, email format)
+4. LinkedIn (public page data — manual or scrape)
 5. Manual research (only if all above fail and account is Tier 1)
 
 **Contact enrichment:**
-1. Apollo (email, phone, LinkedIn, job title)
-2. Hunter.io (email verification)
-3. Clearbit Enrichment (email → company data)
-4. LinkedIn scrape (public profile — check `scrape-cache.md` first)
+1. Prospeo (email finding by name + domain, verification)
+2. Freckle (title, seniority, LinkedIn, direct phone)
+3. ZoomInfo (direct dial, verified email — enterprise contacts)
+4. LinkedIn (public profile — manual)
 
 ### Enrichment rules
 
