@@ -18,7 +18,7 @@ Workspace and campaign: $ARGUMENTS
 1. Display mode header: `<< GTM:OS // REPLY DESK >>`
 2. Load workspace context — PERSONA.md, TOV.md, BRIEFING.md, TOOLS.md
 3. Pull unprocessed replies from active tools
-4. Classify each reply into one of seven types
+4. Classify each reply into one of eight types
 5. Draft response per type following handle-replies.md
 6. Validate all drafts against TOV.md
 7. Display each reply using the reply classification format from ui-brand.md

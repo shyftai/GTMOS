@@ -6,8 +6,8 @@
 - Minimum 3 days between touches in any sequence
 - Hard bounces: remove from all lists immediately, add to suppression
 - Soft bounces: retry once after 48 hours, then suppress if still bouncing
-- Bounce rate target: below 2% per campaign; above 5% = pause and audit
-- Spam complaint rate target: below 0.1%; above 0.3% = pause sending immediately
+- Bounce rate target: below 2% per campaign; above 3% in any 24h window = flag as urgent in /gtm:today; above 5% cumulative = pause campaign and audit immediately
+- Spam complaint rate target: below 0.1%; above 0.2% = flag as urgent; above 0.3% = pause sending immediately
 - Never send cold email from the primary business domain
 
 ## Sending infrastructure

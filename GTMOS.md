@@ -129,9 +129,10 @@ Your job inside this repo is:
 ## On startup
 
 1. Display the GTM:OS banner above
-2. Read global/COLLABORATION.md — check if mode is `solo` or `team`
-   - If `team`: verify SUPABASE_URL and SUPABASE_ANON_KEY in .env. If missing, warn and fall back to solo.
-   - If `solo`: proceed normally — all state is file-based.
+2. Read global/COLLABORATION.md — check global mode and team settings (Supabase config, shared suppression)
+   - Then check `workspace.config.md` for this workspace's `Mode:` setting — **workspace setting overrides global**
+   - If mode is `team`: verify SUPABASE_URL and SUPABASE_ANON_KEY in .env. If missing, warn and fall back to solo.
+   - If mode is `solo`: proceed normally — all state is file-based.
 3. Ask which workspace is active, or detect from context
 4. Load the following workspace-level files (these apply to all campaigns):
    - ICP.md
@@ -139,7 +140,7 @@ Your job inside this repo is:
    - TOV.md
    - RULES.md
    - TOOLS.md
-   - WORKFLOW.md
+   - WORKFLOW.md — read the approval chain (who approves copy, lists, and ships). Use this in step 9 to confirm approval chain.
    - COSTS.md
    - INFRASTRUCTURE.md
    - SUPPRESSION.md
@@ -241,6 +242,18 @@ GTM:OS supports two execution modes, configured per workspace in `workspace.conf
 - Multi-step workflows (write → validate → ship): in auto mode, chain automatically. Stop only at hard gates.
 - Credit checks with `confirm-above-threshold` behaviour: in auto mode, auto-approve if under threshold. Still stop if over.
 - Credit checks with `auto-approved` behaviour: proceed as normal in both modes.
+
+### Log file hierarchy
+
+Three log files — different scope, different purpose:
+
+| Log | Scope | What goes here |
+|-----|-------|---------------|
+| `logs/auto-audit.md` | Workspace | Every auto-mode action — API calls, enrichments, auto-approved gates, circuit breaker events, rollback checkpoints |
+| `campaigns/{campaign}/logs/decisions.md` | Campaign | Reply classifications, copy approval decisions, gate decisions for this campaign |
+| `logs/workspace-log.md` | Workspace | Workspace-level events — campaigns created, strategy file edits, onboarding steps |
+
+When GTMOS.md says "log in decisions.md" it means the campaign-level decisions.md. "Log in auto-audit.md" means the workspace-level auto-audit.
 
 ### Audit log
 
@@ -442,6 +455,7 @@ When a reply is provided for handling:
    - OOO — out of office
    - Unsubscribe — wants to be removed
    - Competitor mention — currently using an alternative
+   - Future opportunity — not now, but open to reconnecting at a specific date or trigger ("check back in Q3", "ping me after our budget review")
 
 2. **Act based on type:**
 
@@ -493,6 +507,14 @@ When a reply is provided for handling:
    - Log the competitor mention in COMPETITORS.md competitor mention log
    - Flag the competitor mentioned for logging in context/research/
 
+   Future opportunity:
+   - Extract the timing or trigger they mentioned ("after budget review", "Q3", "6 months")
+   - Do not draft a response now — the door is open, not closing
+   - Create a follow-up task in Attio with the stated date or trigger as due date
+   - Add contact to nurture list in PIPELINE.md with "future-opportunity" tag and date/trigger
+   - Suggest: if date is more than 30 days out, run `/gtm:nurture` to schedule the re-touch
+   - Mark contact status in CRM as "Future — Nurture" so they don't get re-contacted by another campaign
+
 3. **Present for approval** — always. Never send a reply without explicit approval.
 4. **Log the classification and action** in campaign logs/decisions.md.
 
@@ -518,7 +540,7 @@ Signal types that trigger an immediate action:
 When a signal is detected:
 
 1. Match the signal to the relevant contact(s) in the shipped list
-2. Identify the angle the signal enables — check signal-angles.md first
+2. Identify the angle the signal enables — check `context/research/signal-angles.md` first (if it exists — it's built up over time from campaigns)
 3. Draft a signal-triggered outreach message:
    - Reference the specific signal in line 1
    - Connect it to the offer in 2-3 sentences
@@ -527,8 +549,7 @@ When a signal is detected:
    - Single low-friction CTA
 4. Flag the signal with expiry — most signals are only relevant for 5-7 days
 5. Present the draft and ask for approval before anything is sent or scheduled
-6. If approved: push to the relevant sending tool (Lemlist / Instantly / Smartlead / Crispy)
-   applying the credit behaviour rule from TOOLS.md
+6. If approved: push to the relevant sending tool — email via Lemlist / Instantly / Smartlead; LinkedIn messages via Crispy — per the channel configured in campaign.config.md. Apply the credit behaviour rule from TOOLS.md.
 7. Log the action in campaign logs/decisions.md
 
 ---
