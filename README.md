@@ -468,6 +468,8 @@ GTM:OS connects to 70+ tools across the outbound stack. Use what you have — sk
 | **Cal.com** | Open-source scheduling, self-hosted option | Free self-hosted, from $12/mo |
 
 > Every tool is optional. Use what you have. GTM:OS reads tool availability from your `.env` and `TOOLS.md`, then adapts its workflows accordingly. Writes follow credit rules per workspace, and every write is logged in COSTS.md.
+>
+> **Any tool with an API works.** The list above is the curated default set — not a hard limit. Add any tool to your `TOOLS.md`, drop the API key in `.env`, and GTM:OS will use it.
 
 ---
 
