@@ -464,6 +464,7 @@ When a reply is provided for handling:
    - Apply TOV.md — keep it warm, brief, and low-friction
    - Suggest marking the contact as "Replied — Positive" in Attio
    - Suggest pausing their sequence in the sending tool
+   - When a meeting is confirmed from this thread: prompt to log the winning combination to LEARNINGS.md before running `/gtm:post-meeting` — touch number that got the reply, subject line, opening line, persona type, campaign angle. Tag source as "Positive reply — {campaign} — {date}". This is the highest-signal learning available — don't skip it.
 
    Negative:
    - Draft a graceful acknowledgement — no pushback, door left open

@@ -16,21 +16,45 @@
 - Suggested discovery questions based on the campaign angle
 
 ### Post-call actions (after meeting is completed)
-4. Draft a follow-up email:
+4. Log the touch that converted — ask the user which touch drove the reply that booked this meeting. Then write to LEARNINGS.md:
+   - Which touch number (e.g. Touch 2)
+   - Subject line used
+   - Opening line used
+   - Persona type targeted (from PERSONA.md)
+   - Campaign angle
+   - What the contact said in their positive reply (verbatim if possible)
+   - Tag: `Meeting booked — {campaign} — {date}`
+   - Why it worked (user's interpretation, if they have one)
+
+   If the user doesn't know which touch, ask them to check the sending tool thread. This is the highest-signal learning in the system — do not skip it. Save to LEARNINGS.md under a new `## Wins` entry (or append to existing) with the format:
+
+   ```
+   ### Meeting booked — {contact} @ {company} — {date}
+   **Campaign:** {campaign}
+   **Touch:** {touch number} of {total}
+   **Subject:** {subject line}
+   **Opening:** {opening line}
+   **Persona:** {persona type}
+   **Angle:** {campaign angle}
+   **Their reply:** "{verbatim reply snippet}"
+   **Why it worked:** {user interpretation}
+   ```
+
+5. Draft a follow-up email:
    - Reference something specific from the conversation
    - Recap any agreed next steps
    - Include relevant resource if discussed (case study, pricing, demo link)
    - Apply TOV.md — keep it brief and human
    - Max 100 words
-5. Update CRM pipeline stage:
+6. Update CRM pipeline stage:
    - Move contact to appropriate stage (Qualified / Proposal Sent / etc.)
    - Log meeting notes
    - Tag with campaign attribution
-6. If next steps were agreed:
+7. If next steps were agreed:
    - Create follow-up task with date
    - Draft the follow-up content (proposal outline, case study, intro email)
-7. If deal is dead:
+8. If deal is dead:
    - Log reason in lost deal analysis (PIPELINE.md)
    - Update COMPETITORS.md if competitor was mentioned
    - Move to Closed — Lost
-8. Log all actions in campaign logs/decisions.md
+9. Log all actions in campaign logs/decisions.md

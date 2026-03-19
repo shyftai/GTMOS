@@ -17,10 +17,10 @@ Workspace and contact: $ARGUMENTS
 
 <process>
 1. Display mode header: `<< GTM:OS // POST-MEETING >>`
-2. Load workspace context — BRIEFING.md, PERSONA.md, TOV.md, PIPELINE.md, COMPETITORS.md
+2. Load workspace context — BRIEFING.md, PERSONA.md, TOV.md, PIPELINE.md, COMPETITORS.md, LEARNINGS.md
 3. Determine if this is pre-call (research brief) or post-call (follow-up)
 4. Pre-call: generate research brief with company overview, signals, pain points, discovery questions
-5. Post-call: confirm meeting details, draft follow-up email, update CRM stage, create tasks
+5. Post-call: log the converting touch to LEARNINGS.md, draft follow-up email, update CRM stage, create tasks
 6. If deal is dead: log reason in PIPELINE.md lost deal analysis
 7. Log all actions in campaign logs/decisions.md
 </process>

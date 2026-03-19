@@ -2,7 +2,25 @@
 
 This file accumulates intelligence from every campaign, deep dive, debrief, and reply analysis. Each insight is tagged with its source and confidence level. The more campaigns you run, the smarter this gets.
 
-**Updated by:** `/gtm:debrief`, `/gtm:deep-dive`, `/gtm:auto-refine`, `/gtm:replies`, `/gtm:health`
+**Updated by:** `/gtm:debrief`, `/gtm:deep-dive`, `/gtm:auto-refine`, `/gtm:replies`, `/gtm:health`, `/gtm:post-meeting`
+
+---
+
+## Wins
+
+Meeting bookings with full context — the highest-signal data in this file. Logged automatically by `/gtm:post-meeting`.
+
+<!-- Format (one entry per booked meeting):
+### Meeting booked — {contact} @ {company} — {date}
+**Campaign:** {campaign}
+**Touch:** {touch number} of {total}
+**Subject:** {subject line}
+**Opening:** {opening line}
+**Persona:** {persona type}
+**Angle:** {campaign angle}
+**Their reply:** "{verbatim reply snippet}"
+**Why it worked:** {user interpretation}
+-->
 
 ---
 
