@@ -343,11 +343,6 @@ Pick a type when creating a campaign — defaults pre-fill automatically:
 
 GTM:OS connects to 70+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
 
-### GTM workflow automation
-| Tool | What it does | Pricing |
-|------|-------------|---------|
-| **Clay** | GTM engineer's Swiss Army knife — build enrichment waterfalls, pull from 150+ sources, run AI research, trigger sequences. Connects everything. | From $149/mo |
-
 ### Prospecting & enrichment
 | Tool | What it does | Pricing |
 |------|-------------|---------|

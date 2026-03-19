@@ -7,15 +7,6 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 
 ## Active tools
 
-### Clay
-- Status: active / inactive
-- Mode: bidirectional
-- Push to Clay: contact lists, enrichment jobs, workflow triggers
-- Pull from Clay: enriched data, waterfall results, AI research outputs, sequences queued
-- Credit behaviour (writes): confirm-above-threshold
-- Threshold: $10 estimated cost per table run (confirm large enrichment runs)
-- Notes: GTM workflow hub — connects 150+ sources. Use for complex multi-step enrichment, AI research rows, and pushing enriched lists to sending tools. API access on paid plans.
-
 ### Apollo
 - Status: active / inactive
 - Mode: bidirectional / read-only / write-only
@@ -452,7 +443,6 @@ confirm-before-every-use
 
 ## API key reference
 All keys stored in .env at repo root:
-- CLAY_API_KEY
 - APOLLO_API_KEY
 - ZOOMINFO_API_KEY
 - COGNISM_API_KEY
