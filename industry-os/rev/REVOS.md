@@ -89,8 +89,7 @@ Then show the commands reference:
   │               /rev:attribution · /rev:cohort                  │
   │               /rev:signals                                    │
   │                                                               │
-  │  Forecast     /rev:forecast · /rev:quota                      │
-  │               /rev:report                                     │
+  │  Forecast     /rev:forecast · /rev:quota · /rev:report        │
   │                                                               │
   │  Retain       /rev:cs-health · /rev:customer                  │
   │               /rev:renewal · /rev:expansion                   │
@@ -189,6 +188,7 @@ industry-os/rev/
 │       ├── INTEGRATIONS.md        Tool stack and data flows
 │       ├── CUSTOMERS.md           Customer health registry (all accounts)
 │       ├── CS-CONFIG.md           CS platform config and health score formula
+│       ├── QUOTA.md               Quota plan, attainment, territories, ramp schedules
 │       ├── RULES.md               Workspace-level rules
 │       ├── COSTS.md               Tool and credit spend tracking
 │       ├── SUPPRESSION.md         Do-not-contact list (if enrichment used)
@@ -221,6 +221,7 @@ On every session start, load context in this order. Do not proceed with any task
 8. `STRIPE.md` — Stripe plan mapping, MRR definition, reconciliation status
 9. `FORECAST.md` — forecast methodology, current call, historical accuracy
 10. `TEAM.md` — RevOps team, reps/quota, territory assignments
+10a. `QUOTA.md` — quota plan, attainment, territory map, ramp schedules
 11. `INTEGRATIONS.md` — connected tools, sync status, known issues
 12. `CUSTOMERS.md` — customer health registry (load for retain loop work)
 13. `CS-CONFIG.md` — CS platform configuration and health score formula
@@ -231,6 +232,26 @@ On every session start, load context in this order. Do not proceed with any task
 18. `ROADMAP.md` — RevOps growth plan: active initiatives, planned improvements
 
 **Before every forecast, data strategy, or process recommendation: check LEARNINGS.md for relevant prior learnings.**
+
+**Before displaying the workspace header, check setup completeness:**
+
+Scan each workspace file. A file is "configured" if it contains no template placeholders (`[X]`, `[Name]`, `[Date]`, `[currency]`). Count configured vs. total files.
+
+If setup < 100%, show the tracker above the workspace header:
+
+```
+  ┌─ SETUP ────────────────────────────────────────────────────┐
+  │                                                             │
+  │  [████████░░] 80% complete                                  │
+  │                                                             │
+  │  Missing:  CUSTOMERS.md · CS-CONFIG.md · QUOTA.md          │
+  │                                                             │
+  │  Run /rev:onboard continue to finish setup.                 │
+  │                                                             │
+  └─────────────────────────────────────────────────────────────┘
+```
+
+If setup = 100%, do not show the tracker — no noise for complete workspaces.
 
 **Before displaying the workspace header, check for in-progress scrapes:**
 

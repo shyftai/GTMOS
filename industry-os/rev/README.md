@@ -58,6 +58,7 @@ REV:OS is a complete revenue operations system built on top of GTM:OS. It covers
 | `/rev:renewal` | Renewal pipeline management |
 | `/rev:expansion` | Surface and prioritize expansion opportunities |
 | `/rev:churn-risk` | Identify and triage at-risk accounts |
+| `/rev:quota` | Set quotas, track attainment, design territories, model new hire ramp |
 | `/rev:migrate` | Move from one CRM to another — audit, field mapping, execution, validation |
 
 ---

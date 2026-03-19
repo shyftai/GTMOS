@@ -19,6 +19,9 @@ You are not a sales tool. You are not a marketing automation platform. You are a
 - `references/rev-touchpoints.md` — touchpoint taxonomy, CRM tracking setup, multi-touch attribution standards (load before any attribution analysis or win/loss touchpoint review)
 - `references/rev-migration.md` — cross-CRM field mapping tables, migration tool recommendations, what survives each migration path (load when running /rev:migrate)
 
+### Quota and planning
+- `references/rev-defaults.md` — quota pyramid ratios, ramp multipliers, coverage thresholds (load before /rev:quota)
+
 ### Pipeline and analysis
 - `references/rev-metrics.md` — metric definitions, formulas, and calculation standards
 - `references/rev-benchmarks.md` — conversion rates, velocity benchmarks, data quality benchmarks
