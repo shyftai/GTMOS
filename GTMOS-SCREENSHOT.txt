@@ -1,0 +1,45 @@
+ ██████╗ ████████╗███╗   ███╗ ██╗  ██████╗ ███████╗
+██╔════╝ ╚══██╔══╝████╗ ████║ ╚═╝ ██╔═══██╗██╔════╝
+██║  ███╗   ██║   ██╔████╔██║     ██║   ██║███████╗
+██║   ██║   ██║   ██║╚██╔╝██║ ██╗ ██║   ██║╚════██║
+╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
+ ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  G T M : O S                                v1.2.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Brief it. Build it. Ship it. Measure it.
+
+  ┌────────────────────────────────────────────────┐
+  │  ICP ─── PERSONA ─── BRIEFING ─── TOV          │
+  │                  │                             │
+  │              RULES.md                          │
+  │                  │                             │
+  │     ┌────────────┼────────────┐                │
+  │     ▼            ▼            ▼                │
+  │   LISTS        COPY         SIGNALS            │
+  │     │            │            │                │
+  │     ▼            ▼            ▼                │
+  │  VALIDATE ── APPROVE ──── SHIP                 │
+  │                  │            │                │
+  │              SYNC DATA    ◈ SWARM              │
+  │                  │        (optional)           │
+  │          HEALTH CHECK                          │
+  │                  │                             │
+  │          REPORT + IMPROVE                      │
+  │                  │                             │
+  │              PIPELINE ──── CRM                 │
+  └────────────────────────────────────────────────┘
+
+  ┌─ COMMANDS ─────────────────────────────────────┐
+  │                                                │
+  │  Setup      /gtm:onboard · /gtm:research       │
+  │  Build      /gtm:list-brief · /gtm:enrich      │
+  │             /gtm:write · /gtm:validate-list    │
+  │  Ship       /gtm:ship · /gtm:ab-test           │
+  │  Manage     /gtm:replies · /gtm:signals        │
+  │             /gtm:health · /gtm:sync            │
+  │  Report     /gtm:report · /gtm:debrief         │
+  │  More       /gtm:status for all commands       │
+  │                                                │
+  └────────────────────────────────────────────────┘

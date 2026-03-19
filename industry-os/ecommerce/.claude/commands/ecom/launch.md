@@ -42,6 +42,11 @@ Build a complete product launch plan covering the 4-week runup, launch day seque
    **Calendar check (hard gate):** Any conflicting promo or launch within 7 days?
    - Check CALENDAR.md. Surface any conflict. Require explicit approval to proceed.
 
+   **Budget check (hard gate):** Is planned paid spend within budget?
+   - Check CHANNELS.md daily and weekly limits for each channel in the launch plan.
+   - Calculate total planned launch spend across all channels.
+   - If total exceeds available budget for the period: surface the overage, show breakdown by channel, and require explicit approval before continuing.
+
    **Post-purchase flow check:** Does a post-purchase flow exist for this product in FLOWS.md?
    - If no: flag — recommend setting up before launch day.
 
@@ -113,6 +118,7 @@ Week 1 (final checks and VIP access):
 │  Launch date: {date}                                          │
 │  Type: {Full / Soft / Restock / Drop}                         │
 │  Stock: {units available} — {OK / WARNING: low}              │
+│  Budget: ${planned spend} — {OK / WARNING: over limit}        │
 │  Goal: {units or revenue target}                              │
 │                                                               │
 │  Checklist:                                                   │

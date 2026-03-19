@@ -20,7 +20,9 @@ Give the brand operator a clear picture of what needs their attention today acro
 {date}
 ```
 
-2. Load workspace files: METRICS.md, CALENDAR.md, FLOWS.md, CHANNELS.md, PRODUCTS.md, FINANCE.md, LEARNINGS.md.
+2. Load workspace files: METRICS.md, CALENDAR.md, FLOWS.md, CHANNELS.md, PRODUCTS.md, FINANCE.md, LEARNINGS.md, SCRAPE-JOURNAL.md.
+
+   Note: before suggesting any signal scans or competitor research today, check SCRAPE-JOURNAL.md — skip any scan that was run within the last 7 days and reuse cached results instead.
 
 3. Load LEARNINGS.md — scan for any lesson relevant to what is on today's agenda. If one is found, surface it as a brief note.
 

@@ -38,11 +38,22 @@ Let's get your brand set up. This will take 10–20 minutes.
 You can stop at any point and continue later with /ecom:onboard {workspace}.
 ```
 
-3. Ask: "Quick setup (5 essential blocks, ~10 min) or Full setup (all blocks, ~20 min)?"
+3. **Resume check:** Before asking anything, check if `workspaces/{workspace-name}/workspace.config.md` exists.
+   - If it does: read it. If `onboard_status` is set, display:
+     ```
+     Resuming onboard for {workspace-name}.
+     Last completed: Block {X} — {name}
+     Continuing from Block {X+1}.
+     ```
+     Skip all completed blocks and resume from the next one.
+   - If it doesn't exist: proceed with fresh setup.
 
-4. Create workspace folder structure at `workspaces/{workspace-name}/`:
+4. Ask: "Quick setup (5 essential blocks, ~10 min) or Full setup (all blocks, ~20 min)?"
+
+5. Create workspace folder structure at `workspaces/{workspace-name}/`:
    - Copy all files from `_template/` to `workspaces/{workspace-name}/`
    - Create `workspaces/{workspace-name}/logs/` with `auto-log.md` and `workspace-log.md`
+   - Set `onboard_status: block_1_complete` in workspace.config.md after each block finishes
 
 ---
 
@@ -155,7 +166,7 @@ Set in workspace.config.md.
 
 **After all blocks complete:**
 
-5. Display completion summary:
+6. Display completion summary:
 ```
 ┌─ ONBOARDING COMPLETE ─────────────────────────────────────────┐
 │                                                               │
@@ -171,7 +182,9 @@ Set in workspace.config.md.
 └───────────────────────────────────────────────────────────────┘
 ```
 
-6. Suggest first actions based on what was entered:
+   Set `onboard_status: complete` in workspace.config.md.
+
+7. Suggest first actions based on what was entered:
 - Always: `/ecom:today {workspace}` — see what needs attention right now
 - If flows are missing: `/ecom:flow {workspace}` — set up priority flows (welcome + abandoned cart first)
 - If paid channels active: `/ecom:audit {workspace} paid` — check current channel health

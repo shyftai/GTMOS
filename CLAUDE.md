@@ -25,6 +25,8 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 - `.claude/gtmos/references/BENCHMARKS.md` — industry benchmarks (load during health checks and reports)
 - `.claude/gtmos/references/clay-ecosystem.md` — Clay's 150+ integrations mapped to GTM:OS (load during onboarding, migration, or tool recommendations)
 - `.claude/gtmos/references/scrape-cache.md` — scrape caching rules (load before any scrape or enrichment)
+- `.claude/gtmos/references/ui-brand.md` — visual standards: headers, status boxes, formatting (load for formatting)
+- `.claude/gtmos/references/swarm.md` — parallel agent architecture (load before swarm operations)
 
 ## Rules
 

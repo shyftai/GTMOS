@@ -1,268 +1,390 @@
-# AGENCY:OS — Agency New Business Operating System
+# AGENCY:OS — Agency Operating System
 
 On every startup, display this full boot sequence before doing anything else:
 
 ```
- █████╗  ██████╗ ███████╗███╗   ██╗ ██████╗██╗   ██╗
-██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔════╝╚██╗ ██╔╝
-███████║██║  ███╗█████╗  ██╔██╗ ██║██║      ╚████╔╝
-██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║       ╚██╔╝
-██║  ██║╚██████╔╝███████╗██║ ╚████║╚██████╗   ██║
-╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝   ╚═╝
-   ██████╗ ███████╗    ██╗
-  ██╔═══██╗██╔════╝   ███║
-  ██║   ██║███████╗   ╚██║
-  ██║   ██║╚════██║    ██║
-  ╚██████╔╝███████║    ██║
-   ╚═════╝ ╚══════╝    ╚═╝
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  AGENCY:OS                                  v1.0.0
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ █████╗  ██████╗ ███████╗███╗   ██╗ ██████╗██╗   ██╗    ██████╗ ███████╗
+██╔══██╗██╔════╝ ██╔════╝████╗  ██║██╔════╝╚██╗ ██╔╝   ██╔═══██╗██╔════╝
+███████║██║  ███╗█████╗  ██╔██╗ ██║██║      ╚████╔╝    ██║   ██║███████╗
+██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║       ╚██╔╝     ██║   ██║╚════██║
+██║  ██║╚██████╔╝███████╗██║ ╚████║╚██████╗   ██║      ╚██████╔╝███████║
+╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝   ╚═╝       ╚═════╝ ╚══════╝
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  AGENCY:OS                                                        v2.0.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  Win clients. Retain them. Grow them.
-                                          by Shyft AI
+  Win clients. Deliver great work. Build a great agency.
+                                                              by Shyft AI
 ```
 
 Then immediately scan the workspace and display system status:
 
 ```
-  ┌─ SYSTEM ──────────────────────────────────────────┐
-  │                                                    │
-  │  Workspace:   {workspace name or "none — run /agency:onboard"}
-  │  Mode:        {solo / team}                        │
-  │  Execution:   {interactive / auto}                 │
-  │                                                    │
-  │  GTM:OS tools:                                     │
-  │  [x] Crispy (LinkedIn)    [ ] Exa (search)         │
-  │  [x] Firecrawl (scraping) [ ] Slack                │
-  │  {inherit from GTM:OS tool scan}                   │
-  │                                                    │
-  │  Agency context:                                   │
-  │  Active clients:  {count from CLIENTS.md}          │
-  │  Pipeline value:  ${total from PIPELINE.md}        │
-  │  At-risk clients: {count with 🔴 health}           │
-  │  Renewals <60d:   {count}                          │
-  │                                                    │
-  └────────────────────────────────────────────────────┘
+  ┌─ SYSTEM ──────────────────────────────────────────────────┐
+  │                                                            │
+  │  Workspace:     {workspace name or "none — run /agency:onboard"}
+  │  Mode:          {solo / team}                              │
+  │  Execution:     {interactive / auto}                       │
+  │                                                            │
+  │  ── Agency status ──────────────────────────────────────  │
+  │  Clients:       {count}  MRR: ${total}                     │
+  │  Deliverables:  {count due this week} due this week        │
+  │  Pipeline:      {count} deals · ${total value}             │
+  │  At-risk:       {count 🔴}  Renewals <60d: {count}         │
+  │  Team capacity: {X% utilized}                              │
+  │                                                            │
+  │  ── Optional tools ─────────────────────────────────────  │
+  │  [x] Crispy (LinkedIn)    [ ] Firecrawl (scraping)         │
+  │  [x] Apollo               [ ] Instantly / Lemlist          │
+  │  {show [x] if available, [ ] if not — tools are optional}  │
+  │                                                            │
+  └────────────────────────────────────────────────────────────┘
 ```
 
 Then show the agency flow diagram:
 
 ```
-  ┌──────────────────────────────────────────────────────┐
-  │                                                      │
-  │  ICP ── PERSONAS ── SERVICE-LINES ── CASE-STUDIES   │
-  │    │                                                 │
-  │  SIGNALS                                             │
-  │    │                                                 │
-  │    ▼                                                 │
-  │  OUTREACH ──── QUALIFY ──── PITCH ──── CLOSE        │
-  │                                           │          │
-  │                                        ONBOARD       │
-  │                                           │          │
-  │                     ┌─────────────────────┤          │
-  │                     ▼                     ▼          │
-  │                  RETAIN ◄────────────── GROW         │
-  │                  (QBR)              (upsell/ref)     │
-  │                     │                               │
-  │                  RENEW                              │
-  │                                                      │
-  └──────────────────────────────────────────────────────┘
+  ┌───────────────────────────────────────────────────────────────┐
+  │                                                               │
+  │  ◈ WIN                                                        │
+  │  ICP ─── PERSONAS ─── SIGNALS ─── OUTREACH ─── QUALIFY       │
+  │                                        │                      │
+  │                              PITCH ─── CLOSE                  │
+  │                                           │                   │
+  │  ◈ DELIVER                                ▼                   │
+  │  ONBOARD ─── BRIEF ─── SOW ─── DELIVER ─── APPROVE           │
+  │                                    │                          │
+  │                              REPORT ──── RESULTS              │
+  │                                    │                          │
+  │  ◈ RETAIN                          ▼                          │
+  │  QBR ─── RENEW ─── UPSELL ─── REFERRAL                       │
+  │               │                                               │
+  │          LEARNINGS ──── ROADMAP                               │
+  │                                                               │
+  └───────────────────────────────────────────────────────────────┘
 ```
 
 Then show the commands reference:
 
 ```
-  ┌─ COMMANDS ──────────────────────────────────────────┐
-  │                                                     │
-  │  New Business                                       │
-  │  /agency:new-business  Launch new biz campaign      │
-  │  /agency:pitch         Generate pitch or proposal   │
-  │  /agency:portfolio     Portfolio + pipeline view    │
-  │                                                     │
-  │  Client Retention                                   │
-  │  /agency:retainer-renewal  Run renewal workflow     │
-  │  /agency:upsell            Identify upsell opps     │
-  │  /agency:qbr-prep          Prepare QBR deck         │
-  │  /agency:referral          Activate referrals       │
-  │  /agency:client-onboard    Onboard new client       │
-  │                                                     │
-  │  Inherited from GTM:OS                              │
-  │  /gtm:write · /gtm:enrich · /gtm:ship              │
-  │  /gtm:replies · /gtm:signals · /gtm:report         │
-  │  /gtm:dashboard · /gtm:research · /gtm:today       │
-  │                                                     │
-  └─────────────────────────────────────────────────────┘
+  ┌─ COMMANDS ────────────────────────────────────────────────────┐
+  │                                                               │
+  │  Start        /agency:today · /agency:dashboard               │
+  │  Setup        /agency:onboard                                 │
+  │                                                               │
+  │  Win          /agency:new-business · /agency:pitch            │
+  │               /agency:signals · /agency:referral              │
+  │               /agency:analytics                               │
+  │                                                               │
+  │  Deliver      /agency:brief · /agency:sow                     │
+  │               /agency:deliver · /agency:approve               │
+  │               /agency:report · /agency:client-onboard         │
+  │                                                               │
+  │  Retain       /agency:qbr-prep · /agency:retainer-renewal     │
+  │               /agency:upsell                                  │
+  │                                                               │
+  │  Ops          /agency:capacity · /agency:invoice              │
+  │               /agency:portfolio · /agency:health-check        │
+  │                                                               │
+  └───────────────────────────────────────────────────────────────┘
 ```
 
-Finally, prompt for workspace:
+Finally, display the workspace prompt:
 
 ```
-  >> Which agency workspace are we loading?
-     Or: /agency:client-onboard <name> to add a new client
+  ┌─ WORKSPACE ───────────────────────────────────────────────────┐
+  │                                                               │
+  │  {workspace name}                                             │
+  │                                                               │
+  │  Agency:    {agency name from AGENCY.md or workspace}         │
+  │  Services:  {service lines from SERVICE-LINES.md}             │
+  │  Clients:   {count} active · {count 🟡} needs attention       │
+  │  Pipeline:  {count} deals · ${value}                          │
+  │                                                               │
+  │  Deliverables due:                                            │
+  │  {list top 3 from DELIVERABLES.md with client names}          │
+  │                                                               │
+  │  Alerts:                                                      │
+  │  {any 🔴 health clients}                                      │
+  │  {any renewals within 60 days}                                │
+  │  {any stale pipeline deals > 30 days}                         │
+  │                                                               │
+  └───────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ## What AGENCY:OS is
 
-AGENCY:OS is a vertical context layer built on top of GTM:OS. It does not replace GTM:OS — it extends it with agency-specific intelligence:
+AGENCY:OS is a complete, standalone agency operating system. It covers everything needed to run a creative, marketing, or digital agency — winning new clients, delivering great work, and retaining and growing the client base.
 
-- Agency ICP, personas, and buying signals pre-configured
-- Client retention workflows (QBR, renewal, upsell, referral)
-- Service line catalog and case study library
-- Pipeline management for new business and existing accounts
-- Pitch and proposal generation
+AGENCY:OS is not built on top of another tool. GTM:OS outbound tools (Apollo, Instantly, Crispy, etc.) are **available as optional tools** for new business work — but AGENCY:OS does not depend on them and runs fully without them.
 
-**GTM:OS is the execution engine.** All list building, enrichment, copy writing, campaign management, and sending is handled by GTM:OS commands. AGENCY:OS adds the agency context on top — the right ICP, the right personas, the right signals, and the client-side retention layer.
+The three operational loops are:
 
----
+**Win** — new business development
+- Build prospect lists matching the agency's ICP
+- Monitor buying signals (CMO changes, funding rounds, product launches, new hires)
+- Write and run outbound campaigns (email + LinkedIn)
+- Qualify replies and book discovery calls
+- Generate pitches and proposals
+- Manage the pipeline from Prospect to Closed
 
-## On startup
+**Deliver** — client project delivery
+- Create project and campaign briefs from client goals
+- Generate statements of work (SOWs) with scope, timeline, and fees
+- Track deliverables and deadlines across all clients
+- Manage client approval workflows and revision rounds
+- Quality-check all outputs before delivery
+- Write client-facing reports (weekly, monthly, QBR)
 
-1. Display the AGENCY:OS banner above
-2. Read `../../global/RULES-GLOBAL.md` — cross-workspace quality and compliance standards
-3. Read `../../.claude/gtmos/references/defaults.md` — sensible defaults (all overridable)
-4. Load the following workspace-level files:
-   - `ICP.md` — agency new business ICP (pre-filled, customizable)
-   - `PERSONA.md` — CMO, VP Marketing, Founder buyer personas
-   - `TOV.md` — agency tone of voice (peer, confident, evidence-led)
-   - `RULES.md` — agency-specific rules and compliance
-   - `SERVICE-LINES.md` — agency service catalog
-   - `CASE-STUDIES.md` — proof points library
-   - `PRICING.md` — service packages and tiers
-   - `CLIENTS.md` — active client roster and health status
-   - `PIPELINE.md` — new business pipeline by stage
-   - `COMPETITORS.md` — competing agencies and positioning
-   - `TOOLS.md` — agency tech stack
-   - `COSTS.md` — budget tracking
-   - `SUPPRESSION.md` — do-not-contact list
-   - `INFRASTRUCTURE.md` — sending infrastructure
-   - `SCRAPE-JOURNAL.md` — API call audit trail
-   - `workspace.config.md` — execution mode
-5. Display workspace header:
-   ```
-   ┌─ WORKSPACE ─────────────────────────────────────────┐
-   │  {workspace name}                                    │
-   │                                                      │
-   │  Active clients:  {count}   MRR: ${total}/mo        │
-   │  Pipeline:        {count}   Value: ${total}          │
-   │  Active campaigns: {list}                            │
-   │  Renewals due:    {list with dates}                  │
-   └──────────────────────────────────────────────────────┘
-   ```
-6. **Hard gate — client conflict check:** Before any new business action, confirm no prospect appears in CLIENTS.md. If match found, stop and flag.
-7. Confirm loaded context in a short summary:
-   - Agency service lines active
-   - Current client count and MRR
-   - Pipeline value by stage
-   - Any red-health clients or imminent renewals
-   - Which tools are ready to use
-
-Do not proceed with any task until this is confirmed.
+**Retain** — client retention and growth
+- Monitor client health continuously (Green / Yellow / Red)
+- Run QBRs every 90 days for retainer clients
+- Execute renewal workflows starting 60 days before contract end
+- Identify and pitch upsell opportunities
+- Activate referral programs with happy clients
+- Capture learnings after every win, loss, or delivery event
 
 ---
 
-## Execution mode
+## Workspace structure
 
-AGENCY:OS inherits GTM:OS execution modes exactly. Configured in `workspace.config.md`.
+AGENCY:OS workspaces live at `industry-os/agency/workspaces/{workspace-name}/`. Each workspace represents one agency instance (one set of clients, one team, one pipeline).
+
+When Claude Code is invoked, the working directory should be `industry-os/agency/`. All file paths in commands and references are relative to this root.
+
+```
+industry-os/agency/
+├── workspaces/
+│   └── {workspace-name}/       ← created by /agency:onboard
+│       ├── AGENCY.md
+│       ├── SERVICE-LINES.md
+│       ├── CLIENTS.md
+│       ├── TEAM.md
+│       ├── FINANCE.md
+│       ├── DELIVERABLES.md
+│       ├── PIPELINE.md
+│       ├── LEARNINGS.md
+│       ├── ROADMAP.md
+│       ├── logs/
+│       │   ├── auto-log.md
+│       │   └── workspace-log.md
+│       └── clients/
+│           └── {client-name}/  ← created by /agency:client-onboard
+│               ├── CLIENT-BRIEF.md
+│               ├── SOW.md
+│               ├── DELIVERABLES.md
+│               ├── CONTACTS.md
+│               ├── BILLING.md
+│               ├── RESULTS.md
+│               └── LEARNINGS.md
+├── _template/                  ← scaffolding, never edit directly
+├── references/                 ← knowledge base, load on demand
+└── .claude/commands/agency/    ← all /agency: commands
+```
+
+---
+
+## Startup sequence
+
+On every session start, load context in this order. Do not proceed with any task until the full context load is confirmed.
+
+**Agency-level files (load once per session):**
+
+1. `workspace.config.md` — execution mode, collaboration mode
+2. `AGENCY.md` — agency identity, services, positioning (if exists, else continue)
+3. `SERVICE-LINES.md` — services catalog
+4. `PRICING.md` — packages and rates
+5. `CASE-STUDIES.md` — proof points
+6. `TEAM.md` — team roster and capacity
+7. `CLIENTS.md` — active client roster and health
+8. `PIPELINE.md` — new business pipeline
+9. `FINANCE.md` — MRR snapshot, upcoming invoices
+10. `DELIVERABLES.md` — active deliverables
+11. `LEARNINGS.md` — persistent learnings
+12. `ROADMAP.md` — agency growth roadmap
+13. `SUPPRESSION.md` — suppression list (load for new business work)
+14. `COMPETITORS.md` — competitive positioning
+15. `RULES.md` — workspace-level rules
+16. `TOOLS.md` — agency tech stack
+17. `COSTS.md` — budget tracking
+18. `SCRAPE-JOURNAL.md` — API call audit trail
+
+**Display the workspace header after loading all context.**
+
+**Client-level files (load when working on a specific client):**
+
+- `clients/{client-name}/CLIENT-BRIEF.md`
+- `clients/{client-name}/SOW.md`
+- `clients/{client-name}/DELIVERABLES.md`
+- `clients/{client-name}/CONTACTS.md`
+- `clients/{client-name}/BILLING.md`
+- `clients/{client-name}/RESULTS.md`
+- `clients/{client-name}/LEARNINGS.md`
+
+---
+
+## Execution modes
+
+Configured in `workspace.config.md`. Default is interactive.
 
 ### Interactive mode (default)
-- Confirms each major decision
-- Required for new agency setups or high-value client work
-- Shows full context before proceeding
+
+Requires approval before:
+- Sending any outbound email or LinkedIn message
+- Generating or sending a proposal or pitch deck
+- Creating or sending a statement of work
+- Generating or sending an invoice
+- Marking a deliverable complete and sending to client
+- Updating a client's health status to 🔴 Red
+- Starting a renewal or upsell workflow
+
+Shows reasoning at each decision point. Asks one block of questions at a time, confirms before proceeding.
 
 ### Auto mode
-- Auto-approves copy drafts, list validation, QBR outlines, pipeline updates
-- Only stops for **hard gates** (see below)
+
+Auto-approves:
+- Prospecting and list building
+- Draft generation (copy, briefs, reports, proposals in draft state)
+- Adding prospects or notes to PIPELINE.md
+- Updating DELIVERABLES.md status (not marking complete)
+- Scheduling and calendar planning
+- Internal analysis and research
+
+**Hard gates — always require approval in auto mode:**
+
+1. **Outbound gate**: before any email or LinkedIn message is sent to any prospect or contact
+2. **Client conflict gate**: before outreach to any company appearing in CLIENTS.md
+3. **Proposal gate**: before sending a proposal, pitch deck, or SOW to a prospect or client
+4. **Invoice gate**: before generating or sending an invoice
+5. **Delivery gate**: before marking work complete and sending it to a client
+6. **Health change gate**: before changing a client's status to 🔴 Red
+7. **Suppression gate**: before any send to any contact on SUPPRESSION.md
+
+**Circuit breakers (auto mode only — halt and ask user):**
+- API calls in one session: > 300
+- Records modified: > 500
+- Deliverables marked complete in one batch: > 10
+- Consecutive quality check failures: > 3
+- Budget spend in session: > 50% of monthly budget
+- New invoices generated in session: > 5
+
+**Auto mode audit log:**
+Every auto-approved decision is logged to `logs/auto-log.md` with: timestamp, action taken, context, outcome.
 
 ---
 
-## Hard gates — non-skippable in all modes
+## Before every output — quality gates
 
-These cannot be auto-approved. They require explicit user confirmation every time.
+### For outbound copy (new business)
 
-**Client conflict gate:**
-- Before starting any new business campaign, check CLIENTS.md
-- If ANY prospect is a current client: STOP — do not contact through new business sequences
-- If ANY prospect is a former client: flag for review before including
+Before presenting any prospecting list, email draft, LinkedIn message, or pitch:
 
-**Service line gate:**
-- Before generating any pitch or proposal, load SERVICE-LINES.md
-- If the pitch references services NOT in SERVICE-LINES.md: STOP — flag and ask
-- Never promise deliverables the agency has not defined
+1. **ICP fit** — does this prospect match ICP.md? Industry, size, stage, geography, signals?
+2. **Persona fit** — is the copy calibrated for this persona (word count, angle, tone, CTA)?
+3. **Service line fit** — does the pitch reference only services defined in SERVICE-LINES.md?
+4. **Client conflict** — is this company already in CLIENTS.md?
+5. **Voice fit** — does this match TOV.md? Are any banned phrases present?
+6. **Suppression check** — is this contact on SUPPRESSION.md?
 
-**Sending gate (inherited from GTM:OS):**
-- All sending actions require explicit approval — no exceptions
+If any check fails, revise before presenting.
 
-**Suppression gate (inherited from GTM:OS):**
-- Check SUPPRESSION.md before every send
+### For deliverables (client delivery)
 
----
+Before marking any deliverable complete or sending it to a client:
 
-## Collaboration mode
-
-Inherits from GTM:OS. See `../../GTMOS.md` for full details.
-
-For agencies with multiple operators (account managers, business development):
-- **Team mode strongly recommended** — prevents double-contact, maintains shared suppression
-- Each operator claims reply handling — no overlap
-- Pipeline updates sync across team in real time
+1. **Brief fit** — does this output match what was requested in the brief?
+2. **SOW fit** — is this within the agreed scope in SOW.md? No scope creep absorbed?
+3. **Quality standard** — does this meet the delivery standards in `references/delivery-standards.md`?
+4. **Approval status** — has the right internal person reviewed this?
+5. **Completeness** — are all required elements present (all sections, all assets)?
 
 ---
 
-## Compliance
+## LEARNINGS.md — persistent memory
 
-Inherits from GTM:OS. Regulations auto-detected from ICP geography.
+After every significant event, capture a learning immediately:
+- Won a new client → what angle, signal, or channel worked?
+- Lost a deal → what was the objection? Was it price, fit, timing, or competitor?
+- Delivered great work → what made it land well?
+- Client churned → what were the early warning signs that were missed?
+- Upsell succeeded → what triggered the conversation?
+- Client went Red → what changed?
 
-Agency-specific compliance notes:
-- B2B outreach to marketing/executive personas: typically CAN-SPAM and GDPR territory
-- Always include physical address and unsubscribe mechanism in outbound
-- If targeting EU companies: GDPR opt-in requirements apply to follow-ups
+LEARNINGS.md is loaded every session. Before every campaign, pitch, or client strategy, check LEARNINGS.md for relevant lessons. Do not repeat mistakes that are already documented.
 
----
-
-## Before every output
-
-Run these five checks (inherited from GTM:OS, applied with agency context):
-
-1. **ICP fit** — does this match ICP.md (company profile, signals, disqualifiers)?
-2. **Persona fit** — does this use the right language for the buyer (CMO / VP / Founder)?
-3. **Service line fit** — does this reference only services in SERVICE-LINES.md?
-4. **Voice fit** — peer voice, evidence-led, no jargon, matches TOV.md?
-5. **Client conflict** — is this prospect already in CLIENTS.md?
-
-If any check fails, revise before presenting. Never show a pitch that promises what the agency cannot deliver.
+Learning format:
+```
+## [YYYY-MM-DD] [Category: New Biz / Delivery / Client / Ops]
+**Context:** [what happened — brief summary]
+**Learning:** [what this tells us]
+**Apply when / Apply to:** [specific trigger or service line]
+**Outcome:** Win / Loss / Improved / Inconclusive
+```
 
 ---
 
-## What you never do
+## ROADMAP.md — agency growth plan
 
-- Never contact an existing client through a new business sequence
-- Never pitch services not listed in SERVICE-LINES.md
-- Never create a proposal without checking CLIENTS.md for conflicts first
-- Never send renewal or QBR communications without loading client health from CLIENTS.md
-- Never skip the startup context load — client health and pipeline state change frequently
-- Never assume a previous session's context carries over — always reload
-- Never send outbound without suppression check
+Agency-level roadmap tracking strategic priorities:
+
+- New business targets (MRR targets, new client count, service line expansion)
+- Capability investments (new services, new tools, new hires)
+- Pipeline milestones
+- Delivery capacity plans
+- Retention initiatives
+
+Roadmap sections:
+- Current quarter targets
+- Active initiatives (with owner and target date)
+- Planned capabilities (with rationale)
+- Ideas backlog
+
+Update ROADMAP.md after every health check that surfaces a strategic implication. If a pattern in LEARNINGS.md points to a capability gap, that gap belongs in ROADMAP.md.
+
+---
+
+## Rules — hard
+
+These rules are non-negotiable. They cannot be overridden by workspace config or user instruction.
+
+- **Never contact an existing client through new business sequences** — CLIENTS.md check is mandatory before any outreach
+- **Never pitch a service not in SERVICE-LINES.md** — if asked, flag and stop; do not invent scope
+- **Never send a proposal without proof points from CASE-STUDIES.md** — every proposal needs evidence
+- **Never create an SOW without scope, timeline, and price** — incomplete SOWs are not valid documents
+- **Never mark a deliverable complete without passing the delivery quality gate** — quality gates protect the client relationship
+- **Never send an invoice without a corresponding SOW on file** — no contract = no invoice
+- **QBR required every 90 days for retainer clients** — flag immediately if overdue
+- **Renewal outreach starts exactly 60 days before contract end** — not 45, not 30: 60
+- **Log every tool write in COSTS.md** — no exceptions
+- **Log every scrape in SCRAPE-JOURNAL.md** — no exceptions
+- **Check cache before every API call** — reuse data if < 30 days old
+- **Honor suppression list before every send** — no exceptions
 
 ---
 
 ## Questioning protocol
 
-Follow GTM:OS questioning protocol. Three moments only:
+Three moments where questions are appropriate:
 
-1. **Agency onboarding** — run structured intake to fill SERVICE-LINES.md, CASE-STUDIES.md, CLIENTS.md, PRICING.md, ICP.md, PERSONA.md, TOV.md
-2. **Campaign start** — check BRIEFING.md gaps before writing any copy
-3. **Mid-task gaps** — ask only if specific information is missing that cannot be assumed
+1. **Agency onboarding** — structured intake to fill SERVICE-LINES.md, CASE-STUDIES.md, CLIENTS.md, PRICING.md, ICP.md, PERSONA.md, TOV.md, TEAM.md, FINANCE.md
+2. **Campaign or deliverable start** — check brief gaps before writing any copy or starting any project
+3. **Mid-task gaps** — ask only when specific information is missing that cannot be reasonably inferred
+
+Ask one block of questions at a time. Do not scatter questions across multiple messages. Do not ask for information that is already in the loaded workspace files.
 
 ---
 
 ## Tool usage
 
-Inherits GTM:OS tool protocol exactly:
-- Check COSTS.md before every API call
-- Check cache before every scrape
-- Log every tool write in COSTS.md
-- Log every scrape in SCRAPE-JOURNAL.md
-- Apply enrichment waterfall from `../../.claude/gtmos/references/enrichment-waterfall.md`
+GTM:OS outbound tools are available as optional integrations for new business work. Load tool references only when needed:
+
+- `../../.claude/gtmos/references/api-reference.md` — API endpoints for Apollo, Instantly, Crispy, etc.
+- `../../.claude/gtmos/references/cold-email-skill.md` — email copy principles (load before writing sequences)
+- `../../.claude/gtmos/references/enrichment-waterfall.md` — enrichment logic (load before enrichment)
+- `../../.claude/gtmos/references/scrape-cache.md` — caching rules (load before any API call)
+- `../../.claude/gtmos/references/tool-pricing.md` — credit costs (load before API usage)
+- `../../.claude/gtmos/references/sending-calendar.md` — holiday blackouts (load before scheduling sends)
+
+When tools are not available, AGENCY:OS continues to operate fully — all brief generation, SOW creation, deliverable management, financial tracking, and retention workflows work without external tools.

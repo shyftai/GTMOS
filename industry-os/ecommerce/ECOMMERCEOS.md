@@ -84,7 +84,7 @@
   │  Retain       /ecom:flow · /ecom:retention                    │
   │                                                               │
   │  Ops          /ecom:report · /ecom:forecast                   │
-  │               /ecom:health                                    │
+  │               /ecom:health · /ecom:budget-allocation          │
   │                                                               │
   └───────────────────────────────────────────────────────────────┘
 ```
@@ -193,6 +193,7 @@ Load in this order on every session start:
 13. `TOOLS.md`
 14. `SUPPRESSION.md`
 15. `COSTS.md`
+16. `SCRAPE-JOURNAL.md`
 
 Display the workspace header after loading all context.
 
