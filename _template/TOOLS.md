@@ -12,8 +12,8 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Mode: bidirectional / read-only / write-only
 - Push to Apollo: list exports, contact filters
 - Pull from Apollo: enrichment updates, contact status, bounce flags
-- Credit behaviour (writes): confirm-before-every-use
-- Threshold:
+- Credit behaviour (writes): confirm-above-threshold
+- Threshold: 100 contacts (auto-approve enrichment batches ≤100; confirm larger runs)
 - Notes:
 
 ### Icypeas
@@ -22,7 +22,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Push to Icypeas: email finder jobs, bulk enrichment
 - Pull from Icypeas: verified emails, domain search results
 - Credit behaviour (writes): confirm-above-threshold
-- Threshold:
+- Threshold: 100 credits (~$1–2 at typical rates — auto-approve small enrichment batches)
 - Notes: Credit-based — 1 credit per email find or verify
 
 ### Prospeo
@@ -31,7 +31,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Push to Prospeo: LinkedIn URLs, domains for email finding
 - Pull from Prospeo: verified emails, domain search results
 - Credit behaviour (writes): confirm-above-threshold
-- Threshold:
+- Threshold: 100 credits (~$1–4 at typical rates — auto-approve small enrichment batches)
 - Notes: Credit-based — 1 credit per email find or verify
 
 ### Apify
@@ -40,7 +40,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Push to Apify: scraping jobs, actor configurations
 - Pull from Apify: scraped data, enrichment results, lead lists
 - Credit behaviour (writes): confirm-above-threshold
-- Threshold:
+- Threshold: $5 estimated cost per run (confirm if a single run will exceed $5)
 - Notes: Compute-unit based pricing — cost varies by actor and data volume
 
 ### HubSpot
@@ -141,7 +141,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from Ocean.io: lookalike company lists, company enrichment (revenue, tech stack, headcount growth, web traffic)
 - Used for: finding companies similar to your best customers — feed domains, get ranked lookalikes with firmographic + semantic matching
 - Credit behaviour (reads): confirm-above-threshold
-- Threshold:
+- Threshold: 500 results per query (auto-approve standard searches; confirm large pulls)
 - Notes: 0.2 credits per search result. Enrich: 1 credit (with domain), 5 credits (without). Contact sales for pricing plans.
 
 ### DiscoLike
@@ -150,7 +150,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from DiscoLike: lookalike company lists, technographic data, website semantic matching
 - Used for: discovering high-fit companies that traditional databases miss — analyzes 60M+ domains across 45 languages using AI
 - Credit behaviour (reads): confirm-above-threshold
-- Threshold:
+- Threshold: 500 records per query (~$1 at typical rates — confirm larger pulls)
 - Notes: $0.10/API call + $2/1K records. Platform $99/mo. SaaS $1,000/mo. API access conditional on plan.
 
 ### Exa

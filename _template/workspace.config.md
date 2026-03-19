@@ -10,4 +10,6 @@
 **Tool stack:** (e.g. Apollo, Apify, Lemlist, HubSpot, Attio)
 **Active campaigns:**
 **Slack notifications:** off
+**Approval chain:** (e.g. "Copy: owner approves. Lists: operator self-approves. Ship: owner required.")
+**Registered:** yes / no
 **Notes:**

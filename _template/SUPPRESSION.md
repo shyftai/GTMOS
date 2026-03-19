@@ -68,8 +68,8 @@ Maintain consent type and source for every Canadian contact in your list CSVs. R
 - [ ] No selling of personal information without consent
 
 ### Physical address
-Include in every outbound email (footer or signature):
-- Address:
+Include in every outbound email footer. Required for CAN-SPAM compliance.
+- Address: [Fill in: your company's registered or business mailing address — e.g. "Acme Inc., 123 Main St, Austin TX 78701, USA"]
 
 ---
 
@@ -79,7 +79,8 @@ Include in every outbound email (footer or signature):
 - Hard bounce (invalid email): remove from all lists immediately, add to suppression
 - Soft bounce (mailbox full, temporary): retry once after 48 hours, then suppress
 - Overall bounce rate target: below 2% per campaign
-- Red flag: above 5% — pause campaign and audit list source
+- Warning: above 3% in any 24h window — flag in /gtm:today
+- Red flag: above 5% cumulative — pause campaign and audit list source
 
 ### Bounce handling rules
 1. Any hard bounce → add to suppression list automatically
@@ -93,7 +94,8 @@ Include in every outbound email (footer or signature):
 
 ### Thresholds
 - Target: below 0.1% complaint rate
-- Warning: 0.1% - 0.3%
+- Monitor: 0.1% – 0.2% — watch closely, review list quality
+- Alert: above 0.2% — flag as urgent in /gtm:today, audit list source
 - Critical: above 0.3% — pause sending immediately
 
 ### Response protocol

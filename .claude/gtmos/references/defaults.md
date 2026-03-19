@@ -136,7 +136,9 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Suppression check before send | Always | SUPPRESSION.md (non-overridable) |
 | Bounce handling — hard | Remove immediately, suppress | RULES-GLOBAL.md (non-overridable) |
 | Bounce handling — soft | Retry once after 48h, then suppress | RULES-GLOBAL.md |
-| Bounce rate pause threshold | 5% | RULES-GLOBAL.md |
+| Bounce rate warning threshold | 3% in any 24h window | RULES-GLOBAL.md |
+| Bounce rate pause threshold | 5% cumulative | RULES-GLOBAL.md |
+| Spam complaint alert threshold | 0.2% | RULES-GLOBAL.md |
 | Spam complaint pause threshold | 0.3% | RULES-GLOBAL.md |
 | GDPR data retention | Campaign + 30 days | SUPPRESSION.md |
 | CASL consent tracking | Required when CASL is ON | SUPPRESSION.md (non-overridable) |
