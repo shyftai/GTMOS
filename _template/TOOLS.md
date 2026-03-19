@@ -7,6 +7,15 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 
 ## Active tools
 
+### Clay
+- Status: active / inactive
+- Mode: bidirectional
+- Push to Clay: contact lists, enrichment jobs, workflow triggers
+- Pull from Clay: enriched data, waterfall results, AI research outputs, sequences queued
+- Credit behaviour (writes): confirm-above-threshold
+- Threshold: $10 estimated cost per table run (confirm large enrichment runs)
+- Notes: GTM workflow hub — connects 150+ sources. Use for complex multi-step enrichment, AI research rows, and pushing enriched lists to sending tools. API access on paid plans.
+
 ### Apollo
 - Status: active / inactive
 - Mode: bidirectional / read-only / write-only
@@ -15,6 +24,60 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Credit behaviour (writes): confirm-above-threshold
 - Threshold: 100 contacts (auto-approve enrichment batches ≤100; confirm larger runs)
 - Notes:
+
+### ZoomInfo
+- Status: active / inactive
+- Mode: read-only
+- Pull from ZoomInfo: contacts, companies, org charts, intent data, tech stack, direct dials
+- Used for: enterprise-grade prospecting and enrichment — deepest US company data
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 100 contacts (credits vary by plan)
+- Notes: Enterprise pricing — API access included on most plans. Strongest for mid-market and enterprise US companies.
+
+### Cognism
+- Status: active / inactive
+- Mode: read-only
+- Pull from Cognism: contacts, phone-verified numbers, company data, GDPR-compliant emails
+- Used for: EU/UK prospecting and enrichment — strongest GDPR-compliant phone data outside US
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 100 contacts
+- Notes: Best-in-class for EU/UK phone numbers (Diamond Data®). GDPR consent tracking built in. API access on enterprise plans.
+
+### Lusha
+- Status: active / inactive
+- Mode: read-only
+- Pull from Lusha: contact emails, direct dials, LinkedIn enrichment
+- Used for: quick enrichment via LinkedIn extension or bulk API enrichment
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 50 contacts (~$18-25 at typical rates)
+- Notes: Credit-based. Good for targeted enrichment at per-contact level.
+
+### Kaspr
+- Status: active / inactive
+- Mode: read-only
+- Pull from Kaspr: phone numbers (direct dials + mobile), emails, LinkedIn data
+- Used for: European phone number enrichment — strong coverage where others fall short
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 50 contacts
+- Notes: GDPR-compliant. Credit-based. Strong for France, DACH, Benelux.
+
+### Hunter.io
+- Status: active / inactive
+- Mode: read-only
+- Pull from Hunter: email finder by domain or name, email verification, domain search
+- Used for: lightweight email finding — good free tier, fast for targeted lookups
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 100 requests (auto-approve standard searches)
+- Notes: 25 free requests/mo. Paid from $34/mo. Good for one-off lookups and domain-level searches.
+
+### Datagma
+- Status: active / inactive
+- Mode: read-only
+- Pull from Datagma: email, phone, LinkedIn enrichment, company data, job history
+- Used for: enrichment waterfall — add as a step between primary sources and Apify fallback
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 100 credits
+- Notes: Credit-based. Strong for European enrichment. Real-time API with high accuracy.
 
 ### Icypeas
 - Status: active / inactive
@@ -50,6 +113,64 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from HubSpot: deal stage changes, reply status, contact updates, won/lost, marketing data
 - Credit behaviour (writes): auto-approved
 - Notes: CRM writes are free. Marketing contact charges apply above tier limit.
+
+### Bouncer
+- Status: active / inactive
+- Mode: read-only
+- Push to Bouncer: email lists for verification
+- Pull from Bouncer: verified/invalid/risky/unknown status per email
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 500 emails (~$3-4)
+- Notes: Strong EU focus, GDPR-compliant. Good for bulk list cleaning before sending. From $0.007/email.
+
+### NeverBounce
+- Status: active / inactive
+- Mode: read-only
+- Push to NeverBounce: email lists for verification
+- Pull from NeverBounce: valid/invalid/disposable/accept-all status
+- Credit behaviour (reads): confirm-above-threshold
+- Threshold: 500 emails (~$1.50)
+- Notes: From $0.003/email on bulk. Real-time API available. 1K free on signup.
+
+### Woodpecker
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Woodpecker: sequences, contacts, campaigns
+- Pull from Woodpecker: open rates, reply rates, bounce rates, deliverability data
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Strong EU user base. GDPR-compliant. Per-seat pricing from $29/mo.
+
+### Reply.io
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Reply.io: sequences, contacts, multi-channel steps (email, LinkedIn, SMS, calls)
+- Pull from Reply.io: open rates, reply rates, step-level performance, contact status
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Multi-channel — one platform for email, LinkedIn DMs, SMS, WhatsApp, and calls. Built-in AI for sequence steps.
+
+### Klenty
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Klenty: cadences, contacts, CRM sync
+- Pull from Klenty: engagement data, reply detection, CRM stage updates
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Deep two-way sync with HubSpot, Salesforce, Pipedrive. Good for teams where CRM is the source of truth.
+
+### Outreach.io
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Outreach: sequences, prospects, accounts
+- Pull from Outreach: sequence performance, reply status, meeting booked events, deal data
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Enterprise sales engagement platform. API access on all plans. Webhook support for real-time events.
+
+### Salesloft
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Salesloft: cadences, people, accounts
+- Pull from Salesloft: cadence performance, activity data, conversation intelligence, deal data
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Enterprise. Deep Salesforce integration. Conversation intelligence (Drift) built in on higher tiers.
 
 ### Lemlist
 - Status: active / inactive
@@ -93,6 +214,20 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Credit behaviour (writes): auto-approved
 - Notes: CRM writes are free
 
+### UserGems
+- Status: active / inactive
+- Mode: read-only
+- Pull from UserGems: job change alerts for past customers, champions, and key contacts; new hire tracking at target accounts
+- Used for: warmest outreach signal available — a past champion who moves to a new company is a hot lead. Trigger signal-based outreach immediately.
+- Notes: Webhook support for real-time job change alerts. Integrate with CRM for automatic contact updates.
+
+### Keyplay
+- Status: active / inactive
+- Mode: read-only
+- Pull from Keyplay: ICP account scores, account rankings, fit tier classifications (A/B/C/D), signal-based scoring
+- Used for: rank your entire TAM by ICP fit — prioritize outreach and enrichment on highest-score accounts first
+- Notes: Scores accounts using custom signals you define (tech stack, hiring patterns, funding, growth signals). Syncs with HubSpot and Salesforce.
+
 ### Signalbase
 - Status: active / inactive
 - Mode: read-only
@@ -127,6 +262,29 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from Trigify: social signals, LinkedIn engagement data, content interaction tracking
 - Used for: social selling signals — detect when prospects engage with competitor content, industry topics, or relevant posts
 - Notes:
+
+### HeyReach
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to HeyReach: LinkedIn outreach campaigns, connection requests, messages
+- Pull from HeyReach: connection rates, reply rates, reply content, campaign performance
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: LinkedIn at scale — run multiple LinkedIn accounts, agency mode for clients, webhook support. From $79/mo.
+
+### La Growth Machine
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to LGM: multi-channel sequences (email + LinkedIn + Twitter), lead lists
+- Pull from LGM: per-step engagement, reply detection, activity logs
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Multi-channel sequences from one builder. Strong for LinkedIn + email coordinated campaigns. API access on Team plan.
+
+### Gong
+- Status: active / inactive
+- Mode: read-only
+- Pull from Gong: call transcripts, deal insights, talk track analysis, coaching scores, forecast data
+- Used for: data deep-dive — extract buyer language, objections, and winning patterns from recorded calls. Feed insights into LEARNINGS.md and PERSONA.md.
+- Notes: API access on enterprise plans. Pull transcripts via `/gtm:deep-dive`. Complements Fireflies.ai — use whichever your team records calls with.
 
 ### Fireflies.ai
 - Status: active / inactive
@@ -251,10 +409,15 @@ Identifies companies (and sometimes people) visiting your website. Feeds into si
 
 ### CRM enrichment
 - Freckle: CRM data enrichment — auto-fills missing company and contact data
+- Surfe: push LinkedIn contacts directly to CRM (HubSpot, Salesforce, Pipedrive, Attio)
 
 ### CRM alternatives
 - Salesforce: per-seat, API free within limits
 - Pipedrive: per-seat, API free within limits
+
+### Scheduling
+- Calendly: meeting scheduling with calendar sync — free 1 event type, from $10/mo
+- Cal.com: open-source scheduling, self-hosted option — free self-hosted, from $12/mo
 
 ### Automation
 - N8N: self-hosted workflow automation — free (self-hosted) or $20/mo (cloud)
@@ -271,6 +434,12 @@ Track hit rates per source to optimize the waterfall over time. Updated automati
 | Source | Email | Phone | People | Company | Last updated |
 |--------|-------|-------|--------|---------|-------------|
 | Apollo | — | — | — | — | — |
+| ZoomInfo | — | — | — | — | — |
+| Cognism | — | — | — | — | — |
+| Lusha | — | — | — | — | — |
+| Kaspr | — | — | — | — | — |
+| Hunter.io | — | — | — | — | — |
+| Datagma | — | — | — | — | — |
 | Icypeas | — | — | — | — | — |
 | Prospeo | — | — | — | — | — |
 | Crispy | — | — | — | — | — |
@@ -283,25 +452,54 @@ confirm-before-every-use
 
 ## API key reference
 All keys stored in .env at repo root:
+- CLAY_API_KEY
 - APOLLO_API_KEY
+- ZOOMINFO_API_KEY
+- COGNISM_API_KEY
+- LUSHA_API_KEY
+- KASPR_API_KEY
+- HUNTER_API_KEY
+- DATAGMA_API_KEY
 - ICYPEAS_API_KEY
 - PROSPEO_API_KEY
+- DROPCONTACT_API_KEY
+- FINDYMAIL_API_KEY
 - APIFY_API_KEY
-- HUBSPOT_API_KEY
+- ZEROBOUNCE_API_KEY
+- MILLIONVERIFIER_API_KEY
+- BOUNCER_API_KEY
+- NEVERBOUNCE_API_KEY
+- SCRUBBY_API_KEY
 - LEMLIST_API_KEY
 - INSTANTLY_API_KEY
 - SMARTLEAD_API_KEY
+- WOODPECKER_API_KEY
+- REPLYIO_API_KEY
+- KLENTY_API_KEY
+- OUTREACH_API_KEY
+- SALESLOFT_API_KEY
 - CRISPY_API_KEY
+- HEYREACH_API_KEY
+- LGM_API_KEY
+- HUBSPOT_API_KEY
 - ATTIO_API_KEY
+- SALESFORCE_API_KEY
+- PIPEDRIVE_API_KEY
+- GONG_API_KEY
+- FIREFLIES_API_KEY
+- USERGEMS_API_KEY
+- KEYPLAY_API_KEY
 - SIGNALBASE_API_KEY
 - COMMONROOM_API_KEY
 - JUNGLER_API_KEY
 - TRIGIFY_API_KEY
-- FIREFLIES_API_KEY
 - OCEAN_API_KEY
 - DISCOLIKE_API_KEY
 - EXA_API_KEY
 - FIRECRAWL_API_KEY
+- SNITCHER_API_KEY
+- RB2B_WEBHOOK_URL
+- WARMLY_API_KEY
 - LINKEDIN_ADS_TOKEN
 - LINKEDIN_AD_ACCOUNT_ID
 - META_ACCESS_TOKEN
@@ -309,6 +507,3 @@ All keys stored in .env at repo root:
 - GOOGLE_ADS_TOKEN
 - GOOGLE_ADS_DEVELOPER_TOKEN
 - GOOGLE_ADS_CUSTOMER_ID
-- SNITCHER_API_KEY
-- RB2B_WEBHOOK_URL
-- WARMLY_API_KEY

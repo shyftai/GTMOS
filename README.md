@@ -4,7 +4,7 @@
 
 GTM:OS is a Claude Code plugin that runs your entire go-to-market workflow — from ICP definition to list building, copy writing, shipping sequences, handling replies, and reporting on results. It connects to your outbound stack via API, enforces quality at every step, and never ships anything that drifts from the brief.
 
-**Built for:** agencies, growth teams, founders, and solo operators running B2B outbound.
+**Built for:** GTM engineers, SDRs, AEs, RevOps teams, agencies, and founders running B2B outbound.
 
 ---
 
@@ -341,23 +341,36 @@ Pick a type when creating a campaign — defaults pre-fill automatically:
 
 ## Supported tools
 
-GTM:OS connects to 50+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
+GTM:OS connects to 70+ tools across the outbound stack. Use what you have — skip what you don't. Every tool is optional.
+
+### GTM workflow automation
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Clay** | GTM engineer's Swiss Army knife — build enrichment waterfalls, pull from 150+ sources, run AI research, trigger sequences. Connects everything. | From $149/mo |
 
 ### Prospecting & enrichment
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **Apollo** | 275M+ contact database, email/phone enrichment, lead search | Free tier (10K credits/mo), paid from $49/mo |
+| **ZoomInfo** | Enterprise B2B database — 260M+ contacts, intent data, org charts, tech stack | Enterprise pricing |
+| **Cognism** | GDPR-compliant B2B data, phone-verified numbers, strong EU/UK coverage | Enterprise pricing |
+| **Lusha** | B2B contact data, LinkedIn extension, direct dials | From $37/mo/seat |
+| **Kaspr** | LinkedIn phone number enrichment, European coverage, GDPR-compliant | From €30/mo |
+| **Hunter.io** | Lightweight email finder — domain search, email verification, bulk enrichment | Free 25/mo, paid from $34/mo |
 | **Icypeas** | Email finder + verifier, domain search, bulk enrichment | From $39/mo (1K credits) |
 | **Prospeo** | Email finder from LinkedIn URLs, email verifier, domain search | From $39/mo (1K credits) |
-| **Apify** | Web scraping platform — LinkedIn, Google Maps, any website | Free $5/mo usage, paid from $49/mo |
+| **Datagma** | Enrichment waterfall provider — email, phone, LinkedIn, company data | Credit-based |
 | **Dropcontact** | B2B email enrichment, GDPR-compliant, no database | From $24/mo |
 | **FindyMail** | Email finder + verifier, Sales Navigator scraping | From $49/mo |
+| **Apify** | Web scraping platform — LinkedIn, Google Maps, any website | Free $5/mo usage, paid from $49/mo |
 
 ### Email verification
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **ZeroBounce** | Email verification, bounce detection, abuse detection | 100 free/mo, bulk from $0.004/email |
 | **MillionVerifier** | Bulk email verification, high accuracy | From $0.001/email |
+| **Bouncer** | Email verification + list hygiene, EU-focused, GDPR-compliant | From $0.007/email |
+| **NeverBounce** | Real-time email verification, bulk cleaning | 1K free, from $0.003/email |
 | **Scrubby** | Catch-all email verification (the ones others mark "risky") | ~$0.02/email |
 
 ### Email sequencing
@@ -366,11 +379,24 @@ GTM:OS connects to 50+ tools across the outbound stack. Use what you have — sk
 | **Instantly** | Unlimited email accounts, unlimited warmup, A/B testing | From $30/mo |
 | **Lemlist** | Multi-channel sequences, 450M+ lead database, inbox rotation | From $32/mo/seat |
 | **Smartlead** | Unlimited email accounts, sender rotation, webhooks | From $39/mo |
+| **Woodpecker** | Cold email sequencing, strong EU user base, GDPR mode | From $29/mo/seat |
+| **Reply.io** | Multi-channel sequences — email, LinkedIn, SMS, WhatsApp, calls | From $49/mo/seat |
+| **Klenty** | Sales engagement with deep CRM sync (HubSpot, Salesforce, Pipedrive) | From $50/mo/seat |
+| **QuickMail** | Cold email focused on deliverability — inbox rotation, open tracking | From $49/mo |
 
-### LinkedIn
+### Enterprise sales engagement
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Outreach.io** | Enterprise sales engagement — sequences, dialer, deal inspection, analytics | Enterprise pricing |
+| **Salesloft** | Enterprise sales engagement — cadences, dialer, conversation intelligence, revenue analytics | Enterprise pricing |
+
+### LinkedIn & multi-channel
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **Crispy** | MCP server — Claude Code controls LinkedIn directly. Connection requests, messaging, Sales Navigator search + extract. 78 tools. | From EUR19/mo/seat |
+| **HeyReach** | LinkedIn outreach at scale — multiple accounts, agency mode, API | From $79/mo |
+| **La Growth Machine** | Multi-channel automation — email + LinkedIn + Twitter in one sequence | From €60/mo/seat |
+| **PhantomBuster** | LinkedIn + web scraping automation — 100+ phantoms for any task | Free 2h/day, from $56/mo |
 
 ### CRM
 | Tool | What it does | Pricing |
@@ -380,9 +406,17 @@ GTM:OS connects to 50+ tools across the outbound stack. Use what you have — sk
 | **Salesforce** | Enterprise CRM with extensive API | From $25/mo/user |
 | **Pipedrive** | Sales-focused CRM, simple pipeline management | From $14/mo/seat |
 
+### Revenue intelligence
+| Tool | What it does | Pricing |
+|------|-------------|---------|
+| **Gong** | Conversation intelligence — records calls, scores deals, surfaces coaching insights, forecasting | Enterprise pricing |
+| **Fireflies.ai** | Meeting recording + transcription, pull transcripts via API for deep-dives | From $10/mo/seat |
+
 ### Signal intelligence
 | Tool | What it does | Pricing |
 |------|-------------|---------|
+| **UserGems** | Tracks when champions change jobs — your warmest signal for outreach | Subscription-based |
+| **Keyplay** | AI-powered ICP account scoring — rank your entire TAM by fit | Subscription-based |
 | **Signalbase** | Funding, hiring, job change, tech install signals | Subscription-based |
 | **Commonroom** | Community activity, social engagement, intent signals | Subscription-based |
 | **Jungler.ai** | LinkedIn activity monitoring, social selling signals | Subscription-based |
@@ -401,11 +435,6 @@ GTM:OS connects to 50+ tools across the outbound stack. Use what you have — sk
 |------|-------------|---------|
 | **Exa** | MCP server — semantic web search, company research, deep research agent | 1K free/mo, $0.007/search |
 | **Firecrawl** | MCP server — web scraping, structured data extraction, website crawling | 500 free credits, from $16/mo |
-
-### Meeting transcripts
-| Tool | What it does | Pricing |
-|------|-------------|---------|
-| **Fireflies.ai** | Meeting recording + transcription, pull transcripts via API for deep-dives | From $10/mo/seat |
 
 ### Website visitor identification
 | Tool | What it does | Pricing |
@@ -432,6 +461,7 @@ GTM:OS connects to 50+ tools across the outbound stack. Use what you have — sk
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **Freckle** | Auto-enriches CRM contacts with firmographics, tech stack, funding | Subscription-based |
+| **Surfe** | Push LinkedIn contacts directly to CRM — HubSpot, Salesforce, Pipedrive, Attio | From $23/mo/seat |
 
 ### Automation & integration
 | Tool | What it does | Pricing |
