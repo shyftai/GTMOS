@@ -21,6 +21,14 @@ Workspace name: $ARGUMENTS
 2. Display mode header: `<< GTM:OS // ONBOARDING >>`
 3. Create workspace folder by copying _template/ to workspaces/$ARGUMENTS/
 
+## Environment setup
+3.5. Check if `.env` exists at the repo root:
+   - If `.env` does NOT exist: copy `.env.example` → `.env` and tell the user:
+     ```
+     ✓ .env created from .env.example — API keys will be filled in as you set up tools.
+     ```
+   - If `.env` already exists: proceed without touching it
+
 ## Block 0 — Role selection (always first)
 4. Ask: "What's your role?"
    - **SDR** — I'm prospecting, writing sequences, and managing replies daily
@@ -120,7 +128,23 @@ Workspace name: $ARGUMENTS
 14. For any field the user skips or doesn't know yet, use defaults from defaults.md
 15. Write answers into ICP.md, PERSONA.md, TOV.md, workspace.config.md, TOOLS.md, COSTS.md, INFRASTRUCTURE.md, SUPPRESSION.md, PIPELINE.md, MULTICHANNEL.md, BOOKING.md, COMPETITORS.md, LEARNINGS.md, ROADMAP.md
 16. Ask if they want to customize lead scoring weights (optional — defaults apply if not)
-17. Check .env for required API keys and MCP servers
+17. Check .env for required API keys and MCP servers:
+    - Read TOOLS.md to identify tools marked as `active`
+    - For each active tool whose key is missing from `.env`, prompt the user:
+      ```
+      Missing API key: {TOOL_NAME}
+      Paste your {TOOL_NAME} API key (or press Enter to skip):
+      >>
+      ```
+    - Write provided keys into `.env` immediately
+    - After prompting all active tools, display a summary:
+      ```
+      ┌─ API KEYS ──────────────────────────────────┐
+      │  [x] Apollo          [x] Instantly           │
+      │  [ ] Lemlist — add later with /gtm:infra     │
+      └──────────────────────────────────────────────┘
+      ```
+    - Never block onboarding if a key is skipped — the user can add it later
 18. If team mode: run initial sync to Supabase (`/gtm:collab sync`)
 19. Display workspace header with loaded context — include collaboration mode, execution mode, and Slack status
 

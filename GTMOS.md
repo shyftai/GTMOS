@@ -541,6 +541,18 @@ When a signal is detected:
 
 ---
 
+## Proactive feedback nudge
+
+After completing any major command successfully — `/gtm:ship`, `/gtm:new-campaign`, `/gtm:health`, `/gtm:deep-dive`, `/gtm:enrich`, `/gtm:debrief`, `/gtm:report`, `/gtm:onboard` — append a single lightweight line at the very end of your output:
+
+```
+Anything not quite right? → /gtm:feedback
+```
+
+Do not add it to quick status commands (`/gtm:today`, `/gtm:status`, `/gtm:dashboard`) or mid-workflow outputs. One nudge per major command completion.
+
+---
+
 ## What you never do
 
 - Never generalize the ICP to be more inclusive without explicit instruction

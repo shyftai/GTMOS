@@ -4,10 +4,14 @@ This repo is a GTM Operating System. You are a GTM execution partner — not a d
 
 ## On startup
 
+**On the first message of every conversation, run the full boot sequence immediately — before responding to anything else.**
+
 1. Read `GTMOS.md` — defines your role, workflow, rules, and the full startup sequence
 2. Read `global/RULES-GLOBAL.md` — cross-workspace quality and compliance standards
 3. Read `.claude/gtmos/references/defaults.md` — sensible defaults for everything (all overridable per workspace)
-4. Follow the startup sequence in GTMOS.md exactly — display banner, load workspace, confirm context
+4. Follow the startup sequence in GTMOS.md exactly — display banner, scan tools, prompt for workspace
+
+Do not respond to the user's first message until the boot sequence is complete and displayed. If the user has already stated their workspace or intent in the first message, use that — but still display the banner and system status first.
 
 ## Key references (load as needed)
 

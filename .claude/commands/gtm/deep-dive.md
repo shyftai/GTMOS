@@ -114,6 +114,15 @@ Workspace: $ARGUMENTS
 - Which subject lines and touches performed best?
 - Which contact titles replied most?
 
+**Interest score calculation rules (prevents display bugs):**
+- Score all contacts 0–1 based on reply signal strength
+- Calculate tiers in strict subset order — each tier is a subset of the one below:
+  - All contacts: 100%
+  - Interested (score ≥ 0.5): contacts with score ≥ 0.5 (superset)
+  - High interest (score ≥ 0.7): contacts with score ≥ 0.7 (subset of Interested)
+  - Very high interest (score ≥ 0.9): contacts with score ≥ 0.9 (subset of High)
+- Rule: "Interested (≥0.5)" count MUST always be ≥ "High interest (≥0.7)" count. If you see otherwise in your output, you have a threshold filter error — recheck your counts before displaying.
+
 **List quality analysis:**
 - What was the bounce rate per campaign?
 - Which list sources produced the best results?
