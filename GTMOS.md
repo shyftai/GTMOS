@@ -550,7 +550,7 @@ When a signal is detected:
    - Single low-friction CTA
 4. Flag the signal with expiry — most signals are only relevant for 5-7 days
 5. Present the draft and ask for approval before anything is sent or scheduled
-6. If approved: push to the relevant sending tool — email via Lemlist / Instantly / Smartlead; LinkedIn messages via Crispy — per the channel configured in campaign.config.md. Apply the credit behaviour rule from TOOLS.md.
+6. If approved: push to the relevant sending tool — email via Instantly / Smartlead / Email Bison; multi-channel via Lemlist / La Growth Machine; LinkedIn messages via Crispy / HeyReach — per the channel configured in campaign.config.md. Apply the credit behaviour rule from TOOLS.md.
 7. Log the action in campaign logs/decisions.md
 
 ---

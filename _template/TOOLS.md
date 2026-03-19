@@ -123,55 +123,6 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Threshold: 500 emails (~$1.50)
 - Notes: From $0.003/email on bulk. Real-time API available. 1K free on signup.
 
-### Woodpecker
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Woodpecker: sequences, contacts, campaigns
-- Pull from Woodpecker: open rates, reply rates, bounce rates, deliverability data
-- Credit behaviour (writes): confirm-before-every-use
-- Notes: Strong EU user base. GDPR-compliant. Per-seat pricing from $29/mo.
-
-### Reply.io
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Reply.io: sequences, contacts, multi-channel steps (email, LinkedIn, SMS, calls)
-- Pull from Reply.io: open rates, reply rates, step-level performance, contact status
-- Credit behaviour (writes): confirm-before-every-use
-- Notes: Multi-channel — one platform for email, LinkedIn DMs, SMS, WhatsApp, and calls. Built-in AI for sequence steps.
-
-### Klenty
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Klenty: cadences, contacts, CRM sync
-- Pull from Klenty: engagement data, reply detection, CRM stage updates
-- Credit behaviour (writes): confirm-before-every-use
-- Notes: Deep two-way sync with HubSpot, Salesforce, Pipedrive. Good for teams where CRM is the source of truth.
-
-### Outreach.io
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Outreach: sequences, prospects, accounts
-- Pull from Outreach: sequence performance, reply status, meeting booked events, deal data
-- Credit behaviour (writes): confirm-before-every-use
-- Notes: Enterprise sales engagement platform. API access on all plans. Webhook support for real-time events.
-
-### Salesloft
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Salesloft: cadences, people, accounts
-- Pull from Salesloft: cadence performance, activity data, conversation intelligence, deal data
-- Credit behaviour (writes): confirm-before-every-use
-- Notes: Enterprise. Deep Salesforce integration. Conversation intelligence (Drift) built in on higher tiers.
-
-### Lemlist
-- Status: active / inactive
-- Mode: bidirectional / read-only / write-only
-- Push to Lemlist: sequences, contacts, campaigns
-- Pull from Lemlist: open rates, reply rates, bounce rates, unsubscribes, reply text
-- Lead database: built-in (450M+ contacts) — can source leads directly
-- Credit behaviour (writes): confirm-before-every-use
-- Notes:
-
 ### Instantly
 - Status: active / inactive
 - Mode: bidirectional / read-only / write-only
@@ -188,6 +139,14 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from Smartlead: open rates, reply rates, bounce rates, deliverability data
 - Credit behaviour (writes): confirm-before-every-use
 - Notes:
+
+### Email Bison
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Email Bison: sequences, contacts, sending schedules
+- Pull from Email Bison: open rates, reply rates, bounce rates, deliverability data
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Cold email sending with unlimited inboxes and built-in warmup.
 
 ### Crispy
 - Status: active / inactive
@@ -253,6 +212,15 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Pull from Trigify: social signals, LinkedIn engagement data, content interaction tracking
 - Used for: social selling signals — detect when prospects engage with competitor content, industry topics, or relevant posts
 - Notes:
+
+### Lemlist
+- Status: active / inactive
+- Mode: bidirectional / read-only / write-only
+- Push to Lemlist: multi-channel sequences (email + LinkedIn + calls), contacts, campaigns
+- Pull from Lemlist: open rates, reply rates, bounce rates, unsubscribes, step-level engagement, reply text
+- Lead database: built-in (450M+ contacts) — can source leads directly
+- Credit behaviour (writes): confirm-before-every-use
+- Notes: Multi-channel sequencing — email, LinkedIn DMs, LinkedIn voice notes, calls in one sequence builder.
 
 ### HeyReach
 - Status: active / inactive
@@ -460,14 +428,10 @@ All keys stored in .env at repo root:
 - BOUNCER_API_KEY
 - NEVERBOUNCE_API_KEY
 - SCRUBBY_API_KEY
-- LEMLIST_API_KEY
 - INSTANTLY_API_KEY
 - SMARTLEAD_API_KEY
-- WOODPECKER_API_KEY
-- REPLYIO_API_KEY
-- KLENTY_API_KEY
-- OUTREACH_API_KEY
-- SALESLOFT_API_KEY
+- EMAILBISON_API_KEY
+- LEMLIST_API_KEY
 - CRISPY_API_KEY
 - HEYREACH_API_KEY
 - LGM_API_KEY

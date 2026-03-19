@@ -372,25 +372,20 @@ GTM:OS connects to 70+ tools across the outbound stack. Use what you have — sk
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **Instantly** | Unlimited email accounts, unlimited warmup, A/B testing | From $30/mo |
-| **Lemlist** | Multi-channel sequences, 450M+ lead database, inbox rotation | From $32/mo/seat |
 | **Smartlead** | Unlimited email accounts, sender rotation, webhooks | From $39/mo |
-| **Woodpecker** | Cold email sequencing, strong EU user base, GDPR mode | From $29/mo/seat |
-| **Reply.io** | Multi-channel sequences — email, LinkedIn, SMS, WhatsApp, calls | From $49/mo/seat |
-| **Klenty** | Sales engagement with deep CRM sync (HubSpot, Salesforce, Pipedrive) | From $50/mo/seat |
-| **QuickMail** | Cold email focused on deliverability — inbox rotation, open tracking | From $49/mo |
+| **Email Bison** | Cold email sending with unlimited inboxes and built-in warmup | Subscription-based |
 
-### Enterprise sales engagement
+### Multi-channel sequencing
 | Tool | What it does | Pricing |
 |------|-------------|---------|
-| **Outreach.io** | Enterprise sales engagement — sequences, dialer, deal inspection, analytics | Enterprise pricing |
-| **Salesloft** | Enterprise sales engagement — cadences, dialer, conversation intelligence, revenue analytics | Enterprise pricing |
+| **Lemlist** | Email + LinkedIn + calls in one sequence builder, 450M+ lead database | From $32/mo/seat |
+| **La Growth Machine** | Email + LinkedIn + Twitter in one sequence, strong API | From €60/mo/seat |
 
-### LinkedIn & multi-channel
+### LinkedIn
 | Tool | What it does | Pricing |
 |------|-------------|---------|
 | **Crispy** | MCP server — Claude Code controls LinkedIn directly. Connection requests, messaging, Sales Navigator search + extract. 78 tools. | From EUR19/mo/seat |
 | **HeyReach** | LinkedIn outreach at scale — multiple accounts, agency mode, API | From $79/mo |
-| **La Growth Machine** | Multi-channel automation — email + LinkedIn + Twitter in one sequence | From €60/mo/seat |
 | **PhantomBuster** | LinkedIn + web scraping automation — 100+ phantoms for any task | Free 2h/day, from $56/mo |
 
 ### CRM
