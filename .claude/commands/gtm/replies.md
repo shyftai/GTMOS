@@ -55,8 +55,21 @@ Workspace and campaign: $ARGUMENTS
 7. Validate all drafts against TOV.md
 8. Display each reply using the reply classification format from ui-brand.md — show confidence level inline: `[Positive · High]` / `[Objection · Medium]` / `[⚠ Uncertain]`
 9. Present each for approval — nothing sent without explicit yes
-9. Log all classifications and actions in logs/decisions.md
-10. **Update LEARNINGS.md** — if reply patterns emerge (new objections, unexpected positive signals, persona insights), append to relevant sections. Tag source as "Reply analysis — {campaign} — {date}".
-11. **Update ROADMAP.md to-dos** — if replies surface actionable improvements. Examples: "Add objection response for '{objection}' to snippet library" (Medium), "Remove {company type} from ICP — 3rd negative reply from this segment" (High). Only add if pattern is clear, not for one-off replies.
-12. Save to replies/[date].md
+10. Log all classifications and actions in logs/decisions.md
+11. **Update LEARNINGS.md** — if reply patterns emerge (new objections, unexpected positive signals, persona insights), append to relevant sections. Tag source as "Reply analysis — {campaign} — {date}".
+12. **Update ROADMAP.md to-dos** — if replies surface actionable improvements. Examples: "Add objection response for '{objection}' to snippet library" (Medium), "Remove {company type} from ICP — 3rd negative reply from this segment" (High). Only add if pattern is clear, not for one-off replies.
+13. Save to replies/[date].md
+14. **Write to Supabase (team mode):** upsert each reply into `reply_queue` — include `reply_confidence` and `ooo_return_date` (if OOO and return date extracted from the reply):
+    ```sql
+    INSERT INTO reply_queue
+      (workspace_id, campaign_id, contact_email, contact_name,
+       reply_text, received_at, classification, reply_confidence,
+       ooo_return_date, status, response_draft)
+    VALUES (...)
+    ON CONFLICT DO NOTHING;
+    ```
+    - `reply_confidence`: store as `'high'`, `'medium'`, or `'uncertain'` (lowercase)
+    - `ooo_return_date`: extract from OOO reply text if present (e.g. "back on March 30" → 2026-03-30); null if not mentioned
+    - `status`: set to `'unhandled'` initially; update to `'handled'` after approval and send
+    - Uncertain replies: insert with `status = 'escalated'` so they surface immediately for team review
 </process>

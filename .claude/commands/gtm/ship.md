@@ -134,6 +134,21 @@ Run and display all checks before shipping:
    - Log cost transaction in COSTS.md
    - Update campaign.config.md status to "active"
    - Update PIPELINE.md — move all contacts to "Contacted" stage
+   - **Write to pipeline_contacts (team mode):** update all shipped contacts:
+     ```sql
+     UPDATE pipeline_contacts
+     SET stage = 'contacted',
+         first_touch_date = coalesce(first_touch_date, now()),
+         first_touch_channel = '{channel}',
+         last_touch_date = now(),
+         last_touch_channel = '{channel}',
+         touch_count = 1,
+         updated_at = now(),
+         updated_by = '{user_id}'
+     WHERE workspace_id = '{workspace_id}'
+       AND email IN ({shipped_emails});
+     ```
+     If the contact is not in `pipeline_contacts` yet, insert first with `stage = 'contacted'`, `touch_count = 1`.
    - Log ship event in logs/decisions.md
    - Copy shipped list to lists/shipped/ — add these columns to the shipped CSV:
      - `shipped_at`: ISO datetime of this ship action

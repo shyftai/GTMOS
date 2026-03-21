@@ -22,7 +22,10 @@ Workspace and source campaign: $ARGUMENTS
 3. Check for `--ooo` flag in arguments
 
 ## Standard re-engagement (default)
-4. Pull non-responders from source campaign (minimum 60 days since last touch)
+4. Pull non-responders from source campaign — minimum 60 days since last touch:
+   - **Team mode (Supabase):** query `pipeline_contacts` where `last_touch_date <= now() - interval '60 days'` (fall back to `first_touch_date` if `last_touch_date` is null)
+   - **Solo mode:** check `lists/shipped/` CSV for `shipped_at` column — use the most recent value per contact as last touch date
+   - Contacts without any touch date: skip and log as "no touch date — cannot assess eligibility"
 5. Filter out: replied contacts, suppressed contacts, ICP mismatches
 6. Check for new signals on remaining contacts
 7. Choose re-engagement angle (must differ from original campaign)
