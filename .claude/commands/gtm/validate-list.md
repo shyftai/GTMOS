@@ -68,20 +68,20 @@ Before scoring, check whether company-level fields are populated (industry, empl
 - If the user chooses (a): stop, route to `/gtm:enrich {workspace} company`, then resume validate-list when enrichment is complete
 - If the user chooses (b) or data coverage is adequate: proceed to Pass 1
 
-**Pass 1 — Account scoring:**
+**Pass 1 — Company scoring:**
 6a. Group records by company domain
 6b. For each unique company, calculate `company_score` (0-100) using the account scoring model in lead-scoring.md
-6c. Assign account tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
-6d. Remove all contacts at F-tier accounts (company_score < 20) — log removal count, not names
-6e. Flag D-tier accounts with `review_flag: account-d-tier` — hold unless user overrides
-6f. Display account scoring summary:
+6c. Assign company tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
+6d. Remove all contacts at F-tier companies (company_score < 20) — log removal count, not names
+6e. Flag D-tier companies with `review_flag: company-d-tier` — hold unless user overrides
+6f. Display company scoring summary:
 ```
-  Account scoring complete — {n} companies
+  Company scoring complete — {n} companies
   A: {n}  B: {n}  C: {n}  D: {n} (held)  F: {n} (removed)
-  Proceeding with {n} contacts at A/B-tier accounts.
+  Proceeding with {n} contacts at A/B-tier companies.
 ```
 
-**Pass 2 — Prospect scoring (A/B-tier accounts only):**
+**Pass 2 — Prospect scoring (A/B-tier companies only):**
 7. Score every remaining contact using the rubric in RULES.md (0-3 ICP score)
 8. Calculate prospect score (0-100) using lead-scoring.md — company fit component uses `company_score × 0.30` instead of re-scoring firmographics
    - Apply ICP ceiling rule: icp_score 2 → max 79, icp_score 1 → max 59
@@ -97,17 +97,21 @@ Before scoring, check whether company-level fields are populated (industry, empl
    - If no overrides, use default weights
 8. Assign score tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
 9. Add columns: icp_score, lead_score, score_tier, rejection_reason, review_flag
-10. Add expiry columns:
+10. Add columns (same as company-first — proceed to shared steps)
+
+### Shared final steps (both modes)
+
+11. Add expiry columns — these are non-optional and apply regardless of scoring mode:
     - `validated_at`: today's ISO date (YYYY-MM-DD)
     - `valid_until`: validated_at + 30 days
-    These are non-optional — every validated list must carry its freshness date. Lists older than 30 days are blocked at ship time.
-11. Sort by lead_score descending
-12. Save to lists/validated/ in GTM:OS standard CSV format — include expiry columns
-13. Display list validation summary using ui-brand.md format — include score tier breakdown and expiry date:
+    Lists older than 30 days are blocked at ship time.
+12. Sort by lead_score descending
+13. Save to lists/validated/ in GTM:OS standard CSV format — include all score columns and expiry columns
+14. Display list validation summary using ui-brand.md format — include score tier breakdown and expiry date:
     ```
     Validated: {n} contacts  ·  Expires: {valid_until}  ·  Tiers: A:{n} B:{n} C:{n} D:{n} F:{n}
     ```
-14. Write to `context/SESSION.md`:
+15. Write to `context/SESSION.md`:
     ```
     # SESSION — {ISO date}
     Campaign: {campaign name}
@@ -115,5 +119,5 @@ Before scoring, check whether company-level fields are populated (industry, empl
     Status: List ready
     Next: /gtm:write {workspace} — draft copy, then /gtm:ship
     ```
-15. Suggest next action: review score-1 records, then `/gtm:ship`
+16. Suggest next action: review score-1 records, then `/gtm:ship`
 </process>

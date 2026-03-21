@@ -32,20 +32,20 @@ Workspace and options: $ARGUMENTS
 9. Check context/research/signal-angles.md for relevant angles
 10. **Load LEARNINGS.md** — check copy learnings, persona learnings, and anti-learnings. Apply proven patterns (e.g. "question subject lines +40%") and avoid known failures (e.g. "don't use 6-touch for SMB"). Surface relevant learnings before drafting.
 11. Load global/snippet-library.md — reference proven opening lines, CTAs, and proof lines matching this campaign's channel and angle
-11. Load global/swipe-file.md — reference full sequence examples matching this campaign type as structural guides (adapt, never copy-paste)
-12. Draft each touch following the sequence structure
-13. Verify all {{variables}} used in copy:
+12. Load global/swipe-file.md — reference full sequence examples matching this campaign type as structural guides (adapt, never copy-paste)
+13. Draft each touch following the sequence structure
+14. Verify all {{variables}} used in copy:
     - Check every field name against PERSONALIZATION.md — flag any not defined there
     - Validate field names match `^[a-z][a-z0-9_]{0,49}$` — lowercase letters, numbers, underscores only. Reject any field name containing uppercase, `{{`, `}}`, `__`, spaces, or other special characters and stop with a plain message: `Merge field "{{name}}" has an invalid format — field names must be lowercase with underscores only (e.g. first_name, company_name).`
     - Never allow runtime creation of merge fields not already in PERSONALIZATION.md
-14. Verify all links come from BOOKING.md — never invent URLs
-15. If A/B test is planned, create variants A and B clearly labeled
-16. Apply TOV.md channel-specific rules
-17. Auto-run five-check validation on every touch — display results inline
-18. Check execution mode from workspace.config.md:
+15. Verify all links come from BOOKING.md — never invent URLs
+16. If A/B test is planned, create variants A and B clearly labeled
+17. Apply TOV.md channel-specific rules
+18. Auto-run five-check validation on every touch — display results inline
+19. Check execution mode from workspace.config.md:
     - **Interactive:** Present with approval gate from ui-brand.md. On approval, save to copy/approved/
     - **Auto:** Auto-approve, save to copy/approved/, show `⚡ Auto-approved: sequence saved`, log in decisions.md
-19. On approval (interactive or auto): generate a copy integrity marker and append it to each approved file:
+20. On approval (interactive or auto): generate a copy integrity marker and append it to each approved file:
     ```
     <!-- approved: {ISO datetime} | approver: {interactive/auto} | touches: {n} | fingerprint: {first-16-chars-of-content-hash} -->
     ```
@@ -56,7 +56,7 @@ Workspace and options: $ARGUMENTS
     - Preflight can warn if the file was modified after the approval timestamp
     - Ship gate can verify copy integrity before pushing to sending tool
 
-20. Write to `context/SESSION.md`:
+21. Write to `context/SESSION.md`:
     ```
     # SESSION — {ISO date}
     Campaign: {campaign name}
@@ -64,5 +64,5 @@ Workspace and options: $ARGUMENTS
     Status: {awaiting approval / approved — ready to ship}
     Next: {/gtm:ship {workspace} {campaign} / approve copy above}
     ```
-21. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
+22. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
 </process>
