@@ -17,12 +17,32 @@ Types: email | phone | people | company | people-search | company-search | full
 @./.claude/gtmos/references/tool-pricing.md
 @./.claude/gtmos/references/csv-format.md
 @./.claude/gtmos/references/ui-brand.md
+@./ICP.md
+@./PERSONA.md
 </execution_context>
 
 <process>
 1. Display mode header: `<< GTM:OS // ENRICHMENT >>`
 2. Load workspace context — TOOLS.md, RULES.md, COSTS.md
 3. Check .env for available API keys — determine which waterfall sources are active
+
+## ICP and persona field mapping
+
+3c. Load ICP.md and PERSONA.md — derive which fields are ICP-critical and persona-critical for this workspace:
+
+**ICP-critical company fields** (directly feed company_score — must be enriched for scoring to work):
+- Read `## Target industries` (or equivalent) from ICP.md → `industry` field
+- Read `## Company size` / `## Employee count` from ICP.md → `employee_count` field
+- Read `## Target geographies` from ICP.md → `location` / `country` field
+- Read `## Funding stage` from ICP.md → `funding_stage` field (if specified)
+- Read `## Tech stack` / `## Required tools` from ICP.md → `tech_stack` field (if specified)
+
+**Persona-critical contact fields** (directly feed persona fit score — must be enriched to score people):
+- Read target titles / personas from PERSONA.md → `title` field
+- Read target departments from PERSONA.md → `department` field
+- Read target seniority levels from PERSONA.md → `seniority` field
+
+These are the **priority fields**. A company missing an ICP-critical field will score low on company_score regardless of other data. A contact missing a persona-critical field cannot be scored on persona fit. Always enrich these fields first — they determine whether deeper enrichment is worth running at all.
 
 ## Account tier gate
 
@@ -71,27 +91,33 @@ Types: email | phone | people | company | people-search | company-search | full
 ## Load and analyze the list
 
 5. If file path provided, load the list. If not, check lists/validated/ and lists/cleaned/ for the most recent file.
-6. Analyze what data is present and what's missing:
+6. Analyze what data is present and what's missing — mark ICP-critical (★) and persona-critical (●) fields identified in step 3c:
 
 ```
   ┌─ LIST ANALYSIS ─────────────────────────────┐
   │                                               │
   │  Records:           247                       │
   │                                               │
-  │  Data coverage:                               │
+  │  Data coverage:  ★ ICP-critical  ● Persona   │
   │    Name:            247/247  (100%)           │
   │    Company:         247/247  (100%)           │
-  │    Title:           198/247  (80%)            │
-  │    Email:           120/247  (49%)  ← enrich  │
+  │  ★ Industry:        185/247  (75%)  ← enrich │
+  │  ★ Company size:    162/247  (66%)  ← enrich │
+  │  ★ Geography:       220/247  (89%)            │
+  │  ● Title:           198/247  (80%)            │
+  │  ● Seniority:        95/247  (38%)  ← enrich │
+  │    Email:           120/247  (49%)  ← enrich │
   │    Phone:            0/247   (0%)             │
   │    LinkedIn:        203/247  (82%)            │
-  │    Industry:        185/247  (75%)            │
-  │    Company size:    162/247  (66%)            │
   │                                               │
+  │  ICP-critical gaps:    industry(62), size(85) │
+  │  Persona-critical gaps: seniority(152)        │
   └───────────────────────────────────────────────┘
 ```
 
-7. If type is `full`, suggest which enrichment types to run based on gaps.
+Always enrich ICP-critical and persona-critical gaps before enriching email or phone — scoring depends on them.
+
+7. If type is `full`, suggest which enrichment types to run based on ICP-critical and persona-critical gaps first, then email, then phone.
 
 ## Check waterfall overrides
 
@@ -164,6 +190,33 @@ Types: email | phone | people | company | people-search | company-search | full
   Not found:  4 contacts — no email from any source
   ────────────────────────────────────────────────
 ```
+
+13b. **After company enrichment — run ICP fit check against ICP.md:**
+   - For each company, compare the enriched data against ICP.md target criteria
+   - If industry is NOT in ICP.md target industries → flag `icp_disqualified: industry`
+   - If employee count is outside ICP.md size range → flag `icp_disqualified: size`
+   - If geography is excluded in ICP.md → flag `icp_disqualified: geography`
+   - Remove disqualified companies before running people enrichment (saves credits on contacts who won't make the cut)
+   - Display:
+     ```
+     ICP fit check (post-company enrichment):
+       Confirmed ICP fit:  {n} companies
+       Disqualified:       {n} removed (industry: {n}, size: {n}, geo: {n} — per ICP.md)
+       Marginal:           {n} flagged (edge of ICP range — held for review)
+     ```
+
+13c. **After people enrichment — run persona fit check against PERSONA.md:**
+   - For each contact where title or seniority was enriched, compare against PERSONA.md target personas
+   - If the contact's title clearly falls outside all target personas in PERSONA.md → flag `persona_disqualified`
+   - If seniority is below minimum level defined in PERSONA.md → flag `persona_disqualified: seniority`
+   - These contacts will score near-zero on persona fit regardless of other data — surface them for removal or review
+   - Display:
+     ```
+     Persona fit check (post-people enrichment):
+       Confirmed persona fit:  {n} contacts
+       Disqualified:           {n} contacts (title/seniority outside PERSONA.md targets)
+       Uncertain:              {n} contacts (title enriched but not matched to a known persona — review)
+     ```
 
 14. For email enrichment — after finding emails, run verification:
     a. ZeroBounce first (or MillionVerifier if ZeroBounce unavailable)

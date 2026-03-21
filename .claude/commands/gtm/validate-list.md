@@ -50,6 +50,11 @@ Workspace and file: $ARGUMENTS
 
 Check `workspace.config.md` for `Scoring mode`. Default is `company-first`.
 
+**Scoring is always driven by ICP.md and PERSONA.md.** Before scoring any records, read both files:
+- ICP.md defines what a good company looks like (industries, size, geography, funding stage, tech stack)
+- PERSONA.md defines what a good contact looks like (target titles, departments, seniority, decision authority)
+All scoring factors — "exact match", "sweet spot", "target department" — are defined by the content of these files, not generic criteria. If ICP.md changes, scores should be recalculated. If RULES.md has a `## Lead scoring overrides` section, that takes precedence for weights, but the underlying ICP/persona criteria still come from ICP.md and PERSONA.md.
+
 ### If scoring mode = company-first (default)
 
 **Pre-check — Company data availability:**

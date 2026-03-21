@@ -30,21 +30,25 @@ When `people-first` is set, skip account scoring entirely and use the original 5
 
 Score companies before prospecting into them. Produces `company_score` column in lists.
 
+**All scoring criteria come from ICP.md.** "Exact match", "sweet spot", "target market", "ideal stage" — these are defined by what's written in the workspace's ICP.md, not hardcoded values. Read ICP.md before scoring: if ICP.md says target industries are "SaaS, Fintech", then industry = "Healthcare" scores 0. If ICP.md says employee range is 50-200, then 201 employees scores at edge-of-range, not sweet spot. Never invent criteria.
+
 | Component | Weight | Max points | What it measures |
 |-----------|--------|------------|-----------------|
-| Strategic fit | 35% | 35 | Firmographic match to ICP |
+| Strategic fit | 35% | 35 | Firmographic match to ICP.md criteria |
 | Timing signals | 30% | 30 | Account-level buying signals |
 | Relationship depth | 20% | 20 | Existing pipeline coverage at this account |
 | Data quality | 15% | 15 | Completeness of company-level data |
 
 ### Strategic fit (0-35)
 
+Read each factor's target values directly from ICP.md before applying points:
+
 | Factor | Points | Criteria |
 |--------|--------|----------|
-| Industry match | 0-12 | 12 = exact, 6 = adjacent, 0 = outside ICP |
-| Company size | 0-10 | 10 = sweet spot, 5 = edge of range, 0 = outside |
-| Geography | 0-7 | 7 = target market, 4 = adjacent, 0 = excluded |
-| Funding/revenue stage | 0-6 | 6 = ideal stage, 3 = close, 0 = wrong stage |
+| Industry match | 0-12 | 12 = in ICP.md target industries, 6 = adjacent to a target industry, 0 = not listed |
+| Company size | 0-10 | 10 = within ICP.md employee/revenue range, 5 = edge of range, 0 = outside |
+| Geography | 0-7 | 7 = in ICP.md target geographies, 4 = adjacent market, 0 = in excluded list |
+| Funding/revenue stage | 0-6 | 6 = matches ICP.md ideal stage, 3 = one stage off, 0 = wrong stage |
 
 ### Timing signals (0-30) — account-level only
 
@@ -147,9 +151,6 @@ Applies only to contacts at A/B-tier accounts (in company-first mode). The compa
 
 | Component | Weight | Max points | What it measures |
 |-----------|--------|------------|-----------------|
-
-| Component | Weight | Max points | What it measures |
-|-----------|--------|------------|-----------------|
 | Company fit | 30% | 30 | How well the company matches ICP |
 | Persona fit | 25% | 25 | How well the person matches target persona |
 | Signal strength | 20% | 20 | Presence and recency of buying signals |
@@ -178,14 +179,14 @@ Applies only to contacts at A/B-tier accounts (in company-first mode). The compa
 
 ## Persona fit (0-25)
 
-Score based on PERSONA.md criteria:
+**All scoring criteria come from PERSONA.md.** Read PERSONA.md before scoring: target titles, departments, seniority levels, and decision authority definitions are all defined there. "Exact title" means the contact's title appears in (or closely matches) PERSONA.md's target titles list. "Target department" means their department matches what PERSONA.md specifies. Never invent persona criteria.
 
 | Factor | Points | Criteria |
 |--------|--------|----------|
-| Title match | 0-10 | 10 = exact title, 7 = equivalent title, 3 = adjacent, 0 = wrong level |
-| Department | 0-5 | 5 = target department, 2 = adjacent, 0 = wrong dept |
-| Seniority | 0-5 | 5 = ideal level, 3 = one level off, 0 = wrong level |
-| Decision authority | 0-5 | 5 = decision maker, 3 = influencer, 1 = user, 0 = no authority |
+| Title match | 0-10 | 10 = in PERSONA.md target titles, 7 = equivalent role, 3 = adjacent function, 0 = outside persona |
+| Department | 0-5 | 5 = in PERSONA.md target departments, 2 = adjacent, 0 = wrong department |
+| Seniority | 0-5 | 5 = meets PERSONA.md minimum seniority, 3 = one level below, 0 = too junior or too senior |
+| Decision authority | 0-5 | 5 = decision maker (as defined in PERSONA.md), 3 = influencer, 1 = user/champion, 0 = no authority |
 
 ---
 
