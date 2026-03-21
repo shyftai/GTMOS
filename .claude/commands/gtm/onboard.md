@@ -223,6 +223,18 @@ Workspace name: $ARGUMENTS
 - `/gtm:new-campaign $ARGUMENTS {name}` — start your first campaign
 - After shipping: `/gtm:replies`, `/gtm:signals`
 
+First campaign flow:
+```
+1. /gtm:new-campaign {workspace} {name}     ← create campaign + briefing
+2. /gtm:list-brief {workspace} {name}       ← define who to target
+3. /gtm:enrich {workspace} people-search    ← source contacts (or import CSV)
+4. /gtm:enrich {workspace} email            ← fill email gaps
+5. /gtm:validate-list {workspace}           ← score and validate
+6. /gtm:write {workspace}                   ← draft copy
+7. /gtm:preflight {workspace} {name}        ← check everything
+8. /gtm:ship {workspace} {name}             ← send it
+```
+
 **GTM Engineer:**
 - `/gtm:visitor-id $ARGUMENTS --setup` — set up website visitor identification
 - `/gtm:enrich $ARGUMENTS` — configure enrichment waterfall
@@ -237,6 +249,8 @@ Workspace name: $ARGUMENTS
 - `/gtm:research $ARGUMENTS` — research your market
 - `/gtm:new-campaign $ARGUMENTS {name}` — start your first campaign
 - `/gtm:dashboard $ARGUMENTS` — check status anytime
+
+First campaign flow: same as SDR above — new-campaign → list-brief → source → validate → write → ship.
 
 **Agency:**
 - `/gtm:onboard {next-client}` — onboard your next client

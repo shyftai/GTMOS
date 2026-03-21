@@ -17,6 +17,7 @@ Workspace and options: $ARGUMENTS
 @./.claude/gtmos/references/campaign-types.md
 @./global/snippet-library.md
 @./global/swipe-file.md
+@./LEARNINGS.md
 </execution_context>
 
 <process>
@@ -55,5 +56,13 @@ Workspace and options: $ARGUMENTS
     - Preflight can warn if the file was modified after the approval timestamp
     - Ship gate can verify copy integrity before pushing to sending tool
 
-20. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
+20. Write to `context/SESSION.md`:
+    ```
+    # SESSION — {ISO date}
+    Campaign: {campaign name}
+    Last action: Copy {drafted / approved / pending approval} — {n} touches, {channel}
+    Status: {awaiting approval / approved — ready to ship}
+    Next: {/gtm:ship {workspace} {campaign} / approve copy above}
+    ```
+21. Suggest next action: `/gtm:validate-copy` or `/gtm:ship`
 </process>

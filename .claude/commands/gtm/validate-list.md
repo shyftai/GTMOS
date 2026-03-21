@@ -52,6 +52,22 @@ Check `workspace.config.md` for `Scoring mode`. Default is `company-first`.
 
 ### If scoring mode = company-first (default)
 
+**Pre-check — Company data availability:**
+Before scoring, check whether company-level fields are populated (industry, employee_count, geography, funding_stage):
+- If > 50% of records are missing company data, pause and ask:
+  ```
+  Company data is sparse — only {n}% of records have industry, size, or location.
+  Company scores will be unreliable without this data.
+
+  Options:
+    a) Run /gtm:enrich {workspace} company first — adds firmographic data, then re-run validate-list
+    b) Proceed with available data — company scores will be lower due to missing fields
+
+  >> a / b
+  ```
+- If the user chooses (a): stop, route to `/gtm:enrich {workspace} company`, then resume validate-list when enrichment is complete
+- If the user chooses (b) or data coverage is adequate: proceed to Pass 1
+
 **Pass 1 — Account scoring:**
 6a. Group records by company domain
 6b. For each unique company, calculate `company_score` (0-100) using the account scoring model in lead-scoring.md
@@ -91,5 +107,13 @@ Check `workspace.config.md` for `Scoring mode`. Default is `company-first`.
     ```
     Validated: {n} contacts  ·  Expires: {valid_until}  ·  Tiers: A:{n} B:{n} C:{n} D:{n} F:{n}
     ```
-14. Suggest next action: review score-1 records, then `/gtm:ship`
+14. Write to `context/SESSION.md`:
+    ```
+    # SESSION — {ISO date}
+    Campaign: {campaign name}
+    Last action: List validated — {n} contacts, expires {valid_until}. Tiers: A:{n} B:{n} C:{n} D:{n} F:{n}
+    Status: List ready
+    Next: /gtm:write {workspace} — draft copy, then /gtm:ship
+    ```
+15. Suggest next action: review score-1 records, then `/gtm:ship`
 </process>

@@ -12,6 +12,7 @@ Workspace and campaign: $ARGUMENTS
 <execution_context>
 @./commands/handle-replies.md
 @./.claude/gtmos/references/ui-brand.md
+@./LEARNINGS.md
 </execution_context>
 
 <process>

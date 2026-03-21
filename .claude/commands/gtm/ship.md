@@ -104,6 +104,28 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
+   **On reject:** Stop. Do not ship. Show a plain message:
+   ```
+   Ship cancelled. Nothing was sent.
+
+   If you want to make changes:
+     Edit copy   → /gtm:write {workspace} {campaign}
+     Edit list   → /gtm:validate-list {workspace}
+     Check infra → /gtm:preflight {workspace} {campaign}
+
+   Re-run /gtm:ship when ready.
+   ```
+
+   **On edit:** Ask what to edit:
+   ```
+   What needs changing?
+     copy    → opens /gtm:write
+     list    → opens /gtm:validate-list
+     config  → edit campaign.config.md directly
+   >>
+   ```
+   Route to the relevant command. Return to ship when done.
+
 12. On approval:
    - Push contacts to sending tool
    - Push sequence to sending tool

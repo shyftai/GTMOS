@@ -29,18 +29,20 @@ Types: email | phone | people | company | people-search | company-search | full
 3b. Before running any people enrichment, check `workspace.config.md` for `Scoring mode`:
 
 **If scoring mode = company-first (default):**
-- Check whether the list has an `account_score` and `company_tier` column (set by `/gtm:validate-list`)
-- If account scores are present: only enrich contacts where `company_tier` is A or B (account_score ≥ 60)
-- Contacts at C/D-tier accounts: skip enrichment, flag with `enrichment_skipped: account-below-threshold`
-- Contacts at F-tier accounts should not be in the list at all — if found, remove them
+- Check whether the list has a `company_score` and `company_tier` column (set by `/gtm:validate-list`)
+- If company scores are present: only enrich contacts where `company_tier` is A or B (company_score ≥ 60)
+- Contacts at C/D-tier companies: skip enrichment, flag with `enrichment_skipped: company-below-threshold`
+- Contacts at F-tier companies should not be in the list at all — if found, remove them
 - Display gate summary before proceeding:
   ```
-  Account tier gate:
-    Eligible for enrichment: {n} contacts (A/B-tier accounts)
-    Skipped: {n} contacts (C/D-tier accounts — run /gtm:validate-list first to upgrade account scores)
-    Removed: {n} contacts (F-tier accounts)
+  Company tier gate:
+    Eligible for enrichment: {n} contacts (A/B-tier companies)
+    Skipped: {n} contacts (C/D-tier companies — run /gtm:validate-list first to upgrade company scores)
+    Removed: {n} contacts (F-tier companies)
   ```
-- If no account scores are present on the list: warn and offer to run `/gtm:validate-list` first, or proceed without the gate (user must confirm)
+- If no company scores are present on the list: warn and offer to run `/gtm:validate-list` first, or proceed without the gate (user must confirm)
+
+**Note — company enrichment is not gated:** The company_score gate applies only to *people* enrichment (email, phone, people data). Company enrichment (firmographics, tech stack, funding data) is always permitted regardless of existing scores — it's needed to *produce* the company scores in the first place. If company_score is missing, running `/gtm:enrich {workspace} company` is the correct first step before validation.
 
 **If scoring mode = people-first:** skip this gate entirely and enrich all contacts.
 
@@ -242,6 +244,15 @@ Run enrichment types in this order:
 4. Phone enrichment (most expensive — only A-tier leads)
 
 Show a combined summary at the end.
+
+20b. Write to `context/SESSION.md`:
+```
+# SESSION — {ISO date}
+Campaign: {campaign name}
+Last action: {type} enrichment complete — {n} contacts enriched, {n} not found. Cost: ${total}
+Status: Enrichment done
+Next: /gtm:validate-list {workspace} — score and validate the enriched list
+```
 
 ## Next actions
 

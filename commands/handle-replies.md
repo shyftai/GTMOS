@@ -11,10 +11,11 @@
 - Cross-reference with shipped list to identify sender
 
 ### 2. Classify each reply
-Classify as one of seven types:
+Classify as one of eight types:
 - Positive — interested, wants to talk, asking for next steps
 - Negative — not interested, wrong timing, polite decline
 - Objection — pushback that can be addressed (budget, timing, relevance, incumbent)
+- Future opportunity — not now, but genuinely open later ("check back in Q3", "ask me after the reorg")
 - Referral — not the right person, redirects to someone else
 - OOO — out of office, auto-reply or human message
 - Unsubscribe — explicit opt-out request or opt-out language
@@ -34,13 +35,19 @@ Then assign a confidence level:
 - Tone: human, unhurried, clear on next step
 - CTA: suggest a specific time or send a booking link
 - Update Attio: move to Interested stage
-- Suggest: pause sequence for this contact
+- **Pause sequence immediately** — in the sending tool (Lemlist / Instantly / Smartlead), find the contact and pause or remove them from the active sequence before any further touches fire. On LinkedIn (Crispy), stop the campaign for this contact. Do not wait — pause first, then draft the reply.
 
 **Negative:**
 - Draft a graceful close — acknowledge, leave the door open, no pressure
 - Do not argue or re-pitch
 - Update Attio: move to Not Interested
-- Pause sequence immediately
+- **Pause sequence immediately** — same as above. Remove from active sequence in sending tool. Do not let further touches fire after a negative reply.
+
+**Future opportunity:**
+- Draft a brief, no-pressure acknowledgement: "Understood — I'll circle back then."
+- Do not pitch further in this reply
+- Update Attio: tag as "Future — {timeframe}" with the date they mentioned
+- **Pause sequence now, schedule re-engage** — pause the current sequence, then create a re-engagement trigger for the date they specified (or 60 days if vague). Log in PIPELINE.md under Nurture.
 
 **Objection:**
 - Load PERSONA.md objection map
@@ -58,6 +65,7 @@ Then assign a confidence level:
 - Extract return date from message if present
 - Schedule a follow-up touch for return date + 1 business day
 - Log in Attio with OOO flag and expected return date
+- **Pause sequence** — pause any remaining touches until the return date, then resume. Do not let additional touches land while they're away.
 - No response drafted
 
 **Unsubscribe:**

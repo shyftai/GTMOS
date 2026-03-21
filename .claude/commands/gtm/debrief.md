@@ -15,6 +15,7 @@ Workspace and campaign: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/BENCHMARKS.md
 @./.claude/gtmos/references/report-template.md
+@./LEARNINGS.md
 </execution_context>
 
 <process>

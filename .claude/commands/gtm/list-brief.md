@@ -29,5 +29,25 @@ Workspace and campaign: $ARGUMENTS
    - Firecrawl (extract company lists from directories, award lists, conference sites)
    - Crunchbase/Diffbot (free company search)
 7. Format as copy-paste ready
-8. Suggest next: `/gtm:enrich $ARGUMENTS` after list is sourced
+8. Show the sourcing path — what to do with this brief:
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  List brief ready. Next — source the list:
+
+  Option A — Source directly (AI does it):
+    /gtm:enrich {workspace} company-search  ← find matching companies
+    /gtm:enrich {workspace} people-search   ← find matching contacts
+
+  Option B — Source manually (you or a VA):
+    Use the filters above in Apollo, Sales Nav, or Crispy
+    Export as CSV, then:
+    /gtm:validate-list {workspace} {file-path}
+
+  After sourcing, always run:
+    /gtm:enrich {workspace} email           ← fill email gaps
+    /gtm:validate-list {workspace}          ← score and validate
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 </process>

@@ -53,49 +53,42 @@ Workspace and optional campaign: $ARGUMENTS
    - context/BRIEF.md — does it exist? (useful but not blocking)
    - LEARNINGS.md — any learnings logged? (informational — not blocking)
 
-7. Display preflight results:
+7. Display preflight results — group by severity. Only show WARNING and INFO sections if they have items:
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  PREFLIGHT — {workspace}                                   ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃                                                            ┃
-┃  Identity                                                  ┃
-┃  [x] ICP.md — complete                                     ┃
-┃  [x] PERSONA.md — 2 personas defined                       ┃
+┃  BLOCKING — must fix before campaign can ship              ┃
 ┃  [!] TOV.md — tone rules missing (only has header)         ┃
-┃  [x] RULES.md — scoring rubric set                         ┃
-┃                                                            ┃
-┃  Operations                                                 ┃
-┃  [x] TOOLS.md — 3 active tools                             ┃
 ┃  [!] COSTS.md — no budget set                              ┃
-┃  [x] INFRASTRUCTURE.md — 2 inboxes, warmup active          ┃
 ┃  [!] SUPPRESSION.md — physical address not filled in       ┃
-┃                                                            ┃
-┃  API keys (active tools only)                              ┃
-┃  [x] APOLLO_API_KEY — present                              ┃
-┃  [x] INSTANTLY_API_KEY — present                           ┃
 ┃  [!] LEMLIST_API_KEY — missing                             ┃
 ┃                                                            ┃
-┃  Config                                                     ┃
+┃  WARNING — suboptimal, won't block                         ┃
+┃  [~] WORKFLOW.md — approval chain not defined              ┃
+┃                                                            ┃
+┃  OK                                                        ┃
+┃  [x] ICP.md — complete                                     ┃
+┃  [x] PERSONA.md — 2 personas defined                       ┃
+┃  [x] RULES.md — scoring rubric set                         ┃
+┃  [x] TOOLS.md — 3 active tools                             ┃
+┃  [x] INFRASTRUCTURE.md — 2 inboxes, warmup active          ┃
+┃  [x] APOLLO_API_KEY — present                              ┃
+┃  [x] INSTANTLY_API_KEY — present                           ┃
 ┃  [x] workspace.config.md — fully configured                ┃
-┃  [!] WORKFLOW.md — approval chain not defined              ┃
 ┃  [x] .env — exists                                         ┃
 ┃                                                            ┃
-┃  Context                                                   ┃
-┃  [ ] context/INDEX.md — empty (not blocking)               ┃
-┃  [ ] context/BRIEF.md — not created (not blocking)         ┃
-┃  [ ] LEARNINGS.md — no learnings yet (first campaign)      ┃
-┃                                                            ┃
-┃  Status: 4 issues — not campaign-ready                     ┃
-┃  Blocking: TOV.md, COSTS.md, SUPPRESSION.md (address),    ┃
-┃            LEMLIST_API_KEY                                  ┃
-┃                                                            ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+┃  Status: 4 blocking — not campaign-ready                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
+
+INFO items (context/INDEX.md empty, LEARNINGS.md absent, etc.) are **not shown in the main display** — they are informational only and add noise when grouped with actionable issues. Surface them only if all blocking/warning items are resolved.
 
 8. Classify each issue:
    - `[!] BLOCKING` — will prevent a campaign from running or shipping safely
    - `[~] WARNING` — suboptimal but won't block — surface to user to decide
-   - `[ ] INFO` — missing but not needed yet (e.g. LEARNINGS.md on first campaign)
+   - INFO — missing but not needed yet — do not display unless no blocking/warning items remain
 
 ## Campaign checks (if campaign-name provided)
 
