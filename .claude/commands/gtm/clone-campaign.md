@@ -25,7 +25,15 @@ Source: {{source-campaign}}
 Target: {{new-campaign-name}}
 ```
 
-Parse workspace name, source campaign, and new campaign name from $ARGUMENTS. Locate the workspace directory at `workspaces/{{workspace-name}}` and the source campaign directory at `workspaces/{{workspace-name}}/campaigns/{{source-campaign}}`. Confirm both exist before proceeding. If either is missing, report the error and list available workspaces/campaigns.
+Parse workspace name, source campaign, and new campaign name from $ARGUMENTS.
+
+Validate all three names before touching any files:
+- Only allow letters, numbers, hyphens, and underscores — no spaces, slashes, dots, or special characters
+- Maximum 64 characters each
+- If any name fails: stop and explain plainly: `"{{name}}" isn't a valid name — use letters, numbers, hyphens and underscores only (e.g. "q2-enterprise" or "acme_2024").`
+- Show all three parsed values back before proceeding: `Cloning: workspaces/{workspace}/campaigns/{source} → {target} — confirm?`
+
+Locate the workspace directory at `workspaces/{workspace-name}` and the source campaign directory at `workspaces/{workspace-name}/campaigns/{source-campaign}`. Confirm both exist before proceeding. If either is missing, report the error and list available workspaces/campaigns.
 
 ---
 

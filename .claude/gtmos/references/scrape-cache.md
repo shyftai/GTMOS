@@ -15,19 +15,27 @@ Rules for caching scrape/enrichment results and journaling every data pull.
 1. **Check the cache first** — search `cache/scrapes/` and SCRAPE-JOURNAL.md for existing data that matches the current angle
    - If a cache file exists and is < 30 days old, use it instead of making a new API call
    - If a cache file exists but is stale (> 30 days), note it and ask the user whether to re-scrape or reuse
-2. **Log the scrape in SCRAPE-JOURNAL.md** with status `in-progress`:
+2. **Declare the scrape type** — every scrape must be tagged as `company` or `person` before logging:
+   - `company` — scraping organizations (feeds company scoring)
+   - `person` — scraping people/contacts (feeds people scoring)
+   This is non-negotiable. Type determines which scoring layer the data flows into and how it's cached, deduped, and reused.
+
+3. **Log the scrape in SCRAPE-JOURNAL.md** with status `in-progress`:
 
 ```markdown
-| 003 | 2026-03-10 | Apollo | VP Sales at SaaS 50-200 emp US | Build target list for Q2 cold campaign | 500 | 0 | in-progress | cache/scrapes/2026-03-10_apollo_vp-sales-saas_003.md | |
+| 003 | 2026-03-10 | person | Apollo | VP Sales at SaaS 50-200 emp US | Build target list for Q2 cold campaign | 500 | 0 | in-progress | cache/scrapes/2026-03-10_apollo_person_vp-sales-saas_003.md | |
 ```
 
-3. **Create the cache file** with a metadata header BEFORE making the API call:
+SCRAPE-JOURNAL.md columns: `ID | Date | Type | Tool | Angle | Goal | Max records | Records cached | Status | Cache file | Notes`
+
+4. **Create the cache file** with a metadata header BEFORE making the API call:
 
 ```markdown
 # Scrape Cache: [tool] — [angle]
 
 - **Journal ID:** 003
 - **Date:** 2026-03-10
+- **Type:** person
 - **Tool:** Apollo
 - **Endpoint:** POST /api/v1/mixed_people/api_search
 - **Angle:** VP Sales at SaaS companies, 50-200 employees, US

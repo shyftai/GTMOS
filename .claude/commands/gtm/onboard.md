@@ -19,15 +19,37 @@ Workspace name: $ARGUMENTS
 <process>
 1. Display the GTM:OS startup banner from ui-brand.md
 2. Display mode header: `<< GTM:OS // ONBOARDING >>`
-3. Create workspace folder by copying _template/ to workspaces/$ARGUMENTS/
+3. Validate the workspace name from $ARGUMENTS before creating any folder:
+   - Only allow letters, numbers, hyphens, and underscores (no spaces, slashes, dots, or special characters)
+   - Maximum 64 characters
+   - If the name fails validation, stop and explain in plain language:
+     ```
+     That name won't work — workspace names can only contain letters, numbers, hyphens (-),
+     and underscores (_). No spaces or special characters. Try something like "acme-corp" or "client_2024".
+     ```
+   - Show the validated name back before creating the folder: `Creating workspace folder: workspaces/{name}/ — looks good!`
+
+3.5. Create workspace folder by copying _template/ to workspaces/{validated_name}/
 
 ## Environment setup
-3.5. Check if `.env` exists at the repo root:
+3.6. Check if `.env` exists at the repo root:
    - If `.env` does NOT exist: copy `.env.example` → `.env` and tell the user:
      ```
-     ✓ .env created from .env.example — API keys will be filled in as you set up tools.
+     ✓ .env created — this file will store your API keys. It stays on your computer only.
      ```
    - If `.env` already exists: proceed without touching it
+
+3.7. Check if `.env` is in `.gitignore`:
+   - Read `.gitignore` at the repo root (if it exists)
+   - If `.env` is NOT listed in `.gitignore`:
+     - Add `.env` to `.gitignore` automatically
+     - Tell the user in plain language:
+       ```
+       ✓ Added .env to .gitignore — this stops your API keys from being accidentally
+         uploaded if you ever share this folder with git. (This is important.)
+       ```
+   - If `.gitignore` doesn't exist yet, create it with `.env` as the first entry
+   - If `.env` is already in `.gitignore`: confirm silently, no message needed
 
 ## Block 0 — Role selection (always first)
 4. Ask: "What's your role?"
@@ -87,8 +109,24 @@ Workspace name: $ARGUMENTS
    - If not detected → skip
 
 ## Registration (optional)
-10. Ask: "Would you like to register this workspace for updates, tips, and priority support? (just your email and company name)"
-   - If yes: collect email and company name, then POST to the registration endpoint:
+10. Ask: "Would you like to receive GTM:OS updates and tips by email? (optional — takes 10 seconds)"
+   - If yes: collect email and company name, then show exactly what will be sent before making any request:
+     ```
+     ┌─ BEFORE WE SEND ANYTHING ──────────────────────────┐
+     │                                                      │
+     │  We'll send the following to shyft.ai:               │
+     │                                                      │
+     │    Your email:    {email}                            │
+     │    Company name:  {company_name}                     │
+     │    GTM:OS version: 1.4.0                            │
+     │                                                      │
+     │  That's it. No keys, no workspace data, no contacts. │
+     │  You can unsubscribe at any time.                    │
+     │                                                      │
+     │  Send this? (yes / no)                              │
+     └──────────────────────────────────────────────────────┘
+     ```
+   - Only proceed with the POST if the user confirms yes:
      ```
      POST https://shyft.ai/api/hooks/register
      {
@@ -96,13 +134,15 @@ Workspace name: $ARGUMENTS
        "version": "1.4.0",
        "company": "{company_name}",
        "email": "{email}",
-       "workspace": "$ARGUMENTS",
        "timestamp": "{ISO 8601}"
      }
      ```
+     Note: workspace name is NOT included in the payload.
      Show: `Registered — you'll get updates at {email}`
    - If no: skip gracefully. Show: `Skipped — you can register anytime with /gtm:feedback`
-   - This step never blocks onboarding. If the POST fails, ignore silently and continue.
+   - If the POST fails, show: `Registration didn't go through — you can try again later with /gtm:feedback. Continuing setup.`
+   - Never include API keys, workspace file contents, contact data, or suppression lists in this request.
+   - This step never blocks onboarding.
 
 ## Onboarding path selection
 11. Ask: "How do you want to onboard?"
@@ -136,8 +176,35 @@ Workspace name: $ARGUMENTS
       Paste your {TOOL_NAME} API key (or press Enter to skip):
       >>
       ```
-    - Write provided keys into `.env` immediately
-    - After prompting all active tools, display a summary:
+    - If any keys are available from an external source (e.g. a connected profile, MCP server, or integration): **do not write them silently**. Collect them into the review step below instead.
+
+    **Before writing anything to .env**, display a full preview of every key that will be written and its source:
+      ```
+      ┌─ REVIEW: KEYS TO BE WRITTEN TO .env ────────────────────┐
+      │                                                           │
+      │  The following keys will be added to your .env file.     │
+      │  Review each one before confirming.                       │
+      │                                                           │
+      │  APOLLO_API_KEY      ••••••••••••••••7f3a   [you pasted] │
+      │  INSTANTLY_API_KEY   ••••••••••••••••2c91   [you pasted] │
+      │  FIRECRAWL_API_KEY   ••••••••••••••••a40e   [Shyft profile] │
+      │                                                           │
+      │  Keys sourced from your Shyft profile are marked above.  │
+      │  They will only be written if you confirm below.         │
+      │                                                           │
+      └───────────────────────────────────────────────────────────┘
+
+      Write these keys to .env? (yes / no / review each one)
+      >>
+      ```
+
+    - **If the user selects "review each one"**: step through each key individually, showing the tool name, masked value, and source, and ask yes/no per key.
+    - **If the user selects "no"**: skip all writes. Tell the user they can add keys anytime with `/gtm:infra`.
+    - **Only write keys the user explicitly confirms.** Never write a key from any source — profile, MCP, or user paste — without this confirmation step.
+    - Show values masked (last 4 characters visible, rest replaced with `•`) — never display the full key value.
+    - Always disclose the source of each key: `[you pasted]`, `[Shyft profile]`, `[auto-detected]`, etc.
+
+    After confirmed writes, display the final state:
       ```
       ┌─ API KEYS ──────────────────────────────────┐
       │  [x] Apollo          [x] Instantly           │

@@ -1,10 +1,152 @@
 # Lead Scoring Model — GTMOS
 
-Weighted scoring model for ranking leads beyond the basic 0-3 ICP rubric. Produces a 0-100 score per contact.
+GTM:OS uses a **two-layer scoring model**: account score first, prospect score second.
+
+## Two-layer model
+
+```
+Layer 1: Account score (0-100)
+  → Score companies before researching people
+  → Only proceed to Layer 2 for A/B-tier accounts (score ≥ 60)
+  → F-tier accounts (< 20) are removed entirely
+
+Layer 2: Prospect score (0-100)
+  → Score individual contacts within approved accounts
+  → Company fit component uses company_score directly (no re-scoring company)
+  → Prospect score determines personalization depth and enrichment priority
+```
+
+**Default behaviour: company-first.** Override in `workspace.config.md`:
+```
+Scoring mode: company-first   ← default
+Scoring mode: people-first  ← legacy, scores contacts directly without account pre-filter
+```
+
+When `people-first` is set, skip account scoring entirely and use the original 5-component model below.
 
 ---
 
-## Score components
+## Account scoring (0-100)
+
+Score companies before prospecting into them. Produces `company_score` column in lists.
+
+| Component | Weight | Max points | What it measures |
+|-----------|--------|------------|-----------------|
+| Strategic fit | 35% | 35 | Firmographic match to ICP |
+| Timing signals | 30% | 30 | Account-level buying signals |
+| Relationship depth | 20% | 20 | Existing pipeline coverage at this account |
+| Data quality | 15% | 15 | Completeness of company-level data |
+
+### Strategic fit (0-35)
+
+| Factor | Points | Criteria |
+|--------|--------|----------|
+| Industry match | 0-12 | 12 = exact, 6 = adjacent, 0 = outside ICP |
+| Company size | 0-10 | 10 = sweet spot, 5 = edge of range, 0 = outside |
+| Geography | 0-7 | 7 = target market, 4 = adjacent, 0 = excluded |
+| Funding/revenue stage | 0-6 | 6 = ideal stage, 3 = close, 0 = wrong stage |
+
+### Timing signals (0-30) — account-level only
+
+These signals apply to the company, not an individual. See signal taxonomy below.
+
+| Signal | Points | Decay |
+|--------|--------|-------|
+| Intent data hit (Bombora/G2/TechTarget) — in-market now | 15 | -3 per week |
+| Funding round announced (< 30 days) | 10 | -3 per month |
+| Hiring for roles relevant to your solution (< 30 days) | 8 | -2 per month |
+| Technology change or stack expansion | 6 | -1 per month |
+| Company expansion / new office / launch | 5 | -2 per month |
+
+Cap: 30 points. Signals stack up to the cap.
+
+### Relationship depth (0-20)
+
+| Factor | Points |
+|--------|--------|
+| 3+ known contacts at this account | 10 |
+| 2 known contacts | 6 |
+| 1 known contact | 3 |
+| No known contacts | 0 |
+| Prior meeting or active opportunity | 8 |
+| Prior email engagement (open/click) | 4 |
+
+### Data quality (0-15)
+
+| Factor | Points |
+|--------|--------|
+| Domain confirmed | 3 |
+| Employee count verified | 3 |
+| Industry confirmed | 3 |
+| Funding/revenue data present | 3 |
+| Tech stack data present | 3 |
+
+### Account score tiers
+
+| Tier | Score | Action |
+|------|-------|--------|
+| A — Priority | 80-100 | Full enrichment, multi-thread (find 3+ contacts), signal-triggered timing |
+| B — Active | 60-79 | Standard enrichment, find 1-2 contacts |
+| C — Monitor | 40-59 | Light enrichment only, hold until better signal |
+| D — Deprioritise | 20-39 | Do not enrich — revisit if signal improves |
+| F — Remove | 0-19 | Remove from list entirely |
+
+**Credit gate:** enrichment only runs on A/B-tier accounts. C-tier and below are held until they move up.
+
+---
+
+## Signal taxonomy — account vs prospect
+
+Every signal must be tagged as `account` or `prospect`. This determines which scoring layer it feeds.
+
+| Signal | Type | Feeds |
+|--------|------|-------|
+| Funding round | account | Account score — Timing signals |
+| Hiring for relevant role | account | Account score — Timing signals |
+| Tech stack change | account | Account score — Timing signals |
+| Company expansion / news | account | Account score — Timing signals |
+| Intent data (Bombora/G2) | account | Account score — Timing signals |
+| Job change (contact moved to new company) | prospect | Prospect score — Signal strength |
+| LinkedIn activity (liked/commented) | prospect | Prospect score — Signal strength |
+| Event attendance (individual speaker/attendee) | prospect | Prospect score — Signal strength |
+| Profile view (viewed your LinkedIn) | prospect | Prospect score — Engagement |
+
+When logging signals in `context/research/signal-angles.md`, always include `scope: account` or `scope: prospect`.
+
+---
+
+## ICP ceiling rule
+
+A contact's prospect score is hard-capped based on their company's ICP fit:
+
+| icp_score | Max prospect score | Max tier |
+|-----------|-------------------|---------|
+| 3 | 100 | A |
+| 2 | 79 | B |
+| 1 | 59 | C |
+| 0 | — | Rejected — do not score |
+
+This prevents a contact with great signals and data at a marginal ICP company from outranking a solid ICP fit with fewer signals.
+
+---
+
+## Re-scoring triggers
+
+Scores are recomputed automatically when:
+- **After enrichment** — new company or contact data changes any factor
+- **After signal detected** — signal strength component updates
+- **After job change detected** — contact's prospect score re-evaluated; new company gets a fresh account score check
+- **After reply** — engagement component updates (positive reply → +10, negative → score flagged for review)
+- **After 30 days** — signal decay recalculates; account and prospect scores may drop if signals have aged out
+
+---
+
+## Prospect score components
+
+Applies only to contacts at A/B-tier accounts (in company-first mode). The company fit component uses the pre-computed `company_score` directly.
+
+| Component | Weight | Max points | What it measures |
+|-----------|--------|------------|-----------------|
 
 | Component | Weight | Max points | What it measures |
 |-----------|--------|------------|-----------------|
@@ -20,7 +162,9 @@ Weighted scoring model for ranking leads beyond the basic 0-3 ICP rubric. Produc
 
 ## Company fit (0-30)
 
-Score based on ICP.md criteria:
+**In company-first mode:** replace this component with `company_score × 0.30`. The account has already been scored — no need to re-score company factors at the prospect level.
+
+**In people-first mode:** score based on ICP.md criteria:
 
 | Factor | Points | Criteria |
 |--------|--------|----------|
@@ -45,24 +189,22 @@ Score based on PERSONA.md criteria:
 
 ---
 
-## Signal strength (0-20)
+## Signal strength (0-20) — prospect-level only
 
-Score based on detected buying signals:
+Score based on **prospect-scoped signals** (see signal taxonomy above). Account-level signals (funding, hiring, tech stack) are captured in the account score — do not double-count them here.
 
 | Signal type | Points | Decay |
 |-------------|--------|-------|
-| Funding round (last 30 days) | 8 | -2 per month |
-| Hiring for relevant role (last 30 days) | 6 | -2 per month |
-| Job change (contact moved to new role) | 6 | -3 per month |
-| Tech stack change | 5 | -1 per month |
-| Company news (expansion, launch) | 4 | -2 per month |
-| Social engagement (liked/commented on relevant content) | 3 | -1 per week |
-| Event attendance | 3 | -1 per month |
+| Job change — contact moved to new company in your ICP | 8 | -3 per month |
+| Social engagement (liked/commented on relevant content) | 5 | -1 per week |
+| Event attendance (individual speaker or attendee) | 4 | -1 per month |
+| LinkedIn profile view (viewed your profile) | 3 | -1 per week |
 
 **Rules:**
 - Signals stack — multiple signals add together up to the 20-point cap
 - Signals decay over time — recency matters
 - No signal = 0 points (not a disqualifier, just lower priority)
+- In company-first mode, account signals are already reflected in the company fit component via company_score — only prospect-scoped signals count here
 
 ---
 

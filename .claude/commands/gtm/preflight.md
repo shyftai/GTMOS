@@ -110,11 +110,15 @@ Workspace and optional campaign: $ARGUMENTS
 **Lists:**
 - [ ] lists/validated/ — at least one validated list file present
 - [ ] No records in the validated list that are on the suppression list
+- [ ] List is not expired — check `valid_until` column in validated list file. If today > valid_until: flag `[!] BLOCKING — validated list expired on {date}. Re-run /gtm:validate-list before shipping.`
+- [ ] Account suppression — check contact domains against `## Do not contact — companies` in SUPPRESSION.md
 
 **Copy:**
 - [ ] copy/approved/ — at least one approved sequence present
 - [ ] Physical address appears in sequence footer
 - [ ] Unsubscribe language present
+- [ ] Approval marker present — each file in copy/approved/ must contain `<!-- approved:` marker. If missing: flag `[!] BLOCKING — approved copy is missing its approval marker. Re-approve via /gtm:write.`
+- [ ] Copy integrity — check that approved copy files have not been modified after their approval timestamp. If `Last modified` > approval timestamp in the marker: flag `[~] WARNING — approved copy has been edited since approval. Re-approve before shipping.`
 
 10. Add campaign results to the preflight display with a campaign section:
 ```

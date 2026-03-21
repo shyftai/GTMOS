@@ -65,6 +65,7 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 |---------|---------|-------------|
 | Execution mode | interactive | workspace.config.md |
 | Collaboration mode | solo | workspace.config.md |
+| Scoring mode | company-first | workspace.config.md |
 
 ## List quality defaults
 
@@ -80,11 +81,20 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 
 | Setting | Default | Override in |
 |---------|---------|-------------|
-| Company fit weight | 30% | RULES.md `## Lead scoring overrides` |
+| Scoring mode | company-first | workspace.config.md |
+| Account score — strategic fit weight | 35% | RULES.md `## Lead scoring overrides` |
+| Account score — timing signals weight | 30% | RULES.md |
+| Account score — relationship depth weight | 20% | RULES.md |
+| Account score — data quality weight | 15% | RULES.md |
+| Account tier gate for prospect enrichment | B-tier and above (account_score ≥ 60) | RULES.md |
+| Company fit weight (prospect, company-first) | Replaced by account_score × 0.30 | Non-overridable in company-first mode |
+| Company fit weight (prospect, people-first) | 30% | RULES.md |
 | Persona fit weight | 25% | RULES.md |
-| Signal strength weight | 20% | RULES.md |
+| Signal strength weight (prospect-level only) | 20% | RULES.md |
 | Data quality weight | 15% | RULES.md |
 | Engagement weight | 10% | RULES.md |
+| ICP ceiling — icp_score 2 | Max prospect score: 79 | Non-overridable |
+| ICP ceiling — icp_score 1 | Max prospect score: 59 | Non-overridable |
 | Hot tier threshold | 80+ | RULES.md |
 | Reject tier threshold | 0-19 | RULES.md |
 
@@ -114,10 +124,11 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Paginate all results | Yes — always fetch all pages | RULES.md |
 | Write to cache after each page | Yes — immediate write | Non-overridable |
 | Log every scrape in SCRAPE-JOURNAL.md | Yes | Non-overridable |
+| **Scrape type tagging** | **Required — every scrape must declare `type: company \| person`** | **Non-overridable** |
 | Resume in-progress scrapes on startup | Yes — check and report | Non-overridable |
 | Supabase sync (team mode) | Metadata only, raw data stays local | RULES.md |
 | Enrichment dedup cache | Check before every enrichment call | Non-overridable |
-| Cache file naming | `{date}_{tool}_{angle-slug}_{id}.md` | RULES.md |
+| Cache file naming | `{date}_{tool}_{type}_{angle-slug}_{id}.md` | RULES.md |
 
 ## Compliance defaults
 

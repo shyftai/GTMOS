@@ -35,13 +35,19 @@ Run and display all checks before shipping:
 ┃                                            ┃
 ┃  List                                      ┃
 ┃  [x] Validated list exists in lists/validated/
-┃  [x] Suppression list checked — 0 matches  ┃
+┃  [x] Suppression check passed (workspace)  ┃
+┃  [x] Suppression check passed (global)     ┃
+┃  [x] Account suppression passed            ┃
+┃  [x] List not expired — valid until {date} ┃
 ┃  [x] No duplicates against other campaigns ┃
 ┃  [x] All emails verified                   ┃
 ┃  [x] Record count: {n}                     ┃
 ┃                                            ┃
 ┃  Copy                                      ┃
 ┃  [x] Approved sequence in copy/approved/   ┃
+┃  [x] Approval marker present               ┃
+┃  [x] Copy integrity verified (not edited   ┃
+┃      since approval)                       ┃
 ┃  [x] Five-check validation passed          ┃
 ┃  [x] Personalization variables valid        ┃
 ┃  [x] Booking link set: {url}               ┃
@@ -107,7 +113,10 @@ Run and display all checks before shipping:
    - Update campaign.config.md status to "active"
    - Update PIPELINE.md — move all contacts to "Contacted" stage
    - Log ship event in logs/decisions.md
-   - Copy shipped list to lists/shipped/
+   - Copy shipped list to lists/shipped/ — add these columns to the shipped CSV:
+     - `shipped_at`: ISO datetime of this ship action
+     - `sequence_name`: name of the approved sequence used
+     - `legitimate_interest_basis`: value from SUPPRESSION.md `## Legitimate interest documentation` — required for GDPR compliance audit. If GDPR is OFF, write "N/A". If GDPR is ON and basis is not documented, block ship.
 
 13. Display confirmation and suggest next actions:
 ```

@@ -6,6 +6,26 @@ This file accumulates intelligence from every campaign, deep dive, debrief, and 
 
 ---
 
+## Entry schema
+
+Every learning entry must include these fields:
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `date` | Yes | ISO date when the insight was logged (YYYY-MM-DD) |
+| `campaign` | Yes | Campaign name or "cross-campaign" |
+| `type` | Yes | icp / persona / copy / channel / signal / objection / anti |
+| `signal` | Yes | The specific observation or data point (what you saw) |
+| `context` | Yes | What was happening when this signal was observed |
+| `result` | Yes | What happened as a result (metric, outcome, or pattern) |
+| `source` | Yes | Where the data came from (debrief, reply analysis, A/B test, etc.) |
+| `confidence` | Yes | High (50+ data points), Medium (10–49), Low (1–9) |
+| `do_not_repeat` | Anti only | Explicit rule: what to avoid and in what context |
+
+**When updating this file:** always append new entries — never overwrite existing ones. Tag source as `{source type} — {campaign} — {date}` in the Source column.
+
+---
+
 ## Wins
 
 Meeting bookings with full context — the highest-signal data in this file. Logged automatically by `/gtm:post-meeting`.

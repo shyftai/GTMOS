@@ -10,6 +10,20 @@ This list takes absolute priority over any list, campaign, or signal.
 
 ---
 
+## Do not contact — companies
+
+Companies on this list block ALL contacts at that domain from being contacted in any campaign in this workspace. Applies regardless of the individual contact's status.
+
+Use for: former clients with bad exits, legal disputes, competitors, investor relations sensitivities, or explicit account-level requests.
+
+| Domain | Company name | Date added | Reason | Added by |
+|--------|-------------|------------|--------|----------|
+| | | | competitor / legal / former-client / manual | |
+
+**Ship check:** before shipping any campaign, check every contact's email domain against this list. If any match is found, remove the contact from the campaign list without logging their details — just report "Removed: {n} contacts from blocked companies."
+
+---
+
 ## Active regulations
 
 Optional. All regulations are OFF by default. Enable what you need with `/gtm:compliance`, or ignore entirely.

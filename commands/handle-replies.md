@@ -20,6 +20,13 @@ Classify as one of seven types:
 - Unsubscribe — explicit opt-out request or opt-out language
 - Competitor mention — references a competing tool or vendor they use
 
+Then assign a confidence level:
+- **High** — signal is unambiguous (one clear interpretation)
+- **Medium** — most likely classification but some ambiguity
+- **Uncertain** — reply is unclear; two or more classifications are plausible
+
+**Uncertain replies:** do NOT draft a response. Show the quoted reply and both possible classifications. Ask the operator to decide before any draft is created. Flag in the log as `Uncertain — pending human decision`.
+
 ### 3. Default action per type
 
 **Positive:**
