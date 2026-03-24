@@ -18,7 +18,7 @@ npm install -g @anthropic-ai/claude-code
 
 ### Get started
 ```
-git clone https://github.com/crispy-sh/GTMOS.git
+git clone https://github.com/shyftai/GTMOS.git
 cd GTMOS
 claude
 ```
