@@ -39,7 +39,7 @@ SLACK_USER_ID = "U09PNFX6G5T"
 SALESFORCE_SOURCE = "salesforce_rest_api__pipedream"
 SLACK_SOURCE = "slack_direct"
 INACTIVITY_THRESHOLD_DAYS = 7
-TODAY = datetime.utcnow().date()
+TODAY = datetime.now(datetime.UTC).date()
 
 
 # ---------------------------------------------------------------------------
@@ -48,12 +48,12 @@ TODAY = datetime.utcnow().date()
 
 def call_external_tool(source_id: str, tool_name: str, params: dict) -> dict:
     """Call an external tool via the external-tool CLI."""
-    cmd = [
-        "external-tool", "call",
-        "--source", source_id,
-        "--tool", tool_name,
-        "--input", json.dumps(params),
-    ]
+    payload = json.dumps({
+        "source_id": source_id,
+        "tool_name": tool_name,
+        "arguments": params,
+    })
+    cmd = ["external-tool", "call", payload]
     try:
         result = subprocess.run(
             cmd, capture_output=True, text=True, timeout=60
@@ -83,9 +83,19 @@ def soql_query(query: str) -> list:
         "salesforce_rest_api-soql-query",
         {"query": query},
     )
-    # Pipedream wraps results — handle both flat and nested shapes
+    if resp is None:
+        print("WARNING: SOQL query returned null — check Salesforce connection", file=sys.stderr)
+        return []
+    # Pipedream may wrap results as a JSON string
+    if isinstance(resp, str):
+        try:
+            resp = json.loads(resp)
+        except json.JSONDecodeError:
+            return []
+    # Handle both flat and nested shapes
     if isinstance(resp, dict):
-        return resp.get("records", resp.get("result", {}).get("records", []))
+        records = resp.get("records", resp.get("result", {}).get("records", []))
+        return records if records else []
     if isinstance(resp, list):
         return resp
     return []
@@ -98,8 +108,15 @@ def get_current_user_id() -> str:
         "salesforce_rest_api-get-user-info",
         {},
     )
+    if resp is None:
+        return ""
+    if isinstance(resp, str):
+        try:
+            resp = json.loads(resp)
+        except json.JSONDecodeError:
+            return ""
     if isinstance(resp, dict):
-        return resp.get("user_id", resp.get("Id", ""))
+        return resp.get("user_id", resp.get("userId", resp.get("Id", "")))
     return ""
 
 
@@ -108,7 +125,7 @@ def send_slack_dm(user_id: str, text: str) -> None:
     call_external_tool(
         SLACK_SOURCE,
         "slack_send_message",
-        {"channel_id": user_id, "text": text},
+        {"channel_id": user_id, "message": text},
     )
 
 
