@@ -29,7 +29,7 @@ Designed to run as a Monday morning cron job.
 import json
 import subprocess
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 # ---------------------------------------------------------------------------
@@ -39,7 +39,7 @@ SLACK_USER_ID = "U09PNFX6G5T"
 SALESFORCE_SOURCE = "salesforce_rest_api__pipedream"
 SLACK_SOURCE = "slack_direct"
 INACTIVITY_THRESHOLD_DAYS = 7
-TODAY = datetime.now(datetime.UTC).date()
+TODAY = datetime.now(timezone.utc).date()
 
 
 # ---------------------------------------------------------------------------
