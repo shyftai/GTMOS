@@ -32,6 +32,7 @@ Workspace, optional campaign, optional --velocity: $ARGUMENTS
 ┃  Replied        ██                    11    ┃
 ┃  Positive       █                     6     ┃
 ┃  Meeting        █                     4     ┃
+┃  Held           █                     3     ┃
 ┃  Qualified      █                     3     ┃
 ┃  Proposal       █                     2     ┃
 ┃  Won            ░                     0     ┃
@@ -43,6 +44,7 @@ Workspace, optional campaign, optional --velocity: $ARGUMENTS
    - Yellow: at benchmark average
    - Red: below benchmark average
 6. Show revenue attribution if deals exist
+6b. **Campaign attribution** (join the touch ledger with CRM opps — see attribution-ledger.md): rank campaigns by **sourced** pipeline/revenue (one campaign per opp; sums to the total) and show **influenced** pipeline (every campaign that touched the account in-window — flagged non-additive, never summed). With `--campaign`, show that campaign's sourced-vs-influenced split.
 7. Show lost-deal analysis if any closed-lost
 8. Flag any stage with unusual drop-off
 9. **Velocity summary** (always shown — the high-signal subset of the deep pass below):

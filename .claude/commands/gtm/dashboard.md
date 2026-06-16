@@ -13,6 +13,7 @@ Workspace: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/BENCHMARKS.md
 @./.claude/gtmos/references/sending-calendar.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -29,6 +30,7 @@ Workspace: $ARGUMENTS
 **Active campaigns:**
 - List all campaigns with status (draft / active / paused / complete)
 - For active campaigns: days running, contacts shipped, current reply rate
+- **Sourced pipeline per campaign** (top few) from the attribution-ledger join — the standing scoreboard for which campaigns drive pipeline (full detail in `/gtm:pipeline`)
 
 **Campaign roadmap:**
 - Load ROADMAP.md — show planned campaigns with target start dates
@@ -57,6 +59,11 @@ Check for items that need human attention:
   Campaigns
     {campaign-1}   ACTIVE   Day 8    Reply: 4.2%    3 meetings
     {campaign-2}   DRAFT    —        —              —
+
+  Sourced pipeline (top campaigns)
+    {campaign-1}   $48k sourced · $112k influenced
+    {campaign-2}   $0 sourced
+    {full detail: /gtm:pipeline {ws}}
 
   To-dos ({n} open)
     !! Rotate out inbox-3 — bounce rate 4.2%          Urgent   Health check

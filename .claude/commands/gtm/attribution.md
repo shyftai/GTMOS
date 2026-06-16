@@ -13,6 +13,7 @@ Workspace and optional campaign: $ARGUMENTS
 @./commands/attribution.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/api-reference.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -24,8 +25,8 @@ Workspace and optional campaign: $ARGUMENTS
    - If no campaign name: cross-campaign comparison for the workspace
 
 **Single-campaign attribution:**
-5. Load campaign performance/results.md, PIPELINE.md, COSTS.md, performance/attribution.md
-6. Pull data from CRM: deal values, deal stages, won/lost dates, associated contacts
+5. Load campaign performance/results.md, PIPELINE.md, COSTS.md, performance/attribution.md, and the touch ledger (attribution-ledger.md)
+6. Pull data from CRM: deal values, stages, won/lost dates, associated contacts (by account). Split into **sourced** (opps this campaign originated — first qualified touch on the account) and **influenced** (opps where this campaign touched the account in-window but did not source) — report both, with influenced flagged as non-additive.
 7. Pull data from sending tools: campaign metrics, touch-level reply data, reply classifications
 8. Pull LinkedIn data from Crispy if active: acceptance rates, reply data per step
 9. Calculate all attribution metrics using the workspace's chosen model:
@@ -40,9 +41,10 @@ Workspace and optional campaign: $ARGUMENTS
 **Cross-campaign comparison:**
 5. Load all campaign directories in the workspace
 6. For each campaign, load performance/results.md, PIPELINE.md, COSTS.md, performance/attribution.md
-7. Aggregate metrics per campaign: contacts, cost, meetings, deals, revenue, ROI, cost/meeting
-8. Display comparison table in GTM:OS box format
-9. Flag the top performer (highest ROI) and underperformer (lowest ROI or no deals)
+6b. Load the touch ledger (attribution-ledger.md) and CRM opportunities, then compute the join: **sourced** pipeline/revenue per campaign (first qualified touch on the account — sums to the true total) and **influenced** pipeline per campaign (every campaign that touched the account in-window — non-additive, never summed to a total)
+7. Aggregate metrics per campaign: contacts, cost, meetings, deals, sourced revenue, influenced revenue, ROI, cost/meeting
+8. Display two rankings in GTM:OS box format — **Sourced $ (headline, sums to total)** and **Influenced $ (participation lens, flagged non-additive)**
+9. Flag the top performer (highest sourced ROI) and underperformer (lowest sourced ROI or no sourced deals)
 
 **Both modes:**
 13. Suggest next actions:

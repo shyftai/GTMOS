@@ -13,6 +13,7 @@ Workspace, campaign, and report type: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/BENCHMARKS.md
 @./.claude/gtmos/references/report-template.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -32,6 +33,7 @@ Workspace, campaign, and report type: $ARGUMENTS
 
    **Monthly report:**
    - All weekly metrics aggregated
+   - **Pipeline by campaign** — sourced pipeline/revenue per campaign (ranked), plus influenced pipeline (non-additive — see attribution-ledger.md)
    - Funnel conversion rates with benchmark comparison
    - A/B test results and actions taken
    - Top performing angles/touches
@@ -42,7 +44,7 @@ Workspace, campaign, and report type: $ARGUMENTS
    **Final report:**
    - Full campaign summary
    - Complete funnel analysis
-   - Revenue attribution
+   - Revenue attribution — sourced + influenced by campaign (see attribution-ledger.md)
    - ROI calculation
    - What worked / what didn't
    - Recommendations for next campaign
