@@ -12,6 +12,7 @@ Workspace: $ARGUMENTS
 <execution_context>
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/BENCHMARKS.md
+@./.claude/gtmos/references/infrastructure-provisioning.md
 </execution_context>
 
 <process>
@@ -58,6 +59,7 @@ Workspace: $ARGUMENTS
 
   >> Next: /gtm:health {workspace} {campaign}
      Also: /gtm:warmup {workspace}
+     Set up new infra: /gtm:provision {workspace}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```

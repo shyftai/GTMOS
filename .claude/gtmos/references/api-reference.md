@@ -1269,6 +1269,34 @@ Content-Type: application/json
 
 ---
 
+## Infrastructure Provisioning
+
+Used by `/gtm:provision` (see infrastructure-provisioning.md). Every buy/DNS/credential step is a hard gate; never write `.env` without confirmation.
+
+### Cloudflare — registrar + DNS (api.cloudflare.com/client/v4)
+Auth: `Authorization: Bearer ${CLOUDFLARE_API_TOKEN}` (scope: Registrar + DNS edit only). Account: `${CLOUDFLARE_ACCOUNT_ID}`.
+- Availability + price: `GET /accounts/{account_id}/registrar/domains?name=<domain>` — check before the buy gate
+- Register domain: `POST /accounts/{account_id}/registrar/domains` — 🔒 spend (buy gate)
+- Tracking CNAME: `POST /zones/{zone_id}/dns_records` → `{type:"CNAME", name:"track", content:"<sending-tool tracking host>", proxied:false}`
+- Cloudflare Registrar covers supported gTLDs; if a domain can't be registered there, fall back to another registrar and point DNS at the inbox provider.
+
+### Zapmail — inboxes + DNS (api.zapmail.ai/api/v2)
+Auth headers: `x-auth-zapmail`, `x-workspace-key`, `x-service-provider`.
+- Provision mailboxes on a domain (links Google Workspace, auto-sets SPF/DKIM/DMARC, names mailbox, optional AI photo) — 🔒 spend
+- Update mailbox: `PUT /mailboxes` with `mailboxData[]` → `firstName`, `lastName`, `profilePicture` (URL) / `removeProfilePicture`
+- Get mailbox: `GET /mailboxes?id=<id>`
+- Connect to Smartlead via one-click OAuth export; with API key, warmup is controllable from Zapmail
+
+### InboxKit — inboxes + DNS + sequencer attach (api.inboxkit.com/v1/api)
+Auth: Bearer (JWT), header `X-Workspace-Id`.
+- Buy + provision (optionally pre-attached to a sequencer): `POST /prewarm/buy-domain` → `{domains:[{domain|domain_id, mailboxes:[{username|email, first_name, last_name, profile_picture (base64 or URL)}]}], sequencer_uid, keep_warming:true}` — 🔒 spend. Auto-configures SPF/DKIM/DMARC and auto-connects to Smartlead/Instantly (SmartSenders).
+
+### Smartlead — warmup + attach (server.smartlead.ai/api/v1)
+Auth: `?api_key=${SMARTLEAD_API_KEY}` (query param).
+- Enable/update warmup: `POST /email-accounts/{id}/warmup` → `{warmup_enabled:true, total_warmup_per_day:<=40, daily_rampup, reply_rate_percentage}` — keep on permanently
+- Bulk warmup update for all mailboxes at once
+- Mailboxes provisioned via Zapmail/InboxKit auto-connect (SmartSenders) — no manual IMAP/SMTP
+
 ## Notes
 
 - Always check remaining credits/balance before batch operations

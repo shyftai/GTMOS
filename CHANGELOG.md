@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Added
+- **Infrastructure provisioning** (`/gtm:provision`, `.claude/gtmos/references/infrastructure-provisioning.md`) — stand up sending infrastructure from just sender identities (LinkedIn URLs → Crispy name/title/photo). Suggests + ranks outbound domains (Cloudflare Registrar), provisions inboxes with photos + provider-managed DNS (Zapmail default, InboxKit adapter), sets the Cloudflare tracking CNAME, auto-attaches to the sequencer (Smartlead SmartSenders), and enables warmup — fresh inboxes only, no pre-warmed. **Stage 1 produces a costed plan and stops at the purchase gate (no spend);** Stage 2 executes the buy/provision/DNS/attach/warmup flow, every step hard-gated and written to an idempotent `logs/provision-journal.md` (resumable, never double-buys). Records into INFRASTRUCTURE.md, feeding `/gtm:infra`, `/gtm:warmup`, and the ship launch-check. New `.env` keys (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `ZAPMAIL_API_KEY`, `INBOXKIT_API_KEY`); API endpoints in `api-reference.md` under "Infrastructure Provisioning".
+
 ## [1.4.1] — 2026-03-10
 
 ### Added

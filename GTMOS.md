@@ -115,6 +115,7 @@ Then show the quick commands reference:
   │                                                │
   │  Start      /gtm:today · /gtm:dashboard        │
   │  Setup      /gtm:onboard · /gtm:research       │
+  │             /gtm:provision                      │
   │  Build      /gtm:list-brief · /gtm:enrich      │
   │             /gtm:write · /gtm:personalize       │
   │  Ship       /gtm:ship · /gtm:warm-intro         │

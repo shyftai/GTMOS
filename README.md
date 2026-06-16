@@ -508,6 +508,9 @@ Identify companies (and people) visiting your website, cross-reference against I
 ### Competitor monitoring
 `/gtm:watch-competitors` actively tracks competitor pricing pages, messaging, hiring patterns, and news using Exa and Firecrawl. Surfaces actionable signals — "Competitor X raised prices 61%" → triggers a displacement campaign suggestion.
 
+### Infrastructure provisioning
+`/gtm:provision` stands up sending infrastructure from just your senders' LinkedIn URLs — suggests and reserves outbound domains, provisions inboxes with photos and DNS auth, attaches them to your sequencer, and starts warmup. Stage 1 produces a costed plan with no spend; you approve the domain shortlist and the spend, then walk away. Cloudflare (registrar + tracking domain), Zapmail/InboxKit (inboxes + DNS), Crispy (sender identity), Smartlead (warmup). Fresh inboxes, no pre-warmed.
+
 ### Inbox health
 `/gtm:inbox-health` monitors deliverability proactively — bounce rates per inbox, warmup status, domain reputation, DNS issues. Catches problems before they hurt campaigns.
 
@@ -615,6 +618,7 @@ GTM:OS ships with sensible defaults for everything:
 ### Infrastructure
 | Command | What it does |
 |---------|-------------|
+| `/gtm:provision <ws> [linkedin-urls]` | Provision domains, DNS, inboxes, and warmup from sender identities (Stage 1 = costed plan, no spend) |
 | `/gtm:infra <ws>` | Check sending infrastructure and DNS |
 | `/gtm:warmup <ws>` | Check inbox warmup status |
 | `/gtm:pipeline <ws>` | View CRM pipeline and conversions |
