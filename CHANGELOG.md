@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Changed
+- **`/gtm:prep-meeting` upgraded** — now adapts to meeting type (discovery / demo / negotiation / QBR / check-in), produces a suggested agenda and an explicit call goal, preps multiple attendees, and pulls prior-call transcripts (Fireflies) + internal team-chat context (Slack) when connected. Keeps the existing ICP-fit scoring, learnings-based objection prep, and "Do NOT mention" guardrail.
+
 ## [1.4.1] — 2026-03-10
 
 ### Added
