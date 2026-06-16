@@ -37,11 +37,13 @@ Customer-facing, this is: *paste sender URLs → approve the domain shortlist �
 
 ---
 
-## Two stages
+## Two runtime modes
 
-**Stage 1 — plan only (no spend).** `/gtm:provision` resolves senders, discovers + ranks domains, and produces a **costed provisioning plan**, then **stops at the purchase gate**. Nothing is bought, no DNS is written, no `.env` is touched. This is the default until real keys are in and one provider has been smoke-tested.
+GTM:OS is bring-your-own-keys — `/gtm:provision` is a complete, first-class command (like `/gtm:ship` pushing to a sending tool). It acts whenever the operator's provider keys are present; safety is the hard gates + journal at run time, not a build-time switch.
 
-**Stage 2 — execution (gated).** With provider keys present and confirmed, the execution legs run — purchase → provision → DNS → attach → warmup — each behind its own hard gate, recorded in the provisioning journal.
+**Plan mode (no spend).** When provider keys aren't configured — or any time you want a dry run — `/gtm:provision` resolves senders, discovers + ranks domains, and produces a **costed provisioning plan**, then **stops at the purchase gate**. Nothing is bought, no DNS is written, no `.env` is touched.
+
+**Execute mode (gated).** When the operator's provider keys are present and they approve at the purchase gate, the execution legs run — purchase → provision → DNS → attach → warmup — each behind its own hard gate, recorded in the provisioning journal. Live domain availability/pricing also needs the registrar key; without it, plan mode estimates from `tool-pricing.md`.
 
 ---
 
