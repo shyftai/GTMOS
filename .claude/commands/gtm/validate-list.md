@@ -17,6 +17,7 @@ Workspace and file: $ARGUMENTS
 @./.claude/gtmos/references/lead-scoring.md
 @./.claude/gtmos/references/list-quality-scorecard.md
 @./.claude/gtmos/references/enrichment-waterfall.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -33,6 +34,7 @@ Workspace and file: $ARGUMENTS
    - Deduplication: exact email match, fuzzy company match
    - Suppression check: remove any matches from SUPPRESSION.md
    - Cross-campaign check: flag contacts in other active campaigns
+   - **Re-contact eligibility check** (see RULES.md `## Re-engagement policy` + attribution-ledger.md): for any contact already in the touch ledger, compute `eligible_again_at = last_contacted_at + cooldown(last_outcome)`. Remove contacts still in cooldown (log the count, not names); permanently-suppressed outcomes (unsubscribe, hard bounce, erasure) are always removed; a fresh qualifying signal or a job change overrides the cooldown and keeps the contact eligible
 4. Display cleaning summary
 5. Show flagged records for review before proceeding
 

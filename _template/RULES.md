@@ -49,3 +49,13 @@
 - Follow-up message: max 50 words, reference something specific, never generic
 - No links or attachments in first message
 - Use Crispy for LinkedIn automation — supports MCP integration with Claude Code
+
+## Re-engagement policy
+
+When contacts become eligible to be contacted again. The outcome-tiered defaults (standard = 100 days) live in `.claude/gtmos/references/defaults.md` `## Re-engagement defaults`; this section overrides them for this workspace. Eligibility is computed from the touch ledger (`eligible_again_at`) and enforced at `/gtm:validate-list` and `/gtm:ship`.
+
+- Standard cooldown (no-reply): 100 days
+- Tier overrides (optional): e.g. "Hard 'not interested': 270 days instead of signal-only"
+- Account-level frequency cap: off  (set e.g. "30 days" to avoid hammering one account via different contacts)
+- Never re-contact: unsubscribe, hard bounce, erasure (permanent — not overridable)
+- Signal / job-change override: on  (a fresh qualifying signal or a job change jumps the cooldown)

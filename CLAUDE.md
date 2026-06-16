@@ -22,6 +22,7 @@ Do not respond to the user's first message until the boot sequence is complete a
 - `.claude/gtmos/references/csv-format.md` — standard list format (load before list operations)
 - `.claude/gtmos/references/lead-scoring.md` — weighted scoring model (load before validation)
 - `.claude/gtmos/references/list-quality-scorecard.md` — list-level quality grade (load before shipping a list)
+- `.claude/gtmos/references/attribution-ledger.md` — touch ledger + sourced/influenced attribution (load before pipeline, attribution, reporting, or re-engagement)
 - `.claude/gtmos/references/enrichment-waterfall.md` — cascading enrichment logic (load before enrichment)
 - `.claude/gtmos/references/lead-sources.md` — sourcing playbooks (load before list building)
 - `.claude/gtmos/references/positive-reply-scoring.md` — north-star metric + reply classification (load before reporting on results)

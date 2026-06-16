@@ -11,7 +11,8 @@ Define every stage a contact moves through from first outreach to closed-won/los
 | Replied — Positive | Interested reply received | Positive reply classification | Meeting booked or disqualified |  |
 | Replied — Negative | Not interested | Negative reply classification | Moved to closed-lost |  |
 | Replied — Objection | Pushback, needs handling | Objection reply classification | Objection resolved or disqualified |  |
-| Meeting Booked | Call or demo scheduled | Calendar invite confirmed | Meeting completed |  |
+| Meeting Booked | Call or demo scheduled | Calendar invite confirmed | Meeting held or no-show |  |
+| Meeting Held | Meeting actually happened (not a no-show/reschedule) | Attendee showed | Qualified or disqualified |  |
 | Qualified | Meets buying criteria after meeting | Discovery call completed | Proposal sent or disqualified |  |
 | Proposal Sent | Pricing or proposal delivered | Proposal email sent | Verbal yes/no or follow-up |  |
 | Negotiation | Terms being discussed | Counter-proposal or questions | Agreement or walk-away |  |
@@ -21,6 +22,8 @@ Define every stage a contact moves through from first outreach to closed-won/los
 ---
 
 ## Attribution model
+
+Touch-level lineage and the **sourced-vs-influenced** model live in `.claude/gtmos/references/attribution-ledger.md` — GTM:OS is the system of record for touches, the CRM owns opportunities, and campaign pipeline is the join. Per-contact `source_campaign`, `last_contacted_at`, and `last_outcome` are derived from the touch ledger (`logs/touch-ledger.csv`).
 
 ### First touch attribution
 Every deal traces back to the campaign and touch that generated the first reply.
@@ -52,8 +55,9 @@ Track conversion rates between each stage per campaign.
 | List → Contacted | Contacted / Shipped list | 100% | |
 | Contacted → Reply | Replies / Contacted | 3-5% | |
 | Reply → Positive | Positive replies / Total replies | 40-60% | |
-| Positive → Meeting | Meetings / Positive replies | 60-80% | |
-| Meeting → Qualified | Qualified / Meetings | 50-70% | |
+| Positive → Booked | Meetings booked / Positive replies | 60-80% | |
+| Booked → Held | Meetings held / Meetings booked | 70-85% | |
+| Held → Qualified | Qualified / Meetings held | 50-70% | |
 | Qualified → Proposal | Proposals / Qualified | 70-90% | |
 | Proposal → Won | Won / Proposals | 20-40% | |
 | **Full funnel** | Won / Shipped list | 0.5-2% | |
@@ -68,10 +72,10 @@ Track conversion rates between each stage per campaign.
 ## CRM sync rules
 
 ### What gets pushed to CRM (Attio)
-- New contacts from validated lists → create contact record
+- New contacts from validated lists → create contact record (stamp `source_campaign`)
 - Campaign tag → add to contact
 - Reply classification → update contact status field
-- Meeting booked → create deal, set stage
+- Meeting booked → create deal, set stage, **stamp `source_campaign` + first-touch metadata on the deal** (see attribution-ledger.md — this is the lineage that makes campaign attribution reliable when sales works the deal)
 - Stage changes → update deal stage
 - Unsubscribe → set do-not-contact flag
 
@@ -91,7 +95,7 @@ Track conversion rates between each stage per campaign.
 
 ## Pipeline velocity
 
-Track how long deals spend in each stage. Updated during `/gtm:sync` and `/gtm:pipeline-velocity`.
+Track how long deals spend in each stage. Updated during `/gtm:sync` and `/gtm:pipeline --velocity`.
 
 ### Stage durations
 

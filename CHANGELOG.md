@@ -6,8 +6,15 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Added
+- **Attribution ledger** (`.claude/gtmos/references/attribution-ledger.md`) — a touch-level system of record (`logs/touch-ledger.csv` / Supabase `touch_ledger`) keyed by contact + account. Defines the **sourced vs influenced** model (influenced is non-additive), the attribution window, and the CRM-deal `source_campaign` stamp that turns campaign attribution into a reliable join. `/gtm:ship` now stamps `source_campaign` on each contact (first-touch wins) and appends `send` touches; `/gtm:contact` surfaces `source_campaign`, `last_outcome`, and `eligible_again_at`; `PIPELINE.md` carries `source_campaign` onto the deal at creation.
+- **Sourced + influenced campaign rankings** — `/gtm:pipeline`, `/gtm:attribution`, `/gtm:report`, and `/gtm:dashboard` now rank campaigns by **sourced** pipeline (one campaign per opp, sums to total) and show **influenced** pipeline (non-additive participation lens), computed as the ledger × CRM-opp join.
+- **Held-vs-booked meeting stage** — the pipeline funnel now distinguishes meetings *booked* from meetings *held* (filtering no-shows/reschedules) for honest meeting→pipeline conversion; account-level attribution rollup is defined in attribution-ledger.md.
+- **Re-engagement eligibility** — re-contact cooldown raised to a **100-day standard** and made **outcome-tiered** (hard-no = signal-only; unsubscribe/hard-bounce/erasure = never; future-opportunity/OOO = date-driven), with signal/job-change overrides and an optional account frequency cap. Defined in `defaults.md`, overridable in `RULES.md` `## Re-engagement policy`, computed from the touch ledger (`eligible_again_at`), and **enforced workspace-wide** at `/gtm:validate-list` and `/gtm:ship` (non-overridable in auto mode) — not just inside `/gtm:re-engage`. Surfaced in `/gtm:today` and `/gtm:dashboard`.
+
 ### Changed
 - **`/gtm:prep-meeting` upgraded** — now adapts to meeting type (discovery / demo / negotiation / QBR / check-in), produces a suggested agenda and an explicit call goal, preps multiple attendees, and pulls prior-call transcripts (Fireflies) + internal team-chat context (Slack) when connected. Keeps the existing ICP-fit scoring, learnings-based objection prep, and "Do NOT mention" guardrail.
+- **`/gtm:pipeline-velocity` merged into `/gtm:pipeline`** — `/gtm:pipeline` now shows a velocity summary (score, stalled deals, bottleneck flag) by default, with `/gtm:pipeline --velocity` for the deep analysis (stage durations, velocity score, week-over-week trend) plus the PIPELINE.md write-back. The standalone `/gtm:pipeline-velocity` command is removed; all references redirect to `/gtm:pipeline --velocity`.
 
 ## [1.5.0] — 2026-06-16
 

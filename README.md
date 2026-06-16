@@ -623,9 +623,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:account-based <ws>` | Multi-thread a target account (ABM) |
 | `/gtm:audience-sync <ws>` | Push lists to LinkedIn/Meta/Google Ads |
 | `/gtm:ab-test <ws> <campaign>` | Set up, check, or resolve an A/B test |
-| `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes |
-| `/gtm:pipeline-velocity <ws>` | Track deal velocity and detect bottlenecks |
-| `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
+| `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes || `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
 | `/gtm:contact <ws> <email>` | View full contact history across all campaigns and channels |
 | `/gtm:watch-competitors <ws>` | Monitor competitor pricing, messaging, hiring, and news |
 | `/gtm:nurture <ws>` | Manage warm leads on a timer — track "not now" replies with follow-up dates |
@@ -645,7 +643,7 @@ GTM:OS ships with sensible defaults for everything:
 |---------|-------------|
 | `/gtm:infra <ws>` | Check sending infrastructure and DNS |
 | `/gtm:warmup <ws>` | Check inbox warmup status |
-| `/gtm:pipeline <ws>` | View CRM pipeline and conversions |
+| `/gtm:pipeline <ws> [--velocity]` | CRM pipeline — funnel, conversion, revenue attribution, and velocity (stalled deals, bottlenecks) |
 | `/gtm:domain-recovery <ws>` | Recover a damaged sending domain |
 | `/gtm:inbox-health <ws>` | Monitor inbox/domain health, warmup, bounce rates |
 

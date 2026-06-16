@@ -48,6 +48,7 @@ Workspace: $ARGUMENTS
 - Health check due (last one >7 days ago)
 - Debrief due (campaign completed, not yet debriefed)
 - Operating-rhythm tasks due today/this week per `weekly-rhythm.md` (Mon deliverability audit, Wed positive-reply sweep, Fri 21-day retrospectives, biweekly inbox rotation) — full cadence via `/gtm:rhythm {ws}`
+- Contacts now eligible to re-approach (cooldown expired per the re-engagement policy — see RULES.md) — `/gtm:re-engage {ws}`
 
 5. Display the daily briefing:
 ```
