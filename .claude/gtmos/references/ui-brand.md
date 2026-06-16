@@ -3,7 +3,7 @@
 ## System
 - **Name:** GTM:OS
 - **Full name:** The GTM Operating System
-- **Version:** v1.5.0
+- **Version:** v1.6.0
 - **By:** Shyft AI
 - **Tagline:** "Target it. Write it. Ship it. Optimize it."
 
