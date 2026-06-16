@@ -19,6 +19,7 @@ Do not respond to the user's first message until the boot sequence is complete a
 - `.claude/gtmos/references/spam-words.md` — banned wording + safe rewrites (load before writing or QA-ing copy)
 - `.claude/gtmos/references/spintax.md` — deliverability spintax rules (load before shipping)
 - `.claude/gtmos/references/api-reference.md` — API endpoints for all tools (load before API calls)
+- `.claude/gtmos/references/infrastructure-provisioning.md` — domain/DNS/inbox provisioning flow (load before /gtm:provision)
 - `.claude/gtmos/references/csv-format.md` — standard list format (load before list operations)
 - `.claude/gtmos/references/lead-scoring.md` — weighted scoring model (load before validation)
 - `.claude/gtmos/references/list-quality-scorecard.md` — list-level quality grade (load before shipping a list)

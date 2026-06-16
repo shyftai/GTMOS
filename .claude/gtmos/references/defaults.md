@@ -39,6 +39,21 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Warmup minimum before cold sending | 14 days (21 recommended) | INFRASTRUCTURE.md |
 | Inbox rotation | Enabled when >1 inbox | INFRASTRUCTURE.md |
 
+## Provisioning defaults
+
+For `/gtm:provision` (see infrastructure-provisioning.md).
+
+| Setting | Default | Override in |
+|---------|---------|-------------|
+| Registrar | Cloudflare (+ fallback registrar if TLD unsupported) | TOOLS.md |
+| Inbox provider | Zapmail (InboxKit selectable) | TOOLS.md |
+| DNS authority | Inbox provider (SPF/DKIM/DMARC); Cloudflare holds the tracking CNAME | infrastructure-provisioning.md |
+| Pre-warmed inboxes | Never — provision fresh and warm up | INFRASTRUCTURE.md |
+| Sender × domain | Every sender on every sending domain | provisioning plan |
+| Warmup ramp | ≤40/day, kept on permanently | INFRASTRUCTURE.md |
+| Spend / DNS / .env writes | Hard gate — stop even in auto mode | Non-overridable |
+| Provisioning journal | `logs/provision-journal.md` — resumable, never double-buy | Non-overridable |
+
 ## LinkedIn defaults
 
 | Setting | Default | Override in |
