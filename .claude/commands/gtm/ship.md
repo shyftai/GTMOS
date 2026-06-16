@@ -14,6 +14,10 @@ Workspace and campaign: $ARGUMENTS
 @./commands/validate-list.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/collaboration.md
+@./.claude/gtmos/references/list-quality-scorecard.md
+@./.claude/gtmos/references/spam-words.md
+@./.claude/gtmos/references/spintax.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -40,7 +44,9 @@ Run and display all checks before shipping:
 ┃  [x] Account suppression passed            ┃
 ┃  [x] List not expired — valid until {date} ┃
 ┃  [x] No duplicates against other campaigns ┃
+┃  [x] Re-contact eligibility passed         ┃
 ┃  [x] All emails verified                   ┃
+┃  [x] List quality grade ≥ C ({letter})     ┃
 ┃  [x] Record count: {n}                     ┃
 ┃                                            ┃
 ┃  Copy                                      ┃
@@ -49,6 +55,7 @@ Run and display all checks before shipping:
 ┃  [x] Copy integrity verified (not edited   ┃
 ┃      since approval)                       ┃
 ┃  [x] Five-check validation passed          ┃
+┃  [x] Spam word guard passed                ┃
 ┃  [x] Personalization variables valid        ┃
 ┃  [x] Booking link set: {url}               ┃
 ┃  [x] Unsubscribe link present              ┃
@@ -83,7 +90,11 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-9. If ANY check fails, stop and show what needs fixing — do not ship
+9. If ANY check fails, stop and show what needs fixing — do not ship. These gates are non-overridable even in auto mode:
+   - **List quality grade < C** (`list-quality-scorecard.md`) — route to fix the top issues and re-run `/gtm:score-list`. A grade of exactly C requires explicit acknowledgement.
+   - **Spam word guard fails** (`spam-words.md`) — route back to `/gtm:write` to rewrite flagged lines.
+   - **Re-contact eligibility** — remove any contact whose `eligible_again_at` is in the future, or who is permanently suppressed (unsubscribe/hard-bounce/erasure); log the count, not names. A fresh qualifying signal or a job change overrides the cooldown (see RULES.md `## Re-engagement policy`).
+   Optional pre-ship step: for email campaigns, offer to add deliverability spintax (`/gtm:spintax`) to the approved copy before pushing — applied to a copy of the approved sequence so the integrity marker stays intact.
 10. If all checks pass, show the shipping summary:
    - Tool: {sending tool}
    - Contacts: {count}
@@ -134,6 +145,7 @@ Run and display all checks before shipping:
    - Log cost transaction in COSTS.md
    - Update campaign.config.md status to "active"
    - Update PIPELINE.md — move all contacts to "Contacted" stage
+   - **Stamp source & append to the touch ledger** (see attribution-ledger.md): for each shipped contact, append a `send` row to `logs/touch-ledger.csv` (team mode: also the `touch_ledger` table) with `campaign_id`, `account_domain`, `touch_at`, `outcome: sent`. Set `source_campaign = {this campaign}` on any contact that has none yet — first touch wins.
    - **Write to pipeline_contacts (team mode):** update all shipped contacts:
      ```sql
      UPDATE pipeline_contacts
@@ -148,11 +160,12 @@ Run and display all checks before shipping:
      WHERE workspace_id = '{workspace_id}'
        AND email IN ({shipped_emails});
      ```
-     If the contact is not in `pipeline_contacts` yet, insert first with `stage = 'contacted'`, `touch_count = 1`.
+     If the contact is not in `pipeline_contacts` yet, insert first with `stage = 'contacted'`, `touch_count = 1`, `source_campaign = '{campaign}'` (only if not already set — first touch wins).
    - Log ship event in logs/decisions.md
    - Copy shipped list to lists/shipped/ — add these columns to the shipped CSV:
      - `shipped_at`: ISO datetime of this ship action
      - `sequence_name`: name of the approved sequence used
+     - `source_campaign`: the campaign that first touched each contact (first-touch wins) — carries onto the CRM deal at creation; see attribution-ledger.md
      - `legitimate_interest_basis`: value from SUPPRESSION.md `## Legitimate interest documentation` — required for GDPR compliance audit. If GDPR is OFF, write "N/A". If GDPR is ON and basis is not documented, block ship.
 
 13. Display confirmation and suggest next actions:

@@ -243,7 +243,7 @@ First campaign flow:
 **Head of Sales:**
 - `/gtm:dashboard $ARGUMENTS` — see what needs attention
 - `/gtm:deep-dive $ARGUMENTS` — analyze existing CRM and campaign data
-- `/gtm:pipeline-velocity $ARGUMENTS` — track stage durations and bottlenecks
+- `/gtm:pipeline $ARGUMENTS --velocity` — track stage durations and bottlenecks
 
 **Founder:**
 - `/gtm:research $ARGUMENTS` — research your market

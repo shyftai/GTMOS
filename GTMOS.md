@@ -10,7 +10,7 @@ On every startup, display this full boot sequence before doing anything else:
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S                             v1.4.0
+  G T M : O S                             v1.5.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -115,14 +115,18 @@ Then show the quick commands reference:
   │                                                │
   │  Start      /gtm:today · /gtm:dashboard        │
   │  Setup      /gtm:onboard · /gtm:research       │
+  │             /gtm:provision                      │
   │  Build      /gtm:list-brief · /gtm:enrich      │
   │             /gtm:write · /gtm:personalize       │
-  │  Ship       /gtm:ship · /gtm:warm-intro         │
+  │             /gtm:score-list · /gtm:spam-check   │
+  │  Ship       /gtm:spintax · /gtm:ship            │
   │  Manage     /gtm:replies · /gtm:signals         │
   │             /gtm:nurture · /gtm:inbox-health    │
+  │  Iterate    /gtm:reply-score · /gtm:experiment  │
+  │             /gtm:rhythm                          │
   │  Meetings   /gtm:prep-meeting · /gtm:handoff    │
   │  Intel      /gtm:contact · /gtm:watch-competitors│
-  │  Pipeline   /gtm:forecast · /gtm:pipeline-velocity│
+  │  Pipeline   /gtm:forecast · /gtm:pipeline         │
   │  Report     /gtm:report · /gtm:debrief          │
   │  Agency     /gtm:portfolio · /gtm:clone-campaign │
   │  More       /gtm:status for all commands        │
@@ -546,6 +550,7 @@ After every enrichment run, update hit rate tracking in TOOLS.md so the waterfal
 
 - Load the relevant template from commands/ before writing
 - Load `.claude/gtmos/references/cold-email-skill.md` for writing principles
+- Load `.claude/gtmos/references/spam-words.md` and scan every line against it — banned wording is a copy revision, not just a warning
 - Apply tone, angle, and CTA from BRIEFING.md — not from general knowledge
 - **Voice:** Write as a peer — a colleague sharing something useful, not a marketer pitching
 - **Subject lines:** 2-4 words, lowercase, no punctuation — must feel like an internal forward
@@ -553,12 +558,13 @@ After every enrichment run, update hit rate tracking in TOOLS.md so the waterfal
 - **Brevity:** First touch max 75 words, follow-ups max 50 words. C-suite: max 50 words on any touch.
 - **CTA:** One interest-based ask per touch ("Worth a look?" not "Book a demo")
 - **Angle rotation:** Each follow-up must use a DIFFERENT angle than the previous touch
-- **Banned:** "excited to share", "game-changing", "synergy", "leverage", "unlock", compliment openers
+- **Banned:** "excited to share", "game-changing", "synergy", "leverage", "unlock", compliment openers, and the full banlist in `spam-words.md` (single words, phrases, promotional/phishing wording, em dashes, ALL CAPS, silence-based closeouts)
 - Flag any claim not supported by BRIEFING.md before presenting
 - Only use personalization variables defined in PERSONALIZATION.md — never invent merge fields
 - Insert booking links from BOOKING.md — never guess or fabricate URLs
 - Append UTM parameters from BOOKING.md to all landing page links
 - For LinkedIn copy (via Crispy): max 50 words, no links in first message, more conversational
+- **Spintax (email only):** after copy is approved and before it ships, add deliverability spintax per `.claude/gtmos/references/spintax.md` via `/gtm:spintax` — never to drafts in review
 
 ---
 
@@ -637,6 +643,8 @@ When a reply is provided for handling:
 
 3. **Present for approval** — always. Never send a reply without explicit approval.
 4. **Log the classification and action** in campaign logs/decisions.md.
+
+**Scoring the replies (the metric that matters):** classification handles individual replies; to judge whether a campaign is actually working, compute **positive reply rate** (positive replies / total sent) — the north-star metric, not raw reply rate. See `.claude/gtmos/references/positive-reply-scoring.md` and run `/gtm:reply-score`. A high reply rate made of unsubscribes and "not a fit" is worse than a lower rate from real buyers.
 
 ---
 

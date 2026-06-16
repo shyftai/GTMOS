@@ -119,4 +119,26 @@ they can batch-approve with `>> Approve all` (only available after reviewing at 
 4. **Batch-approve requires sample review** — user must review at least 3 drafts before `Approve all` unlocks.
 5. **TOV and five-check validation runs per draft** — agents validate individually, orchestrator spot-checks.
 
+---
+
+## Approval-loop convergence (personalization)
+
+For per-lead personalization (`/gtm:personalize`, or any skill generating `situation_line` / `value_line` / `cta_soft` style fields), do not fan out across the whole list before the prompt is proven. Tune on a few, then scale. This is the default loop for personalization swarms.
+
+**Round 0 — sample on 1 lead.** Pick one lead with a rich `company_description`. Show the user the source data and what you would generate. Ask: "Does this feel right? Edit it and I'll re-tune."
+
+**Rounds 1-N — batch of 10 with approval.** Spawn one agent with the current prompt + 10 leads. Display all 10 in a table (lead, each generated field). Ask for edits by row. If the user has edits, fold them into the prompt as rules (e.g. "never use the word X") and re-run a fresh batch of 10.
+
+**Stop rule — converged.** The prompt is locked when the user gives **zero edits for 2 consecutive rounds**, or says "lock it, scale up." If an edit lands after two clean rounds, the counter resets and the loop continues.
+
+**Scale — full fan-out.** Once locked, split the remaining leads into batches of 10-20 and run the standard swarm (max parallel agents per `Batch Sizing`). Merge by `lead_id`.
+
+**Output discipline:**
+- Default to **3 fields maximum** per variant — fewer fields, less to go wrong.
+- For A/B/C angle testing, run one agent per variant per batch (Variant A leads with an observation, B with a transition, C with a question) — 3× the data from one list.
+- Every generated field is still subject to `spam-words.md`, `TOV.md`, and the five-check. Never ship a field containing placeholder text like "cannot be generated" — mark the lead `personalization_status: skipped` and fall back to static copy.
+- Save the locked prompt to the workspace (e.g. `context/personalization-prompt.md`) so later campaigns reuse it instead of re-tuning from scratch.
+
+**When not to loop:** under ~10-20 leads, personalize inline in the main conversation — fan-out overhead isn't worth it. For static copy (same email to everyone), skip personalization entirely.
+
 </swarm_architecture>

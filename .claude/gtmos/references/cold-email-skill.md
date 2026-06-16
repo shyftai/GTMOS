@@ -106,7 +106,7 @@ Run this against every email before presenting:
 | 3 | No "I" opener | First word is not "I" or company name |
 | 4 | Observation-led | Opens with something specific about them |
 | 5 | Single CTA | One ask, interest-based, low friction |
-| 6 | No spam words | No "excited", "thrilled", "game-changing", "synergy", "leverage", "unlock" |
+| 6 | No spam words | Passes the full guard in `spam-words.md` — no banned single words/phrases, promotional or phishing wording, em dashes, ALL CAPS, or silence-based closeouts (not just "excited"/"thrilled"/"game-changing") |
 | 7 | Subject line | 2-4 words, lowercase, no punctuation |
 | 8 | Angle rotation | Each touch uses a different angle than the previous |
 | 9 | Specificity | At least one specific detail (company name, role, signal, metric) |

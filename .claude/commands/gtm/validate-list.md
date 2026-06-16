@@ -15,7 +15,9 @@ Workspace and file: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/csv-format.md
 @./.claude/gtmos/references/lead-scoring.md
+@./.claude/gtmos/references/list-quality-scorecard.md
 @./.claude/gtmos/references/enrichment-waterfall.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -32,6 +34,7 @@ Workspace and file: $ARGUMENTS
    - Deduplication: exact email match, fuzzy company match
    - Suppression check: remove any matches from SUPPRESSION.md
    - Cross-campaign check: flag contacts in other active campaigns
+   - **Re-contact eligibility check** (see RULES.md `## Re-engagement policy` + attribution-ledger.md): for any contact already in the touch ledger, compute `eligible_again_at = last_contacted_at + cooldown(last_outcome)`. Remove contacts still in cooldown (log the count, not names); permanently-suppressed outcomes (unsubscribe, hard bounce, erasure) are always removed; a fresh qualifying signal or a job change overrides the cooldown and keeps the contact eligible
 4. Display cleaning summary
 5. Show flagged records for review before proceeding
 
@@ -112,7 +115,8 @@ Before scoring, check whether company-level fields are populated (industry, empl
     Lists older than 30 days are blocked at ship time.
 12. Sort by lead_score descending
 13. Save to lists/validated/ in GTM:OS standard CSV format — include all score columns and expiry columns
-14. Display list validation summary using ui-brand.md format — include score tier breakdown and expiry date:
+13b. **Run the list quality scorecard** (`list-quality-scorecard.md`) on the saved list — grade it A+ to F across the 8 list-level dimensions (verification coverage, duplicate emails, domain concentration, title relevance, bad-title detection, catch-all density, ICP fit, name quality). This is a list-level health grade, distinct from the per-contact lead scores above. Display the grade and top issues. Apply the ship gate: grade < C must not proceed to ship (route to fix the top 3 issues and re-run); grade C requires explicit acknowledgement; grade ≥ B is ship-ready. This gate is non-overridable in auto mode.
+14. Display list validation summary using ui-brand.md format — include score tier breakdown, list grade, and expiry date:
     ```
     Validated: {n} contacts  ·  Expires: {valid_until}  ·  Tiers: A:{n} B:{n} C:{n} D:{n} F:{n}
     ```

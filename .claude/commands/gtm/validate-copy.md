@@ -13,14 +13,16 @@ Workspace: $ARGUMENTS
 @./commands/validate-copy.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/cold-email-skill.md
+@./.claude/gtmos/references/spam-words.md
 </execution_context>
 
 <process>
 1. Display mode header: `<< GTM:OS // COPY LAB >>`
-2. Load workspace context — ICP.md, PERSONA.md, BRIEFING.md, TOV.md, RULES.md
+2. Load workspace context — ICP.md, PERSONA.md, BRIEFING.md, TOV.md, RULES.md (apply any `## Spam word overrides`)
 3. Check each touch against all rules
-4. Display five-check validation per touch using ui-brand.md format
-5. Flag violations inline with reason
-6. Suggest revised version for each flagged line
-7. Do not present as approved until all flags are resolved
+4. Run the spam word guard (`spam-words.md`) across every subject, body, and closeout line — flag banned single words/phrases, promotional/phishing wording, formatting bans, and silence-based closeouts. This is the deep scan behind quality check #6.
+5. Display five-check validation per touch using ui-brand.md format
+6. Flag violations inline with reason
+7. Suggest revised version for each flagged line (use the safe-replacement patterns for spam flags)
+8. Do not present as approved until all flags are resolved
 </process>

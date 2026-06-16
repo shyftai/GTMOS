@@ -26,7 +26,7 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Re-engagement sequence | 2 touches | campaign.config.md |
 | Signal-triggered sequence | 2-3 touches | campaign.config.md |
 | Interval between touches | 3-4 days | campaign.config.md |
-| Re-engagement gap | 60 days minimum | campaign.config.md |
+| Re-engagement gap (standard, no-reply) | 100 days | RULES.md `## Re-engagement policy` |
 | Breakup touch | Always last touch, zero pressure | write-sequence.md |
 
 ## Sending defaults
@@ -38,6 +38,21 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | Max cold emails per inbox per day | 40 | INFRASTRUCTURE.md |
 | Warmup minimum before cold sending | 14 days (21 recommended) | INFRASTRUCTURE.md |
 | Inbox rotation | Enabled when >1 inbox | INFRASTRUCTURE.md |
+
+## Provisioning defaults
+
+For `/gtm:provision` (see infrastructure-provisioning.md).
+
+| Setting | Default | Override in |
+|---------|---------|-------------|
+| Registrar | Cloudflare (+ fallback registrar if TLD unsupported) | TOOLS.md |
+| Inbox provider | Zapmail (InboxKit selectable) | TOOLS.md |
+| DNS authority | Inbox provider (SPF/DKIM/DMARC); Cloudflare holds the tracking CNAME | infrastructure-provisioning.md |
+| Pre-warmed inboxes | Never — provision fresh and warm up | INFRASTRUCTURE.md |
+| Sender × domain | Every sender on every sending domain | provisioning plan |
+| Warmup ramp | ≤40/day, kept on permanently | INFRASTRUCTURE.md |
+| Spend / DNS / .env writes | Hard gate — stop even in auto mode | Non-overridable |
+| Provisioning journal | `logs/provision-journal.md` — resumable, never double-buy | Non-overridable |
 
 ## LinkedIn defaults
 
@@ -155,6 +170,27 @@ Sensible defaults that apply out of the box. Every default can be overridden per
 | CASL consent tracking | Required when CASL is ON | SUPPRESSION.md (non-overridable) |
 | Right to erasure | Process within 30 days | SUPPRESSION.md (non-overridable) |
 | Regulation auto-detect | ON during onboarding | `/gtm:compliance` |
+
+## Re-engagement defaults
+
+When a contact becomes eligible to be contacted again, by last outcome. Standard = **100 days**. Override per workspace in RULES.md `## Re-engagement policy`. Eligibility is enforced at `/gtm:validate-list` and `/gtm:ship`, surfaced in `/gtm:today` and `/gtm:re-engage`, and computed from the touch ledger: `eligible_again_at = last_contacted_at + cooldown(last_outcome)` (see attribution-ledger.md).
+
+| Last outcome | Eligible again | Override in |
+|--------------|----------------|-------------|
+| No reply (finished sequence) | 100 days (new angle required) | RULES.md |
+| Soft "not now" (no date) | 180 days, or sooner on a new signal | RULES.md |
+| Hard "not interested" | Signal-only — no cold re-touch on a timer | RULES.md |
+| Objection, unresolved | 90 days or on signal | RULES.md |
+| Positive → lost, "wrong timing" | 90-120 days | RULES.md |
+| Positive → lost, "went competitor" | Competitor-switch signal only | RULES.md |
+| Future opportunity ("Q3") | Scheduled date via `/gtm:nurture` — not a cooldown | (date-driven) |
+| OOO | After return date (`/gtm:re-engage --ooo`) | (date-driven) |
+| Hard bounce | Never — until re-verified/changed | Non-overridable |
+| Unsubscribe / erasure / do-not-contact | Never — permanent, overrides all | Non-overridable |
+
+**Overrides that jump the cooldown:** a fresh qualifying buying signal, and especially a **job change** (eligible immediately at the new company), override the timer — the cooldown governs *cold* re-touch, not signal-driven outreach.
+
+**Account-level frequency cap:** off by default; when set in RULES.md, do not open a new campaign into an account touched in the last N days even via different contacts.
 
 ## Budget defaults
 

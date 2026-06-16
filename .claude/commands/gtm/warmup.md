@@ -12,11 +12,12 @@ Workspace: $ARGUMENTS
 <execution_context>
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/BENCHMARKS.md
+@./.claude/gtmos/references/infrastructure-provisioning.md
 </execution_context>
 
 <process>
 1. Display mode header: `<< GTM:OS // WARMUP STATUS >>`
-2. Load workspace INFRASTRUCTURE.md
+2. Load workspace INFRASTRUCTURE.md (inboxes provisioned via `/gtm:provision` are auto-attached to the sequencer and warmup-enabled — see infrastructure-provisioning.md)
 3. For each mailbox, display warmup progress:
 ```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

@@ -149,7 +149,7 @@ For each deal:
 
 14. Suggest actions to improve forecast:
 ```
-  >> Unblock stalled deals: /gtm:pipeline-velocity {ws}
+  >> Unblock stalled deals: /gtm:pipeline {ws} --velocity
   >> Check nurture list: /gtm:nurture {ws} --due
   >> Ship planned campaign early: /gtm:ship {ws} q2-expansion
 ```

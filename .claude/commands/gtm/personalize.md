@@ -13,6 +13,8 @@ Workspace and campaign: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/api-reference.md
 @./.claude/gtmos/references/cold-email-skill.md
+@./.claude/gtmos/references/spam-words.md
+@./.claude/gtmos/references/swarm.md
 </execution_context>
 
 <process>
@@ -59,6 +61,8 @@ Workspace and campaign: $ARGUMENTS
 
   >> Proceed? (y/n)
 ```
+
+8b. **Tune before you scale (approval-loop convergence).** Don't fan out across the whole list before the personalization prompt is proven. Follow the convergence loop in `swarm.md`: sample on 1 contact → batch of 10 with approval → fold every edit back into the prompt as a rule → lock the prompt after **2 consecutive zero-edit rounds**, then scale to the full list. Save the locked prompt to the workspace (e.g. `context/personalization-prompt.md`) so later campaigns reuse it. Every generated line is still subject to `spam-words.md`, TOV.md, and the five-check — never ship a line containing placeholder/"cannot be generated" text.
 
 9. For each contact (in batches):
 

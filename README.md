@@ -79,7 +79,7 @@ When you open GTM:OS in Claude Code, this is what you see.
 ╚██████╔╝   ██║   ██║ ╚═╝ ██║ ╚═╝ ╚██████╔╝███████║
  ╚═════╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝ ╚══════╝
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  G T M : O S                             v1.2.0
+  G T M : O S                             v1.5.0
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Brief it. Build it. Ship it. Measure it.
@@ -481,6 +481,24 @@ Cascading enrichment across multiple tools — email, phone, people, company. Ch
 ### A/B testing
 Set up, track, and resolve A/B tests on subject lines, openers, CTAs, body copy, and send times. Statistical significance rules (50+ sends with >20% diff, or 100+ with >10%). Winners auto-feed into snippet library and campaign defaults.
 
+### Deliverability copy guard
+`/gtm:spam-check` (and an automatic pass inside `/gtm:write` and `/gtm:validate-copy`) scans every subject, body, and closeout line against a comprehensive banlist — promotional and phishing wording, em dashes, ALL CAPS, and silence-based "I'll stop if you don't reply" closeouts — and proposes a plain-language rewrite for every flag. A failed scan blocks the launch check.
+
+### List quality scorecard
+`/gtm:score-list` grades a list A+ to F across 8 list-level dimensions — email verification coverage, duplicate emails, domain concentration, title relevance, bad-title detection, catch-all density, ICP fit, and name quality. Runs inside `/gtm:validate-list` and gates shipping: a list below C-grade doesn't ship. Complements the per-contact 0-100 lead score.
+
+### Positive reply scoring
+`/gtm:reply-score` computes the metric that actually matters: positive reply rate (positive replies / total sent), not raw reply rate. Classifies every reply, reports against benchmarks (≥1% good, ≥2% great), flags hostile/unsub risk, and surfaces the positive replies that need a human response now.
+
+### Single-variable experiments
+`/gtm:experiment` forces a clean test — one variable, locked constants, minimum sample size, and success criteria set before launch — so a result is actually attributable. Change list + copy + offer at once and you learn nothing; this is the antidote. Measured on positive reply rate at day 21.
+
+### Weekly operating rhythm
+`/gtm:rhythm` is the operational cadence that separates hobbyists from top-1% operators: Monday deliverability audit, Wednesday positive-reply sweep, Friday retrospectives, biweekly inbox rotation, monthly spam-placement test, quarterly experiment review. Surfaces what's due now and links the command to run.
+
+### Lead source playbooks
+Beyond firmographic search, `/gtm:list-brief` picks the right sourcing angle for the campaign: title-first, domain-first, local SMB via Google Maps, lookalike expansion, competitor-post engagers, or directory/list extraction — each with caching, cost-gating, and a path into validation.
+
 ### Multi-language copy
 Write sequences natively in 12 languages (French, German, Dutch, Spanish, Italian, Portuguese, Swedish, Danish, Norwegian, Finnish, Polish, and more). Per-language formality defaults, word limit adjustments, cultural norms. Not translation — native writing.
 
@@ -507,6 +525,9 @@ Identify companies (and people) visiting your website, cross-reference against I
 
 ### Competitor monitoring
 `/gtm:watch-competitors` actively tracks competitor pricing pages, messaging, hiring patterns, and news using Exa and Firecrawl. Surfaces actionable signals — "Competitor X raised prices 61%" → triggers a displacement campaign suggestion.
+
+### Infrastructure provisioning
+`/gtm:provision` stands up sending infrastructure from just your senders' LinkedIn URLs — suggests and reserves outbound domains, provisions inboxes with photos and DNS auth, attaches them to your sequencer, and starts warmup. Stage 1 produces a costed plan with no spend; you approve the domain shortlist and the spend, then walk away. Cloudflare (registrar + tracking domain), Zapmail/InboxKit (inboxes + DNS), Crispy (sender identity), Smartlead (warmup). Fresh inboxes, no pre-warmed.
 
 ### Inbox health
 `/gtm:inbox-health` monitors deliverability proactively — bounce rates per inbox, warmup status, domain reputation, DNS issues. Catches problems before they hurt campaigns.
@@ -589,6 +610,9 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:personalize <ws> <campaign>` | Generate per-contact personalization lines at scale |
 | `/gtm:warm-intro <ws> [campaign]` | Find mutual connections for warm introductions |
 | `/gtm:validate-copy <ws>` | QA check copy against all rules |
+| `/gtm:spam-check <ws> [target]` | Scan copy for spam-trigger / deliverability-killing wording |
+| `/gtm:score-list <ws> [file]` | Grade a list A+ to F across 8 quality dimensions before shipping |
+| `/gtm:spintax <ws> <campaign>` | Add deliverability spintax to approved copy before shipping |
 | `/gtm:ship <ws> <campaign>` | Push to sending tool with launch check |
 
 ### Live campaign
@@ -602,9 +626,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:account-based <ws>` | Multi-thread a target account (ABM) |
 | `/gtm:audience-sync <ws>` | Push lists to LinkedIn/Meta/Google Ads |
 | `/gtm:ab-test <ws> <campaign>` | Set up, check, or resolve an A/B test |
-| `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes |
-| `/gtm:pipeline-velocity <ws>` | Track deal velocity and detect bottlenecks |
-| `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
+| `/gtm:data-hygiene <ws>` | Check data freshness, detect job changes || `/gtm:visitor-id <ws>` | Scan website visitors, match to ICP, route to campaigns |
 | `/gtm:contact <ws> <email>` | View full contact history across all campaigns and channels |
 | `/gtm:watch-competitors <ws>` | Monitor competitor pricing, messaging, hiring, and news |
 | `/gtm:nurture <ws>` | Manage warm leads on a timer — track "not now" replies with follow-up dates |
@@ -612,12 +634,20 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:handoff <ws> <contact>` | SDR → AE handoff with full context transfer |
 | `/gtm:forecast <ws>` | Pipeline forecast with weighted deals and campaign projections |
 
+### Iterate & optimize
+| Command | What it does |
+|---------|-------------|
+| `/gtm:reply-score <ws> <campaign>` | Compute positive reply rate — the north-star metric (not raw reply rate) |
+| `/gtm:experiment <ws> <campaign> [type]` | Design a single-variable experiment with success criteria set up front |
+| `/gtm:rhythm <ws>` | Weekly operating cadence — what to run Mon/Wed/Fri and what's due now |
+
 ### Infrastructure
 | Command | What it does |
 |---------|-------------|
+| `/gtm:provision <ws> [linkedin-urls]` | Provision domains, DNS, inboxes, and warmup from sender identities (Stage 1 = costed plan, no spend) |
 | `/gtm:infra <ws>` | Check sending infrastructure and DNS |
 | `/gtm:warmup <ws>` | Check inbox warmup status |
-| `/gtm:pipeline <ws>` | View CRM pipeline and conversions |
+| `/gtm:pipeline <ws> [--velocity]` | CRM pipeline — funnel, conversion, revenue attribution, and velocity (stalled deals, bottlenecks) |
 | `/gtm:domain-recovery <ws>` | Recover a damaged sending domain |
 | `/gtm:inbox-health <ws>` | Monitor inbox/domain health, warmup, bounce rates |
 
@@ -718,9 +748,16 @@ GTMOS/
 │       ├── benchmarks.md      <- Industry performance benchmarks
 │       ├── campaign-types.md  <- Campaign type templates
 │       ├── cold-email-skill.md <- Copy writing principles
+│       ├── spam-words.md      <- Banned wording + safe rewrites
+│       ├── spintax.md         <- Deliverability spintax rules
 │       ├── csv-format.md      <- Standard list format
 │       ├── defaults.md        <- All overridable defaults
-│       ├── lead-scoring.md    <- Weighted scoring model
+│       ├── lead-scoring.md    <- Weighted per-contact scoring model
+│       ├── list-quality-scorecard.md <- List-level quality grade
+│       ├── lead-sources.md    <- Sourcing playbooks
+│       ├── positive-reply-scoring.md <- North-star metric + reply schema
+│       ├── experiment-design.md <- Single-variable experiment framework
+│       ├── weekly-rhythm.md   <- Operating cadence
 │       ├── notifications.md   <- Slack alert configuration
 │       ├── report-template.md <- Client report formats
 │       ├── sending-calendar.md <- Holiday blackouts (20+ countries)
