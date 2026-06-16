@@ -14,6 +14,9 @@ Workspace and campaign: $ARGUMENTS
 @./commands/validate-list.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/collaboration.md
+@./.claude/gtmos/references/list-quality-scorecard.md
+@./.claude/gtmos/references/spam-words.md
+@./.claude/gtmos/references/spintax.md
 </execution_context>
 
 <process>
@@ -41,6 +44,7 @@ Run and display all checks before shipping:
 ┃  [x] List not expired — valid until {date} ┃
 ┃  [x] No duplicates against other campaigns ┃
 ┃  [x] All emails verified                   ┃
+┃  [x] List quality grade ≥ C ({letter})     ┃
 ┃  [x] Record count: {n}                     ┃
 ┃                                            ┃
 ┃  Copy                                      ┃
@@ -49,6 +53,7 @@ Run and display all checks before shipping:
 ┃  [x] Copy integrity verified (not edited   ┃
 ┃      since approval)                       ┃
 ┃  [x] Five-check validation passed          ┃
+┃  [x] Spam word guard passed                ┃
 ┃  [x] Personalization variables valid        ┃
 ┃  [x] Booking link set: {url}               ┃
 ┃  [x] Unsubscribe link present              ┃
@@ -83,7 +88,10 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-9. If ANY check fails, stop and show what needs fixing — do not ship
+9. If ANY check fails, stop and show what needs fixing — do not ship. Two gates are non-overridable even in auto mode:
+   - **List quality grade < C** (`list-quality-scorecard.md`) — route to fix the top issues and re-run `/gtm:score-list`. A grade of exactly C requires explicit acknowledgement.
+   - **Spam word guard fails** (`spam-words.md`) — route back to `/gtm:write` to rewrite flagged lines.
+   Optional pre-ship step: for email campaigns, offer to add deliverability spintax (`/gtm:spintax`) to the approved copy before pushing — spintax is applied to a copy of the approved sequence so the integrity marker stays intact.
 10. If all checks pass, show the shipping summary:
    - Tool: {sending tool}
    - Contacts: {count}

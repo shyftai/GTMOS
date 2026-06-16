@@ -13,6 +13,7 @@ Workspace and campaign: $ARGUMENTS
 @./commands/build-list-brief.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/enrichment-waterfall.md
+@./.claude/gtmos/references/lead-sources.md
 </execution_context>
 
 <process>
@@ -21,13 +22,13 @@ Workspace and campaign: $ARGUMENTS
 3. Check context/research/list-seeds-*.md for existing research seeds
 4. Display workspace header
 5. Output structured brief: filter criteria, required fields, enrichment fields, signals, exclusion rules
-6. Include sourcing plan — which tools to use for discovery:
-   - Crispy/Sales Navigator filters (primary discovery)
-   - Apollo people search (free, 275M+ contacts)
-   - Exa semantic search (find similar companies by meaning)
-   - Ocean.io / DiscoLike (lookalike discovery — feed best customers, get ranked matches)
-   - Firecrawl (extract company lists from directories, award lists, conference sites)
-   - Crunchbase/Diffbot (free company search)
+6. Include sourcing plan — pick the source playbook(s) from `lead-sources.md` that match the campaign type, and name the tools for each:
+   - **Title-first** (broad cold outbound) — Crispy/Sales Navigator, Apollo, Prospeo; paginate all results, max records per call
+   - **Domain-first** (you already have target domains) — resolve decision-makers per domain, cap per-domain count
+   - **Local SMB via Google Maps** (restaurants, clinics, trades) — scrape by category + city, then enrich email
+   - **Lookalike expansion** (you have winning customers) — Ocean.io / DiscoLike / Exa, then filter matches against ICP.md
+   - **Competitor-post engagers** (displacement) — pull engagers from competitor LinkedIn posts via Crispy, qualify against PERSONA.md, tag as a prospect-scoped signal
+   - **Directory / list extraction** (niche segments) — Firecrawl/Exa structured extraction from award lists, conference/exhibitor pages, directories
 7. Format as copy-paste ready
 8. Show the sourcing path — what to do with this brief:
 ```

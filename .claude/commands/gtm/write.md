@@ -14,6 +14,7 @@ Workspace and options: $ARGUMENTS
 @./commands/validate-copy.md
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/cold-email-skill.md
+@./.claude/gtmos/references/spam-words.md
 @./.claude/gtmos/references/campaign-types.md
 @./global/snippet-library.md
 @./global/swipe-file.md
@@ -41,7 +42,7 @@ Workspace and options: $ARGUMENTS
 15. Verify all links come from BOOKING.md — never invent URLs
 16. If A/B test is planned, create variants A and B clearly labeled
 17. Apply TOV.md channel-specific rules
-18. Auto-run five-check validation on every touch — display results inline
+18. Auto-run five-check validation on every touch — display results inline. Include the spam word guard scan (`spam-words.md`): rewrite any banned wording into plain language before presenting — never show a draft that still contains banned words, em dashes, or a silence-based closeout
 19. Check execution mode from workspace.config.md:
     - **Interactive:** Present with approval gate from ui-brand.md. On approval, save to copy/approved/
     - **Auto:** Auto-approve, save to copy/approved/, show `⚡ Auto-approved: sequence saved`, log in decisions.md

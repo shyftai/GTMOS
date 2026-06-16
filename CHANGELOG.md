@@ -6,6 +6,26 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [1.5.0] — 2026-06-16
+
+### Added
+- **Spam & deliverability copy guard** (`/gtm:spam-check`, `.claude/gtmos/references/spam-words.md`) — comprehensive banlist (single words, phrases, promotional/phishing wording, blacklisted categories), formatting bans (em dashes, ALL CAPS), silence-based closeout rules, safe-replacement patterns, and company-name handling. Scans every subject/body/closeout and proposes a rewrite per flag. Runs automatically inside `/gtm:write` and `/gtm:validate-copy`, and is a non-overridable gate at ship.
+- **Deliverability spintax** (`/gtm:spintax`, `spintax.md`) — adds sending-tool spintax to approved copy before shipping. Enforces the no-broken-combinations golden rule, tone preservation, and a never-spin list (merge fields, links, proof points). Applied to a copy of approved copy so the approval integrity marker stays intact.
+- **List quality scorecard** (`/gtm:score-list`, `list-quality-scorecard.md`) — grades a list A+ to F across 8 list-level dimensions (verification coverage, duplicate emails, domain concentration, title relevance, bad-title detection, catch-all density, ICP fit, name quality). Runs inside `/gtm:validate-list` and gates shipping — a sub-C list does not ship. Complements the per-contact lead-scoring model.
+- **Positive reply scoring** (`/gtm:reply-score`, `positive-reply-scoring.md`) — computes positive reply rate (positive / total sent), the north-star metric. Classification schema mapped to the 8-type reply taxonomy, benchmarks, hostile/unsub risk flags, and action items. Wired into `/gtm:report` (headline weekly metric) and `/gtm:replies`.
+- **Experiment design** (`/gtm:experiment`, `experiment-design.md`) — single-variable experiment framework: one-sentence hypothesis, locked constants, minimum sample size, success criteria set before launch, day-21 measurement on positive reply rate, confidence weighting, and a saved experiment plan. Enforces the 1%-rule baseline sanity check.
+- **Weekly operating rhythm** (`/gtm:rhythm`, `weekly-rhythm.md`) — Monday/Wednesday/Friday + biweekly/monthly/quarterly cadence playbook, surfaced in `/gtm:today`'s "This week" block. Computes what's due now.
+- **Lead source playbooks** (`lead-sources.md`) — title-first, domain-first, local SMB via Google Maps, lookalike expansion, competitor-post engagers, and directory/list extraction. Wired into `/gtm:list-brief`.
+- **Personalization approval-loop convergence** — added to `swarm.md` and `/gtm:personalize`: sample on 1 → batch of 10 with approval → lock the prompt after 2 consecutive zero-edit rounds → scale. Saves the locked prompt for reuse.
+
+### Changed
+- `CLAUDE.md` key-references index expanded with the 7 new reference docs
+- `GTMOS.md` boot COMMANDS box gains a Build/Ship refresh and a new "Iterate" row; Copy tasks now load `spam-words.md` and reference `spintax.md`; Reply handling references positive reply scoring
+- `cold-email-skill.md` quality check #6 now points at the full `spam-words.md` guard
+- `/gtm:ship` launch check adds a list-quality-grade gate and a spam-guard gate (both non-overridable in auto mode), plus an optional pre-ship spintax step
+- README updated — new commands in the catalog, 6 new Key features, reference list, and banner version
+- Version bumped to v1.5.0 across banner, `ui-brand.md`, and README
+
 ## [1.4.1] — 2026-03-10
 
 ### Added
