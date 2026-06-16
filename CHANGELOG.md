@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Changed
+- **`/gtm:pipeline-velocity` merged into `/gtm:pipeline`** — `/gtm:pipeline` now shows a velocity summary (score, stalled deals, bottleneck flag) by default, with `/gtm:pipeline --velocity` for the deep analysis (stage durations, velocity score, week-over-week trend) plus the PIPELINE.md write-back. The standalone `/gtm:pipeline-velocity` command is removed; all references redirect to `/gtm:pipeline --velocity`.
+
 ## [1.4.1] — 2026-03-10
 
 ### Added

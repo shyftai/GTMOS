@@ -91,7 +91,7 @@ Track conversion rates between each stage per campaign.
 
 ## Pipeline velocity
 
-Track how long deals spend in each stage. Updated during `/gtm:sync` and `/gtm:pipeline-velocity`.
+Track how long deals spend in each stage. Updated during `/gtm:sync` and `/gtm:pipeline --velocity`.
 
 ### Stage durations
 

@@ -122,7 +122,7 @@ Then show the quick commands reference:
   │             /gtm:nurture · /gtm:inbox-health    │
   │  Meetings   /gtm:prep-meeting · /gtm:handoff    │
   │  Intel      /gtm:contact · /gtm:watch-competitors│
-  │  Pipeline   /gtm:forecast · /gtm:pipeline-velocity│
+  │  Pipeline   /gtm:forecast · /gtm:pipeline         │
   │  Report     /gtm:report · /gtm:debrief          │
   │  Agency     /gtm:portfolio · /gtm:clone-campaign │
   │  More       /gtm:status for all commands        │
