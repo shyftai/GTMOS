@@ -41,6 +41,7 @@ Run and display all checks before shipping:
 ┃  [x] Account suppression passed            ┃
 ┃  [x] List not expired — valid until {date} ┃
 ┃  [x] No duplicates against other campaigns ┃
+┃  [x] Re-contact eligibility passed         ┃
 ┃  [x] All emails verified                   ┃
 ┃  [x] Record count: {n}                     ┃
 ┃                                            ┃
@@ -84,7 +85,7 @@ Run and display all checks before shipping:
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-9. If ANY check fails, stop and show what needs fixing — do not ship
+9. If ANY check fails, stop and show what needs fixing — do not ship. The **re-contact eligibility** gate is non-overridable in auto mode: remove any contact whose `eligible_again_at` is in the future, or who is permanently suppressed (unsubscribe/hard-bounce/erasure) — log the count, not names. A fresh qualifying signal or a job change overrides the cooldown (see RULES.md `## Re-engagement policy`)
 10. If all checks pass, show the shipping summary:
    - Tool: {sending tool}
    - Contacts: {count}

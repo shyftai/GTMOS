@@ -46,6 +46,7 @@ Workspace: $ARGUMENTS
 - To-dos marked Medium in ROADMAP.md
 - Health check due (last one >7 days ago)
 - Debrief due (campaign completed, not yet debriefed)
+- Contacts now eligible to re-approach (cooldown expired per the re-engagement policy — see RULES.md) — `/gtm:re-engage {ws}`
 
 5. Display the daily briefing:
 ```

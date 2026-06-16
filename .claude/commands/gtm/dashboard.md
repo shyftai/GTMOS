@@ -47,7 +47,7 @@ Check for items that need human attention:
 - Warmup not ready (inboxes not yet at go-live criteria)
 - Missing API keys (TOOLS.md has active tools with no .env key)
 - Holiday conflicts (upcoming send dates fall on target geography holidays)
-- Re-engagement eligible (contacts from completed campaigns past 60-day window)
+- Re-engagement eligible (contacts whose cooldown has expired per the re-engagement policy — RULES.md / defaults.md; computed from the touch ledger)
 - Win/loss patterns (PIPELINE.md has enough data to suggest ICP refinements)
 
 4. Display the dashboard:

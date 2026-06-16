@@ -14,6 +14,7 @@ Workspace and source campaign: $ARGUMENTS
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/cold-email-skill.md
 @./.claude/gtmos/references/campaign-types.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -22,11 +23,12 @@ Workspace and source campaign: $ARGUMENTS
 3. Check for `--ooo` flag in arguments
 
 ## Standard re-engagement (default)
-4. Pull non-responders from source campaign — minimum 60 days since last touch:
-   - **Team mode (Supabase):** query `pipeline_contacts` where `last_touch_date <= now() - interval '60 days'` (fall back to `first_touch_date` if `last_touch_date` is null)
-   - **Solo mode:** check `lists/shipped/` CSV for `shipped_at` column — use the most recent value per contact as last touch date
+4. Pull **eligible** contacts from the source campaign using the re-engagement policy (RULES.md `## Re-engagement policy`, defaults in defaults.md, computed from the touch ledger — see attribution-ledger.md). A contact is eligible when `eligible_again_at = last_contacted_at + cooldown(last_outcome)` is in the past:
+   - Standard (no-reply) cooldown is 100 days; other outcomes use the tiered matrix (hard-no = signal-only, etc.)
+   - **Team mode (Supabase):** query the touch ledger / `pipeline_contacts` for contacts whose computed `eligible_again_at` has passed
+   - **Solo mode:** read `logs/touch-ledger.csv` (fall back to `lists/shipped/` `shipped_at`) for `last_contacted_at` + `last_outcome` per contact
    - Contacts without any touch date: skip and log as "no touch date — cannot assess eligibility"
-5. Filter out: replied contacts, suppressed contacts, ICP mismatches
+5. Filter out: contacts still in cooldown, permanently suppressed (unsubscribe / hard-bounce / erasure — never eligible), other suppressed contacts, ICP mismatches. **Keep** any contact a fresh qualifying signal or job change makes eligible early.
 6. Check for new signals on remaining contacts
 7. Choose re-engagement angle (must differ from original campaign)
 8. Draft 2-touch sequence following re-engagement rules
