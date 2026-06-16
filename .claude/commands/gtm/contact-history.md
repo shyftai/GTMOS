@@ -12,6 +12,7 @@ Workspace and contact: $ARGUMENTS
 <execution_context>
 @./.claude/gtmos/references/ui-brand.md
 @./.claude/gtmos/references/api-reference.md
+@./.claude/gtmos/references/attribution-ledger.md
 </execution_context>
 
 <process>
@@ -22,6 +23,7 @@ Workspace and contact: $ARGUMENTS
 3. Search across all workspace data sources for this contact:
 
 **Local workspace data:**
+- Touch ledger (`logs/touch-ledger.csv` — see attribution-ledger.md) — every touch with campaign_id; derive `source_campaign`, `last_contacted_at`, `last_outcome`, `eligible_again_at`
 - All campaign lists (lists/validated/, lists/shipped/) — which campaigns included them
 - Reply logs (replies/) — any replies from this contact
 - Suppression list — are they suppressed?
@@ -102,10 +104,10 @@ Workspace and contact: $ARGUMENTS
     Q1 Cold Outbound    Mar 2026   Positive reply → meeting
 ```
 
-6. Flag risks:
-   - "Last email was 45 days ago — eligible for re-engagement in 15 days"
+6. Flag risks — eligibility is `eligible_again_at` from the touch ledger (`last_contacted_at` + the cooldown for `last_outcome`; see attribution-ledger.md):
+   - "Sourced by {source_campaign}; last touched {date} — eligible to re-approach {eligible_again_at}"
    - "Email verified 120 days ago — re-verify before next outreach"
-   - "Contact replied negatively in Q4 — check before re-contacting"
+   - "Contact replied negatively in {campaign} — check before re-contacting"
    - "Suppressed — do not contact"
 
 7. Suggest next action based on current status:

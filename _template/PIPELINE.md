@@ -22,6 +22,8 @@ Define every stage a contact moves through from first outreach to closed-won/los
 
 ## Attribution model
 
+Touch-level lineage and the **sourced-vs-influenced** model live in `.claude/gtmos/references/attribution-ledger.md` — GTM:OS is the system of record for touches, the CRM owns opportunities, and campaign pipeline is the join. Per-contact `source_campaign`, `last_contacted_at`, and `last_outcome` are derived from the touch ledger (`logs/touch-ledger.csv`).
+
 ### First touch attribution
 Every deal traces back to the campaign and touch that generated the first reply.
 
@@ -68,10 +70,10 @@ Track conversion rates between each stage per campaign.
 ## CRM sync rules
 
 ### What gets pushed to CRM (Attio)
-- New contacts from validated lists → create contact record
+- New contacts from validated lists → create contact record (stamp `source_campaign`)
 - Campaign tag → add to contact
 - Reply classification → update contact status field
-- Meeting booked → create deal, set stage
+- Meeting booked → create deal, set stage, **stamp `source_campaign` + first-touch metadata on the deal** (see attribution-ledger.md — this is the lineage that makes campaign attribution reliable when sales works the deal)
 - Stage changes → update deal stage
 - Unsubscribe → set do-not-contact flag
 

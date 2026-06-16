@@ -19,6 +19,7 @@ Do not respond to the user's first message until the boot sequence is complete a
 - `.claude/gtmos/references/api-reference.md` — API endpoints for all tools (load before API calls)
 - `.claude/gtmos/references/csv-format.md` — standard list format (load before list operations)
 - `.claude/gtmos/references/lead-scoring.md` — weighted scoring model (load before validation)
+- `.claude/gtmos/references/attribution-ledger.md` — touch ledger + sourced/influenced attribution (load before pipeline, attribution, reporting, or re-engagement)
 - `.claude/gtmos/references/enrichment-waterfall.md` — cascading enrichment logic (load before enrichment)
 - `.claude/gtmos/references/campaign-types.md` — campaign templates (load before new-campaign)
 - `.claude/gtmos/references/sending-calendar.md` — holiday blackouts (load before shipping)
