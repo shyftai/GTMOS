@@ -130,7 +130,7 @@ Source: clay.com/integrations
 
 | Tool | What it does | In GTM:OS? |
 |------|-------------|-----------|
-| **Crispy** | MCP server — Claude Code controls LinkedIn directly (78 tools) | Yes (not in Clay) |
+| **Crispy** | MCP server — Claude Code controls LinkedIn directly (175 tools) | Yes (not in Clay) |
 | **PhantomBuster** | LinkedIn automation, execution-time based | Partial — in pricing ref |
 
 ---
