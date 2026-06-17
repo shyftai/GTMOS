@@ -154,7 +154,7 @@ For pricing details, see .claude/gtmos/references/tool-pricing.md
 - Push to Crispy: connection requests, LinkedIn messages, Sales Navigator searches
 - Pull from Crispy: connection acceptance rates, reply rates, reply content, Sales Navigator lead lists
 - Credit behaviour (writes): confirm-before-every-use
-- Notes: MCP server with 78 tools — connects directly to Claude Code. Includes Sales Navigator integration. No CSV exports needed — Claude Code can run LinkedIn actions via tool calls.
+- Notes: "The LinkedIn API for AI agents" — MCP server with 175 tools — connects directly to Claude Code. Outreach, inbox, content, analytics, search + Sales Navigator, multi-step campaigns. No CSV exports needed — Claude Code can run LinkedIn actions via tool calls.
 
 ### Attio
 - Status: active / inactive
