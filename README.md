@@ -311,7 +311,7 @@ If it drifts from the brief, it doesn't ship.
 
 **2. Research** → `/gtm:research` maps ICP companies, market landscape, and buying signals using Exa, Firecrawl, Ocean.io, and DiscoLike.
 
-**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:enrich` fills gaps via waterfall enrichment across Apollo, Icypeas, Prospeo, and more. `/gtm:validate-list` cleans, scores (0-100), and validates.
+**3. Build a list** → `/gtm:list-brief` creates a sourcing brief, `/gtm:enrich` fills gaps via waterfall enrichment across Apollo, Icypeas, Prospeo, and more. `/gtm:validate-list` cleans, scores (1-100), and validates.
 
 **4. Write copy** → `/gtm:write` drafts a sequence using cold email best practices — peer voice, observation-led openers, interest-based CTAs, angle rotation per touch. `/gtm:write-multilang` writes natively in 12 languages.
 
@@ -485,7 +485,7 @@ Set up, track, and resolve A/B tests on subject lines, openers, CTAs, body copy,
 `/gtm:spam-check` (and an automatic pass inside `/gtm:write` and `/gtm:validate-copy`) scans every subject, body, and closeout line against a comprehensive banlist — promotional and phishing wording, em dashes, ALL CAPS, and silence-based "I'll stop if you don't reply" closeouts — and proposes a plain-language rewrite for every flag. A failed scan blocks the launch check.
 
 ### List quality scorecard
-`/gtm:score-list` grades a list A+ to F across 8 list-level dimensions — email verification coverage, duplicate emails, domain concentration, title relevance, bad-title detection, catch-all density, ICP fit, and name quality. Runs inside `/gtm:validate-list` and gates shipping: a list below C-grade doesn't ship. Complements the per-contact 0-100 lead score.
+`/gtm:score-list` grades a list A+ to F across 8 list-level dimensions — email verification coverage, duplicate emails, domain concentration, title relevance, bad-title detection, catch-all density, ICP fit, and name quality. Runs inside `/gtm:validate-list` and gates shipping: a list below C-grade doesn't ship. Complements the per-contact 1-100 lead score.
 
 ### Positive reply scoring
 `/gtm:reply-score` computes the metric that actually matters: positive reply rate (positive replies / total sent), not raw reply rate. Classifies every reply, reports against benchmarks (≥1% good, ≥2% great), flags hostile/unsub risk, and surfaces the positive replies that need a human response now.
@@ -570,7 +570,7 @@ GTM:OS ships with sensible defaults for everything:
 
 - **Copy:** 2-4 word lowercase subjects, 75-word first touch, interest-based CTAs, banned spam words
 - **Sending:** 40 emails/inbox/day, 14-day warmup minimum, holiday blackouts for 20+ countries
-- **Scoring:** weighted 0-100 lead scoring (company fit, persona, signals, data quality, engagement)
+- **Scoring:** weighted 1-100 lead scoring, floor 1 (company fit, persona, signals, data quality, engagement)
 - **Compliance:** optional regulation toggles, suppression checks, unsubscribe on every email, bounce auto-removal
 
 **Every default is overridable per workspace.** Add a `## Lead scoring overrides` section to RULES.md, change copy rules in TOV.md, adjust sending limits in INFRASTRUCTURE.md. If you don't override, the defaults just work.
@@ -600,7 +600,7 @@ GTM:OS ships with sensible defaults for everything:
 | `/gtm:list-brief <ws> <campaign>` | Create a list building brief |
 | `/gtm:enrich <ws> <type> [file]` | Waterfall enrichment (email, phone, people, company) |
 | `/gtm:clean-list <ws> [file]` | Clean and normalize a raw list |
-| `/gtm:validate-list <ws> [file]` | Clean + score (0-100) + validate |
+| `/gtm:validate-list <ws> [file]` | Clean + score (1-100) + validate |
 | `/gtm:write <ws> [touches] [channel]` | Draft an outbound sequence |
 | `/gtm:write-multilang <ws> <lang>` | Write sequence in a non-English language |
 | `/gtm:templates` | Browse saved sequence templates |

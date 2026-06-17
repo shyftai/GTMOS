@@ -534,7 +534,7 @@ After every enrichment run, update hit rate tracking in TOOLS.md so the waterfal
 
 - Apply ICP filters strictly. When in doubt, reject.
 - Score every record 0-3 using the rubric in RULES.md
-- Calculate weighted lead score (0-100) using `.claude/gtmos/references/lead-scoring.md` — check workspace RULES.md for overrides
+- Calculate weighted lead score (1-100, floor 1) using `.claude/gtmos/references/lead-scoring.md` — check workspace RULES.md for overrides
 - Use the standard CSV format from `.claude/gtmos/references/csv-format.md` for all list imports and exports
 - Explain rejections — say why, not just that it was rejected
 - Output a validated CSV with added columns: icp_score, lead_score, rejection_reason, review_flag

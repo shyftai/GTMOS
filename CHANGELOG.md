@@ -6,6 +6,9 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Changed
+- **ICP / lead scores are now always 1-100** (floor 1, never 0) for both companies (`company_score`) and contacts (`lead_score` / `prospect_score`). A record that would compute below 1 is clamped to 1; records that fail ICP qualification (icp_score 0 / outside ICP) are rejected with a `rejection_reason`, not scored 0. F tier is now 1-19. Component sub-scores may still contribute 0 individually, but the rolled-up total is always 1-100. (`lead-scoring.md`, `validate-list.md`, `defaults.md`, `csv-format.md`.)
+
 ## [1.6.0] — 2026-06-16
 
 ### Added

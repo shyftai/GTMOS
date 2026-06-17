@@ -5,12 +5,12 @@ GTM:OS uses a **two-layer scoring model**: account score first, prospect score s
 ## Two-layer model
 
 ```
-Layer 1: Account score (0-100)
+Layer 1: Account score (1-100)
   → Score companies before researching people
   → Only proceed to Layer 2 for A/B-tier accounts (score ≥ 60)
   → F-tier accounts (< 20) are removed entirely
 
-Layer 2: Prospect score (0-100)
+Layer 2: Prospect score (1-100)
   → Score individual contacts within approved accounts
   → Company fit component uses company_score directly (no re-scoring company)
   → Prospect score determines personalization depth and enrichment priority
@@ -24,9 +24,16 @@ Scoring mode: people-first  ← legacy, scores contacts directly without account
 
 When `people-first` is set, skip account scoring entirely and use the original 5-component model below.
 
+## Score range — always 1-100
+
+Both the account/company score and the prospect/contact score are reported on a **1-100 scale — never 0**:
+- The minimum any scored record receives is **1**. If the weighted components sum to less than 1, clamp the score up to 1.
+- A record that fails ICP qualification (icp_score 0 / outside ICP) is **rejected and not scored at all** — it gets a `rejection_reason`, not a score of 0. So 0 never appears as a score.
+- This applies to **both contacts and companies**. Individual component sub-scores below may still contribute 0 points (e.g. "industry not listed = 0"), but the rolled-up `company_score` and `lead_score`/`prospect_score` are always 1-100.
+
 ---
 
-## Account scoring (0-100)
+## Account scoring (1-100)
 
 Score companies before prospecting into them. Produces `company_score` column in lists.
 
@@ -93,7 +100,7 @@ Cap: 30 points. Signals stack up to the cap.
 | B — Active | 60-79 | Standard enrichment, find 1-2 contacts |
 | C — Monitor | 40-59 | Light enrichment only, hold until better signal |
 | D — Deprioritise | 20-39 | Do not enrich — revisit if signal improves |
-| F — Remove | 0-19 | Remove from list entirely |
+| F — Remove | 1-19 | Remove from list entirely |
 
 **Credit gate:** enrichment only runs on A/B-tier accounts. C-tier and below are held until they move up.
 
@@ -251,14 +258,14 @@ Score based on prior interaction (only applies to re-engagement or multi-campaig
 | B — Warm | 60-79 | Standard sequence, good personalization, include in A/B tests |
 | C — Cool | 40-59 | Standard sequence, template personalization, batch send |
 | D — Cold | 20-39 | Lower priority, consider holding for better signal or re-engagement later |
-| F — Reject | 0-19 | Do not ship — remove from list or flag for manual review |
+| F — Reject | 1-19 | Do not ship — remove from list or flag for manual review |
 
 ---
 
 ## How to use
 
 1. During `/gtm:validate-list`, calculate lead_score for each contact
-2. The basic `icp_score` (0-3) maps roughly: 3=A/B, 2=B/C, 1=C/D, 0=F
+2. The basic `icp_score` (0-3) maps roughly: 3=A/B, 2=B/C, 1=C/D, 0 = rejected (not scored)
 3. Lead score adds granularity within each ICP tier
 4. Sort shipped lists by lead_score descending — best leads get outreach first
 5. Use score tiers to decide personalization depth:
