@@ -31,7 +31,7 @@ That's it. GTM:OS boots automatically — shows the banner, scans your connected
 GTM:OS works with your existing tools. Two ways to connect:
 
 **MCP servers (recommended)** — Claude can use these tools directly with full capabilities:
-- [Crispy](https://crispy.sh?ref=gtmos) — LinkedIn automation (78 tools)
+- [Crispy](https://crispy.sh?ref=gtmos) — the LinkedIn API for AI agents: outreach, inbox, content, analytics, search + Sales Navigator (175 tools)
 - [Exa](https://exa.ai?ref=gtmos) — semantic web search and company research
 - [Firecrawl](https://firecrawl.dev?ref=gtmos) — web scraping and data extraction
 
@@ -384,7 +384,7 @@ GTM:OS connects to 70+ tools across the outbound stack. Use what you have — sk
 ### LinkedIn
 | Tool | What it does | Pricing |
 |------|-------------|---------|
-| **Crispy** | MCP server — Claude Code controls LinkedIn directly. Connection requests, messaging, Sales Navigator search + extract. 78 tools. | From EUR19/mo/seat |
+| **Crispy** | MCP server — "the LinkedIn API for AI agents." Claude Code drives LinkedIn end to end: outreach, inbox, content/posts, analytics, search + Sales Navigator, multi-step campaigns. 175 tools. | $49/seat/mo ($39 annual) |
 | **HeyReach** | LinkedIn outreach at scale — multiple accounts, agency mode, API | From $79/mo |
 | **PhantomBuster** | LinkedIn + web scraping automation — 100+ phantoms for any task | Free 2h/day, from $56/mo |
 

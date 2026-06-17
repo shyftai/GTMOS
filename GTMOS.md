@@ -148,7 +148,7 @@ If the operator's message already names a workspace or campaign, skip the prompt
 **Tool scan logic:**
 
 1. **MCP servers** — check if these MCP tool prefixes are available in the current session:
-   - `crispy` → Crispy (LinkedIn — 78 tools)
+   - `crispy` → Crispy (LinkedIn — 175 tools)
    - `exa` → Exa (semantic search, company research)
    - `firecrawl` or `FIRECRAWL` → Firecrawl (web scraping, data extraction)
    - `slack` → Slack (notifications, alerts)

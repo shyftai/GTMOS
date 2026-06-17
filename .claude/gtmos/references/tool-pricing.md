@@ -163,16 +163,18 @@ Last updated: 2026-03
 ## LinkedIn Automation
 
 ### Crispy
-- **Model:** Per-seat subscription
-- **Paid plans:** Pro €19/mo/seat, Team €29/mo/seat, Agency €99/mo base + €29/mo/seat
-- **What it is:** LinkedIn MCP server — 78 tools that connect directly to Claude Code
+- **Model:** Per-seat subscription — one plan, everything included (no feature gates)
+- **Paid plans:** $49/seat/mo, or $39/seat/mo billed annually (14-day money-back guarantee)
+- **What it is:** "The LinkedIn API for AI agents" — MCP server with 175 tools that connect directly to Claude Code (also 28 curated REST endpoints)
 - **What's included:**
-  - Connection requests, messaging sequences, profile views
-  - Sales Navigator integration — search, filter, save leads, extract lists
+  - Outreach: connection requests, messaging, multi-step campaign sequences with auto follow-ups
+  - Inbox management; content drafting + scheduling (posts, comments, reactions)
+  - Search + Sales Navigator integration — filter, save leads, extract lists
+  - Network analytics + job-change detection
   - MCP architecture — Claude Code orchestrates LinkedIn actions via tool calls (no CSV export/import)
 - **Default limits:** 25 connections/day, 50 profile views/day (adjustable in dashboard)
 - **GTMOS unit:** LinkedIn action
-- **Typical cost:** €19/mo flat (Pro) — no per-action charges
+- **Typical cost:** $49/mo flat ($39 annual) — no per-action charges
 - **Note:** Because Crispy works as an MCP server, it's the only LinkedIn tool in this list that Claude Code can control directly. Other LinkedIn tools (PhantomBuster) require manual setup and CSV handling.
 
 ### PhantomBuster
