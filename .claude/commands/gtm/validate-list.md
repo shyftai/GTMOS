@@ -78,8 +78,8 @@ Before scoring, check whether company-level fields are populated (industry, empl
 
 **Pass 1 — Company scoring:**
 6a. Group records by company domain
-6b. For each unique company, calculate `company_score` (0-100) using the account scoring model in lead-scoring.md
-6c. Assign company tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
+6b. For each unique company, calculate `company_score` (1-100, floor 1 — see lead-scoring.md "Score range") using the account scoring model in lead-scoring.md
+6c. Assign company tier: A (80-100), B (60-79), C (40-59), D (20-39), F (1-19)
 6d. Remove all contacts at F-tier companies (company_score < 20) — log removal count, not names
 6e. Flag D-tier companies with `review_flag: company-d-tier` — hold unless user overrides
 6f. Display company scoring summary:
@@ -91,19 +91,19 @@ Before scoring, check whether company-level fields are populated (industry, empl
 
 **Pass 2 — Prospect scoring (A/B-tier companies only):**
 7. Score every remaining contact using the rubric in RULES.md (0-3 ICP score)
-8. Calculate prospect score (0-100) using lead-scoring.md — company fit component uses `company_score × 0.30` instead of re-scoring firmographics
+8. Calculate prospect score (1-100, floor 1) using lead-scoring.md — company fit component uses `company_score × 0.30` instead of re-scoring firmographics
    - Apply ICP ceiling rule: icp_score 2 → max 79, icp_score 1 → max 59
    - Check RULES.md for `## Lead scoring overrides` — apply any custom weights
-9. Assign prospect tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
+9. Assign prospect tier: A (80-100), B (60-79), C (40-59), D (20-39), F (1-19)
 10. Add columns: `company_score`, `company_tier`, `icp_score`, `lead_score`, `score_tier`, `rejection_reason`, `review_flag`
 
 ### If scoring mode = people-first
 
 6. Score every cleaned record using the rubric in RULES.md (0-3 ICP score)
-7. Calculate weighted lead score (0-100) using lead-scoring.md (original 5-component model)
+7. Calculate weighted lead score (1-100, floor 1) using lead-scoring.md (original 5-component model)
    - Check workspace RULES.md for `## Lead scoring overrides` — apply any custom weights
    - If no overrides, use default weights
-8. Assign score tier: A (80-100), B (60-79), C (40-59), D (20-39), F (0-19)
+8. Assign score tier: A (80-100), B (60-79), C (40-59), D (20-39), F (1-19)
 9. Add columns: icp_score, lead_score, score_tier, rejection_reason, review_flag
 10. Add columns (same as company-first — proceed to shared steps)
 

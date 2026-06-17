@@ -111,7 +111,8 @@ For `/gtm:provision` (see infrastructure-provisioning.md).
 | ICP ceiling — icp_score 2 | Max prospect score: 79 | Non-overridable |
 | ICP ceiling — icp_score 1 | Max prospect score: 59 | Non-overridable |
 | Hot tier threshold | 80+ | RULES.md |
-| Reject tier threshold | 0-19 | RULES.md |
+| Reject tier threshold | 1-19 | RULES.md |
+| Score range (company + contact) | 1-100, floor 1 (never 0) | Non-overridable |
 
 ## Enrichment defaults
 

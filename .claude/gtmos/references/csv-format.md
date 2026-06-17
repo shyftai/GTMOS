@@ -41,7 +41,7 @@ All lists in GTMOS follow this standard format. When importing from external too
 | Column | Type | Description | Values |
 |--------|------|-------------|--------|
 | `icp_score` | integer | ICP fit score | `0-3` |
-| `lead_score` | float | Weighted lead score | `0-100` |
+| `lead_score` | float | Weighted lead score (floor 1) | `1-100` |
 | `rejection_reason` | string | Why rejected (if score 0) | `Personal email domain` |
 | `review_flag` | string | Flag for manual review | `catch-all email` |
 
