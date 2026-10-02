@@ -357,6 +357,7 @@ GTM:OS connects to 70+ tools across the outbound stack. Use what you have — sk
 | **Datagma** | Enrichment waterfall provider — email, phone, LinkedIn, company data | Credit-based |
 | **Dropcontact** | B2B email enrichment, GDPR-compliant, no database | From $24/mo |
 | **FindyMail** | Email finder + verifier, Sales Navigator scraping | From $49/mo |
+| **Anymail Finder** | Email finder + verifier, pay only for verified emails; finds decision makers by department | From $29/mo (400 credits) |
 | **Apify** | Web scraping platform — LinkedIn, Google Maps, any website | Free $5/mo usage, paid from $49/mo |
 
 ### Email verification

@@ -270,6 +270,22 @@ Step-by-step guides for setting up each tool to work with GTMOS. Share these wit
 
 ---
 
+## Anymail Finder
+
+### Initial setup
+1. Create an account at anymailfinder.com (new accounts start with free credits)
+2. Go to Settings → API → copy your API key
+3. Add to `.env`: `ANYMAILFINDER_API_KEY=your-key`
+
+### GTMOS integration
+- Reads: person email, decision-maker email (by department), company emails, verification results, credit balance
+- Writes: submit find and verify requests
+- Credit behaviour: confirm-before-every-use (1 credit per verified email, 2 per decision maker, 0.2 per verification; misses and 30-day repeats are free)
+- Auth header: `Authorization: <api key>` (no Bearer prefix)
+- Every found email is already verified - skip the separate verify step for these
+
+---
+
 ## Scrubby
 
 ### Initial setup

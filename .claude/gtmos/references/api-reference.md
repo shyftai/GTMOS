@@ -242,6 +242,18 @@ This section covers API actions that can damage email deliverability and domain 
 | **Dedup** | Lifetime dedup on enrichment — re-enriching same LinkedIn URL or email costs 0 credits. This is a significant cost saver but means you can't force a re-enrichment of stale data. |
 | **No DELETE endpoints** | Read-only enrichment API. No destructive operations. |
 
+#### Anymail Finder (api.anymailfinder.com/v5.1)
+
+**Rate limit:** None published; capacity auto-scales. Real-time SMTP checks - most calls answer in seconds, a slow target mail server can take up to 180 seconds. Wait, do not retry mid-call.
+
+| Concern | Detail |
+|---------|--------|
+| **Credit charging** | Charged only when `email_status` is `valid` (1 credit per person find, 2 per decision-maker find, 1 per company list). `not_found`, `risky` and `blacklisted` cost 0. Verification is 0.2 credits whatever the verdict. |
+| **Repeats** | The same search or verification within 30 days costs 0 - safe to re-run a list. |
+| **Misses are 200s** | A miss is HTTP 200 with `email_status: not_found`, never a 404. Read `valid_email`, not `email`: a `risky` address is returned in `email` only and was not verified. |
+| **Out of credits** | 402 `upgrade_needed` on every billable route. `GET /account` (free) returns `credits_left`. |
+| **No DELETE endpoints** | Read-only lookups. No destructive operations. |
+
 #### ZeroBounce (api.zerobounce.net/v2)
 
 **Rate limit:** Batch validation: 5 requests/minute, max 200 emails per batch. Single validation: timeout 10-120 seconds.
@@ -702,6 +714,46 @@ curl -X POST "https://api.dropcontact.com/batch" \
 | Company info | — | See docs | — |
 
 Guarantees <5% bounce rate. Credits never expire. Pay only on success.
+
+---
+
+## Anymail Finder
+
+**Auth:** API key as the raw value of the `Authorization` header
+**Base URL:** `https://api.anymailfinder.com/v5.1`
+**Docs:** `https://anymailfinder.com/email-finder-api/docs` (OpenAPI: `https://api.anymailfinder.com/openapi.json`)
+
+| Action | Method | Endpoint | Credits |
+|--------|--------|----------|---------|
+| Find person email (name + domain/company, or LinkedIn URL) | POST | `/find-email/person` | 1 (only on a verified hit) |
+| Find decision maker email (company + departments) | POST | `/find-email/decision-maker` | 2 (only on a verified hit) |
+| Find company emails (up to 20) | POST | `/find-email/company` | 1 per list (only when found) |
+| Verify email | POST | `/verify-email` | 0.2 |
+| Account balance | GET | `/account` | 0 |
+
+Every address a find returns was SMTP-verified live before the response (catch-all domains included), so found emails need no separate verify step. Repeats of the same search within 30 days are free. Every billable response carries `credits_charged`.
+
+**Find person email example:**
+```bash
+curl -X POST "https://api.anymailfinder.com/v5.1/find-email/person" \
+  -H "Authorization: $ANYMAILFINDER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "full_name": "John Doe",
+    "domain": "acme.com"
+  }'
+```
+
+**Find decision maker example** (when you have the company but no name; departments: ceo, engineering, finance, hr, it, logistics, marketing, operations, buyer, sales):
+```bash
+curl -X POST "https://api.anymailfinder.com/v5.1/find-email/decision-maker" \
+  -H "Authorization: $ANYMAILFINDER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": "acme.com",
+    "decision_maker_category": ["ceo", "sales"]
+  }'
+```
 
 ---
 
