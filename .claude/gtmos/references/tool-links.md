@@ -26,6 +26,7 @@ When referencing a tool's website, use the link from this file. The `?ref=gtmos`
 - Scrubby: https://scrubby.io?ref=gtmos
 - Dropcontact: https://dropcontact.com?ref=gtmos
 - FindyMail: https://findymail.com?ref=gtmos
+- Anymail Finder: https://anymailfinder.com?ref=gtmos
 
 ### Email Sequencing
 - Lemlist: https://lemlist.com?ref=gtmos

@@ -17,6 +17,7 @@ Before the waterfalls — what each action actually costs across providers:
 | Apollo | 1 email + 1 export credit | No (only on reveal) | No (email_status field only) | Three separate credit pools |
 | Icypeas | 1 credit ($0.005-0.019) | No | No (separate 0.01cr verify) | Credits never expire |
 | Prospeo | 1 credit ($0.007-0.039) | No | Yes (built-in) | Lifetime dedup — re-enrich same person = free |
+| Anymail Finder | 1 credit ($0.008-0.073 by plan; $0.02 on the 10K plan) | No | Yes (every result SMTP-verified live, catch-all included) | Also finds a decision maker by department (2 credits) when you only have the company. Repeats within 30 days free |
 | Dropcontact | 1 credit (~$0.024) | No | Yes (built-in) | No database — algorithmic. GDPR compliant |
 | FindyMail | 1 credit (~$0.04) | No | Yes (<5% bounce guarantee) | Credits never expire |
 | Lemlist | 5 credits ($0.05) | No | Yes (waterfall across 7 sources) | Credits expire monthly |
@@ -29,6 +30,7 @@ Before the waterfalls — what each action actually costs across providers:
 | MillionVerifier | $0.001-0.004 | Free (not charged) | No |
 | Icypeas | ~0.01 credits ($0.00005-0.0002) | Google/Microsoft catch-all detection | No |
 | ZeroBounce | $0.008-0.02 | Returns "catch-all" status | Yes (name, gender, location, domain age) |
+| Anymail Finder | 0.2 credits ($0.0016-0.015) | Live check, catch-all included - returns valid / invalid / risky | No |
 | Scrubby | $0.0015-0.007 | Specialist — sends real emails to test | No |
 
 ### People Enrichment
@@ -341,8 +343,9 @@ Goal: find a verified business email for a known person (have name + company/dom
 | 1 | **Apollo** | 1 email + 1 export credit | Largest database (275M+), cheap, often has email already |
 | 2 | **Icypeas** | 1 credit (only on success) | Very cheap ($0.005 on Hypergrowth), credits never expire |
 | 3 | **Prospeo** | 1 credit (lifetime dedup) | Returns verified email + company data. LinkedIn URL to email is a strength |
-| 4 | **Dropcontact** | 1 credit (~$0.024) | Algorithmic (no database) — finds emails other tools miss. GDPR compliant |
-| 5 | **FindyMail** | 1 credit (~$0.04) | <5% bounce guarantee, good last resort |
+| 4 | **Anymail Finder** | 1 credit ($0.02 on the 10K plan, only on a verified hit) | Every result SMTP-verified live before it is returned, so no separate verify step. Also the only step that finds a decision maker from company + department when you have no name (2 credits) |
+| 5 | **Dropcontact** | 1 credit (~$0.024) | Algorithmic (no database) - finds emails other tools miss. GDPR compliant |
+| 6 | **FindyMail** | 1 credit (~$0.04) | <5% bounce guarantee, good last resort |
 
 **Volume per provider (programmatic API access):**
 
@@ -357,6 +360,7 @@ Goal: find a verified business email for a known person (have name + company/dom
 | Instantly | Separate lead finder plan ($47-197/mo) | 1K-10K contacts/mo | Via lead API | Per-plan |
 | Dropcontact | 1cr/success, credits from ~€24/mo | Same as search | Batch endpoint | Standard |
 | FindyMail | 1cr/find, credits never expire | Same | Via API | Standard |
+| Anymail Finder | n/a (finder/verifier only) | 1cr/verified email, 2cr/decision maker, 0.2cr/verify; repeats free for 30 days | Bulk CSV endpoint | No published limit, auto-scales; calls can take up to 180s |
 | Crunchbase | FREE — 200 calls/min | Same (basic fields) | 25 per page | 200 req/min |
 | Diffbot | FREE — 10K credits/mo (25cr/export) | Same | Per-query | 5 req/min (free) |
 | Exa | FREE — 1K searches/mo | N/A (search only) | 10-100 results/search | Standard |
@@ -379,7 +383,7 @@ Goal: find a verified business email for a known person (have name + company/dom
 |------|--------|------|-----|
 | 1 | **Scrubby** | $0.0015-0.007 | Sends real emails to test. 98% deliverability on validated catch-alls |
 
-**Skip verification if:** Prospeo or Dropcontact found the email (verification is built-in).
+**Skip verification if:** Prospeo, Dropcontact or Anymail Finder found the email (verification is built-in).
 
 ### 2. People Search
 
