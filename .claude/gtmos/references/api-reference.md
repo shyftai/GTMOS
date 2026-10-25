@@ -887,11 +887,10 @@ curl -X POST "https://api.attio.com/v2/objects/people/records" \
 
 **Run LinkedIn scraper example:**
 ```bash
-curl -X POST "https://api.apify.com/v2/acts/anchor~linkedin-profile-scraper/runs?token=$APIFY_API_KEY" \
+curl -X POST "https://api.apify.com/v2/acts/johnvc~linkedin-profile-api/runs?token=$APIFY_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "urls": ["https://linkedin.com/in/johndoe"],
-    "proxy": { "useApifyProxy": true }
+    "profileUrls": ["https://www.linkedin.com/in/johndoe"]
   }'
 ```
 
